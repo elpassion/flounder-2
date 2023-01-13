@@ -1,1 +1,1 @@
-export const Checkbox = () => <h1 className="text-red-900">lol</h1>
+export const Checkbox = () => <h1 className="text-red-900">lol</h1>;
