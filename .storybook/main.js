@@ -5,6 +5,14 @@ module.exports = {
     "@storybook/addon-a11y",
     "storybook-addon-designs",
     "@storybook/preset-create-react-app",
+    {
+      name: "@storybook/addon-storysource",
+      options: {
+        loaderOptions: {
+          parser: "typescript",
+        },
+      },
+    },
   ],
   framework: "@storybook/react",
   core: {
