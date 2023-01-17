@@ -171,13 +171,13 @@ export default {
   args: {
     name: "withSupportingText",
     labelText: "Don't show again",
-    labelPosition: "left",
+    labelPosition: "right",
     supportingText: "Save my login details for next time.",
     checked: false,
     required: false,
     disabled: false,
     error: false,
-    size: "sm",
+    size: "md",
     onChange: undefined,
   },
   parameters: {
