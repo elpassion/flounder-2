@@ -24,7 +24,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +67,7 @@
     "@storybook/node-logger": "^6.5.15",
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.15",
+    "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/testing-library": "^0.0.13",
     "@tailwindcss/forms": "^0.5.3",
     "@types/react-syntax-highlighter": "^15.5.6",
