@@ -3,11 +3,11 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
 import React from "react";
 
-export interface CheckboxProps {
+export interface RadioProps {
   name: string;
+  id: string;
   checked?: boolean;
   disabled?: boolean;
-  required?: boolean;
   error?: boolean;
   size?: "sm" | "md";
   labelText: string;
@@ -16,12 +16,12 @@ export interface CheckboxProps {
   onChange?: () => void;
 }
 
-export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
+export const Radio: ComponentStory<React.FC<RadioProps>> = ({
   name,
+  id,
   checked,
   disabled,
   error,
-  required,
   size,
   onChange,
   labelPosition,
@@ -39,8 +39,8 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
         })}
       >
         <input
-          type="checkbox"
-          id={name}
+          type="radio"
+          id={id}
           name={name}
           className={classNames(
             "peer absolute h-4 w-4 opacity-0",
@@ -48,43 +48,23 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
           )}
           disabled={disabled}
           defaultChecked={checked}
-          required={required}
           onChange={onChange}
         />
         <div
           className={classNames(
-            "flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border bg-white text-transparent",
+            "after:content'' flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg border bg-white text-transparent after:h-[6px] after:w-[6px] after:rounded-[3px]",
             {
-              "border-neutral-300 group-hover:bg-primary-50 peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500 peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50":
-                !disabled,
-              "border-neutral-50 bg-neutral-100 peer-checked:text-neutral-50":
+              "border-neutral-300 group-hover:bg-primary-50 peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500 peer-checked:after:bg-primary-500 peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50":
+                !disabled && !error,
+              "border-neutral-50 bg-neutral-100 peer-checked:text-neutral-50 peer-checked:after:bg-neutral-50":
                 disabled,
-              "border-error-500 group-hover:bg-inherit peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500 peer-focus:border-error-500 peer-focus:ring-0":
+              "border-error-500 group-hover:bg-inherit peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500 peer-checked:after:bg-error-500 peer-focus:border-error-500 peer-focus:ring-0":
                 error,
-              "h-5 w-5": isMediumSize,
+              "h-5 w-5 rounded-[10px] after:h-2 after:w-2 after:rounded":
+                isMediumSize,
             }
           )}
-        >
-          <svg
-            width={isMediumSize ? "14" : "12"}
-            height={isMediumSize ? "14" : "12"}
-            viewBox={isMediumSize ? "0 0 14 14" : "0 0 12 12"}
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d={
-                isMediumSize
-                  ? "M11.6666 3.5L5.24992 9.91667L2.33325 7"
-                  : "M10 3L4.5 8.5L2 6"
-              }
-              stroke="currentColor"
-              strokeWidth={isMediumSize ? "2" : "1.6666"}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
+        ></div>
         {labelText && (
           <div>
             <label
@@ -96,18 +76,6 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
               })}
             >
               {labelText}
-              {required === true && "*"}
-              {required === false && (
-                <span
-                  className={classNames("ml-1 text-xs", {
-                    "text-neutral-200": disabled && !supportingText,
-                    "text-neutral-400": !error && !disabled,
-                    "text-transparent": error,
-                  })}
-                >
-                  (optional)
-                </span>
-              )}
             </label>
           </div>
         )}
@@ -130,9 +98,12 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
 };
 
 export default {
-  title: "Checkbox",
-  component: Checkbox,
+  title: "Radio",
+  component: Radio,
   argTypes: {
+    id: {
+      description: "string",
+    },
     name: {
       description: "string",
     },
@@ -148,9 +119,6 @@ export default {
       description: "string",
     },
     checked: {
-      description: "boolean",
-    },
-    required: {
       description: "boolean",
     },
     disabled: {
@@ -169,12 +137,12 @@ export default {
     },
   },
   args: {
-    name: "withSupportingText",
+    id: "withSupportingText",
+    name: "firstRadioGroup",
     labelText: "Don't show again",
     labelPosition: "right",
     supportingText: "Save my login details for next time.",
     checked: false,
-    required: false,
     disabled: false,
     error: false,
     size: "md",
@@ -183,7 +151,7 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2432%3A10986&t=UrLZo5oibLW5eXuj-4",
+      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2333%3A11688&t=21PNe6GxB9R5K2SQ-0",
     },
   },
-} as ComponentMeta<React.FC<CheckboxProps>>;
+} as ComponentMeta<React.FC<RadioProps>>;
