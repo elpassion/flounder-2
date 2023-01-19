@@ -28,6 +28,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
   labelText,
   supportingText,
 }) => {
+  console.log('test github action')
   const isMediumSize = size === "md";
   return (
     <>
