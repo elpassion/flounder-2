@@ -1,4 +1,11 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import {
+  Title,
+  Description,
+  Primary,
+  ArgsTable,
+  PRIMARY_STORY,
+} from "@storybook/addon-docs";
 
 import classNames from "classnames";
 import React from "react";
@@ -15,6 +22,12 @@ export interface CheckboxProps {
   labelPosition?: "left" | "right";
   onChange?: () => void;
 }
+
+const docs: string = `# Usage <br/> 
+| DO | DON’T |
+| ----------- | ----------- |
+| Use checkboxes when the user can select more than one option. | Don't use checkboxes for a group of items where the user can select only a single option. Instead, use radio buttons. |
+| Checkboxes let users select one or more options from a list. A parent checkbox allows for easy selection or deselection of all items. | If a list consists of multiple options, don't use switches. Instead, use checkboxes. Checkboxes imply the items are related, and take up less visual space. |`;
 
 export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
   name,
@@ -187,6 +200,16 @@ export default {
     design: {
       type: "figma",
       url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2432%3A10986&t=UrLZo5oibLW5eXuj-4",
+    },
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Description markdown={docs} />
+        </>
+      ),
     },
   },
 } as ComponentMeta<React.FC<CheckboxProps>>;
