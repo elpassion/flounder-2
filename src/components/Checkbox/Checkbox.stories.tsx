@@ -89,7 +89,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
           <div>
             <label
               htmlFor={name}
-              className={classNames("text-sm font-medium text-neutral-600", {
+              className={classNames("text-sm font-medium text-neutral-600 cursor-pointer", {
                 "text-neutral-200": disabled && !supportingText,
                 "text-error-500": error,
                 "text-base": isMediumSize,

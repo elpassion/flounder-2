@@ -68,8 +68,8 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
         {labelText && (
           <div>
             <label
-              htmlFor={name}
-              className={classNames("text-sm font-medium text-neutral-600", {
+              htmlFor={id}
+              className={classNames("text-sm font-medium text-neutral-600 cursor-pointer", {
                 "text-neutral-200": disabled && !supportingText,
                 "text-error-500": error,
                 "text-base": isMediumSize,
