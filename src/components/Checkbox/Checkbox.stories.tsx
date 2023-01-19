@@ -28,7 +28,6 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
   labelText,
   supportingText,
 }) => {
-  console.log('test github action')
   const isMediumSize = size === "md";
   return (
     <>
@@ -90,11 +89,14 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
           <div>
             <label
               htmlFor={name}
-              className={classNames("text-sm font-medium text-neutral-600 cursor-pointer", {
-                "text-neutral-200": disabled && !supportingText,
-                "text-error-500": error,
-                "text-base": isMediumSize,
-              })}
+              className={classNames(
+                "cursor-pointer text-sm font-medium text-neutral-600",
+                {
+                  "text-neutral-200": disabled && !supportingText,
+                  "text-error-500": error,
+                  "text-base": isMediumSize,
+                }
+              )}
             >
               {labelText}
               {required === true && "*"}
