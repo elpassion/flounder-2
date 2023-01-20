@@ -104,14 +104,12 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
           <div>
             <label
               htmlFor={name}
-              className={classNames(
-                "cursor-pointer text-sm font-medium text-neutral-600",
-                {
-                  "text-neutral-200": disabled && !supportingText,
-                  "text-error-500": error,
-                  "text-base": isMediumSize,
-                }
-              )}
+              className={classNames("cursor-pointer text-sm font-medium ", {
+                "text-neutral-600": !error,
+                "text-error-500": error,
+                "text-neutral-200": disabled && !supportingText,
+                "text-base": isMediumSize,
+              })}
             >
               {labelText}
               {required === true && "*"}
@@ -157,8 +155,8 @@ export default {
     labelText: {
       description: "string",
     },
-    optionalLabelText:{
-      description: "string"
+    optionalLabelText: {
+      description: "string",
     },
     labelPosition: {
       control: "select",
