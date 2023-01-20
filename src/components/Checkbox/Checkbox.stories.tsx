@@ -18,6 +18,7 @@ export interface CheckboxProps {
   error?: boolean;
   size?: "sm" | "md";
   labelText: string;
+  optionalLabelText: string;
   supportingText: string;
   labelPosition?: "left" | "right";
   onChange?: () => void;
@@ -39,6 +40,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
   onChange,
   labelPosition,
   labelText,
+  optionalLabelText,
   supportingText,
 }) => {
   const isMediumSize = size === "md";
@@ -121,7 +123,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
                     "text-transparent": error,
                   })}
                 >
-                  (optional)
+                  {optionalLabelText}
                 </span>
               )}
             </label>
@@ -155,6 +157,9 @@ export default {
     labelText: {
       description: "string",
     },
+    optionalLabelText:{
+      description: "string"
+    },
     labelPosition: {
       control: "select",
       options: ["left", "right"],
@@ -187,6 +192,7 @@ export default {
   args: {
     name: "withSupportingText",
     labelText: "Don't show again",
+    optionalLabelText: "(optional)",
     labelPosition: "right",
     supportingText: "Save my login details for next time.",
     checked: false,
