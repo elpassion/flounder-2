@@ -1,7 +1,13 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-
 import classNames from "classnames";
 import React from "react";
+import {
+  ArgsTable,
+  Description,
+  Primary,
+  PRIMARY_STORY,
+  Title,
+} from "@storybook/addon-docs";
 
 export interface RadioProps {
   name: string;
@@ -15,6 +21,16 @@ export interface RadioProps {
   labelPosition?: "left" | "right";
   onChange?: () => void;
 }
+
+const docs: string = `# Usage <br/> 
+| DO | DON’T |
+| ----------- | ----------- |
+| Use radio buttons to select a single item from a small set of options. | Don't use radio buttons to select from a long list of options. Dropdown menu is a better choice in such case. |
+| Use labels that are short, direct, unambiguous and unchanging. | Do not mix radio buttons and checkboxes in a single selection. |
+| Avoid offering more than 5 options. | |
+| Capitalise the label, do not use full stops. | |
+| For items with descriptions, the latter should be capitalised and end with a full stop. Keep the descriptions as short as possible (single-line description is ideal). Otherwise, consider other options of conveying the information, such as intro text or a message box. | |
+| If a text label overflows its container, it should be wrapped. Avoid labels wrapping into more than 2 lines. | |`;
 
 export const Radio: ComponentStory<React.FC<RadioProps>> = ({
   name,
@@ -69,11 +85,14 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
           <div>
             <label
               htmlFor={id}
-              className={classNames("text-sm font-medium text-neutral-600 cursor-pointer", {
-                "text-neutral-200": disabled && !supportingText,
-                "text-error-500": error,
-                "text-base": isMediumSize,
-              })}
+              className={classNames(
+                "cursor-pointer text-sm font-medium text-neutral-600",
+                {
+                  "text-neutral-200": disabled && !supportingText,
+                  "text-error-500": error,
+                  "text-base": isMediumSize,
+                }
+              )}
             >
               {labelText}
             </label>
@@ -152,6 +171,16 @@ export default {
     design: {
       type: "figma",
       url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2333%3A11688&t=21PNe6GxB9R5K2SQ-0",
+    },
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Primary />
+          <ArgsTable story={PRIMARY_STORY} />
+          <Description markdown={docs} />
+        </>
+      ),
     },
   },
 } as ComponentMeta<React.FC<RadioProps>>;
