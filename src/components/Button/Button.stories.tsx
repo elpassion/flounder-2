@@ -18,7 +18,7 @@ export interface ButtonProps {
   onClick: () => void;
 }
 
-const icons = { SlashIcon };
+const icons = { undefined, SlashIcon };
 
 export const Button: ComponentStory<React.FC<ButtonProps>> = ({
   text,
