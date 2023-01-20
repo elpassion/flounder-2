@@ -50,7 +50,7 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
       <div
         className={classNames("group flex w-fit items-center gap-2", {
           "flex-row-reverse": labelPosition === "left",
-          "w-[344px] justify-between":
+          "w-[344px] max-w-full items-baseline justify-between":
             supportingText && labelPosition === "left",
         })}
       >
