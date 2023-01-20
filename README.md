@@ -24,10 +24,12 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 
-### Deploy
+### Manual deploy
 
-To deploy the storybook to github pages use 
+To deploy the storybook manually use 
 
 ```bash
 npm run deploy-storybook
 ```
+
+CI/CD is configured using github actions in `.github/workflows`
