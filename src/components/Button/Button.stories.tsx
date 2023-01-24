@@ -31,7 +31,7 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
 }) => {
   const primaryStyle =
     variant === "primary" &&
-    "border border-primary-500 bg-primary-500 text-white hover:bg-primary-700 active:bg-primary-800";
+    "border border-primary-500 bg-primary-500 text-white hover:bg-primary-700 hover:border-primary-700 active:border-primary-800 active:bg-primary-800";
   const outlinedStyle =
     variant === "outlined" &&
     "border border-primary-500 bg-white text-primary-500 hover:border-primary-700 hover:text-primary-700 active:border-primary-800 active:text-primary-800";

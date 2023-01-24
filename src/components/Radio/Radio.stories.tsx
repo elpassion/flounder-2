@@ -45,35 +45,36 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
   supportingText,
 }) => {
   const isMediumSize = size === "md";
+  const fontColor = error ? "text-error-500" : "text-neutral-500";
+
   return (
     <>
       <div
-        className={classNames("group flex w-fit items-center gap-2", {
-          "flex-row-reverse": labelPosition === "left",
-          "w-[344px] max-w-full items-baseline justify-between":
-            supportingText && labelPosition === "left",
-        })}
+        className={classNames(
+          "group flex w-fit items-baseline gap-2",
+          fontColor,
+          {
+            "flex-row-reverse": labelPosition === "left",
+            "w-[344px] max-w-full justify-between":
+              supportingText && labelPosition === "left",
+          }
+        )}
       >
         <input
           type="radio"
           id={id}
           name={name}
-          className={classNames(
-            "peer absolute h-4 w-4 opacity-0",
-            !disabled && "cursor-pointer"
-          )}
+          className="peer absolute h-4 w-4 cursor-pointer opacity-0"
           disabled={disabled}
           defaultChecked={checked}
           onChange={onChange}
         />
         <div
           className={classNames(
-            "after:content'' flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg border bg-white text-transparent after:h-[6px] after:w-[6px] after:rounded-[3px]",
+            "after:content'' flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg border bg-white text-transparent after:h-[6px] after:w-[6px] after:rounded-[3px] peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:peer-checked:text-neutral-50 peer-disabled:peer-checked:after:bg-neutral-50",
             {
               "border-neutral-300 group-hover:bg-primary-50 peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500 peer-checked:after:bg-primary-500 peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50":
-                !disabled && !error,
-              "border-neutral-50 bg-neutral-100 peer-checked:text-neutral-50 peer-checked:after:bg-neutral-50":
-                disabled,
+                !error,
               "border-error-500 group-hover:bg-inherit peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500 peer-checked:after:bg-error-500 peer-focus:border-error-500 peer-focus:ring-0":
                 error,
               "h-5 w-5 rounded-[10px] after:h-2 after:w-2 after:rounded":
@@ -81,35 +82,30 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
             }
           )}
         ></div>
-        {labelText && (
-          <div>
+        <div
+          className={classNames(fontColor, "peer-disabled:text-neutral-200")}
+        >
+          {labelText && (
             <label
               htmlFor={id}
               className={classNames("cursor-pointer text-sm font-medium", {
-                "text-neutral-600": !error,
-                "text-neutral-200": disabled && !supportingText,
-                "text-error-500": error,
                 "text-base": isMediumSize,
               })}
             >
               {labelText}
             </label>
-          </div>
-        )}
+          )}
+          {supportingText && (
+            <p
+              className={classNames("text-sm font-normal", {
+                "text-base": isMediumSize,
+              })}
+            >
+              {supportingText}
+            </p>
+          )}
+        </div>
       </div>
-      {supportingText && (
-        <p
-          className={classNames("text-sm font-normal", {
-            "ml-6": !isMediumSize && labelPosition === "right",
-            "ml-7": isMediumSize && labelPosition === "right",
-            "text-base": isMediumSize,
-            "text-neutral-500": !error,
-            "text-error-500": error,
-          })}
-        >
-          {supportingText}
-        </p>
-      )}
     </>
   );
 };
