@@ -4,6 +4,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",
     "storybook-addon-designs",
+    "storybook-dark-mode",
     "@storybook/preset-create-react-app",
     {
       name: "@storybook/addon-storysource",
