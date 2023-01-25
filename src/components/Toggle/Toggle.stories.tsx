@@ -25,7 +25,7 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
   };
 
   return (
-    <div className="">
+    <div>
       <label className="group relative flex items-start">
         <input
           type="checkbox"
@@ -94,4 +94,4 @@ export default {
       url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2641%3A12452&t=r0ZlNZ1jXkJ9BfnD-4",
     },
   },
-} as ComponentMeta<React.FC<{}>>;
+} as ComponentMeta<React.FC<ToggleProps>>;
