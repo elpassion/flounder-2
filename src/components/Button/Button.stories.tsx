@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
-import { IconProps } from "../../icons/Icons.interface";
-import { SlashIcon } from "../../icons/slash";
+import { IconProps } from "icons/Icons.interface";
+import { SlashIcon } from "icons/slash";
 
 export interface ButtonProps {
   text: string;
