@@ -57,7 +57,7 @@ module.exports = {
       },
       boxShadow: {
         button:
-          "0px 4px 4px rgba(82, 97, 107, 0.1), 0px 8px 16px rgba(0, 12, 48, 0.12);",
+          "0px 4px 4px rgba(82, 97, 107, 0.1), 0px 8px 16px rgba(0, 12, 48, 0.12)",
       },
       fontSize: {
         xxs: "10px",
