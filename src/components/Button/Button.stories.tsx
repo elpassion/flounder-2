@@ -5,12 +5,7 @@ import { SlashIcon } from "icons/slash";
 
 export interface ButtonProps {
   text: string;
-  variant:
-    | "primary"
-    | "outlined"
-    | "ghost"
-    | "destructive"
-    | "destructive-text";
+  variant: "primary" | "outlined" | "ghost" | "destructive" | "destructiveText";
   leftIcon?: React.FC<IconProps>;
   rightIcon?: React.FC<IconProps>;
   disabled?: boolean;
@@ -29,35 +24,34 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
   disabled,
   onClick,
 }) => {
-  const primaryStyle =
-    variant === "primary" &&
-    "border border-primary-500 bg-primary-500 text-white hover:bg-primary-700 hover:border-primary-700 active:border-primary-800 active:bg-primary-800";
-  const outlinedStyle =
-    variant === "outlined" &&
-    "border border-primary-500 bg-white text-primary-500 hover:border-primary-700 hover:text-primary-700 active:border-primary-800 active:text-primary-800";
-  const ghostStyle =
-    variant === "ghost" &&
-    "text-primary-500 hover:bg-primary-50 hover:text-primary-700 active:bg-primary-100 active:text-primary-800";
-  const destructiveStyle =
-    variant === "destructive" &&
-    "bg-error-500 text-white hover:bg-error-700 active:bg-error-800";
-  const destructiveTextStyle =
-    variant === "destructive-text" &&
-    "text-error-500 hover:bg-error-50 hover:text-error-700 active:bg-error-100 active:text-error-800";
+  const styleVariants = {
+    primary:
+      "border border-primary-500 bg-primary-500 text-white hover:bg-primary-700 hover:border-primary-700 active:border-primary-800 active:bg-primary-800",
+    outlined:
+      "border border-primary-500 bg-white text-primary-500 hover:border-primary-700 hover:text-primary-700 active:border-primary-800 active:text-primary-800",
+    ghost:
+      "text-primary-500 hover:bg-primary-50 hover:text-primary-700 active:bg-primary-100 active:text-primary-800",
+    destructive:
+      "bg-error-500 text-white hover:bg-error-700 active:bg-error-800",
+    destructiveText:
+      "text-error-500 hover:bg-error-50 hover:text-error-700 active:bg-error-100 active:text-error-800",
+  };
+
+  const sizeVariants = {
+    sm: "gap-2 py-1.5 px-3.5 text-sm",
+    md: "text-md gap-2",
+    lg: "gap-4 text-lg",
+  };
 
   return (
     <button
       disabled={disabled}
       className={classNames(
-        "flex items-center justify-center rounded-lg py-2.5 px-5 hover:shadow-button disabled:border-neutral-200 disabled:bg-neutral-200 disabled:text-white disabled:hover:shadow-none",
-        primaryStyle,
-        outlinedStyle,
-        ghostStyle,
-        destructiveStyle,
-        destructiveTextStyle,
-        size === "sm" && "gap-2 py-1.5 px-3.5 text-sm",
-        size === "md" && "text-md gap-2",
-        size === "lg" && "gap-4 text-lg"
+        "flex items-center justify-center rounded-lg py-2.5 px-5",
+        "disabled:border-neutral-200 disabled:bg-neutral-200 disabled:text-white disabled:hover:shadow-none",
+        "hover:shadow-button",
+        styleVariants[variant],
+        sizeVariants[size]
       )}
       onClick={onClick}
     >
@@ -82,10 +76,9 @@ export default {
         "outlined",
         "ghost",
         "destructive",
-        "destructive-text",
+        "destructiveText",
       ],
-      description:
-        "primary | outlined | ghost | destructive | destructive-text",
+      description: "primary | outlined | ghost | destructive | destructiveText",
     },
     size: {
       control: "select",

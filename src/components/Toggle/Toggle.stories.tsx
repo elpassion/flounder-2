@@ -34,7 +34,11 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
         />
         <span
           className={classNames(
-            "flex flex-shrink-0 cursor-pointer items-center rounded-full bg-neutral-100 p-0.5 opacity-100 duration-300 ease-in-out  after:rounded-full after:bg-white after:shadow-sm after:duration-300 hover:bg-neutral-200 peer-checked:bg-primary-500  peer-disabled:cursor-not-allowed peer-disabled:after:bg-neutral-50",
+            "flex flex-shrink-0 cursor-pointer items-center rounded-full bg-neutral-100 p-0.5 opacity-100 duration-300 ease-in-out",
+            "after:rounded-full after:bg-white after:shadow-sm after:duration-300",
+            "hover:bg-neutral-200",
+            "peer-checked:bg-primary-500",
+            "peer-disabled:cursor-not-allowed peer-disabled:after:bg-neutral-50",
             sizeVariant[size]
           )}
         ></span>

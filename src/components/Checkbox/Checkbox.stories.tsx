@@ -51,12 +51,12 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
       <div
         className={classNames(
           "group flex w-fit items-baseline gap-2",
-          fontColor,
           {
             "flex-row-reverse": labelPosition === "left",
             "w-full max-w-[344px] justify-between":
               supportingText && labelPosition === "left",
-          }
+          },
+          fontColor
         )}
       >
         <input
@@ -64,8 +64,8 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
           id={name}
           name={name}
           className={classNames(
-            "peer absolute h-4 w-4 opacity-0",
-            !disabled && "cursor-pointer"
+            "peer absolute h-4 w-4 cursor-pointer opacity-0",
+            "disabled:cursor-default"
           )}
           disabled={disabled}
           defaultChecked={checked}
@@ -74,12 +74,16 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
         />
         <div
           className={classNames(
-            "flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border border-neutral-300 bg-white text-transparent group-hover:bg-primary-50 peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500 peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50 peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:peer-checked:text-neutral-50",
-            {
-              "border-error-500 group-hover:bg-inherit peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500 peer-focus:border-error-500 peer-focus:ring-0":
-                error,
-              "h-5 w-5": isMediumSize,
-            }
+            "flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border border-neutral-300 bg-white text-transparent",
+            "group-hover:bg-primary-50",
+            "peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500",
+            "peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50",
+            "peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:peer-checked:text-neutral-50",
+            isMediumSize && "h-5 w-5",
+            error && "border-error-500",
+            error && "group-hover:bg-inherit",
+            error &&
+              "peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500"
           )}
         >
           <svg
@@ -104,24 +108,26 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
         </div>
         <div
           className={classNames(
-            fontColor,
-            !supportingText && "peer-disabled:text-neutral-200"
+            !supportingText && "peer-disabled:text-neutral-200",
+            fontColor
           )}
         >
           {labelText && (
             <label
               htmlFor={name}
-              className={classNames("cursor-pointer text-sm font-medium", {
-                "text-base": isMediumSize,
-              })}
+              className={classNames(
+                "cursor-pointer text-sm font-medium",
+                isMediumSize && "text-base"
+              )}
             >
               {labelText}
               {required === true && "*"}
               {required === false && (
                 <span
-                  className={classNames("ml-1 text-xs", {
-                    "text-transparent": error,
-                  })}
+                  className={classNames(
+                    "ml-1 text-xs",
+                    error && "text-transparent"
+                  )}
                 >
                   {optionalLabelText}
                 </span>
@@ -130,9 +136,11 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
           )}
           {supportingText && (
             <p
-              className={classNames("text-sm font-normal", fontColor, {
-                "text-base": isMediumSize,
-              })}
+              className={classNames(
+                "text-sm font-normal",
+                isMediumSize && "text-base",
+                fontColor
+              )}
             >
               {supportingText}
             </p>

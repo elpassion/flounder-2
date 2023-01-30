@@ -38,7 +38,7 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
   checked,
   disabled,
   error,
-  size,
+  size = "md",
   onChange,
   labelPosition,
   labelText,
@@ -46,6 +46,10 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
 }) => {
   const isMediumSize = size === "md";
   const fontColor = error ? "text-error-500" : "text-neutral-500";
+  const fontSizeVariants = {
+    sm: "text-sm",
+    md: "text-base",
+  };
 
   return (
     <>
@@ -71,36 +75,37 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
         />
         <div
           className={classNames(
-            "after:content'' flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg border bg-white text-transparent after:h-[6px] after:w-[6px] after:rounded-[3px] peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:peer-checked:text-neutral-50 peer-disabled:peer-checked:after:bg-neutral-50",
-            {
-              "border-neutral-300 group-hover:bg-primary-50 peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500 peer-checked:after:bg-primary-500 peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50":
-                !error,
-              "border-error-500 group-hover:bg-inherit peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500 peer-checked:after:bg-error-500 peer-focus:border-error-500 peer-focus:ring-0":
-                error,
-              "h-5 w-5 rounded-[10px] after:h-2 after:w-2 after:rounded":
-                isMediumSize,
-            }
+            "after:content'' flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg border bg-white text-transparent",
+            "after:h-[6px] after:w-[6px] after:rounded-[3px]",
+            "peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:peer-checked:text-neutral-50 peer-disabled:peer-checked:after:bg-neutral-50",
+            error ? "border-error-500" : "border-neutral-300",
+            error ? "group-hover:bg-inherit" : "group-hover:bg-primary-50",
+            error
+              ? "peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500 peer-checked:after:bg-error-500"
+              : "peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500 peer-checked:after:bg-primary-500",
+            error
+              ? "peer-focus:border-error-500 peer-focus:ring-0"
+              : "peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50",
+            isMediumSize &&
+              "h-5 w-5 rounded-[10px] after:h-2 after:w-2 after:rounded"
           )}
         ></div>
         <div
-          className={classNames(fontColor, "peer-disabled:text-neutral-200")}
+          className={classNames("peer-disabled:text-neutral-200", fontColor)}
         >
           {labelText && (
             <label
               htmlFor={id}
-              className={classNames("cursor-pointer text-sm font-medium", {
-                "text-base": isMediumSize,
-              })}
+              className={classNames(
+                "cursor-pointer font-medium",
+                fontSizeVariants[size]
+              )}
             >
               {labelText}
             </label>
           )}
           {supportingText && (
-            <p
-              className={classNames("text-sm font-normal", {
-                "text-base": isMediumSize,
-              })}
-            >
+            <p className={classNames("font-normal", fontSizeVariants[size])}>
               {supportingText}
             </p>
           )}

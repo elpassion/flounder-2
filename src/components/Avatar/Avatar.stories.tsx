@@ -43,7 +43,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
         xl: "h-14 w-14 text-lg",
         xxl: "h-16 w-16 text-lg",
       };
-      
+
       return (
         <div
           className={classNames(
@@ -82,7 +82,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
   };
 
   return (
-    <Avatar.BaseAvatar {...props}>
+    <Avatar.BaseAvatar size={size} {...props}>
       {src ? (
         <Avatar.Image src={src} {...props} />
       ) : (
