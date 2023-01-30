@@ -37,6 +37,7 @@ export default {
   argTypes: {
     labelText: {
       description: "string",
+      type: { required: true, name: "string" },
     },
     type: {
       control: "select",
