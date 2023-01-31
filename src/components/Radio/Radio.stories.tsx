@@ -75,9 +75,9 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
         />
         <div
           className={classNames(
-            "after:content'' flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg border bg-white text-transparent",
+            "after:content'' flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full border bg-white text-transparent",
             "after:h-1.5 after:w-1.5 after:rounded-full",
-            "peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:after:bg-neutral-50",
+            "peer-disabled:border-neutral-200 peer-disabled:peer-checked:border-neutral-50 peer-disabled:peer-checked:bg-neutral-100 peer-disabled:peer-checked:after:bg-neutral-50",
             error ? "border-error-500" : "border-neutral-300",
             error ? "group-hover:bg-inherit" : "group-hover:bg-primary-50",
             error
@@ -87,7 +87,7 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
               ? "peer-focus:border-error-500 peer-focus:ring-0"
               : "peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50",
             isMediumSize &&
-              "h-5 w-5 rounded-[10px] after:h-2 after:w-2 after:rounded"
+              "h-5 w-5 after:h-2 after:w-2"
           )}
         ></div>
         <div
