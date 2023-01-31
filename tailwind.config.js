@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: 'class',
-  mode: 'jit',
+  darkMode: "class",
+  mode: "jit",
   theme: {
     extend: {
       colors: {
@@ -52,12 +52,14 @@ module.exports = {
           600: "#D92D20",
           700: "#B42318",
           800: "#912018",
-          900: "#7A271A"
+          900: "#7A271A",
         },
       },
       boxShadow: {
         button:
           "0px 4px 4px rgba(82, 97, 107, 0.1), 0px 8px 16px rgba(0, 12, 48, 0.12)",
+        focusedInput: "0px 0px 0px 4px #F2EAFC",
+        focusedErrorInput: "0px 0px 0px 4px #FEE4E2",
       },
       fontSize: {
         xxs: "10px",
