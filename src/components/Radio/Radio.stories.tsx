@@ -76,13 +76,13 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
         <div
           className={classNames(
             "after:content'' flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-lg border bg-white text-transparent",
-            "after:h-[6px] after:w-[6px] after:rounded-[3px]",
-            "peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:peer-checked:text-neutral-50 peer-disabled:peer-checked:after:bg-neutral-50",
+            "after:h-1.5 after:w-1.5 after:rounded-full",
+            "peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:after:bg-neutral-50",
             error ? "border-error-500" : "border-neutral-300",
             error ? "group-hover:bg-inherit" : "group-hover:bg-primary-50",
             error
-              ? "peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500 peer-checked:after:bg-error-500"
-              : "peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500 peer-checked:after:bg-primary-500",
+              ? "peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:after:bg-error-500"
+              : "peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:after:bg-primary-500",
             error
               ? "peer-focus:border-error-500 peer-focus:ring-0"
               : "peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50",
