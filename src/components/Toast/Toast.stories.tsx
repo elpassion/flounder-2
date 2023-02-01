@@ -181,7 +181,7 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
 };
 
 export default {
-  title: "Toast",
+  title: "Atoms/Toast",
   component: Toast,
   argTypes: {
     title: {

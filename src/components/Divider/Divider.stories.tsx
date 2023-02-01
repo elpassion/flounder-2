@@ -32,7 +32,7 @@ export const Divider: ComponentStory<React.FC<DividerProps>> = ({
 };
 
 export default {
-  title: "Divider",
+  title: "Atoms/Divider",
   component: Divider,
   argTypes: {
     labelText: {

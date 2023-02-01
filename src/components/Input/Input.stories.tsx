@@ -194,7 +194,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
 };
 
 export default {
-  title: "Input",
+  title: "Atoms/Input",
   component: Input,
   argTypes: {
     label: {

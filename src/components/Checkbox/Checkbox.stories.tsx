@@ -148,7 +148,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
 };
 
 export default {
-  title: "Checkbox",
+  title: "Atoms/Checkbox",
   component: Checkbox,
   argTypes: {
     name: {

@@ -68,7 +68,7 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
 };
 
 export default {
-  title: "Toggle",
+  title: "Atoms/Toggle",
   component: Toggle,
   argTypes: {
     size: {

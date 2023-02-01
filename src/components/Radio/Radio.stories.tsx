@@ -116,7 +116,7 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
 };
 
 export default {
-  title: "Radio",
+  title: "Atoms/Radio",
   component: Radio,
   argTypes: {
     id: {

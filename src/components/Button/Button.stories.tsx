@@ -69,7 +69,7 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
 };
 
 export default {
-  title: "Button",
+  title: "Atoms/Button",
   component: Button,
   argTypes: {
     text: {
