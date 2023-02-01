@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
 import { IconProps } from "icons/Icons.interface";
-import { SlashIcon } from "icons/slash";
+import * as Icons from "icons/Slash";
 
 export interface ButtonProps {
   text: string;
@@ -13,7 +13,7 @@ export interface ButtonProps {
   onClick: () => void;
 }
 
-const icons = { undefined, SlashIcon };
+const icons = { undefined, Icons };
 
 export const Button: ComponentStory<React.FC<ButtonProps>> = ({
   text,
@@ -43,6 +43,12 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
     lg: "gap-4 text-lg",
   };
 
+  const Icon = {
+    sm: <Icons.SlashMD />,
+    md: <Icons.SlashMD />,
+    lg: <Icons.SlashLG />,
+  };
+
   return (
     <button
       disabled={disabled}
@@ -55,9 +61,9 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
       )}
       onClick={onClick}
     >
-      {!!LeftIcon && <LeftIcon size={size} />}
+      {!!LeftIcon && <>{Icon[size]}</>}
       {text}
-      {!!RightIcon && <RightIcon size={size} />}
+      {!!RightIcon && <>{Icon[size]}</>}
     </button>
   );
 };
@@ -91,13 +97,13 @@ export default {
     leftIcon: {
       options: Object.keys(icons),
       mapping: icons,
-      control: { type: "select", labels: { SlashIcon: "slash" } },
+      control: { type: "select", labels: { Icons: "slash" } },
       description: "icon",
     },
     rightIcon: {
       options: Object.keys(icons),
       mapping: icons,
-      control: { type: "select", labels: { SlashIcon: "slash" } },
+      control: { type: "select", labels: { Icons: "slash" } },
       description: "icon",
     },
     onClick: {

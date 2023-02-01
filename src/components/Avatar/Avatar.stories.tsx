@@ -64,7 +64,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
       return <span>{children}</span>;
     },
     Icon: ({ size = "md", contentType }: IconProps) => {
-      const icons = {
+      const Icon = {
         xxs: <Icons.UserXXS />,
         xs: <Icons.UserXS />,
         sm: <Icons.UserSM />,
@@ -74,7 +74,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
         xxl: <Icons.UserXXL />,
       };
       if (contentType !== "icon") return null;
-      return <>{icons[size]}</>;
+      return <>{Icon[size]}</>;
     },
     Image: ({ src }: ImageProps) => (
       <img src={`images/${src}.png`} alt="avatar" />

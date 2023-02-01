@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import classNames from "classnames";
 import {
   Title,
   Description,
@@ -7,8 +8,7 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 
-import classNames from "classnames";
-import React from "react";
+import * as Icons from "icons/Check";
 
 export interface CheckboxProps {
   name: string;
@@ -36,15 +36,29 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
   disabled,
   error,
   required,
-  size,
+  size = "md",
   onChange,
   labelPosition,
   labelText,
   optionalLabelText,
   supportingText,
 }) => {
-  const isMediumSize = size === "md";
   const fontColor = error ? "text-error-500" : "text-neutral-500";
+
+  const sizeVariants = {
+    sm: "h-4 w-4",
+    md: "h-5 w-5",
+  };
+
+  const fontSizeVariant = {
+    sm: "text-sm",
+    md: "text-base",
+  };
+
+  const Icon = {
+    sm: <Icons.CheckSM />,
+    md: <Icons.CheckMD />,
+  };
 
   return (
     <>
@@ -74,37 +88,19 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
         />
         <div
           className={classNames(
-            "flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border border-neutral-300 bg-white text-transparent",
+            "flex flex-shrink-0 items-center justify-center rounded border border-neutral-300 bg-white text-transparent",
             "group-hover:bg-primary-50",
             "peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500",
             "peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50",
             "peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:peer-checked:text-neutral-50",
-            isMediumSize && "h-5 w-5",
+            sizeVariants[size],
             error && "border-error-500",
             error && "group-hover:bg-inherit",
             error &&
               "peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500"
           )}
         >
-          <svg
-            width={isMediumSize ? "14" : "12"}
-            height={isMediumSize ? "14" : "12"}
-            viewBox={isMediumSize ? "0 0 14 14" : "0 0 12 12"}
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d={
-                isMediumSize
-                  ? "M11.6666 3.5L5.24992 9.91667L2.33325 7"
-                  : "M10 3L4.5 8.5L2 6"
-              }
-              stroke="currentColor"
-              strokeWidth={isMediumSize ? "2" : "1.6666"}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          {Icon[size]}
         </div>
         <div
           className={classNames(
@@ -116,8 +112,8 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             <label
               htmlFor={name}
               className={classNames(
-                "cursor-pointer text-sm font-medium",
-                isMediumSize && "text-base"
+                "cursor-pointer font-medium",
+                fontSizeVariant[size]
               )}
             >
               {labelText}
@@ -138,7 +134,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             <p
               className={classNames(
                 "text-sm font-normal",
-                isMediumSize && "text-base",
+                fontSizeVariant[size],
                 fontColor
               )}
             >
