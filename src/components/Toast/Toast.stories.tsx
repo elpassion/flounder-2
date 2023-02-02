@@ -19,8 +19,8 @@ import {
 } from "./Toast.interface";
 import { ReactComponent as CloseIcon } from "icons/close.svg";
 import { ReactComponent as InboxIcon } from "icons/inbox.svg";
-import { ReactComponent as InfoIcon } from "icons/info.svg";
-import { ReactComponent as AlertIcon } from "icons/alert-triangle.svg";
+import { ReactComponent as InfoIcon } from "icons/Info/infoLG.svg";
+import { ReactComponent as AlertIcon } from "icons/AlertTriangle/alertTriangleLG.svg";
 
 const icons = { undefined, InboxIcon, InfoIcon, AlertIcon };
 
