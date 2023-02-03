@@ -10,11 +10,10 @@ export interface ButtonProps {
     | "outlined"
     | "ghost"
     | "destructive"
-    | "destructiveGhost";
-  leftIcon?: React.FC<
-    React.SVGProps<SVGSVGElement>>;
-  rightIcon?: React.FC<
-    React.SVGProps<SVGSVGElement>>;
+    | "destructiveGhost"
+    | "destructiveOutlined";
+  leftIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  rightIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
   onClick: () => void;
@@ -42,6 +41,8 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
       "border-error-500 bg-error-500 text-white hover:border-error-500 hover:bg-error-700 active:border-error-500 active:bg-error-800",
     destructiveGhost:
       "border-transparent text-error-500 hover:bg-error-50 hover:text-error-700 active:bg-error-100 active:text-error-800",
+    destructiveOutlined:
+      "border-error-500 bg-white text-error-500 hover:border-error-700 hover:text-error-700 active:border-error-800 active:text-error-800",
   };
 
   const sizeVariants = {
@@ -92,9 +93,10 @@ export default {
         "ghost",
         "destructive",
         "destructiveGhost",
+        "destructiveOutlined",
       ],
       description:
-        "primary | outlined | ghost | destructive | destructiveGhost",
+        "primary | outlined | ghost | destructive | destructiveGhost | destructiveOutlined",
     },
     size: {
       control: "select",
