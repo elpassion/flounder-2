@@ -8,7 +8,7 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 
-import * as Icons from "icons/Check";
+import { ReactComponent as CheckIcon } from "icons/check.svg";
 
 export interface CheckboxProps {
   name: string;
@@ -50,14 +50,14 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
     md: "h-5 w-5",
   };
 
-  const fontSizeVariant = {
+  const fontSizeVariants = {
     sm: "text-sm",
     md: "text-base",
   };
 
-  const Icon = {
-    sm: <Icons.CheckSM />,
-    md: <Icons.CheckMD />,
+  const iconSizesVariants = {
+    sm: 10,
+    md: 12,
   };
 
   return (
@@ -97,10 +97,11 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             error && "border-error-500",
             error && "group-hover:bg-inherit",
             error &&
-              "peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500"
+              "peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500",
+            error && "peer-focus:border-error-500 peer-focus:ring-0"
           )}
         >
-          {Icon[size]}
+          <CheckIcon height={iconSizesVariants[size]} width="100%" strokeWidth={4} />
         </div>
         <div
           className={classNames(
@@ -113,7 +114,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
               htmlFor={name}
               className={classNames(
                 "cursor-pointer font-medium",
-                fontSizeVariant[size]
+                fontSizeVariants[size]
               )}
             >
               {labelText}
@@ -134,7 +135,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             <p
               className={classNames(
                 "text-sm font-normal",
-                fontSizeVariant[size],
+                fontSizeVariants[size],
                 fontColor
               )}
             >

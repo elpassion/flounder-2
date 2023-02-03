@@ -9,7 +9,7 @@ export interface CloseButtonProps {
 }
 
 export interface IconToastProps {
-  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  icon: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 export interface TextToastProps extends ToastChildrenProps {
@@ -40,7 +40,7 @@ export interface BaseToastProps
 export interface ToastProps extends ActionToastProps, CloseButtonProps {
   title?: string;
   description?: string;
-  icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   firstActionText?: string;
   secondActionText?: string;
 }

@@ -1,19 +1,26 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
-import { IconProps } from "icons/Icons.interface";
-import * as Icons from "icons/Slash";
+
+import { ReactComponent as SlashIcon } from "icons/slash.svg";
 
 export interface ButtonProps {
   text: string;
-  variant: "primary" | "outlined" | "ghost" | "destructive" | "destructiveText";
-  leftIcon?: React.FC<IconProps>;
-  rightIcon?: React.FC<IconProps>;
+  variant:
+    | "primary"
+    | "outlined"
+    | "ghost"
+    | "destructive"
+    | "destructiveGhost";
+  leftIcon?: React.FC<
+    React.SVGProps<SVGSVGElement>>;
+  rightIcon?: React.FC<
+    React.SVGProps<SVGSVGElement>>;
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
   onClick: () => void;
 }
 
-const icons = { undefined, Icons };
+const icons = { undefined, SlashIcon };
 
 export const Button: ComponentStory<React.FC<ButtonProps>> = ({
   text,
@@ -26,34 +33,28 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
 }) => {
   const styleVariants = {
     primary:
-      "border border-primary-500 bg-primary-500 text-white hover:bg-primary-700 hover:border-primary-700 active:border-primary-800 active:bg-primary-800",
+      "border-primary-500 bg-primary-500 text-white hover:bg-primary-700 hover:border-primary-700 active:border-primary-800 active:bg-primary-800",
     outlined:
-      "border border-primary-500 bg-white text-primary-500 hover:border-primary-700 hover:text-primary-700 active:border-primary-800 active:text-primary-800",
+      "border-primary-500 bg-white text-primary-500 hover:border-primary-700 hover:text-primary-700 active:border-primary-800 active:text-primary-800",
     ghost:
-      "text-primary-500 hover:bg-primary-50 hover:text-primary-700 active:bg-primary-100 active:text-primary-800",
+      "border-transparent text-primary-500 hover:bg-primary-50 hover:text-primary-700 active:bg-primary-100 active:text-primary-800",
     destructive:
-      "bg-error-500 text-white hover:bg-error-700 active:bg-error-800",
-    destructiveText:
-      "text-error-500 hover:bg-error-50 hover:text-error-700 active:bg-error-100 active:text-error-800",
+      "border-error-500 bg-error-500 text-white hover:border-error-500 hover:bg-error-700 active:border-error-500 active:bg-error-800",
+    destructiveGhost:
+      "border-transparent text-error-500 hover:bg-error-50 hover:text-error-700 active:bg-error-100 active:text-error-800",
   };
 
   const sizeVariants = {
-    sm: "gap-2 py-1.5 px-3.5 text-sm",
-    md: "text-md gap-2",
-    lg: "gap-4 text-lg",
-  };
-
-  const Icon = {
-    sm: <Icons.SlashMD />,
-    md: <Icons.SlashMD />,
-    lg: <Icons.SlashLG />,
+    sm: "h-8 gap-2 py-1.5 px-3.5 text-sm",
+    md: "h-11 text-md gap-2",
+    lg: "h-12 gap-4 text-lg",
   };
 
   return (
     <button
       disabled={disabled}
       className={classNames(
-        "flex items-center justify-center rounded-lg py-2.5 px-5",
+        "flex items-center justify-center rounded-lg border py-2.5 px-5",
         "disabled:border-neutral-200 disabled:bg-neutral-200 disabled:text-white disabled:hover:shadow-none",
         "hover:shadow-button",
         styleVariants[variant],
@@ -61,9 +62,17 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
       )}
       onClick={onClick}
     >
-      {!!LeftIcon && <>{Icon[size]}</>}
+      {!!LeftIcon && (
+        <>
+          <LeftIcon height="100%" width="100%" />
+        </>
+      )}
       {text}
-      {!!RightIcon && <>{Icon[size]}</>}
+      {!!RightIcon && (
+        <>
+          <RightIcon height="100%" width="100%" />
+        </>
+      )}
     </button>
   );
 };
@@ -82,9 +91,10 @@ export default {
         "outlined",
         "ghost",
         "destructive",
-        "destructiveText",
+        "destructiveGhost",
       ],
-      description: "primary | outlined | ghost | destructive | destructiveText",
+      description:
+        "primary | outlined | ghost | destructive | destructiveGhost",
     },
     size: {
       control: "select",
@@ -97,13 +107,13 @@ export default {
     leftIcon: {
       options: Object.keys(icons),
       mapping: icons,
-      control: { type: "select", labels: { Icons: "slash" } },
+      control: { type: "select", labels: { SlashIcon: "slash" } },
       description: "icon",
     },
     rightIcon: {
       options: Object.keys(icons),
       mapping: icons,
-      control: { type: "select", labels: { Icons: "slash" } },
+      control: { type: "select", labels: { SlashIcon: "slash" } },
       description: "icon",
     },
     onClick: {

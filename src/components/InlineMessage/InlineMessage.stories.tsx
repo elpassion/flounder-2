@@ -2,8 +2,8 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
 
 import { ReactComponent as BellIcon } from "icons/bell.svg";
-import { ReactComponent as AlertIcon } from "icons/AlertTriangle/alertTriangleSM.svg";
-import { ReactComponent as InfoIcon } from "icons/Info/infoSM.svg";
+import { ReactComponent as AlertIcon } from "icons/alert-triangle.svg";
+import { ReactComponent as InfoIcon } from "icons/info.svg";
 import { ReactComponent as CheckIcon } from "icons/check-square.svg";
 
 const icons = { BellIcon, AlertIcon, InfoIcon, CheckIcon };
@@ -19,6 +19,7 @@ export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
   icon: Icon = BellIcon,
   variant = "default",
 }) => {
+  const iconSize = 24
   const inlineMessageStyleVariants = {
     default: "bg-neutral-50 text-neutral-900",
     success: "bg-primary-100 text-primary-900",
@@ -42,7 +43,9 @@ export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
         inlineMessageStyleVariants[variant]
       )}
     >
-      <Icon className={iconColorVariants[variant]} />
+      <span className={iconColorVariants[variant]} >
+      <Icon height={iconSize} width={iconSize}/>
+      </span>
       <p>{text}</p>
     </div>
   );

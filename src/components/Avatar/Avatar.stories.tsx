@@ -8,7 +8,7 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 
-import * as Icons from "icons/User";
+import { ReactComponent as UserIcon } from "icons/user.svg";
 
 import {
   AvatarChildrenProps,
@@ -35,13 +35,13 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
   const Avatar = {
     BaseAvatar: ({ children, shape, size = "md" }: BaseAvatarProps) => {
       const sizesVariants = {
-        xxs: "h-5 w-5 text-xxs",
-        xs: "h-6 w-6 text-xxs",
-        sm: "h-8 w-8 text-xs",
-        md: "h-10 w-10 text-base",
-        lg: "h-12 w-12 text-lg",
-        xl: "h-14 w-14 text-lg",
-        xxl: "h-16 w-16 text-lg",
+        xxs: "h-5 w-5 p-1.5 text-xxs",
+        xs: "h-6 w-6 p-1.5 text-xxs",
+        sm: "h-8 w-8 p-2 text-xs",
+        md: "h-10 w-10 p-2.5 text-base",
+        lg: "h-12 w-12 p-3 text-lg",
+        xl: "h-14 w-14 p-3.5 text-lg",
+        xxl: "h-16 w-16 p-4 text-lg",
       };
 
       return (
@@ -64,17 +64,12 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
       return <span>{children}</span>;
     },
     Icon: ({ size = "md", contentType }: IconProps) => {
-      const Icon = {
-        xxs: <Icons.UserXXS />,
-        xs: <Icons.UserXS />,
-        sm: <Icons.UserSM />,
-        md: <Icons.UserMD />,
-        lg: <Icons.UserLG />,
-        xl: <Icons.UserXL />,
-        xxl: <Icons.UserXXL />,
-      };
       if (contentType !== "icon") return null;
-      return <>{Icon[size]}</>;
+      return (
+        <>
+          <UserIcon height="100%" width="100%" strokeWidth={size === "xxs" ? 2 : 1.4} />
+        </>
+      );
     },
     Image: ({ src }: ImageProps) => (
       <img src={`images/${src}.png`} alt="avatar" />

@@ -19,8 +19,8 @@ import {
 } from "./Toast.interface";
 import { ReactComponent as CloseIcon } from "icons/close.svg";
 import { ReactComponent as InboxIcon } from "icons/inbox.svg";
-import { ReactComponent as InfoIcon } from "icons/Info/infoLG.svg";
-import { ReactComponent as AlertIcon } from "icons/AlertTriangle/alertTriangleLG.svg";
+import { ReactComponent as InfoIcon } from "icons/info.svg";
+import { ReactComponent as AlertIcon } from "icons/alert-triangle.svg";
 
 const icons = { undefined, InboxIcon, InfoIcon, AlertIcon };
 
@@ -66,7 +66,7 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
             <Toast.ActionsSection variant={variant} {...props} />
           )}
           {sectionVariants === "close" && (
-            <Toast.CloseButtonSection variant={variant} {...props}/>
+            <Toast.CloseButtonSection variant={variant} {...props} />
           )}
         </div>
       );
@@ -83,7 +83,7 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
         <p className={classNames(textTypeVariants[textType])}>{children}</p>
       );
     },
-    Icon: ({ icon: Icon }: IconToastProps) => <Icon className="min-w-max" />,
+    Icon: ({ icon: Icon }: IconToastProps) => <Icon height={22} width={22} />,
     CloseButton: ({ onClose }: CloseButtonProps) => (
       <button onClick={onClose}>
         <CloseIcon />
@@ -136,7 +136,7 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
             variant === "small" && "flex justify-center"
           )}
         >
-          <Toast.CloseButton onClose={onClose}/>
+          <Toast.CloseButton onClose={onClose} />
         </div>
       );
     },

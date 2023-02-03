@@ -39,6 +39,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
   ...props
 }) => {
   const isError = !!errorMessage;
+  const iconSize = 16
 
   const inputBorderColorStyle = {
     true: "border-error-500 focus:border-error-500",
@@ -114,7 +115,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
     DropdownButton: ({ text, disabled }: DropdownButtonProps) => (
       <button className="flex items-center gap-2" disabled={disabled}>
         <span>{text}</span>
-        <ChevronIcon />
+        <ChevronIcon height={iconSize} width={iconSize}/>
       </button>
     ),
     Text: ({ text, type }: TextProps) => {
@@ -139,7 +140,11 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
           inputVariantsStyle[inputVariant]
         )}
       >
-        {isError ? <AlertIcon className="text-error-500" /> : <HelpIcon />}
+        {isError ? (
+          <AlertIcon height={iconSize} width={iconSize} className="text-error-500" />
+        ) : (
+          <HelpIcon height={iconSize} width={iconSize} />
+        )}
       </div>
     ),
   };
