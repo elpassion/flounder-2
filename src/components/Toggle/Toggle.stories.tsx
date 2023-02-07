@@ -38,14 +38,15 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
             "after:rounded-full after:bg-white after:shadow-sm after:duration-300",
             "hover:bg-neutral-200",
             "peer-checked:bg-primary-500",
-            "peer-disabled:cursor-not-allowed peer-disabled:after:bg-neutral-50",
+            "peer-disabled:cursor-not-allowed peer-disabled:after:bg-neutral-200 peer-disabled:hover:bg-neutral-100",
             sizeVariant[size]
           )}
         ></span>
         {labelText && (
           <span
             className={classNames(
-              "ml-2 flex flex-col font-medium text-neutral-600",
+              "ml-2 flex cursor-pointer flex-col font-medium text-neutral-600",
+              "peer-disabled:cursor-not-allowed peer-disabled:text-neutral-300",
               fontSizeVariant[size]
             )}
           >
@@ -53,7 +54,7 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
             {supportingText && (
               <span
                 className={classNames(
-                  "mt-0.5 flex font-normal text-neutral-500",
+                  "mt-0.5 flex font-normal",
                   fontSizeVariant[size]
                 )}
               >
