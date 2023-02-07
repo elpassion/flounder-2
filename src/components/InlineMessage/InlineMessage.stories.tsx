@@ -43,7 +43,7 @@ export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
         inlineMessageStyleVariants[variant]
       )}
     >
-      <span className={iconColorVariants[variant]}>
+      <span className={classNames("self-start",iconColorVariants[variant])}>
         <Icon height={iconSize} width={iconSize} strokeWidth={2} />
       </span>
       <p className="text-xs font-medium">{text}</p>
