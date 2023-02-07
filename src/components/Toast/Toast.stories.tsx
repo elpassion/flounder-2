@@ -41,6 +41,7 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
   secondActionText,
   ...props
 }) => {
+  const iconSize = 22;
   const Toast = {
     BaseToast: ({
       children,
@@ -83,21 +84,31 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
         <p className={classNames(textTypeVariants[textType])}>{children}</p>
       );
     },
-    Icon: ({ icon: Icon }: IconToastProps) => <Icon height={22} width={22} />,
+    Icon: ({ icon: Icon }: IconToastProps) => (
+      <Icon
+        height={iconSize}
+        width={iconSize}
+        className={`min-w-[${iconSize}px]`}
+      />
+    ),
     CloseButton: ({ onClose }: CloseButtonProps) => (
       <button onClick={onClose}>
         <CloseIcon />
       </button>
     ),
-    Action: ({ children, variant, onClick }: ActionToastProps) => {
+    Action: ({ children, className, variant, onClick }: ActionToastProps) => {
       const actionVariants = {
         default:
-          "flex-1 border-l border-neutral-100 [&:nth-child(2)]:border-t px-6 hover:text-primary-500",
+          "flex-1 border-l border-neutral-100 [&:nth-child(2)]:border-t px-6",
         small: "underline",
       };
       return (
         <button
-          className={classNames("w-fit text-sm", actionVariants[variant])}
+          className={classNames(
+            "w-fit text-sm",
+            actionVariants[variant],
+            className
+          )}
           onClick={onClick}
         >
           {children}
@@ -114,12 +125,16 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
           {variant === "default" && (
             <div className="flex h-full flex-col">
               {firstActionText && (
-                <Toast.Action variant={variant} {...props}>
+                <Toast.Action
+                  className="text-primary-500 hover:text-primary-600"
+                  variant={variant}
+                  {...props}
+                >
                   {firstActionText}
                 </Toast.Action>
               )}
               {secondActionText && (
-                <Toast.Action variant={variant} {...props}>
+                <Toast.Action className="hover:text-neutral-600" variant={variant} {...props}>
                   {secondActionText}
                 </Toast.Action>
               )}

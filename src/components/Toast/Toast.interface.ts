@@ -2,6 +2,7 @@ type ToastVariants = "default" | "small";
 
 export interface ToastChildrenProps extends React.PropsWithChildren {
   variant: ToastVariants;
+  className?: string;
 }
 
 export interface CloseButtonProps {
