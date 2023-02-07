@@ -88,13 +88,13 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
         />
         <div
           className={classNames(
-            "flex flex-shrink-0 items-center justify-center rounded border border-neutral-300 bg-white text-transparent",
+            "flex flex-shrink-0 items-center justify-center rounded border  bg-white text-transparent",
             "group-hover:bg-primary-50",
             "peer-checked:border-primary-500 peer-checked:bg-primary-50 peer-checked:text-primary-500",
             "peer-focus:border-primary-500 peer-focus:ring peer-focus:ring-primary-50",
             "peer-disabled:border-neutral-50 peer-disabled:bg-neutral-100 peer-disabled:peer-checked:text-neutral-50",
             sizeVariants[size],
-            error && "border-error-500",
+            error ? "border-error-500" : "border-neutral-300",
             error && "group-hover:bg-inherit",
             error &&
               "peer-checked:border-error-500 peer-checked:bg-error-50 peer-checked:text-error-500",
@@ -117,12 +117,13 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             <label
               htmlFor={name}
               className={classNames(
-                "flex cursor-pointer gap-1 font-medium",
+                "flex items-center gap-1 font-medium",
+                disabled ? "cursor-default" : "cursor-pointer",
                 fontSizeVariants[size]
               )}
             >
               {labelText}
-              {required === true && <span>*</span>}
+              {required === true && <span className="self-start">*</span>}
               {required === false && (
                 <span
                   className={classNames("text-xs", error && "text-transparent")}
@@ -136,8 +137,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             <p
               className={classNames(
                 "text-sm font-normal",
-                fontSizeVariants[size],
-                fontColor
+                fontSizeVariants[size]
               )}
             >
               {supportingText}
