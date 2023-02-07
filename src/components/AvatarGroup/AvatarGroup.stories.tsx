@@ -9,44 +9,48 @@ import {
 import { AvatarProps } from "../Avatar/Avatar.interface";
 import { Avatar } from "../Avatar/Avatar.stories";
 
-interface AvatarGroupProps extends Pick<AvatarProps, "size" | "shape"> {
-  avatars: AvatarProps[];
+interface UserInterface {
+  name: string;
+  src: string;
+}
+
+interface AvatarGroupProps
+  extends Pick<AvatarProps, "size" | "shape" | "contentType"> {
+  avatars: UserInterface[];
   visibleAvatars?: number;
 }
 
-export const AvatarGroup: ComponentStory<React.FC<AvatarGroupProps>> = (
-  props
-) => {
-  const { avatars, visibleAvatars = 3, size, shape } = props;
+export const AvatarGroup: ComponentStory<React.FC<AvatarGroupProps>> = ({
+  avatars,
+  visibleAvatars = 3,
+  size,
+  shape,
+  contentType,
+}) => {
   const visibleAvatarsArray = avatars.slice(0, visibleAvatars);
 
-  const AvatarGroup = {
-    BaseAvatarGroup: () => {
-      if (avatars.length === 0) {
-        return null;
-      }
+  return (
+    <div className="flex -space-x-3">
+      {visibleAvatarsArray.map((avatar) => (
+        <Avatar
+          {...avatar}
+          size={size}
+          shape={shape}
+          contentType={contentType}
+        />
+      ))}
 
-      return (
-        <div className="flex -space-x-3">
-          {visibleAvatarsArray.map((avatar) => (
-            <Avatar {...avatar} size={size} shape={shape} />
-          ))}
-
-          {avatars.length > visibleAvatars && (
-            <Avatar
-              text={`+${avatars.length - visibleAvatars}`}
-              shape={shape}
-              size={size}
-              contentType={"text"}
-              src={""}
-            />
-          )}
-        </div>
-      );
-    },
-  };
-
-  return <AvatarGroup.BaseAvatarGroup />;
+      {avatars.length > visibleAvatars && (
+        <Avatar
+          text={`+${avatars.length - visibleAvatars}`}
+          shape={shape}
+          size={size}
+          contentType={"text"}
+          src={""}
+        />
+      )}
+    </div>
+  );
 };
 
 export default {
@@ -76,51 +80,15 @@ export default {
     avatars: [
       {
         text: "Anna Kapusta",
-        contentType: "text",
-        src: "blue",
-        shape: "circle",
+        src: "images/red.png",
       },
       {
         text: "Bartek Kapusta",
-        contentType: "text",
-        src: "red",
-        shape: "circle",
+        src: "images/yellow.png",
       },
       {
         text: "Cezary Kapusta",
-        contentType: "text",
-        src: "yellow",
-        shape: "circle",
-      },
-      {
-        text: "Dawid Kapusta",
-        contentType: "text",
-        src: "pink",
-        shape: "circle",
-      },
-      {
-        text: "Anna Kapusta",
-        contentType: "text",
-        src: "peach",
-        shape: "circle",
-      },
-      {
-        text: "Cezary Kapusta",
-        contentType: "text",
-        src: "red",
-        shape: "circle",
-      },
-      {
-        text: "Dawid Kapusta",
-        contentType: "text",
-        src: "yellow",
-        shape: "circle",
-      },
-      {
-        text: "Anna Kapusta",
-        contentType: "text",
-        src: "blue",
-        shape: "circle",
+        src: "images/blue.png",
       },
     ],
   },
@@ -139,4 +107,4 @@ export default {
       ),
     },
   },
-} as ComponentMeta<React.FC<AvatarGroupProps>>;
+} as unknown as ComponentMeta<React.FC<AvatarGroupProps>>;
