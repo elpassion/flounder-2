@@ -19,7 +19,7 @@ export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
   icon: Icon = BellIcon,
   variant = "default",
 }) => {
-  const iconSize = 24
+  const iconSize = 18;
   const inlineMessageStyleVariants = {
     default: "bg-neutral-50 text-neutral-900",
     success: "bg-primary-100 text-primary-900",
@@ -43,10 +43,10 @@ export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
         inlineMessageStyleVariants[variant]
       )}
     >
-      <span className={iconColorVariants[variant]} >
-      <Icon height={iconSize} width={iconSize}/>
+      <span className={iconColorVariants[variant]}>
+        <Icon height={iconSize} width={iconSize} strokeWidth={2} />
       </span>
-      <p>{text}</p>
+      <p className="text-xs font-medium">{text}</p>
     </div>
   );
 };
