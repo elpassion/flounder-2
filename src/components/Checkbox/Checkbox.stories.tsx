@@ -17,9 +17,9 @@ export interface CheckboxProps {
   required?: boolean;
   error?: boolean;
   size?: "sm" | "md";
-  labelText: string;
-  optionalLabelText: string;
-  supportingText: string;
+  labelText?: string;
+  optionalLabelText?: string;
+  supportingText?: string;
   labelPosition?: "left" | "right";
   onChange?: () => void;
 }
@@ -101,7 +101,11 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             error && "peer-focus:border-error-500 peer-focus:ring-0"
           )}
         >
-          <CheckIcon height={iconSizesVariants[size]} width="100%" strokeWidth={4} />
+          <CheckIcon
+            height={iconSizesVariants[size]}
+            width="100%"
+            strokeWidth={4}
+          />
         </div>
         <div
           className={classNames(
@@ -113,18 +117,15 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             <label
               htmlFor={name}
               className={classNames(
-                "cursor-pointer font-medium",
+                "flex cursor-pointer gap-1 font-medium",
                 fontSizeVariants[size]
               )}
             >
               {labelText}
-              {required === true && "*"}
+              {required === true && <span>*</span>}
               {required === false && (
                 <span
-                  className={classNames(
-                    "ml-1 text-xs",
-                    error && "text-transparent"
-                  )}
+                  className={classNames("text-xs", error && "text-transparent")}
                 >
                   {optionalLabelText}
                 </span>

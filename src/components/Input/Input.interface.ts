@@ -15,6 +15,7 @@ export interface TextProps {
 }
 
 export interface IconProps {
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   isError?: boolean;
 }
 
@@ -38,4 +39,5 @@ export interface InputProps extends PrefixTextProps, SuffixProps {
   required?: boolean;
   errorMessage?: string;
   type?: string;
+  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }

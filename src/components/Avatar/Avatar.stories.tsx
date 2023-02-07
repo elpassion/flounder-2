@@ -33,7 +33,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
   const initials = text?.slice(0, 2).toUpperCase();
 
   const Avatar = {
-    BaseAvatar: ({ children, shape, size = "md" }: BaseAvatarProps) => {
+    BaseAvatar: ({ children, src, shape, size = "md" }: BaseAvatarProps) => {
       const sizesVariants = {
         xxs: "h-5 w-5 p-1.5 text-xxs",
         xs: "h-6 w-6 p-1.5 text-xxs",
@@ -49,6 +49,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
           className={classNames(
             "flex items-center justify-center overflow-hidden bg-neutral-100 text-neutral-500",
             sizesVariants[size],
+            src && "p-0",
             {
               "rounded-full": shape === "circle",
               "rounded-lg": shape === "square",
@@ -67,22 +68,26 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
       if (contentType !== "icon") return null;
       return (
         <>
-          <UserIcon height="100%" width="100%" strokeWidth={size === "xxs" ? 2 : 1.4} />
+          <UserIcon
+            height="100%"
+            width="100%"
+            strokeWidth={size === "xxs" ? 2 : 1.4}
+          />
         </>
       );
     },
-    Image: ({ src }: ImageProps) => (
-      <img src={`images/${src}.png`} alt="avatar" />
+    Image: ({ src, alt = "avatar" }: ImageProps) => (
+      <img src={src} alt={alt} className="w-full" />
     ),
   };
 
   return (
-    <Avatar.BaseAvatar size={size} {...props}>
+    <Avatar.BaseAvatar size={size} src={src} {...props}>
       {src ? (
         <Avatar.Image src={src} {...props} />
       ) : (
         <>
-          <Avatar.Text {...props}>{initials}</Avatar.Text>
+          {text && <Avatar.Text {...props}>{initials}</Avatar.Text>}
           <Avatar.Icon {...props} size={size} />
         </>
       )}
@@ -107,14 +112,31 @@ export default {
     },
     src: {
       description: "image src",
-      control: "select",
-      options: [undefined, "red", "peach", "yellow", "blue", "pink"],
+      control: {
+        type: "select",
+        labels: {
+          "images/red.png": "red",
+          "images/peach.png": "peach",
+          "images/yellow.png": "yellow",
+          "images/blue.png": "blue",
+          "images/pink.png": "pink",
+        },
+      },
+      options: [
+        undefined,
+        "images/red.png",
+        "images/peach.png",
+        "images/yellow.png",
+        "images/blue.png",
+        "images/pink.png",
+      ],
     },
     contentType: {
       control: "select",
       description: "icon | text",
       options: ["icon", "text"],
     },
+    alt: { description: "string" },
   },
   args: {
     text: "Anna Kapusta",
@@ -122,6 +144,7 @@ export default {
     size: "md",
     contentType: "text",
     src: undefined,
+    alt: "avatar alt",
   },
   parameters: {
     design: {

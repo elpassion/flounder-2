@@ -3,7 +3,7 @@ type sizes = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 export interface BaseAvatarProps extends React.PropsWithChildren {
   shape: "circle" | "square";
   size?: sizes;
-  image?: string;
+  src?: string;
 }
 
 export interface AvatarChildrenProps extends React.PropsWithChildren {
@@ -12,12 +12,13 @@ export interface AvatarChildrenProps extends React.PropsWithChildren {
 
 export interface ImageProps extends AvatarChildrenProps {
   src: string;
+  alt?: string;
 }
 
 export interface IconProps extends AvatarChildrenProps {
   size: sizes;
 }
 
-export interface AvatarProps extends BaseAvatarProps, ImageProps {
-  text: string;
+export interface AvatarProps extends BaseAvatarProps, AvatarChildrenProps {
+  text?: string;
 }

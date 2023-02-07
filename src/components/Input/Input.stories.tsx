@@ -20,6 +20,8 @@ import {
   IconProps,
 } from "./Input.interface";
 
+const icons = { undefined, HelpIcon };
+
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
 | ----------- | ----------- |
@@ -39,7 +41,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
   ...props
 }) => {
   const isError = !!errorMessage;
-  const iconSize = 16
+  const iconSize = 16;
 
   const inputBorderColorStyle = {
     true: "border-error-500 focus:border-error-500",
@@ -115,7 +117,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
     DropdownButton: ({ text, disabled }: DropdownButtonProps) => (
       <button className="flex items-center gap-2" disabled={disabled}>
         <span>{text}</span>
-        <ChevronIcon height={iconSize} width={iconSize}/>
+        <ChevronIcon height={iconSize} width={iconSize} />
       </button>
     ),
     Text: ({ text, type }: TextProps) => {
@@ -132,21 +134,29 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
         </p>
       );
     },
-    Icon: ({ isError }: IconProps) => (
-      <div
-        className={classNames(
-          "absolute right-3.5 row-start-2 pt-3.5 text-neutral-300",
-          "peer-disabled:text-neutral-200",
-          inputVariantsStyle[inputVariant]
-        )}
-      >
-        {isError ? (
-          <AlertIcon height={iconSize} width={iconSize} className="text-error-500" />
-        ) : (
-          <HelpIcon height={iconSize} width={iconSize} />
-        )}
-      </div>
-    ),
+    Icon: ({ icon: Icon, isError }: IconProps) => {
+      if (!Icon) return <></>;
+
+      return (
+        <div
+          className={classNames(
+            "absolute right-3.5 row-start-2 row-end-3 flex h-full items-center text-neutral-300",
+            "peer-disabled:text-neutral-200",
+            inputVariantsStyle[inputVariant]
+          )}
+        >
+          {isError ? (
+            <AlertIcon
+              height={iconSize}
+              width={iconSize}
+              className="text-error-500"
+            />
+          ) : (
+            <Icon height={iconSize} width={iconSize} />
+          )}
+        </div>
+      );
+    },
   };
 
   return (
@@ -174,7 +184,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
           type={type}
         />
 
-        <Input.Icon isError={isError} />
+        <Input.Icon isError={isError} {...props}/>
 
         <Input.Prefix
           inputVariant={inputVariant}
@@ -234,6 +244,12 @@ export default {
       options: ["text", "number", "email", "password"],
       description: "only examples: text | number | email | password",
     },
+    icon: {
+      options: Object.keys(icons),
+      mapping: icons,
+      control: { type: "select", labels: { HelpIcon: "help" } },
+      description: "icon",
+    },
   },
   args: {
     label: "Label",
@@ -245,6 +261,7 @@ export default {
     prefixText: "https://",
     suffixText: "@elpassion.pl",
     type: "text",
+    icon: HelpIcon,
   },
   parameters: {
     design: {
