@@ -11,16 +11,17 @@ import {
 import { ReactComponent as AlertIcon } from "icons/alert-circle.svg";
 import { ReactComponent as HelpIcon } from "icons/help-circle.svg";
 import { ReactComponent as ChevronIcon } from "icons/chevron-down.svg";
+import { ReactComponent as SlashIcon } from "icons/slash.svg";
 import {
   SuffixProps,
   InputProps,
-  PrefixTextProps,
+  PrefixProps,
   DropdownButtonProps,
   TextProps,
   IconProps,
 } from "./Input.interface";
 
-const icons = { undefined, HelpIcon };
+const icons = { undefined, HelpIcon, SlashIcon };
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
@@ -37,7 +38,8 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
   required,
   errorMessage,
   inputVariant = "default",
-  type = "text",
+  inputType = "text",
+  prefixOrSuffixText = "",
   ...props
 }) => {
   const isError = !!errorMessage;
@@ -57,6 +59,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
     default: "rounded-lg",
     prefixText: "col-start-2 rounded-r-lg z-10",
     prefixDropdown: "col-start-2 rounded-r-lg border-l-0",
+    prefixIcon: "col-start-2 rounded-r-lg border-l-0",
     suffixDropdown: "col-end-2 rounded-l-lg border-r-0",
   };
 
@@ -64,18 +67,28 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
     default: "grid-cols-1",
     prefixText: "grid-cols-[auto_1fr]",
     prefixDropdown: "grid-cols-[auto_1fr]",
+    prefixIcon: "grid-cols-[auto_1fr]",
     suffixDropdown: "grid-cols-[1fr_auto]",
   };
 
   const Input = {
-    Prefix: ({ inputVariant, prefixText, ...props }: PrefixTextProps) => {
+    Prefix: ({
+      inputVariant,
+      prefixText,
+      prefixIcon: PrefixIcon = SlashIcon,
+      ...props
+    }: PrefixProps) => {
       const isPrefix =
-        inputVariant === "prefixText" || inputVariant === "prefixDropdown";
+        inputVariant === "prefixText" ||
+        inputVariant === "prefixDropdown" ||
+        inputVariant === "prefixIcon";
 
       const styleVariants = {
         prefixText: "bg-neutral-50 text-neutral-400 border-neutral-200",
         // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
         prefixDropdown: `relative bg-white ${inputBorderColorStyle[isError]} ${focusColorStyle[isError]} peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white`,
+        // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
+        prefixIcon: `relative bg-white flex items-center ${inputBorderColorStyle[isError]} ${focusColorStyle[isError]} peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white`,
       };
 
       if (!isPrefix) return <></>;
@@ -83,7 +96,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
       return (
         <div
           className={classNames(
-            "col-end-2 row-start-2 rounded-l-lg border border-r-0 py-2.5 pl-3.5",
+            "z-50 col-end-2 row-start-2 rounded-l-lg border border-r-0 py-2.5 pl-3.5",
             styleVariants[inputVariant],
             "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200"
           )}
@@ -93,6 +106,13 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
           )}
           {inputVariant === "prefixDropdown" && (
             <Input.DropdownButton text={prefixText} {...props} />
+          )}
+          {inputVariant === "prefixIcon" && (
+            <PrefixIcon
+              width={20}
+              height={20}
+              className={disabled ? "text-neutral-200" : "text-neutral-400"}
+            />
           )}
         </div>
       );
@@ -107,7 +127,9 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
             "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200",
             "peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-left-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white",
             // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
-            inputBorderColorStyle[isError], focusColorStyle[isError]
+            inputBorderColorStyle[isError],
+            // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
+            focusColorStyle[isError]
           )}
         >
           <Input.DropdownButton text={suffixText} {...props} />
@@ -134,7 +156,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
         </p>
       );
     },
-    Icon: ({ icon: Icon, isError }: IconProps) => {
+    Icon: ({ tooltipIcon: Icon, isError }: IconProps) => {
       if (!Icon) return <></>;
 
       return (
@@ -181,19 +203,21 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
           )}
           disabled={disabled}
           required={required}
-          type={type}
+          type={inputType}
         />
 
-        <Input.Icon isError={isError} {...props}/>
+        <Input.Icon isError={isError} {...props} />
 
         <Input.Prefix
           inputVariant={inputVariant}
           disabled={disabled}
+          prefixText={prefixOrSuffixText}
           {...props}
         />
         <Input.Suffix
           inputVariant={inputVariant}
           disabled={disabled}
+          suffixText={prefixOrSuffixText}
           {...props}
         />
         <Input.Text text={label} type="label" />
@@ -230,24 +254,40 @@ export default {
     },
     inputVariant: {
       control: "select",
-      options: ["default", "prefixText", "prefixDropdown", "suffixDropdown"],
-      description: "default | prefixText | prefixDropdown | suffixDropdown",
+      options: [
+        "default",
+        "prefixText",
+        "prefixDropdown",
+        "prefixIcon",
+        "suffixDropdown",
+      ],
+      description:
+        "default | prefixText | prefixDropdown | prefixIcon | suffixDropdown",
     },
-    prefixText: {
+    prefixOrSuffixText: {
       description: "string",
     },
-    suffixText: {
-      description: "string",
-    },
-    type: {
+    inputType: {
       control: "select",
       options: ["text", "number", "email", "password"],
       description: "only examples: text | number | email | password",
     },
-    icon: {
+    tooltipIcon: {
       options: Object.keys(icons),
       mapping: icons,
-      control: { type: "select", labels: { HelpIcon: "help" } },
+      control: {
+        type: "select",
+        labels: { HelpIcon: "help", SlashIcon: "slash" },
+      },
+      description: "icon",
+    },
+    prefixIcon: {
+      options: Object.keys(icons),
+      mapping: icons,
+      control: {
+        type: "select",
+        labels: { HelpIcon: "help", SlashIcon: "slash" },
+      },
       description: "icon",
     },
   },
@@ -258,10 +298,10 @@ export default {
     disabled: false,
     errorMessage: "",
     inputVariant: "default",
-    prefixText: "https://",
-    suffixText: "@elpassion.pl",
+    prefixOrSuffixText: "https://",
     type: "text",
-    icon: HelpIcon,
+    tooltipIcon: HelpIcon,
+    prefixIcon: HelpIcon,
   },
   parameters: {
     design: {

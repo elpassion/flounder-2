@@ -2,6 +2,7 @@ type inputVariants =
   | "default"
   | "prefixText"
   | "prefixDropdown"
+  | "prefixIcon"
   | "suffixDropdown";
 
 export interface DropdownButtonProps {
@@ -15,14 +16,15 @@ export interface TextProps {
 }
 
 export interface IconProps {
-  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  tooltipIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
   isError?: boolean;
 }
 
-export interface PrefixTextProps {
+export interface PrefixProps {
   inputVariant?: inputVariants;
   prefixText: string;
   disabled?: boolean;
+  prefixIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
 export interface SuffixProps {
@@ -31,13 +33,16 @@ export interface SuffixProps {
   disabled?: boolean;
 }
 
-export interface InputProps extends PrefixTextProps, SuffixProps {
+export interface InputProps {
   label: string;
   placeholder?: string;
   supportingText?: string;
-  disabled?: boolean;
+  prefixOrSuffixText?: string;
   required?: boolean;
+  disabled?: boolean;
   errorMessage?: string;
-  type?: string;
-  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  inputType?: string;
+  tooltipIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  prefixIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  inputVariant?: inputVariants;
 }
