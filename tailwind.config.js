@@ -60,6 +60,8 @@ module.exports = {
           "0px 4px 4px rgba(82, 97, 107, 0.1), 0px 8px 16px rgba(0, 12, 48, 0.12)",
         focusedInput: "0px 0px 0px 4px #F2EAFC",
         focusedErrorInput: "0px 0px 0px 4px #FEE4E2",
+        tooltip:
+          "0px 2px 12px -1px rgba(27, 36, 44, 0.1), 0px 2px 2px -1px rgba(27, 36, 44, 0.08)",
       },
       fontSize: {
         xxs: "10px",
