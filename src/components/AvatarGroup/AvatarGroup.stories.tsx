@@ -90,6 +90,26 @@ export default {
         text: "Cezary Kapusta",
         src: "images/blue.png",
       },
+      {
+        text: "Daria Kapusta",
+        src: "images/red.png",
+      },
+      {
+        text: "Ewa Kapusta",
+        src: "images/yellow.png",
+      },
+      {
+        text: "Fryderyk Kapusta",
+        src: "images/blue.png",
+      },
+      {
+        text: "Grażyna Kapusta",
+        src: "images/red.png",
+      },
+      {
+        text: "Hanna Kapusta",
+        src: "images/blue.png",
+      },
     ],
   },
   parameters: {
