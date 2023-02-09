@@ -3,82 +3,96 @@ import { ReactComponent as PlusIcon } from "icons/plus.svg";
 import { ReactComponent as ChevronDownIcon } from "icons/chevron-down.svg";
 import classNames from "classnames";
 import React from "react";
-
-type AccordionIcon = "left" | "right";
-
-interface AccordionItemProps {
-  id: number;
-  title: string;
-  description: React.ReactNode;
-  expanded?: boolean;
-  onClick?: () => void;
-}
-
-interface AccordionProps {
-  divider?: boolean;
-  icon?: AccordionIcon;
-  items: AccordionItemProps[];
-}
+import {
+  AccordionBodyProps,
+  AccordionButtonProps,
+  AccordionProps,
+} from "./Accordion.interface";
 
 export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
   divider = false,
   icon = "left",
   items,
 }) => {
-  const iconVariants = {
-    left: "order-first mr-2",
-    right: "ml-2",
+  const Accordion = {
+    BaseAccordion: ({ items }: AccordionProps) => {
+      return (
+        <div className="w-full">
+          {items.map(({ title, id, description, expanded }) => (
+            <div key={id} className={"mb-3"}>
+              <Accordion.Button title={title} expanded={expanded}>
+                <Accordion.Icon />
+              </Accordion.Button>
+              {expanded && <Accordion.Body description={description} />}
+            </div>
+          ))}
+        </div>
+      );
+    },
+    Button: ({ children, title, expanded }: AccordionButtonProps) => {
+      return (
+        <button
+          className={classNames(
+            `flex w-full items-center text-xs font-bold transition ease-in`,
+            {
+              "border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600":
+                divider,
+              "rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100":
+                !divider,
+            },
+            {
+              "rounded-t border-neutral-50 bg-neutral-50": expanded && divider,
+            },
+            {
+              "bg-neutral-100": expanded && !divider,
+            },
+            {
+              "justify-between": icon === "right",
+            }
+          )}
+        >
+          <span className="flex items-center">{title}</span>
+          {children}
+        </button>
+      );
+    },
+    Icon: () => {
+      const iconVariants = {
+        left: "order-first mr-2",
+        right: "ml-2",
+      };
+
+      return divider ? (
+        <PlusIcon
+          className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}
+        />
+      ) : (
+        <ChevronDownIcon
+          className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}
+        />
+      );
+    },
+    Body: ({ description }: AccordionBodyProps) => {
+      const iconVariant = {
+        left: "pl-9",
+        right: "pl-3",
+      };
+
+      return (
+        <div
+          className={classNames(
+            "rounded-b bg-neutral-50 py-3 pr-3 text-xs text-neutral-600",
+            iconVariant[icon]
+          )}
+        >
+          {description}
+        </div>
+      );
+    },
   };
 
   return (
-    <div className="w-full">
-      {items.map((item, index) => (
-        <div key={item.id} className={"mb-3"}>
-          <button
-            type="button"
-            className={classNames(
-              "flex w-full items-center text-xs font-bold transition ease-in",
-              {
-                "border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600":
-                  divider,
-                "rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100":
-                  !divider,
-              },
-              {
-                "justify-between": icon === "right",
-              }
-            )}
-            aria-expanded={item.expanded}
-          >
-            <span className="flex items-center">{item.title}</span>
-            {divider ? (
-              <PlusIcon
-                className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}
-              />
-            ) : (
-              <ChevronDownIcon
-                className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}
-              />
-            )}
-          </button>
-          {item.expanded && (
-            <div
-              className={classNames(
-                "py-3 pr-3 text-xs text-neutral-600",
-                {
-                  "pl-9": icon === "left",
-                },
-                {
-                  "pl-3": icon === "right",
-                }
-              )}
-            >
-              {item.description}
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+    <Accordion.BaseAccordion divider={divider} icon={icon} items={items} />
   );
 };
 
