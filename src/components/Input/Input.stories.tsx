@@ -45,12 +45,12 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
   const isError = !!errorMessage;
   const iconSize = 16;
 
-  const inputBorderColorStyle = {
+  const inputBorderColorStyle: { [key: string]: string } = {
     true: "border-error-500 focus:border-error-500",
     false: "border-neutral-200 focus:border-neutral-200",
   };
 
-  const focusColorStyle = {
+  const focusColorStyle: { [key: string]: string } = {
     true: "peer-focus:shadow-focusedErrorInput peer-focus:after:border-error-500",
     false: "peer-focus:shadow-focusedInput peer-focus:after:border-neutral-200",
   };
@@ -85,10 +85,16 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
 
       const styleVariants = {
         prefixText: "bg-neutral-50 text-neutral-400 border-neutral-200",
-        // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
-        prefixDropdown: `relative bg-white ${inputBorderColorStyle[isError]} ${focusColorStyle[isError]} peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white`,
-        // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
-        prefixIcon: `relative bg-white flex items-center ${inputBorderColorStyle[isError]} ${focusColorStyle[isError]} peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white`,
+        prefixDropdown: `relative bg-white ${
+          inputBorderColorStyle[String(isError)]
+        } ${
+          focusColorStyle[String(isError)]
+        } peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white`,
+        prefixIcon: `relative bg-white flex items-center ${
+          inputBorderColorStyle[String(isError)]
+        } ${
+          focusColorStyle[String(isError)]
+        } peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white`,
       };
 
       if (!isPrefix) return <></>;
@@ -126,10 +132,8 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
             "relative rounded-r-lg border border-l-0 bg-white py-2.5 pr-3.5 text-neutral-900",
             "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200",
             "peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-left-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white",
-            // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
-            inputBorderColorStyle[isError],
-            // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
-            focusColorStyle[isError]
+            inputBorderColorStyle[String(isError)],
+            focusColorStyle[String(isError)]
           )}
         >
           <Input.DropdownButton text={suffixText} {...props} />
@@ -197,8 +201,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
             "disabled:bg-neutral-50 disabled:placeholder:text-neutral-200",
             "focus:shadow-focusedInput focus:outline-none focus:ring-0 focus:placeholder:text-white",
             isError && "focus:shadow-focusedErrorInput",
-            // @ts-ignore Type 'boolean' cannot be used as an index type.ts(2538)
-            inputBorderColorStyle[isError],
+            inputBorderColorStyle[String(isError)],
             inputVariantsStyle[inputVariant]
           )}
           disabled={disabled}
