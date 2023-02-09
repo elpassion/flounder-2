@@ -30,47 +30,53 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
     right: "ml-2",
   };
 
-  const Accordion = {
-    Item: ({ title, description, expanded = false }: AccordionItemProps) => {
-      const [isExpanded, setIsExpanded] = React.useState(expanded);
-      const toggleExpanded = () => setIsExpanded(!isExpanded);
-
-      return (
-        <div className="w-full">
-          <button
-            className={classNames(
-              "flex w-full items-center justify-between rounded bg-neutral-50 p-3 py-3 pl-3 pr-4 text-left text-neutral-700 hover:bg-neutral-100",
-              {
-                "bg-neutral-100": isExpanded,
-              }
-            )}
-            onClick={toggleExpanded}
-          >
-            <span className="text-sm font-medium">{title}</span>
-            <Accordion.Icon />
-          </button>
-          {isExpanded && (
-            <div className="p-3 text-sm text-neutral-900">{description}</div>
-          )}
-        </div>
-      );
-    },
-    Icon: () => (
-      <span className={classNames(iconVariants[icon])}>
-        {divider ? (
-          <PlusIcon className="h-4 w-4" />
-        ) : (
-          <ChevronDownIcon className="h-4 w-4" />
-        )}
-      </span>
-    ),
-    Body: () => <div>Body</div>,
-  };
-
   return (
     <div className="w-full">
-      {items.map((item) => (
-        <Accordion.Item key={item.id} {...item} />
+      {items.map((item, index) => (
+        <div key={item.id} className={"mb-3"}>
+          <button
+            type="button"
+            className={classNames(
+              "flex w-full items-center text-xs font-bold transition ease-in",
+              {
+                "border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600":
+                  divider,
+                "rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100":
+                  !divider,
+              },
+              {
+                "justify-between": icon === "right",
+              }
+            )}
+            aria-expanded={item.expanded}
+          >
+            <span className="flex items-center">{item.title}</span>
+            {divider ? (
+              <PlusIcon
+                className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}
+              />
+            ) : (
+              <ChevronDownIcon
+                className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}
+              />
+            )}
+          </button>
+          {item.expanded && (
+            <div
+              className={classNames(
+                "py-3 pr-3 text-xs text-neutral-600",
+                {
+                  "pl-9": icon === "left",
+                },
+                {
+                  "pl-3": icon === "right",
+                }
+              )}
+            >
+              {item.description}
+            </div>
+          )}
+        </div>
       ))}
     </div>
   );
