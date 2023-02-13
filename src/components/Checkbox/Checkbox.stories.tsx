@@ -109,7 +109,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
         </div>
         <div
           className={classNames(
-            !supportingText && "peer-disabled:text-neutral-200",
+            "peer-disabled:text-neutral-200",
             fontColor
           )}
         >
