@@ -96,7 +96,7 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2641%3A12452&t=r0ZlNZ1jXkJ9BfnD-4",
+      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2757%3A14552&t=rVpypypag1eT8SHD-0",
     },
   },
 } as ComponentMeta<React.FC<ToggleProps>>;
