@@ -8,11 +8,9 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 import {
-  ActionSectionProps,
   ActionToastProps,
-  BaseToastProps,
+  BaseSmallToastProps,
   CloseButtonProps,
-  CloseSectionProps,
   IconToastProps,
   TextToastProps,
   ToastProps,
@@ -32,7 +30,7 @@ const docs: string = `# Usage <br/>
 | **Toast messages should be:**<br/> • Short and affirmative<br/> • Written in the pattern of: noun + verb | | 
 | **Use for :**<br/> • Collection added<br/> • Product updated<br/> • Customer updated<br/> • Internet disconnected<br/> • Connection timed out | |`;
 
-export const Toast: ComponentStory<React.FC<ToastProps>> = ({
+export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
   title,
   description,
   icon,
@@ -42,28 +40,33 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
 }) => {
   const iconSize = 22;
   const Toast = {
-    BaseToast: ({
+    BaseSmallToast: ({
       children,
+      backgroundColor,
       sectionVariants,
-      ...props
-    }: BaseToastProps) => {
+      onClose,
+    }: BaseSmallToastProps) => {
       return (
         <div
           className={classNames(
-            "grid w-full max-w-md grid-cols-[1fr_auto] rounded-lg bg-white text-neutral-500 shadow-xl"
+            "flex w-max min-w-[280px] max-w-xs gap-2 rounded-lg py-3.5 pl-4 text-white shadow-xl",
+            sectionVariants === "close"
+              ? "justify-between pr-2"
+              : "justify-center pr-4",
+            backgroundColor
           )}
         >
-          <div className="flex gap-2 px-4 py-5">{children}</div>
-          {sectionVariants === "action" && <Toast.ActionsSection {...props} />}
+          <div className="flex gap-2">{children}</div>
+
           {sectionVariants === "close" && (
-            <Toast.CloseButtonSection {...props} />
+            <Toast.CloseButton onClose={onClose} />
           )}
         </div>
       );
     },
     Text: ({ children, textType }: TextToastProps) => {
       const textTypeVariants = {
-        title: "text-sm font-medium text-primary-500",
+        title: "text-sm font-medium",
         description: "text-xs font-normal",
       };
 
@@ -72,85 +75,52 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
       );
     },
     Icon: ({ icon: Icon }: IconToastProps) => (
-      <Icon
-        height={iconSize}
-        width={iconSize}
-        className={`min-w-[${iconSize}px]`}
-      />
-    ),
-    CloseButton: ({ onClose }: CloseButtonProps) => (
-      <button onClick={onClose}>
-        <CloseIcon />
-      </button>
+      <div className={`w-[${iconSize}px]`}>
+        <Icon height={iconSize} width={iconSize} />
+      </div>
     ),
     Action: ({ children, className, onClick }: ActionToastProps) => {
       return (
         <button
-          className={classNames(
-            "w-fit flex-1 border-l border-neutral-100 px-6 text-sm [&:nth-child(2)]:border-t",
-            className
-          )}
+          className={classNames("w-fit text-sm underline", className)}
           onClick={onClick}
         >
           {children}
         </button>
       );
     },
-    ActionsSection: ({
-      firstActionText,
-      secondActionText,
-    }: ActionSectionProps) => {
+    CloseButton: ({ onClose }: CloseButtonProps) => {
       return (
-        <>
-          <div className="flex h-full flex-col">
-            {firstActionText && (
-              <Toast.Action
-                className="text-primary-500 hover:text-primary-600"
-                {...props}
-              >
-                {firstActionText}
-              </Toast.Action>
-            )}
-            {secondActionText && (
-              <Toast.Action className="hover:text-neutral-600" {...props}>
-                {secondActionText}
-              </Toast.Action>
-            )}
-          </div>
-        </>
-      );
-    },
-    CloseButtonSection: ({ onClose }: CloseSectionProps) => {
-      return (
-        <div className="p-2">
-          <Toast.CloseButton onClose={onClose} />
-        </div>
+        <button onClick={onClose} className="">
+          <CloseIcon />
+        </button>
       );
     },
   };
 
   return (
-    <Toast.BaseToast
-      firstActionText={firstActionText}
-      secondActionText={secondActionText}
-      {...props}
-    >
+    <Toast.BaseSmallToast {...props}>
       {icon && <Toast.Icon icon={icon} />}
       <div className="flex flex-col">
         {title && (
           <div className="flex gap-4">
             <Toast.Text textType="title">{title}</Toast.Text>
+
+            {firstActionText && <Toast.Action>{firstActionText}</Toast.Action>}
+            {secondActionText && (
+              <Toast.Action>{secondActionText}</Toast.Action>
+            )}
           </div>
         )}
         <Toast.Text textType="description">{description}</Toast.Text>
       </div>
-    </Toast.BaseToast>
+    </Toast.BaseSmallToast>
   );
 };
 
 export default {
-  title: "Atoms/Toast",
-  component: Toast,
+  title: "Atoms/Toast/ToastSmall",
+  component: ToastSmall,
   argTypes: {
     title: {
       description: "string",
@@ -167,25 +137,38 @@ export default {
       },
       description: "icon",
     },
-    sectionVariants: {
-      control: "select",
-      options: [undefined , "close", "action"],
-      description: "close | action",
-    },
     firstActionText: {
       description: "string",
     },
     secondActionText: {
       description: "string",
     },
+    sectionVariants: {
+      control: "select",
+      options: [undefined, "close"],
+      description: "close",
+    },
+    backgroundColor: {
+      control: {
+        type: "select",
+        options: ["bg-neutral-700", "bg-primary-500", "bg-error-600"],
+        labels: {
+          "bg-neutral-700": "neutral",
+          "bg-primary-500": "positive",
+          "bg-error-600": "destructive",
+        },
+      },
+      description: "color variant",
+    },
   },
   args: {
     title: "Alert title",
     description: "Alert description alert description",
     icon: InfoIcon,
-    sectionVariants: "action",
     firstActionText: "Action",
     secondActionText: "Action",
+    backgroundColor: "bg-neutral-700",
+    sectionVariants: "close",
   },
   parameters: {
     design: {

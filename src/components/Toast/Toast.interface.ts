@@ -1,7 +1,4 @@
-type ToastVariants = "default" | "small";
-
 export interface ToastChildrenProps extends React.PropsWithChildren {
-  variant: ToastVariants;
   className?: string;
 }
 
@@ -36,6 +33,13 @@ export interface BaseToastProps
     CloseSectionProps {
   sectionVariants?: "close" | "action";
   backgroundColor?: string;
+}
+
+export interface BaseSmallToastProps
+  extends ToastChildrenProps,
+    CloseButtonProps {
+  backgroundColor?: string;
+  sectionVariants?: "close";
 }
 
 export interface ToastProps extends ActionToastProps, CloseButtonProps {
