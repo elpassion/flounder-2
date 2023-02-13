@@ -19,6 +19,9 @@ export interface IconProps extends AvatarChildrenProps {
   size: sizes;
 }
 
-export interface AvatarProps extends BaseAvatarProps, AvatarChildrenProps {
+export interface AvatarProps
+  extends BaseAvatarProps,
+    AvatarChildrenProps,
+    Pick<ImageProps, "alt"> {
   text?: string;
 }
