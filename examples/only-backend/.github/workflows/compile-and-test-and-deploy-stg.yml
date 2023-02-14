@@ -1,0 +1,22 @@
+name: Compile and test and deploy stg
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  compile_and_test:
+    name: Compile and test
+    uses: elpassion/fch/.github/workflows/compile-and-test.yml@main
+    secrets: inherit
+
+  deploy_stg:
+    name: Deploy staging
+    needs:
+      - compile_and_test
+    if: needs.compile_and_test.result == 'success'
+    uses: elpassion/fch/.github/workflows/deploy-stg.yml@main
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

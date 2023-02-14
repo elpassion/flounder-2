@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FloatClient createTimeOff return created timeoff 1`] = `
+Object {
+  "created": "2023-01-09 13:09:52",
+  "created_by": "741307",
+  "end_date": "2023-08-20",
+  "full_day": 1,
+  "hours": null,
+  "modified": "2023-01-09 13:09:52",
+  "modified_by": "741307",
+  "people_ids": Array [
+    17948762,
+  ],
+  "repeat_end": null,
+  "repeat_state": 0,
+  "start_date": "2023-08-15",
+  "start_time": null,
+  "status": 2,
+  "status_creator_id": null,
+  "status_note": null,
+  "timeoff_id": 15095042,
+  "timeoff_notes": "CALAMARI XXX",
+  "timeoff_type_id": 474348,
+  "timeoff_type_name": "Paid Time Off",
+}
+`;
+
+exports[`FloatClient getTimeoffs returns correct timeoffs 1`] = `
+FloatTimeoffResponse {
+  "timeoffs": Array [
+    FloatTimeoff {
+      "calamariId": 0,
+      "endDate": 2023-01-16T00:00:00.000Z,
+      "id": 15045878,
+      "personEmail": undefined,
+      "personId": 17946185,
+      "serviceType": "FLOAT",
+      "startDate": 2023-01-16T00:00:00.000Z,
+    },
+    FloatTimeoff {
+      "calamariId": 666,
+      "endDate": 2023-06-01T00:00:00.000Z,
+      "id": 15045866,
+      "personEmail": undefined,
+      "personId": 17946185,
+      "serviceType": "FLOAT",
+      "startDate": 2023-06-01T00:00:00.000Z,
+    },
+    FloatTimeoff {
+      "calamariId": 123,
+      "endDate": 2023-01-02T00:00:00.000Z,
+      "id": 15045863,
+      "personEmail": undefined,
+      "personId": 17946182,
+      "serviceType": "FLOAT",
+      "startDate": 2023-01-02T00:00:00.000Z,
+    },
+    FloatTimeoff {
+      "calamariId": 46,
+      "endDate": 2023-01-10T00:00:00.000Z,
+      "id": 15045857,
+      "personEmail": undefined,
+      "personId": 17946182,
+      "serviceType": "FLOAT",
+      "startDate": 2023-01-09T00:00:00.000Z,
+    },
+    FloatTimeoff {
+      "calamariId": 456,
+      "endDate": 2023-01-05T00:00:00.000Z,
+      "id": 15045856,
+      "personEmail": undefined,
+      "personId": 17946185,
+      "serviceType": "FLOAT",
+      "startDate": 2023-01-04T00:00:00.000Z,
+    },
+  ],
+}
+`;

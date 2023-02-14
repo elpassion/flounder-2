@@ -1,0 +1,15 @@
+version: 3
+projects:
+  - dir: iac/environment
+    workspace: stg
+    workflow: stg
+  - dir: iac/common
+workflows:
+  stg:
+    plan:
+      steps:
+        - init
+        - plan:
+            extra_args: ["-var-file", "stg.tfvars"]
+    # NOTE: no need to define the apply stage because it will default
+    # to the normal apply stage.
