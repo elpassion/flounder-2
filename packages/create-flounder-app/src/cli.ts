@@ -15,6 +15,7 @@ import { unlink } from "fs/promises";
 import { x as tarX } from "tar";
 import shell from "shelljs";
 import { createRequire } from "node:module";
+import * as child_process from "child_process";
 const require = createRequire(import.meta.url);
 
 const program = new Command(packageJson.name)
@@ -133,7 +134,9 @@ async function runAfterGenerate() {
   const packageJson = require(process.cwd() + "/package.json");
   if (packageJson.scripts?.["flounder:after:generate"]) {
     logger.yellow("Running flounder:after:generate");
-    await shell.exec("pnpm run flounder:after:generate");
+    child_process.execFileSync("pnpm", ["run", "flounder:after:generate"], {
+      stdio: "inherit",
+    });
     logger.green("Successfully ran flounder:after:generate!");
   } else {
     logger.yellow(
