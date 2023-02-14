@@ -28,13 +28,6 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
     success: "bg-green-500",
   };
 
-  const countIndicatorTypes = {
-    error: "bg-error-500 text-white",
-    warning: "bg-orange-500 text-white",
-    processing: "bg-blue-500 text-white",
-    success: "bg-green-500 text-white",
-  };
-
   if (variant === "badge") {
     return (
       <div
@@ -59,7 +52,9 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
       <div
         className={classNames(
           "inline-flex h-6 w-6 min-w-fit shrink-0 justify-center rounded-full border-2 border-solid border-white px-1 text-sm font-medium shadow-lg",
-          type ? countIndicatorTypes[type] : "bg-neutral-100 text-neutral-900"
+          type
+            ? `${indicatorDotTypes[type]} text-white`
+            : "bg-neutral-100 text-neutral-900"
         )}
       >
         {showNumber && <span>1</span>}
