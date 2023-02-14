@@ -1,0 +1,19 @@
+{
+  "name": "@flounder/repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "turbo run build"
+  },
+  "dependencies": {
+    "turbo": "^1.7.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "pnpm"
+}
