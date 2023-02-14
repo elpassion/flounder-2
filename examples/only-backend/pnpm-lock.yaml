@@ -171,6 +171,7 @@ importers:
       '@nestjs/schedule': ^2.1.0
       '@nestjs/swagger': ^6.0.4
       '@nestjs/terminus': ^9.0.0
+      axios: ^0.26.0
       class-transformer: ^0.5.1
       class-validator: ^0.13.2
       date-fns: ^2.29.3
@@ -178,7 +179,6 @@ importers:
       pino-http: ^8.1.1
       reflect-metadata: ^0.1.13
       rxjs: ^7.0.0
-      ts-mockito: ^2.6.1
     dependencies:
       '@nestjs/axios': 0.1.0_wclkcf3nqj4alixp6w234apqaq
       '@nestjs/common': 9.0.5_kgmvgmqc4iohdboj3f7yqhrie4
@@ -188,6 +188,7 @@ importers:
       '@nestjs/schedule': 2.1.0_ev26p323ioiqcunvdp2dgxxsga
       '@nestjs/swagger': 6.0.4_wzwfhhx3o65r5bzuvsqmllmofy
       '@nestjs/terminus': 9.0.0_djxetcc4cgjq2cnitoenkguul4
+      axios: 0.26.1
       class-transformer: 0.5.1
       class-validator: 0.13.2
       date-fns: 2.29.3
@@ -195,7 +196,6 @@ importers:
       pino-http: 8.1.1
       reflect-metadata: 0.1.13
       rxjs: 7.5.5
-      ts-mockito: 2.6.1
 
 packages:
 
@@ -9123,6 +9123,7 @@ packages:
     resolution: {integrity: sha512-qU9m/oEBQrKq5hwfbJ7MgmVN5Gu6lFnIGWvpxSjrqq6YYEVv+RwVFWySbZMBgazsWqv6ctAyVBpo9TmAxnOEKw==}
     dependencies:
       lodash: 4.17.21
+    dev: true
 
   /ts-node/10.8.2_qiyc72axg2v44xl4yovan2v55u:
     resolution: {integrity: sha512-LYdGnoGddf1D6v8REPtIH+5iq/gTDuZqv2/UJUU7tKjuEU8xVZorBM+buCGNjj+pGEud+sOoM4CX3/YzINpENA==}

@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { VersionDto } from './dtos/version.dto';
-import { BaseConfig } from '../modules/app-config';
+import { BaseConfig } from '../app-config';
 
 @ApiTags('App')
 @Controller()
