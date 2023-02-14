@@ -1,5 +1,11 @@
 # @elpassion/create-flounder-app
 
+## 0.0.6
+
+### Patch Changes
+
+- Fix lack of interactivness in after script
+
 ## 0.0.5
 
 ### Patch Changes
