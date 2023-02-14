@@ -28,7 +28,8 @@
     "ci:docker:build": "nx affected --target=docker:build --parallel=3",
     "ci:docker:deploy": "nx affected --target=docker:deploy --parallel=3",
     "typeorm:migrations": "nx typeorm:migrations backend",
-    "typeorm:migrations:test": "nx typeorm:migrations:test backend"
+    "typeorm:migrations:test": "nx typeorm:migrations:test backend",
+    "flounder:after:generate": "node afterGenerate.js"
   },
   "private": true,
   "devDependencies": {

@@ -14,6 +14,8 @@ import { createWriteStream } from "fs";
 import { unlink } from "fs/promises";
 import { x as tarX } from "tar";
 import shell from "shelljs";
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
 
 const program = new Command(packageJson.name)
   .version(packageJson.version)
@@ -69,6 +71,7 @@ async function createApp(
   process.chdir(path);
   await downloadAndExtractRepo(repositoryPath);
   await installDependencies();
+  await runAfterGenerate();
 }
 
 async function downloadAndExtractRepo(repositoryPath: IRepositoryPath) {
@@ -121,6 +124,22 @@ async function installDependencies() {
   logger.yellow("Installing dependencies...");
   shell.exec("pnpm i");
   logger.green("Dependencies installed :)");
+}
+
+async function runAfterGenerate() {
+  logger.yellow(
+    "Looking for flounder:after:generate script in package.json..."
+  );
+  const packageJson = require(process.cwd() + "/package.json");
+  if (packageJson.scripts?.["flounder:after:generate"]) {
+    logger.yellow("Running flounder:after:generate");
+    await shell.exec("pnpm run flounder:after:generate");
+    logger.green("Successfully ran flounder:after:generate!");
+  } else {
+    logger.yellow(
+      "No flounder:after:generate script found. If you want to do something after project generation add it to your package.json."
+    );
+  }
 }
 
 const logger = {
