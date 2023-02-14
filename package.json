@@ -1,19 +1,23 @@
 {
   "name": "@flounder/repo",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "build": "turbo run build"
-  },
-  "dependencies": {
-    "turbo": "^1.7.4"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "pnpm"
+  "packageManager": "pnpm",
+  "scripts": {
+    "build": "turbo run build",
+    "publish-packages": "turbo run build && changeset version && changeset publish"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "turbo": "^1.7.4",
+    "@changesets/cli": "^2.26.0"
+  }
 }
