@@ -1,5 +1,11 @@
 # @elpassion/create-flounder-app
 
+## 0.0.3
+
+### Patch Changes
+
+- Update script to include colored info
+
 ## 0.0.2
 
 ### Patch Changes
