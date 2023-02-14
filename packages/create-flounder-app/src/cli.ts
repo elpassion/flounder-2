@@ -12,7 +12,7 @@ import { pipeline } from "stream/promises";
 import got from "got";
 import { createWriteStream } from "fs";
 import { unlink } from "fs/promises";
-import { x } from "tar";
+import { x as tarX } from "tar";
 
 const program = new Command(packageJson.name)
   .version(packageJson.version)
@@ -37,7 +37,7 @@ function parseExample(example: string): IRepositoryPath {
   } else {
     return {
       url: new URL("https://github.com/elpassion/flounder-2"),
-      path: `examples/${example}`,
+      path: example,
       username: "elpassion",
       name: "flounder-2",
     };
@@ -51,9 +51,12 @@ async function run() {
       ? path.resolve(".").split("/").at(-1)!
       : program.args[0];
 
-  const examplePath = program.opts().example as IRepositoryPath;
+  const exampleRepositoryPath = program.opts().example as IRepositoryPath;
+  const newProjectPath = path.resolve(projectDirectory);
 
-  await createApp(appName, path.resolve(projectDirectory), examplePath);
+  await createApp(appName, newProjectPath, exampleRepositoryPath);
+
+  return newProjectPath;
 }
 
 async function createApp(
@@ -67,25 +70,39 @@ async function createApp(
 }
 
 async function downloadAndExtractRepo(repositoryPath: IRepositoryPath) {
-  const tempFile = await downloadTar(repositoryPath);
+  await withTmpFile(async (tempFilePath) => {
+    await downloadTar(repositoryPath).into(tempFilePath);
 
-  await x({
-    file: tempFile,
-    cwd: ".",
-    strip: repositoryPath.path.split("/").length,
-    filter: (path) => {
-      return true;
-    },
+    await tarX({
+      file: tempFilePath,
+      cwd: ".",
+      strip:
+        repositoryPath.path === ""
+          ? 1
+          : 1 + repositoryPath.path.split("/").length,
+      filter: (path) => {
+        return path
+          .split("/")
+          .slice(1)
+          .join("/")
+          .startsWith(repositoryPath.path);
+      },
+    });
   });
-
-  await unlink(tempFile);
 }
 
-async function downloadTar({ username, name }: IRepositoryPath) {
-  const tempFile = join(tmpdir(), `flounder-example.temp-${Date.now()}`);
+async function withTmpFile(cb: (tmpFilePath: string) => Promise<void> | void) {
+  const tmpFilePath = join(tmpdir(), `flounder-example.temp-${Date.now()}`);
+  await cb(tmpFilePath);
+  await unlink(tmpFilePath);
+}
+function downloadTar({ username, name }: IRepositoryPath) {
   const tarUrl = `https://api.github.com/repos/${username}/${name}/tarball`;
-  await pipeline(got.stream(tarUrl), createWriteStream(tempFile));
-  return tempFile;
+
+  return {
+    into: async (tempFilePath: string) =>
+      await pipeline(got.stream(tarUrl), createWriteStream(tempFilePath)),
+  };
 }
 
 interface IRepositoryPath {
@@ -95,4 +112,6 @@ interface IRepositoryPath {
   name: string;
 }
 
-run().then();
+run().then((path: string) =>
+  console.log(chalk.green(`Successfully Created project in ${path} :)`))
+);
