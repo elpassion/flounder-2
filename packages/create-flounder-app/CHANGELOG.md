@@ -1,5 +1,11 @@
 # @elpassion/create-flounder-app
 
+## 0.0.4
+
+### Patch Changes
+
+- Fix pnpm i running async
+
 ## 0.0.3
 
 ### Patch Changes
