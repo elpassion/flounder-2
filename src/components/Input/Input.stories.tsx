@@ -152,7 +152,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
           "order-first col-start-1 col-end-3 font-medium text-neutral-700 peer-disabled:text-neutral-200",
         supportingText:
           "col-start-1 col-end-3 text-neutral-400 peer-disabled:text-neutral-200",
-        errorMessage: "col-start-1 col-end-3 m-0 mt-1.5 p-0 text-error-500",
+        errorMessage: "col-start-1 col-end-3 m-0 p-0 pt-1.5 text-error-500",
       };
       return (
         <p className={classNames("m-0 p-0 text-sm", textStyleVariants[type])}>
@@ -229,8 +229,9 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
           <Input.Text text={supportingText} type="supportingText" />
         )}
       </label>
-
-      {isError && <Input.Text text={errorMessage} type="errorMessage" />}
+      <div className={classNames(!supportingText && "h-6")}>
+        {isError && <Input.Text text={errorMessage} type="errorMessage" />}
+      </div>
     </>
   );
 };
