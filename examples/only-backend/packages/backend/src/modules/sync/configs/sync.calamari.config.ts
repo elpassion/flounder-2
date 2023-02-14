@@ -2,7 +2,7 @@ import { IsNotEmpty, IsString } from 'class-validator';
 import { Expose } from 'class-transformer';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ConfigValidator } from '../../../shared/common/configuration/config.validator.ts.ts';
+import { ConfigValidator } from '../../../shared/common/configuration/config.validator';
 
 class SyncConfigVariables {
   @IsNotEmpty()

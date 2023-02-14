@@ -3,8 +3,8 @@ import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.int
 import { ConfigService } from '@nestjs/config';
 import { Expose } from 'class-transformer';
 import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
-import { ConfigValidator } from '../../shared/common/configuration/config.validator.ts.ts';
 import { NodeEnvironment } from '../../shared/common/configuration/node-environment';
+import { ConfigValidator } from '../../shared/common/configuration/config.validator';
 
 class BaseEnvVariables {
   @IsEnum(NodeEnvironment)

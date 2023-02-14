@@ -7,6 +7,7 @@ import { BaseConfig } from '../modules/app-config';
 @Controller()
 export class AppController {
   constructor(private readonly config: BaseConfig) {}
+
   @Get('/version')
   getVersion(): VersionDto {
     return {
