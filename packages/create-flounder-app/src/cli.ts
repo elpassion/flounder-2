@@ -68,11 +68,12 @@ async function createApp(
   await makeDir(path);
   process.chdir(path);
   await downloadAndExtractRepo(repositoryPath);
-  await shell.exec("pnpm i", { async: true });
+  await installDependencies();
 }
 
 async function downloadAndExtractRepo(repositoryPath: IRepositoryPath) {
   await withTmpFile(async (tempFilePath) => {
+    logger.yellow("Downloading example...");
     await downloadTar(repositoryPath).into(tempFilePath);
 
     await tarX({
@@ -90,6 +91,7 @@ async function downloadAndExtractRepo(repositoryPath: IRepositoryPath) {
           .startsWith(repositoryPath.path);
       },
     });
+    logger.green("Successfully downloaded example");
   });
 }
 
@@ -98,6 +100,7 @@ async function withTmpFile(cb: (tmpFilePath: string) => Promise<void> | void) {
   await cb(tmpFilePath);
   await unlink(tmpFilePath);
 }
+
 function downloadTar({ username, name }: IRepositoryPath) {
   const tarUrl = `https://api.github.com/repos/${username}/${name}/tarball`;
 
@@ -113,6 +116,19 @@ interface IRepositoryPath {
   username: string;
   name: string;
 }
+
+async function installDependencies() {
+  logger.yellow("Installing dependencies...");
+  await shell.exec("pnpm i", { async: true });
+  logger.green("Dependencies installed :)");
+}
+
+const logger = {
+  green: (text: string) => console.log(`\n${chalk.green(text)}\n`),
+  yellow: (text: string) => {
+    console.log(`\n${chalk.yellow(text)}\n`);
+  },
+};
 
 run().then((path: string) =>
   console.log(chalk.green(`Successfully Created project in ${path} :)`))
