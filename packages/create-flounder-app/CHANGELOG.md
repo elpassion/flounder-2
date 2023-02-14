@@ -1,5 +1,11 @@
 # @elpassion/create-flounder-app
 
+## 0.0.5
+
+### Patch Changes
+
+- Add after:generate callback after install
+
 ## 0.0.4
 
 ### Patch Changes
