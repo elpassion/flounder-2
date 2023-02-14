@@ -12,12 +12,14 @@
   "packageManager": "pnpm",
   "scripts": {
     "build": "turbo run build",
-    "publish-packages": "turbo run build && changeset version && changeset publish"
-  },
-  "dependencies": {
+    "publish-packages": "pnpm build && changeset version && changeset publish"
   },
   "devDependencies": {
-    "turbo": "^1.7.4",
-    "@changesets/cli": "^2.26.0"
+    "@changesets/cli": "^2.26.0",
+    "prettier": "^2.8.4",
+    "turbo": "^1.7.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
