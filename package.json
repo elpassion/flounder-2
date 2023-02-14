@@ -12,6 +12,7 @@
   "packageManager": "pnpm",
   "scripts": {
     "build": "turbo run build",
+    "create-changeset": "changeset add",
     "publish-packages": "pnpm build && changeset version && changeset publish"
   },
   "devDependencies": {

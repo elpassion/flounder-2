@@ -13,6 +13,7 @@ import got from "got";
 import { createWriteStream } from "fs";
 import { unlink } from "fs/promises";
 import { x as tarX } from "tar";
+import shell from "shelljs";
 
 const program = new Command(packageJson.name)
   .version(packageJson.version)
@@ -67,6 +68,7 @@ async function createApp(
   await makeDir(path);
   process.chdir(path);
   await downloadAndExtractRepo(repositoryPath);
+  await shell.exec("pnpm i", { async: true });
 }
 
 async function downloadAndExtractRepo(repositoryPath: IRepositoryPath) {
