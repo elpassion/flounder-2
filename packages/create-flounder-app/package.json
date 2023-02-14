@@ -1,8 +1,9 @@
 {
-  "name": "@flounder/create-flounder-app",
+  "name": "@elpassion/create-flounder-app",
   "version": "0.0.1",
   "module": "src/index.ts",
   "type": "module",
+  "private": false,
   "bin": {
     "create-flounder-app": "./dist/cli.js"
   },
