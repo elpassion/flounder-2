@@ -119,7 +119,7 @@ interface IRepositoryPath {
 
 async function installDependencies() {
   logger.yellow("Installing dependencies...");
-  await shell.exec("pnpm i", { async: true });
+  shell.exec("pnpm i");
   logger.green("Dependencies installed :)");
 }
 
