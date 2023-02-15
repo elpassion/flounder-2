@@ -1,18 +1,19 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
+import React from "react";
 
 interface IndicatorProps {
   type?: "error" | "warning" | "processing" | "success";
-  variant?: "count" | "badge";
-  showText?: boolean;
-  showNumber?: boolean;
+  variant: "default" | "count" | "badge";
+  number?: number;
+  text?: string;
 }
 
 export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
   variant,
   type,
-  showNumber = true,
-  showText = true,
+  number,
+  text,
 }) => {
   const indicatorTypes = {
     error: "bg-error-100 text-error-900",
@@ -28,50 +29,64 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
     success: "bg-green-500",
   };
 
-  if (variant === "badge") {
-    return (
-      <div
-        className={classNames(
-          "inline-flex items-center gap-x-1.5 rounded-full py-1 py-1 px-2.5 text-xs font-medium",
-          type ? indicatorTypes[type] : "bg-neutral-50 text-neutral-900"
-        )}
-      >
-        <span
-          className={classNames(
-            "flex h-2 w-2 shrink-0 rounded-full",
-            type ? indicatorDotTypes[type] : "bg-neutral-100"
-          )}
-        />
-        {showText && <span>Indicator text</span>}
-      </div>
-    );
-  }
+  const indicatorDotSizeTypes = {
+    badge: "h-2 w-2",
+    default: "h-3 w-3",
+    count: "",
+  };
 
-  if (variant === "count") {
-    return (
-      <div
-        className={classNames(
-          "inline-flex h-6 w-6 min-w-fit shrink-0 justify-center rounded-full border-2 border-solid border-white px-1 text-sm font-medium shadow-lg",
-          type
-            ? `${indicatorDotTypes[type]} text-white`
-            : "bg-neutral-100 text-neutral-900"
-        )}
-      >
-        {showNumber && <span>1</span>}
-      </div>
-    );
-  }
+  const indicatorWrapperTypes = {
+    badge: `inline-flex items-center gap-x-1.5 rounded-full py-1 py-1 px-2.5 text-xs font-medium ${
+      type ? indicatorTypes[type] : "bg-neutral-50"
+    }`,
+    count: `inline-flex h-6 w-6 min-w-fit shrink-0 justify-center rounded-full border-2 border-solid border-white px-1 text-sm font-medium shadow-lg ${
+      type
+        ? `${indicatorDotTypes[type]} text-white`
+        : "bg-neutral-100 text-neutral-900"
+    }`,
+    default: `inline-flex items-center gap-x-1.5 text-sm font-medium`,
+  };
 
-  return (
-    <div className={"inline-flex items-center gap-x-1.5 text-sm font-medium"}>
+  const Indicator = {
+    Wrapper: ({ children }: React.PropsWithChildren) => (
+      <div className={indicatorWrapperTypes[variant]}>{children}</div>
+    ),
+    Dot: () => (
       <span
         className={classNames(
-          "flex h-3 w-3 shrink-0 rounded-full",
-          type ? indicatorDotTypes[type] : "bg-neutral-100"
+          "flex shrink-0 rounded-full",
+          type ? indicatorDotTypes[type] : "bg-neutral-100",
+          indicatorDotSizeTypes[variant]
         )}
       />
-      {showText && <span>Indicator text</span>}
-    </div>
+    ),
+    Badge: () => {
+      return (
+        <>
+          <Indicator.Dot />
+          {text && <span>{text}</span>}
+        </>
+      );
+    },
+    Count: () => {
+      return <>{number && <span>{number}</span>}</>;
+    },
+    Default: () => {
+      return (
+        <>
+          <Indicator.Dot />
+          {text && <span>{text}</span>}
+        </>
+      );
+    },
+  };
+
+  return (
+    <Indicator.Wrapper>
+      {variant === "badge" && <Indicator.Badge />}
+      {variant === "count" && <Indicator.Count />}
+      {variant === "default" && <Indicator.Default />}
+    </Indicator.Wrapper>
   );
 };
 
@@ -85,19 +100,19 @@ export default {
     },
     variant: {
       control: "select",
-      options: ["count", "badge"],
+      options: ["default", "count", "badge"],
     },
-    showNumber: {
-      control: "boolean",
+    text: {
+      control: "text",
     },
-    showText: {
-      control: "boolean",
+    number: {
+      control: "number",
     },
   },
   args: {
-    type: "error",
-    showNumber: true,
-    showText: true,
+    variant: "count",
+    number: 1,
+    text: "Indicator",
   },
   parameters: {
     design: {
