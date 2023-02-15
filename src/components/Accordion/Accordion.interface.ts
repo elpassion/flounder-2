@@ -7,20 +7,21 @@ interface AccordionItemProps {
   expanded?: boolean;
 }
 
-export interface AccordionIconPositionVariants {
+export interface AccordionIconPositionVariants extends React.PropsWithChildren {
   align: "left" | "right";
 }
 
 export interface AccordionProps {
-  divider?: boolean;
-  icon?: AccordionIconPositionVariants;
+  variant: "bordered" | "borderless";
+  icon: AccordionIconPositionVariants;
   items: AccordionItemProps[];
 }
 
 export interface AccordionButtonProps
-  extends Pick<AccordionItemProps, "title" | "expanded"> {
-  children: React.ReactNode;
-}
+  extends Pick<AccordionItemProps, "title" | "expanded">,
+    Pick<AccordionProps, "icon">,
+    React.PropsWithChildren {}
 
 export interface AccordionBodyProps
-  extends Pick<AccordionItemProps, "description" | "expanded"> {}
+  extends Pick<AccordionItemProps, "description" | "expanded">,
+    AccordionIconPositionVariants {}

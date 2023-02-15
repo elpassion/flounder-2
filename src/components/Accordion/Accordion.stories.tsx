@@ -11,7 +11,7 @@ import {
 } from "./Accordion.interface";
 
 export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
-  divider = false,
+  variant,
   icon,
   items,
 }) => {
@@ -21,32 +21,36 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         <div className="w-full">
           {items.map(({ title, id, description, expanded }) => (
             <div key={id} className={"mb-3"}>
-              <Accordion.Button title={title} expanded={expanded}>
-                <Accordion.Icon align={"left"} />
+              <Accordion.Button title={title} expanded={expanded} icon={icon}>
+                <Accordion.Icon align={icon.align}>
+                  <PlusIcon />
+                </Accordion.Icon>
               </Accordion.Button>
-              {expanded && <Accordion.Body description={description} />}
+              {expanded && (
+                <Accordion.Body description={description} align={icon.align} />
+              )}
             </div>
           ))}
         </div>
       );
     },
-    Button: ({ children, title, expanded }: AccordionButtonProps) => {
+    Button: ({ children, title, expanded, icon }: AccordionButtonProps) => {
+      const buttonVariants = {
+        bordered: `border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600 ${
+          expanded && "rounded-t border-neutral-50 bg-neutral-50"
+        }`,
+        borderless: `rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100 ${
+          expanded && "bg-neutral-100"
+        }`,
+      };
+
       return (
         <button
           className={classNames(
-            `flex w-full items-center text-xs font-bold transition ease-in`,
-            {
-              "border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600":
-                divider,
-              "rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100":
-                !divider,
-            },
-            {
-              "rounded-t border-neutral-50 bg-neutral-50": expanded && divider,
-            },
-            {
-              "bg-neutral-100": expanded && !divider,
-            }
+            `flex w-full items-center text-xs font-bold transition ease-in ${
+              icon.align === "right" && "justify-between"
+            }`,
+            buttonVariants[variant]
           )}
         >
           <span className="flex items-center">{title}</span>
@@ -54,20 +58,20 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         </button>
       );
     },
-    Icon: ({ align }: AccordionIconPositionVariants) => {
+    Icon: ({ align, children }: AccordionIconPositionVariants) => {
       const iconVariants = {
         left: "order-first mr-2",
         right: "ml-2",
       };
 
       return (
-        <PlusIcon
-          className={classNames("h-4 w-4 shrink-0", iconVariants[align])}
-        />
+        <div className={classNames("h-4 w-4 shrink-0", iconVariants[align])}>
+          {children}
+        </div>
       );
     },
-    Body: ({ description }: AccordionBodyProps) => {
-      const iconVariant = {
+    Body: ({ description, align }: AccordionBodyProps) => {
+      const iconVariants = {
         left: "pl-9",
         right: "pl-3",
       };
@@ -76,7 +80,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         <div
           className={classNames(
             "rounded-b bg-neutral-50 py-3 pr-3 text-xs text-neutral-600",
-            iconVariant[icon]
+            iconVariants[align]
           )}
         >
           {description}
@@ -86,7 +90,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
   };
 
   return (
-    <Accordion.BaseAccordion divider={divider} icon={icon} items={items} />
+    <Accordion.BaseAccordion variant={variant} icon={icon} items={items} />
   );
 };
 
@@ -94,37 +98,41 @@ export default {
   title: "Atoms/Accordion",
   component: Accordion,
   argTypes: {
-    divider: {
-      control: "boolean",
+    variant: {
+      control: {
+        type: "select",
+        options: ["bordered", "borderless"],
+      },
     },
     icon: {
-      control: "radio",
-      options: ["left", "right"],
-    },
-    items: {
-      control: "object",
+      control: {
+        type: "select",
+        options: ["left", "right"],
+      },
     },
   },
   args: {
-    divider: false,
-    icon: "left",
+    variant: "bordered",
+    icon: {
+      align: "right",
+    },
     items: [
       {
         id: 1,
-        title: "Accordion item 1",
-        description: "Accordion item 1 description",
+        title: "Accordion 1",
+        description: "Accordion 1 description",
         expanded: true,
       },
       {
         id: 2,
-        title: "Accordion item 2",
-        description: "Accordion item 2 description",
+        title: "Accordion 2",
+        description: "Accordion 2 description",
         expanded: false,
       },
       {
         id: 3,
-        title: "Accordion item 3",
-        description: "Accordion item 3 description",
+        title: "Accordion 3",
+        description: "Accordion 3 description",
         expanded: false,
       },
     ],
