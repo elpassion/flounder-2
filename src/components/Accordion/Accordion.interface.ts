@@ -12,7 +12,7 @@ export interface AccordionIconPositionVariants extends React.PropsWithChildren {
 }
 
 export interface AccordionProps {
-  variant: "bordered" | "borderless";
+  variant: "bordered" | "solid";
   icon: AccordionIconPositionVariants;
   items: AccordionItemProps[];
 }

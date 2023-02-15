@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ReactComponent as PlusIcon } from "icons/plus.svg";
-import { ReactComponent as ChevronDownIcon } from "icons/chevron-down.svg";
 import classNames from "classnames";
 import React from "react";
 import {
@@ -39,7 +38,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         bordered: `border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600 ${
           expanded && "rounded-t border-neutral-50 bg-neutral-50"
         }`,
-        borderless: `rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100 ${
+        solid: `rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100 ${
           expanded && "bg-neutral-100"
         }`,
       };
@@ -101,7 +100,7 @@ export default {
     variant: {
       control: {
         type: "select",
-        options: ["bordered", "borderless"],
+        options: ["bordered", "solid"],
       },
     },
     icon: {
