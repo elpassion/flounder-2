@@ -51,8 +51,9 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
   };
 
   const focusColorStyle: { [key: string]: string } = {
-    true: "peer-focus:shadow-focusedErrorInput peer-focus:after:border-error-500",
-    false: "peer-focus:shadow-focusedInput peer-focus:after:border-neutral-200",
+    true: "peer-focus:shadow-focused peer-focus:shadow-error-100 peer-focus:after:border-error-500",
+    false:
+      "peer-focus:shadow-focused peer-focus:shadow-secondary-50 peer-focus:after:border-neutral-200",
   };
 
   const inputVariantsStyle = {
@@ -199,8 +200,8 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
             "peer row-start-2 w-full border bg-white py-2.5 pl-3.5 pr-10 text-neutral-900",
             "placeholder:text-neutral-400",
             "disabled:bg-neutral-50 disabled:placeholder:text-neutral-200",
-            "focus:shadow-focusedInput focus:outline-none focus:ring-0 focus:placeholder:text-white",
-            isError && "focus:shadow-focusedErrorInput",
+            "focus:shadow-focused focus:shadow-secondary-50 focus:outline-none focus:ring-0 focus:placeholder:text-white",
+            isError && "focus:shadow-focused focus:shadow-error-100",
             inputBorderColorStyle[String(isError)],
             inputVariantsStyle[inputVariant]
           )}

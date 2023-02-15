@@ -207,7 +207,7 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2432%3A10986&t=UrLZo5oibLW5eXuj-4",
+      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=3100%3A17682&t=rVpypypag1eT8SHD-0",
     },
     docs: {
       page: () => (
