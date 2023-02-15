@@ -8,7 +8,7 @@ Note 2: if you stumble upn a `enter variables to tfvars / tf file` then it might
 ## 0. Prerequisites
 
 1. Before starting ensure that you have assumed the role `full-admin` in AWS. This will allow you to create all of the resources.
-2. This tutorial assumes that the whole setup (both `code` and `iac` and `atlantis` are pushed to a elpassion repository on github with the same name as the project name - https://github.com/elpassion/fch). If you did not yet push the code to github do it before running those commands.
+2. This tutorial assumes that the whole setup (both `code` and `iac` and `atlantis` are pushed to a elpassion repository on github with the same name as the project name - https://github.com/elpassion/fch). If you did not yet push the code to github do it before running those commands. #REPLACE_CLIENT #REPLACE_PROJECT
 3. To push images you need to build them first. To do that you will need `node` and `pnpm`  set up in your environment.
 4. To setup `atlantis` communication for `github` you need to be a `github admin` in organization.
 
@@ -44,7 +44,7 @@ This creates resources that may be shared by all environments, namely ECR reposi
 
 ## IV. Push Images
 1. Trigger push to ECR by changing any line of code in code/packages/PACKAGE_YOU_WANT_TO_DEPLOY and pushing code onto the `main` branch.
-2. Check if the action has successfully pushed the images at [Github Actions](https://github.com/elpassion/fch/actions). If it failed check why. If the failing step was `npm run ci:docker:deploy` then great! It means the images have been built and pushed. But the environment is not ready for them yet.
+2. Check if the action has successfully pushed the images at [Github Actions](https://github.com/elpassion/fch/actions). If it failed check why. If the failing step was `npm run ci:docker:deploy` then great! It means the images have been built and pushed. But the environment is not ready for them yet. #REPLACE_PROJECT
 
 ## V. The environment.
 

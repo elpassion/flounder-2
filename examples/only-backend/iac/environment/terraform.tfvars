@@ -2,11 +2,11 @@
 
 region = "eu-west-1"
 
-namespace = "fch"
-client    = "elpassion"
-project   = "fch"
+namespace = "fch" #REPLACE_PROJECT
+client    = "elpassion" #REPLACE_CLIENT
+project   = "fch" #REPLACE_PROJECT
 
-internal_tld = "fch.internal"
+internal_tld = "fch.internal" #REPLACE_PROJECT
 
 vpc_az_count                   = 2
 vpc_public_networks_new_bits   = 6

@@ -16,8 +16,4 @@ ecs_config = {
 }
 
 backend_stage_specific_env_vars = {
-  FLOAT_TIMEOFF_TYPE_ID=41648
-
-  CALAMARI_API_URL="https://elpassion.calamari.io/api/leave/request/v1/find-advanced"
-  CALAMARI_API_USERNAME="calamari"
 }

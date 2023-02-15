@@ -4,7 +4,7 @@ provider "github" {
 }
 
 data "github_repository" "app" {
-  full_name = "elpassion/fch"
+  full_name = "elpassion/fch" #REPLACE_PROJECT
 }
 
 resource "github_actions_secret" "aws_access_key_id" {
