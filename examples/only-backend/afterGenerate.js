@@ -21,7 +21,10 @@ const run = async () => {
   console.log('Replacing project and client references...');
   replace.sync({
     files: '**/*',
-    ignore: 'node_modules/**/*',
+    ignore: ['node_modules/**/*', 'afterGenerate.js'],
+    glob: {
+      dot: true,
+    },
     from: [clientNameRegex, projectNameRegex],
     to: [
       (match) => match.replaceAll('elpassion', clientName),
