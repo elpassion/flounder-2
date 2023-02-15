@@ -7,13 +7,11 @@ interface AccordionItemProps {
   expanded?: boolean;
 }
 
-export interface AccordionIconPositionVariants extends React.PropsWithChildren {
-  align: "left" | "right";
-}
+type AccordionIconAlignProps = "left" | "right";
 
 export interface AccordionProps {
   variant: "bordered" | "solid";
-  icon: AccordionIconPositionVariants;
+  icon: AccordionIconAlignProps;
   items: AccordionItemProps[];
 }
 
@@ -24,4 +22,4 @@ export interface AccordionButtonProps
 
 export interface AccordionBodyProps
   extends Pick<AccordionItemProps, "description" | "expanded">,
-    Pick<AccordionIconPositionVariants, "align"> {}
+    Pick<AccordionProps, "icon"> {}

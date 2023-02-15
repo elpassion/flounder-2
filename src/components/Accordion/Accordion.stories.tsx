@@ -5,7 +5,6 @@ import React from "react";
 import {
   AccordionBodyProps,
   AccordionButtonProps,
-  AccordionIconPositionVariants,
   AccordionProps,
 } from "./Accordion.interface";
 
@@ -21,12 +20,12 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
           {items.map(({ title, id, description, expanded }) => (
             <div key={id} className={"mb-3"}>
               <Accordion.Button title={title} expanded={expanded} icon={icon}>
-                <Accordion.Icon align={icon.align}>
+                <Accordion.Icon>
                   <PlusIcon />
                 </Accordion.Icon>
               </Accordion.Button>
               {expanded && (
-                <Accordion.Body description={description} align={icon.align} />
+                <Accordion.Body description={description} icon={icon} />
               )}
             </div>
           ))}
@@ -47,7 +46,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         <button
           className={classNames(
             `flex w-full items-center text-xs font-bold transition ease-in ${
-              icon.align === "right" && "justify-between"
+              icon === "right" && "justify-between"
             }`,
             buttonVariants[variant]
           )}
@@ -57,19 +56,19 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         </button>
       );
     },
-    Icon: ({ align, children }: AccordionIconPositionVariants) => {
+    Icon: ({ children }: React.PropsWithChildren) => {
       const iconVariants = {
         left: "order-first mr-2",
         right: "ml-2",
       };
 
       return (
-        <div className={classNames("h-4 w-4 shrink-0", iconVariants[align])}>
+        <div className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}>
           {children}
         </div>
       );
     },
-    Body: ({ description, align }: AccordionBodyProps) => {
+    Body: ({ description, icon }: AccordionBodyProps) => {
       const iconVariants = {
         left: "pl-9",
         right: "pl-3",
@@ -79,7 +78,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         <div
           className={classNames(
             "rounded-b bg-neutral-50 py-3 pr-3 text-xs text-neutral-600",
-            iconVariants[align]
+            iconVariants[icon]
           )}
         >
           {description}
@@ -112,9 +111,7 @@ export default {
   },
   args: {
     variant: "bordered",
-    icon: {
-      align: "left",
-    },
+    icon: "left",
     items: [
       {
         id: 1,
