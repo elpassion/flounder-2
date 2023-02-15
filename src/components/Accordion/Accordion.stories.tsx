@@ -6,12 +6,13 @@ import React from "react";
 import {
   AccordionBodyProps,
   AccordionButtonProps,
+  AccordionIconPositionVariants,
   AccordionProps,
 } from "./Accordion.interface";
 
 export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
   divider = false,
-  icon = "left",
+  icon,
   items,
 }) => {
   const Accordion = {
@@ -21,7 +22,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
           {items.map(({ title, id, description, expanded }) => (
             <div key={id} className={"mb-3"}>
               <Accordion.Button title={title} expanded={expanded}>
-                <Accordion.Icon />
+                <Accordion.Icon align={"left"} />
               </Accordion.Button>
               {expanded && <Accordion.Body description={description} />}
             </div>
@@ -45,9 +46,6 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
             },
             {
               "bg-neutral-100": expanded && !divider,
-            },
-            {
-              "justify-between": icon === "right",
             }
           )}
         >
@@ -56,19 +54,15 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         </button>
       );
     },
-    Icon: () => {
+    Icon: ({ align }: AccordionIconPositionVariants) => {
       const iconVariants = {
         left: "order-first mr-2",
         right: "ml-2",
       };
 
-      return divider ? (
+      return (
         <PlusIcon
-          className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}
-        />
-      ) : (
-        <ChevronDownIcon
-          className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}
+          className={classNames("h-4 w-4 shrink-0", iconVariants[align])}
         />
       );
     },

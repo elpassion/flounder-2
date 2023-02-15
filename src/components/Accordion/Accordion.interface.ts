@@ -1,7 +1,5 @@
 import React from "react";
 
-type AccordionIconProps = "left" | "right";
-
 interface AccordionItemProps {
   id: number;
   title: string;
@@ -9,9 +7,13 @@ interface AccordionItemProps {
   expanded?: boolean;
 }
 
+export interface AccordionIconPositionVariants {
+  align: "left" | "right";
+}
+
 export interface AccordionProps {
   divider?: boolean;
-  icon?: AccordionIconProps;
+  icon?: AccordionIconPositionVariants;
   items: AccordionItemProps[];
 }
 
