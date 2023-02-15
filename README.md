@@ -8,7 +8,7 @@ Project with basic components to reuse in other projects.
 
 ```bash
 $ npm install -D tailwindcss postcss autoprefixer @tailwindcss/forms prettier prettier-plugin-tailwindcss
-$ npm classnames
+$ npm install classnames
 ```
 
 ### Init config
