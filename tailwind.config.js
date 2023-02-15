@@ -5,6 +5,9 @@ module.exports = {
   mode: "jit",
   theme: {
     extend: {
+      fontFamily: {
+        icons: "icons",
+      },
       colors: {
         primary: {
           50: "#DBFDE1",
