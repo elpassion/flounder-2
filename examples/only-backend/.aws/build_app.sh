@@ -20,13 +20,13 @@ echo "BUILDING ${app}, VERSION ${version}"
 
 ECR_REPO="${ECR_NAMESPACE}-${ECR_STAGE}-${ECR_NAME}-${app}"
 
-docker pull "docker.pkg.github.com/elpassion/fch/${app}" || true
+docker pull "docker.pkg.github.com/elpassion/fch/${app}" || true #REPLACE_PROJECT
 
 docker build --build-arg VERSION="${version}" \
   -t "${ECR_REPO}" \
   -f "${workdir}/packages/${app}/Dockerfile" "${workdir}" \
   --platform linux/amd64 \
-  --cache-from "docker.pkg.github.com/elpassion/fch/${app}"
+  --cache-from "docker.pkg.github.com/elpassion/fch/${app}" #REPLACE_PROJECT
 
 docker tag "${ECR_REPO}:latest" "${ECR_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/${ECR_REPO}:${image_tag}"
 docker tag "${ECR_REPO}:latest" "${ECR_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/${ECR_REPO}:latest"
@@ -35,4 +35,4 @@ aws ecr get-login-password --region "${ECR_REGION}" | docker login --username AW
 docker push "${ECR_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/${ECR_REPO}:${image_tag}"
 docker push "${ECR_ACCOUNT_ID}.dkr.ecr.${ECR_REGION}.amazonaws.com/${ECR_REPO}:latest"
 
-docker tag "${ECR_REPO}" "docker.pkg.github.com/elpassion/fch/${app}" && docker push "docker.pkg.github.com/elpassion/fch/${app}" || true
+docker tag "${ECR_REPO}" "docker.pkg.github.com/elpassion/fch/${app}" && docker push "docker.pkg.github.com/elpassion/fch/${app}" || true #REPLACE_PROJECT

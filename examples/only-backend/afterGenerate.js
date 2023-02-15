@@ -19,7 +19,7 @@ const run = async () => {
   const projectNameRegex = /.*(fch).*#REPLACE_PROJECT/g;
 
   replace.sync({
-    files: 'iac/**/*',
+    files: '**/*',
     from: [clientNameRegex, projectNameRegex],
     to: [
       (match) => match.replaceAll('elpassion', clientName),

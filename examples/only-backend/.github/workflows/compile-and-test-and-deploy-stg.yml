@@ -8,7 +8,7 @@ on:
 jobs:
   compile_and_test:
     name: Compile and test
-    uses: elpassion/fch/.github/workflows/compile-and-test.yml@main
+    uses: elpassion/fch/.github/workflows/compile-and-test.yml@main #REPLACE_PROJECT
     secrets: inherit
 
   deploy_stg:
@@ -16,7 +16,7 @@ jobs:
     needs:
       - compile_and_test
     if: needs.compile_and_test.result == 'success'
-    uses: elpassion/fch/.github/workflows/deploy-stg.yml@main
+    uses: elpassion/fch/.github/workflows/deploy-stg.yml@main #REPLACE_PROJECT
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
