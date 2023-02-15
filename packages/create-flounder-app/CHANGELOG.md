@@ -1,5 +1,11 @@
 # @elpassion/create-flounder-app
 
+## 0.0.7
+
+### Patch Changes
+
+- Setup git and commit after build
+
 ## 0.0.6
 
 ### Patch Changes
