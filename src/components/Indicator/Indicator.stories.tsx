@@ -5,15 +5,15 @@ import React from "react";
 interface IndicatorProps {
   type?: "error" | "warning" | "processing" | "success";
   variant: "default" | "count" | "badge";
-  number?: number;
   text?: string;
+  number?: number;
 }
 
 export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
   variant,
   type,
-  number,
   text,
+  number,
 }) => {
   const indicatorTypes = {
     error: "bg-error-100 text-error-900",
@@ -60,32 +60,12 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
         )}
       />
     ),
-    Badge: () => {
-      return (
-        <>
-          <Indicator.Dot />
-          {text && <span>{text}</span>}
-        </>
-      );
-    },
-    Count: () => {
-      return <>{number && <span>{number}</span>}</>;
-    },
-    Default: () => {
-      return (
-        <>
-          <Indicator.Dot />
-          {text && <span>{text}</span>}
-        </>
-      );
-    },
   };
 
   return (
     <Indicator.Wrapper>
-      {variant === "badge" && <Indicator.Badge />}
-      {variant === "count" && <Indicator.Count />}
-      {variant === "default" && <Indicator.Default />}
+      {variant !== "count" && <Indicator.Dot />}
+      <span>{variant === "count" ? number : text}</span>
     </Indicator.Wrapper>
   );
 };
