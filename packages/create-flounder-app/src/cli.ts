@@ -73,6 +73,7 @@ async function createApp(
   await downloadAndExtractRepo(repositoryPath);
   await installDependencies();
   await runAfterGenerate();
+  await createInitialCommit();
 }
 
 async function downloadAndExtractRepo(repositoryPath: IRepositoryPath) {
@@ -152,6 +153,13 @@ const logger = {
   },
 };
 
+async function createInitialCommit() {
+  logger.yellow("Initializing git repository...");
+  shell.exec("git init");
+  shell.exec("git commit -am 'Initial commit from cfa'");
+  logger.green("Created first commit!");
+}
+
 run().then((path: string) =>
-  console.log(chalk.green(`Successfully Created project in ${path} :)`))
+  logger.green(`Successfully Created project in ${path} :)`)
 );
