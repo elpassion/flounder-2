@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ReactComponent as PlusIcon } from "icons/plus.svg";
+import { ReactComponent as MinusIcon } from "icons/minus.svg";
 import classNames from "classnames";
 import React from "react";
 import {
@@ -21,7 +22,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
             <div key={id} className={"mb-3"}>
               <Accordion.Button title={title} expanded={expanded} icon={icon}>
                 <Accordion.Icon>
-                  <PlusIcon />
+                  {expanded ? <MinusIcon /> : <PlusIcon />}
                 </Accordion.Icon>
               </Accordion.Button>
               {expanded && (
@@ -34,8 +35,8 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
     },
     Button: ({ children, title, expanded, icon }: AccordionButtonProps) => {
       const buttonVariants = {
-        bordered: `border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600 ${
-          expanded && "rounded-t border-neutral-50 bg-neutral-50"
+        bordered: `border-b py-3 pl-3 pr-4 text-neutral-600 ${
+          expanded && "border-transparent"
         }`,
         solid: `rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100 ${
           expanded && "bg-neutral-100"
@@ -63,7 +64,12 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
       };
 
       return (
-        <div className={classNames("h-4 w-4 shrink-0", iconVariants[icon])}>
+        <div
+          className={classNames(
+            "flex h-4 w-4 shrink-0 items-center",
+            iconVariants[icon]
+          )}
+        >
           {children}
         </div>
       );
@@ -77,7 +83,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
       return (
         <div
           className={classNames(
-            "rounded-b bg-neutral-50 py-3 pr-3 text-xs text-neutral-600",
+            "rounded-b py-3 pr-3 text-xs text-neutral-600",
             iconVariants[icon]
           )}
         >
