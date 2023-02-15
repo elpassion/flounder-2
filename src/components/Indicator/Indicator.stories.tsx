@@ -64,18 +64,18 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
       return (
         <>
           <Indicator.Dot />
-          {text}
+          {text && <span>{text}</span>}
         </>
       );
     },
     Count: () => {
-      return <>{number}</>;
+      return <>{number && <span>{number}</span>}</>;
     },
     Default: () => {
       return (
         <>
           <Indicator.Dot />
-          {text}
+          {text && <span>{text}</span>}
         </>
       );
     },
