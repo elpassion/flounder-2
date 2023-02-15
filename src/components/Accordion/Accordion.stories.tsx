@@ -35,7 +35,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
     },
     Button: ({ children, title, expanded, icon }: AccordionButtonProps) => {
       const buttonVariants = {
-        bordered: `border-b py-3 pl-3 pr-4 text-neutral-600 ${
+        bordered: `border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600 ${
           expanded && "border-transparent"
         }`,
         solid: `rounded bg-neutral-50 py-3 pl-3 pr-4 text-neutral-700 hover:bg-neutral-100 ${
