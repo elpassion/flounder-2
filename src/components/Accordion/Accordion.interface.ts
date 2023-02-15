@@ -24,4 +24,4 @@ export interface AccordionButtonProps
 
 export interface AccordionBodyProps
   extends Pick<AccordionItemProps, "description" | "expanded">,
-    AccordionIconPositionVariants {}
+    Pick<AccordionIconPositionVariants, "align"> {}

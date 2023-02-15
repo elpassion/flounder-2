@@ -114,7 +114,7 @@ export default {
   args: {
     variant: "bordered",
     icon: {
-      align: "right",
+      align: "left",
     },
     items: [
       {
