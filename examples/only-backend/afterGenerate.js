@@ -13,9 +13,10 @@ const run = async () => {
   const clientName = await readline.question(
     'Specify client name used on AWS:\n'
   );
+  await readline.close();
 
-  const clientNameRegex = /.*(elpassion).*#REPLACE_CLIENT/;
-  const projectNameRegex = /.*(fch).*#REPLACE_PROJECT/;
+  const clientNameRegex = /.*(elpassion).*#REPLACE_CLIENT/g;
+  const projectNameRegex = /.*(fch).*#REPLACE_PROJECT/g;
 
   const results = replace.sync({
     files: 'iac/**/*',
