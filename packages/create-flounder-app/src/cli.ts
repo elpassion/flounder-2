@@ -156,7 +156,8 @@ const logger = {
 async function createInitialCommit() {
   logger.yellow("Initializing git repository...");
   shell.exec("git init");
-  shell.exec("git commit -am 'Initial commit from cfa'");
+  shell.exec("git add -A");
+  shell.exec("git commit -m 'Initial commit from cfa'");
   logger.green("Created first commit!");
 }
 
