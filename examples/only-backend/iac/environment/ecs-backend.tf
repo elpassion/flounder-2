@@ -26,16 +26,7 @@ locals {
       value = tostring(v)
     }
   ]
-  backend_container_secrets = [
-    {
-      name = "FLOAT_TOKEN"
-      valueFrom = module.float_token_secret.secret_arn
-    },
-    {
-      name = "CALAMARI_API_KEY"
-      valueFrom = module.calamari_api_key_secret.secret_arn
-    },
-  ]
+  backend_container_secrets = []
 }
 
 data "aws_ecr_repository" "backend" {
@@ -112,36 +103,4 @@ resource "aws_cloudwatch_log_metric_filter" "backend_500" {
     namespace = var.namespace
     value     = "1"
   }
-}
-
-module "float_token_secret" {
-  source = "git@github.com:elpassion/terraform-aws-secrets-manager-secret.git?ref=0.1.1"
-
-  namespace = var.namespace
-  stage = var.stage
-  name = "float_token_secret"
-  tags = local.additional_tags
-
-  secret_string = "example"
-}
-
-resource "aws_iam_role_policy_attachment" "backend_float_token_secret" {
-  policy_arn = module.float_token_secret.iam_policy_arn_read_secret
-  role = module.backend_ecs.ecs_task_exec_role_name
-}
-
-module "calamari_api_key_secret" {
-  source = "git@github.com:elpassion/terraform-aws-secrets-manager-secret.git?ref=0.1.1"
-
-  namespace = var.namespace
-  stage = var.stage
-  name = "calamari_api_key_secret"
-  tags = local.additional_tags
-
-  secret_string = "example"
-}
-
-resource "aws_iam_role_policy_attachment" "backend_calamari_api_key_secret" {
-  policy_arn = module.calamari_api_key_secret.iam_policy_arn_read_secret
-  role = module.backend_ecs.ecs_task_exec_role_name
 }

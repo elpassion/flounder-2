@@ -1,9 +1,14 @@
-const readline = require('readline').createInterface({
+const replace = require('replace-in-file');
+
+const readline = require('readline/promises').createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-readline.question('Who are you?', (name) => {
-  console.log(`Hey there ${name}!`);
-  readline.close();
-});
+const projectName = await readline.question(
+  'Specify project name used on AWS:\n'
+);
+
+const clientName = await readline.question(
+  'Specify client name used on AWS:\n'
+);
