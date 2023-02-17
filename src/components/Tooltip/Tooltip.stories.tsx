@@ -28,12 +28,12 @@ export const Tooltip: ComponentStory<React.FC<TooltipProps>> = ({
   variant = "white",
 }) => {
   const positionVariants = {
-    top: "before:-top-2 before:right-1/2 before:translate-x-1/2",
+    top: "before:-top-2 before:right-1/2 before:translate-x-1/2 before:shadow-tooltipTop",
     right:
-      "before:-right-2 before:bottom-1/2 before:translate-y-1/2",
+      "before:-right-2 before:bottom-1/2 before:translate-y-1/2 before:shadow-tooltipRight",
     bottom:
-      "before:-bottom-[7px] before:right-1/2 before:translate-x-1/2",
-    left: "before:-left-[7px] before:bottom-1/2 before:translate-y-1/2",
+      "before:-bottom-[7px] before:right-1/2 before:translate-x-1/2 before:shadow-tooltipBottom",
+    left: "before:-left-[7px] before:bottom-1/2 before:translate-y-1/2 before:shadow-tooltipLeft",
   };
 
   const colorVariants = {
@@ -50,7 +50,7 @@ export const Tooltip: ComponentStory<React.FC<TooltipProps>> = ({
   return (
     <div
       className={classNames(
-        "relative flex max-w-fit flex-col gap-1.5 rounded border py-2 px-3 text-xs shadow-tooltip",
+        "relative flex w-fit max-w-xs flex-col gap-1.5 rounded border py-2 px-3 text-xs shadow-tooltip",
         "before:content'' before:absolute before:h-4 before:w-4 before:rotate-[135deg] before:rounded-[1px]",
         positionVariants[position],
         colorVariants[variant]
