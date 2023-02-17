@@ -11,7 +11,7 @@ import {
 
 export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
   variant,
-  icon,
+  iconAlignment,
   items,
 }) => {
   const Accordion = {
@@ -20,20 +20,32 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         <div className="w-full">
           {items.map(({ title, id, description, expanded }) => (
             <div key={id} className={"mb-3"}>
-              <Accordion.Button title={title} expanded={expanded} icon={icon}>
+              <Accordion.Button
+                title={title}
+                expanded={expanded}
+                iconAlignment={iconAlignment}
+              >
                 <Accordion.Icon>
                   {expanded ? <MinusIcon /> : <PlusIcon />}
                 </Accordion.Icon>
               </Accordion.Button>
               {expanded && (
-                <Accordion.Body description={description} icon={icon} />
+                <Accordion.Body
+                  description={description}
+                  iconAlignment={iconAlignment}
+                />
               )}
             </div>
           ))}
         </div>
       );
     },
-    Button: ({ children, title, expanded, icon }: AccordionButtonProps) => {
+    Button: ({
+      children,
+      title,
+      expanded,
+      iconAlignment,
+    }: AccordionButtonProps) => {
       const buttonVariants = {
         bordered: `border-b border-neutral-300 py-3 pl-3 pr-4 text-neutral-600 ${
           expanded && "border-transparent"
@@ -47,7 +59,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         <button
           className={classNames(
             `flex w-full items-center text-xs font-bold transition ease-in ${
-              icon === "right" && "justify-between"
+              iconAlignment === "right" && "justify-between"
             }`,
             buttonVariants[variant]
           )}
@@ -67,14 +79,14 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         <div
           className={classNames(
             "flex h-4 w-4 shrink-0 items-center",
-            iconVariants[icon]
+            iconVariants[iconAlignment]
           )}
         >
           {children}
         </div>
       );
     },
-    Body: ({ description, icon }: AccordionBodyProps) => {
+    Body: ({ description, iconAlignment }: AccordionBodyProps) => {
       const iconVariants = {
         left: "pl-9",
         right: "pl-3",
@@ -84,7 +96,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
         <div
           className={classNames(
             "rounded-b py-3 pr-3 text-xs text-neutral-600",
-            iconVariants[icon]
+            iconVariants[iconAlignment]
           )}
         >
           {description}
@@ -94,7 +106,11 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
   };
 
   return (
-    <Accordion.BaseAccordion variant={variant} icon={icon} items={items} />
+    <Accordion.BaseAccordion
+      variant={variant}
+      iconAlignment={iconAlignment}
+      items={items}
+    />
   );
 };
 
@@ -108,7 +124,7 @@ export default {
         options: ["bordered", "solid"],
       },
     },
-    icon: {
+    iconAlignment: {
       control: {
         type: "select",
         options: ["left", "right"],
@@ -117,7 +133,7 @@ export default {
   },
   args: {
     variant: "bordered",
-    icon: "left",
+    iconAlignment: "left",
     items: [
       {
         id: 1,

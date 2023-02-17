@@ -11,15 +11,15 @@ type AccordionIconAlignProps = "left" | "right";
 
 export interface AccordionProps {
   variant: "bordered" | "solid";
-  icon: AccordionIconAlignProps;
+  iconAlignment: AccordionIconAlignProps;
   items: AccordionItemProps[];
 }
 
 export interface AccordionButtonProps
   extends Pick<AccordionItemProps, "title" | "expanded">,
-    Pick<AccordionProps, "icon">,
+    Pick<AccordionProps, "iconAlignment">,
     React.PropsWithChildren {}
 
 export interface AccordionBodyProps
   extends Pick<AccordionItemProps, "description" | "expanded">,
-    Pick<AccordionProps, "icon"> {}
+    Pick<AccordionProps, "iconAlignment"> {}
