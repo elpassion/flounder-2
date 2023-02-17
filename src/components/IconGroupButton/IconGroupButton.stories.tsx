@@ -36,7 +36,7 @@ export const IconGroupButton: ComponentStory<
           size={size}
           className={classNames(
             "-mx-1",
-            buttonRadiusVariants[index] || "rounded-none",
+            buttonRadiusVariants[index] || "mr-0.5 rounded-none",
             buttonBorderVariants[variant]
           )}
           {...button}
@@ -80,6 +80,9 @@ export default {
     size: "md",
     variant: "primary",
     buttons: [
+      {
+        icon: SlashIcon,
+      },
       {
         icon: SlashIcon,
       },
