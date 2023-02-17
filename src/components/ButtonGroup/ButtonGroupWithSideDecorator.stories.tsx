@@ -18,7 +18,7 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
             size={size}
             variant={variant}
             className={classNames(
-              "-mx-1 rounded-r-none",
+              "-mx-px rounded-r-none",
               buttonBorderVariants[variant]
             )}
             {...button}
@@ -29,7 +29,7 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
               variant={variant}
               icon={SlashIcon}
               className={classNames(
-                "-mx-1 ml-0.5 rounded-l-none",
+                "-ml-px rounded-l-none",
                 buttonBorderVariants[variant]
               )}
             />
@@ -39,7 +39,7 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
               variant={variant}
               text={"Text"}
               className={classNames(
-                "-mx-1 ml-0.5 rounded-l-none",
+                "-ml-px rounded-l-none",
                 buttonBorderVariants[variant]
               )}
             />
