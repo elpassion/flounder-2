@@ -1,12 +1,8 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Button, ButtonProps } from "../Button/Button.stories";
+import { Button } from "../Button/Button.stories";
 import { ReactComponent as SlashIcon } from "icons/slash.svg";
 import classNames from "classnames";
-
-interface ButtonGroupProps extends Pick<ButtonProps, "size" | "variant"> {
-  buttons: Omit<ButtonProps, "size" | "variant">[];
-  style: "default" | "withIconButton" | "withButton";
-}
+import { ButtonGroupProps } from "./ButtonGroup.interface";
 
 export const ButtonGroup: ComponentStory<React.FC<ButtonGroupProps>> = ({
   buttons,
