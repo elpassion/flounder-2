@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ButtonGroupProps } from "./ButtonGroup.interface";
-import { ReactComponent as SlashIcon } from "icons/slash.svg";
 import { Button } from "../Button/Button.stories";
 import classNames from "classnames";
 import { IconButton } from "../IconButton/IconButton.stories";
@@ -18,7 +17,7 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
             size={size}
             variant={variant}
             className={classNames(
-              "-mx-px rounded-r-none",
+              "-mx-px rounded-r-none hover:z-10",
               buttonBorderVariants[variant]
             )}
             {...button}
@@ -27,9 +26,9 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
             <IconButton
               size={size}
               variant={variant}
-              icon={SlashIcon}
+              icon={"&#xea8a"}
               className={classNames(
-                "-ml-px rounded-l-none",
+                "-ml-px rounded-l-none hover:z-10",
                 buttonBorderVariants[variant]
               )}
             />
@@ -39,7 +38,7 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
               variant={variant}
               text={"Text"}
               className={classNames(
-                "-ml-px rounded-l-none",
+                "-ml-px rounded-l-none hover:z-10",
                 buttonBorderVariants[variant]
               )}
             />
@@ -93,11 +92,11 @@ export default {
     buttons: [
       {
         text: "Button 1",
-        leftIcon: SlashIcon,
+        leftIcon: "&#xea8a",
       },
       {
         text: "Button 1",
-        leftIcon: SlashIcon,
+        leftIcon: "&#xea8a",
       },
     ],
   },

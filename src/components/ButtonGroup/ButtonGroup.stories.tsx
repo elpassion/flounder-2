@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Button } from "../Button/Button.stories";
-import { ReactComponent as SlashIcon } from "icons/slash.svg";
 import classNames from "classnames";
 import { ButtonGroupProps } from "./ButtonGroup.interface";
 import {
@@ -69,15 +68,15 @@ export default {
     buttons: [
       {
         text: "Button 1",
-        leftIcon: SlashIcon,
+        leftIcon: "&#xea8a",
       },
       {
         text: "Button 2",
-        leftIcon: SlashIcon,
+        leftIcon: "&#xea8a",
       },
       {
         text: "Button 3",
-        leftIcon: SlashIcon,
+        leftIcon: "&#xea8a",
       },
     ],
   },

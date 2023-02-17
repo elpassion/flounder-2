@@ -1,6 +1,5 @@
 import { ComponentStory } from "@storybook/react";
 import { IconButton, IconButtonProps } from "../IconButton/IconButton.stories";
-import { ReactComponent as SlashIcon } from "icons/slash.svg";
 import classNames from "classnames";
 import {
   buttonBorderVariants,
@@ -69,16 +68,16 @@ export default {
     variant: "primary",
     buttons: [
       {
-        icon: SlashIcon,
+        icon: "&#xea8a",
       },
       {
-        icon: SlashIcon,
+        icon: "&#xea8a",
       },
       {
-        icon: SlashIcon,
+        icon: "&#xea8a",
       },
       {
-        icon: SlashIcon,
+        icon: "&#xea8a",
       },
     ],
   },
