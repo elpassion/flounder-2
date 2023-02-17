@@ -24,7 +24,6 @@ export const VerticalStepper: ComponentStory<React.FC<StepperProps>> = ({
   activeStep,
   steps,
   size = "md",
-  icon,
   completeVariant,
   onClick,
 }) => {
@@ -102,6 +101,7 @@ export const VerticalStepper: ComponentStory<React.FC<StepperProps>> = ({
       status,
       size = "md",
       completeVariant = "default",
+      icon,
       className,
       ...props
     }: StepProps) => {
@@ -126,14 +126,26 @@ export const VerticalStepper: ComponentStory<React.FC<StepperProps>> = ({
           "bg-neutral-50 text-neutral-300 border-neutral-50 hover:bg-neutral-100 hover:border-neutral-100 focus:bg-white focus:border-neutral-100",
       };
 
-      const renderCompleteContent = (index: number) =>
-        completeVariant === "check" && status === StepStatuses.COMPLETE ? (
-          <span className={classNames("font-icons", iconSizeVariants[size])}>
-            &#xeace;
-          </span>
+      const renderContent = (
+        index: number,
+        status: StepStatuses
+      ) => {
+        if (completeVariant === "check" && status === StepStatuses.COMPLETE) {
+          return (
+            <span className={classNames("font-icons", iconSizeVariants[size])}>
+              &#xeace;
+            </span>
+          );
+        }
+        return icon ? (
+          <span
+            className={classNames("font-icons", iconSizeVariants[size])}
+            dangerouslySetInnerHTML={{ __html: `${icon};` }}
+          />
         ) : (
-          `${index + 1}`
+          <>{`${index + 1}`}</>
         );
+      };
 
       return (
         <div className="flex flex-row gap-3">
@@ -146,14 +158,7 @@ export const VerticalStepper: ComponentStory<React.FC<StepperProps>> = ({
             )}
             onClick={onClick}
           >
-            {icon ? (
-              <span
-                className={classNames("font-icons", iconSizeVariants[size])}
-                dangerouslySetInnerHTML={{ __html: `${icon};` }}
-              />
-            ) : (
-              renderCompleteContent(index)
-            )}
+            {renderContent(index, status)}
           </button>
           <VerticalStepper.TitleSection
             status={status}
@@ -229,11 +234,6 @@ export default {
       options: ["sm", "md", "lg"],
       description: "sm | md | lg",
     },
-    icon: {
-      options: [undefined, "&#xeaf7"],
-      control: { type: "select", labels: { "&#xeaf7": "sandbox" } },
-      description: "icon",
-    },
     completeVariant: {
       control: "select",
       options: ["default", "check"],
@@ -243,11 +243,11 @@ export default {
   args: {
     activeStep: 1,
     size: "md",
-    icon: undefined,
     completeVariant: "default",
     steps: [
       {
         id: "first",
+        icon: "&#xea13",
         stepTitle: "first step",
         stepDescription: "step description",
       },
@@ -258,6 +258,7 @@ export default {
       },
       {
         id: "third",
+        icon: "&#xea59",
         stepTitle: "third step",
         stepDescription: "step description",
       },
@@ -268,6 +269,7 @@ export default {
       },
       {
         id: "fifth",
+        icon: "&#xeaf7",
         stepTitle: "fifth step",
         stepDescription: "step description",
       },

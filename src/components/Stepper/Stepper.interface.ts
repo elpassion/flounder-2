@@ -4,6 +4,7 @@ type Sizes = "sm" | "md" | "lg";
 
 interface StepInterface {
   id: string | number;
+  icon?: IconTypes;
   stepTitle?: string;
   stepDescription?: string;
 }
@@ -33,7 +34,7 @@ export interface StepProps
 }
 
 export interface StepperProps
-  extends Pick<StepProps, "size" | "onClick" | "icon" | "completeVariant"> {
+  extends Pick<StepProps, "size" | "onClick" | "completeVariant"> {
   steps: StepInterface[];
   activeStep: number;
 }

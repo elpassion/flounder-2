@@ -24,7 +24,6 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
   activeStep,
   steps,
   size = "md",
-  icon,
   completeVariant,
   onClick,
 }) => {
@@ -87,6 +86,7 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
       size = "md",
       completeVariant = "default",
       className,
+      icon,
       ...props
     }: StepProps) => {
       const stepStatusStyle = {
@@ -109,14 +109,23 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
         lg: "text-2xl",
       };
 
-      const renderCompleteContent = (index: number) =>
-        completeVariant === "check" && status === StepStatuses.COMPLETE ? (
-          <span className={classNames("font-icons", iconSizeVariants[size])}>
-            &#xeace;
-          </span>
+      const renderContent = (index: number, status: StepStatuses) => {
+        if (completeVariant === "check" && status === StepStatuses.COMPLETE) {
+          return (
+            <span className={classNames("font-icons", iconSizeVariants[size])}>
+              &#xeace;
+            </span>
+          );
+        }
+        return icon ? (
+          <span
+            className={classNames("font-icons", iconSizeVariants[size])}
+            dangerouslySetInnerHTML={{ __html: `${icon};` }}
+          />
         ) : (
-          `${index + 1}`
+          <>{`${index + 1}`}</>
         );
+      };
 
       return (
         <div className="flex flex-col items-center gap-3">
@@ -129,14 +138,7 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
             )}
             onClick={onClick}
           >
-            {icon ? (
-              <span
-                className={classNames("font-icons", iconSizeVariants[size])}
-                dangerouslySetInnerHTML={{ __html: `${icon};` }}
-              />
-            ) : (
-              renderCompleteContent(index)
-            )}
+            {renderContent(index, status)}
           </button>
           <HorizontalStepper.TitleSection
             status={status}
@@ -205,11 +207,6 @@ export default {
       options: ["sm", "md", "lg"],
       description: "sm | md | lg",
     },
-    icon: {
-      options: [undefined, "&#xeaf7"],
-      control: { type: "select", labels: { "&#xeaf7": "sandbox" } },
-      description: "icon",
-    },
     completeVariant: {
       control: "select",
       options: ["default", "check"],
@@ -219,11 +216,11 @@ export default {
   args: {
     activeStep: 1,
     size: "md",
-    icon: undefined,
     completeVariant: "default",
     steps: [
       {
         id: "first",
+        icon: "&#xea13",
         stepTitle: "first step",
         stepDescription: "step description",
       },
@@ -234,6 +231,7 @@ export default {
       },
       {
         id: "third",
+        icon: "&#xea59",
         stepTitle: "third step",
         stepDescription: "step description",
       },
@@ -244,6 +242,7 @@ export default {
       },
       {
         id: "fifth",
+        icon: "&#xeaf7",
         stepTitle: "fifth step",
         stepDescription: "step description",
       },
