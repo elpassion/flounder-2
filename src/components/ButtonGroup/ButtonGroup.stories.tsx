@@ -3,28 +3,16 @@ import { Button } from "../Button/Button.stories";
 import { ReactComponent as SlashIcon } from "icons/slash.svg";
 import classNames from "classnames";
 import { ButtonGroupProps } from "./ButtonGroup.interface";
+import {
+  buttonBorderVariants,
+  buttonRadiusVariants,
+} from "./ButtonGroup.styles";
 
 export const ButtonGroup: ComponentStory<React.FC<ButtonGroupProps>> = ({
   buttons,
   size,
   variant,
 }) => {
-  const lastIndex = buttons.length - 1;
-
-  const buttonRadiusVariants = {
-    0: "rounded-r-none",
-    [lastIndex]: "rounded-l-none",
-  };
-
-  const buttonBorderVariants = {
-    primary: "border-primary-100",
-    outlined: "",
-    ghost: "",
-    destructive: "border-error-100",
-    destructiveGhost: "",
-    destructiveOutlined: "",
-  };
-
   return (
     <div className={"inline-flex"}>
       {buttons.map((button, index) => (
@@ -33,8 +21,8 @@ export const ButtonGroup: ComponentStory<React.FC<ButtonGroupProps>> = ({
           size={size}
           variant={variant}
           className={classNames(
-            "-mx-1",
-            buttonRadiusVariants[index] || "ml-0.5 rounded-none",
+            "hover:z-10",
+            buttonRadiusVariants(buttons)[index] || "-ml-px rounded-none",
             buttonBorderVariants[variant]
           )}
           {...button}

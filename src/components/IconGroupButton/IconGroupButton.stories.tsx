@@ -2,6 +2,10 @@ import { ComponentStory } from "@storybook/react";
 import { IconButton, IconButtonProps } from "../IconButton/IconButton.stories";
 import { ReactComponent as SlashIcon } from "icons/slash.svg";
 import classNames from "classnames";
+import {
+  buttonBorderVariants,
+  buttonRadiusVariants,
+} from "../ButtonGroup/ButtonGroup.styles";
 
 interface IconGroupButtonProps
   extends Pick<IconButtonProps, "size" | "variant"> {
@@ -11,22 +15,6 @@ interface IconGroupButtonProps
 export const IconGroupButton: ComponentStory<
   React.FC<IconGroupButtonProps>
 > = ({ buttons, size, variant }) => {
-  const lastIndex = buttons.length - 1;
-
-  const buttonRadiusVariants = {
-    0: "rounded-r-none mr-0.5",
-    [lastIndex]: "rounded-l-none",
-  };
-
-  const buttonBorderVariants = {
-    primary: "border-primary-100",
-    outlined: "",
-    ghost: "",
-    destructive: "border-error-100",
-    destructiveOutlined: "",
-    destructiveGhost: "",
-  };
-
   return (
     <div className={"inline-flex"}>
       {buttons.map((button, index) => (
@@ -35,8 +23,8 @@ export const IconGroupButton: ComponentStory<
           key={index}
           size={size}
           className={classNames(
-            "-mx-1",
-            buttonRadiusVariants[index] || "mr-0.5 rounded-none",
+            "hover:z-10",
+            buttonRadiusVariants(buttons)[index] || "-ml-px rounded-none",
             buttonBorderVariants[variant]
           )}
           {...button}
@@ -80,6 +68,9 @@ export default {
     size: "md",
     variant: "primary",
     buttons: [
+      {
+        icon: SlashIcon,
+      },
       {
         icon: SlashIcon,
       },
