@@ -8,10 +8,6 @@ import {
   Title,
 } from "@storybook/addon-docs";
 
-import { ReactComponent as AlertIcon } from "icons/alert-circle.svg";
-import { ReactComponent as HelpIcon } from "icons/help-circle.svg";
-import { ReactComponent as ChevronIcon } from "icons/chevron-down.svg";
-import { ReactComponent as SlashIcon } from "icons/slash.svg";
 import {
   SuffixProps,
   InputProps,
@@ -20,8 +16,6 @@ import {
   TextProps,
   IconProps,
 } from "./Input.interface";
-
-const icons = { undefined, HelpIcon, SlashIcon };
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
@@ -47,7 +41,6 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
   ...props
 }) => {
   const isError = !!errorMessage;
-  const iconSize = 16;
 
   const inputBorderColorStyle: { [key: string]: string } = {
     true: "border-error-500 focus:border-error-500",
@@ -80,7 +73,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
     Prefix: ({
       inputVariant,
       prefixText,
-      prefixIcon: PrefixIcon = SlashIcon,
+      prefixIcon = "&#xea6b",
       ...props
     }: PrefixProps) => {
       const isPrefix =
@@ -119,10 +112,12 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
             <Input.DropdownButton text={prefixText} {...props} />
           )}
           {inputVariant === "prefixIcon" && (
-            <PrefixIcon
-              width={20}
-              height={20}
-              className={disabled ? "text-neutral-200" : "text-neutral-400"}
+            <span
+              className={classNames(
+                "font-icons text-xl",
+                disabled ? "text-neutral-200" : "text-neutral-400"
+              )}
+              dangerouslySetInnerHTML={{ __html: `${prefixIcon};` }}
             />
           )}
         </div>
@@ -148,7 +143,7 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
     DropdownButton: ({ text, disabled }: DropdownButtonProps) => (
       <button className="flex items-center gap-2" disabled={disabled}>
         <span>{text}</span>
-        <ChevronIcon height={iconSize} width={iconSize} />
+        <span className="font-icons text-base">&#xeacb;</span>
       </button>
     ),
     Text: ({ text, type }: TextProps) => {
@@ -165,8 +160,8 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
         </p>
       );
     },
-    Icon: ({ tooltipIcon: Icon, isError }: IconProps) => {
-      if (!Icon) return <></>;
+    Icon: ({ tooltipIcon, isError }: IconProps) => {
+      if (!tooltipIcon) return <></>;
 
       return (
         <div
@@ -177,13 +172,14 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
           )}
         >
           {isError ? (
-            <AlertIcon
-              height={iconSize}
-              width={iconSize}
-              className="text-error-500"
-            />
+            <span className="font-icons text-base text-error-500">
+              &#xeb1b;
+            </span>
           ) : (
-            <Icon height={iconSize} width={iconSize} />
+            <span
+              className="font-icons text-base"
+              dangerouslySetInnerHTML={{ __html: `${tooltipIcon};` }}
+            />
           )}
         </div>
       );
@@ -296,20 +292,18 @@ export default {
       description: "only examples: text | number | email | password",
     },
     tooltipIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
+      options: [undefined, "&#xea6b", "&#xea8a"],
       control: {
         type: "select",
-        labels: { HelpIcon: "help", SlashIcon: "slash" },
+        labels: { "&#xea6b": "help", "&#xea8a": "slash" },
       },
       description: "icon",
     },
     prefixIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
+      options: [undefined, "&#xea6b", "&#xea8a"],
       control: {
         type: "select",
-        labels: { HelpIcon: "help", SlashIcon: "slash" },
+        labels: { "&#xea6b": "help", "&#xea8a": "slash" },
       },
       description: "icon",
     },
@@ -328,9 +322,10 @@ export default {
     errorMessage: "",
     inputVariant: "default",
     prefixOrSuffixText: "https://",
+    tooltipIcon: "&#xea6b",
+    prefixIcon: "&#xea6b",
+    inputType: "text",
     type: "text",
-    tooltipIcon: HelpIcon,
-    prefixIcon: HelpIcon,
     ariaLive: "polite",
     ariaLabel: "",
   },

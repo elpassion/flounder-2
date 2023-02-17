@@ -7,11 +7,7 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-
-import { ReactComponent as BookmarkIcon } from "icons/bookmark.svg";
-import { ReactComponent as TrashIcon } from "icons/trash.svg";
-
-const icons = { BookmarkIcon, TrashIcon };
+import { IconTypes } from "utils/iconType";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:30vw">DON’T</div> |
@@ -22,7 +18,7 @@ const docs: string = `# Usage <br/>
 |On hover, include a tooltip that describes the button’s action, rather than the name of the icon itself | |`;
 
 export interface IconButtonProps {
-  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  icon: IconTypes;
   variant?:
     | "primary"
     | "outlined"
@@ -38,7 +34,7 @@ export interface IconButtonProps {
 }
 
 export const IconButton: ComponentStory<React.FC<IconButtonProps>> = ({
-  icon: Icon,
+  icon,
   variant = "primary",
   size = "md",
   disabled,
@@ -67,6 +63,12 @@ export const IconButton: ComponentStory<React.FC<IconButtonProps>> = ({
     lg: "p-3 w-12 h-12",
   };
 
+  const iconSizeVariants = {
+    sm: "text-base",
+    md: "text-xl",
+    lg: "text-2xl",
+  }
+
   return (
     <button
       className={classNames(
@@ -82,7 +84,10 @@ export const IconButton: ComponentStory<React.FC<IconButtonProps>> = ({
       aria-label={ariaLabel}
       onClick={onClick}
     >
-      <Icon height="100%" width="100%" />
+      <span
+        className={classNames("font-icons", iconSizeVariants[size])}
+        dangerouslySetInnerHTML={{ __html: `${icon};` }}
+      />
     </button>
   );
 };
@@ -92,13 +97,12 @@ export default {
   component: IconButton,
   argTypes: {
     icon: {
-      options: Object.keys(icons),
-      mapping: icons,
+      options: ["&#xeaf4", "&#xea65"],
       control: {
         type: "select",
         labels: {
-          BookmarkIcon: "bookmark",
-          TrashIcon: "trash",
+          "&#xeaf4": "bookmark",
+          "&#xea65": "trash",
         },
       },
       type: { required: true, name: "string" },
@@ -133,7 +137,7 @@ export default {
     },
   },
   args: {
-    icon: BookmarkIcon,
+    icon: "&#xea65",
     variant: "primary",
     size: "md",
     disabled: false,

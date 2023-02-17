@@ -8,8 +8,6 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 
-import { ReactComponent as CheckIcon } from "icons/check.svg";
-
 export interface CheckboxProps {
   name: string;
   checked?: boolean;
@@ -61,9 +59,9 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
     md: "text-base",
   };
 
-  const iconSizesVariants = {
-    sm: 10,
-    md: 12,
+  const iconSizeVariants = {
+    sm: "text-xs",
+    md: "text-sm",
   };
 
   return (
@@ -111,11 +109,9 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             error && "peer-focus:border-error-500 peer-focus:ring-0"
           )}
         >
-          <CheckIcon
-            height={iconSizesVariants[size]}
-            width="100%"
-            strokeWidth={4}
-          />
+          <span
+          className={classNames("font-icons", iconSizeVariants[size])}
+        >&#xeace;</span>
         </div>
         <div
           className={classNames("peer-disabled:text-neutral-200", fontColor)}

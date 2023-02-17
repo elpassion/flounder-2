@@ -1,3 +1,5 @@
+import { IconTypes } from "utils/iconType";
+
 export interface ToastChildrenProps extends React.PropsWithChildren {
   className?: string;
 }
@@ -8,7 +10,7 @@ export interface CloseButtonProps {
 }
 
 export interface IconToastProps {
-  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  icon: IconTypes;
   className?: string;
 }
 
@@ -47,7 +49,7 @@ export interface BaseSmallToastProps
 export interface ToastProps extends ActionToastProps, CloseButtonProps {
   title?: string;
   description?: string;
-  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  icon?: IconTypes;
   firstActionText?: string;
   secondActionText?: string;
 }

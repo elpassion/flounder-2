@@ -15,12 +15,6 @@ import {
   TextToastProps,
   ToastProps,
 } from "./Toast.interface";
-import { ReactComponent as CloseIcon } from "icons/close.svg";
-import { ReactComponent as InboxIcon } from "icons/inbox.svg";
-import { ReactComponent as InfoIcon } from "icons/info.svg";
-import { ReactComponent as AlertIcon } from "icons/alert-triangle.svg";
-
-const icons = { undefined, InboxIcon, InfoIcon, AlertIcon };
 
 const docs: string = `# Usage <br/> 
 | DO | DON’T |
@@ -38,7 +32,7 @@ export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
   secondActionText,
   ...props
 }) => {
-  const iconSize = 22;
+
   const Toast = {
     BaseSmallToast: ({
       children,
@@ -78,10 +72,11 @@ export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
         </p>
       );
     },
-    Icon: ({ icon: Icon }: IconToastProps) => (
-      <div className={`w-[${iconSize}px]`}>
-        <Icon height={iconSize} width={iconSize} />
-      </div>
+    Icon: ({ icon }: IconToastProps) => (
+        <span
+          className="font-icons text-xl"
+          dangerouslySetInnerHTML={{ __html: `${icon};` }}
+        />
     ),
     Action: ({ children, onClick }: ActionToastProps) => {
       return (
@@ -96,7 +91,7 @@ export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
     CloseButton: ({ onClose }: CloseButtonProps) => {
       return (
         <button onClick={onClose} aria-label="close">
-          <CloseIcon focusable="false"/>
+          <span className="font-icons text-2xl">&#xea1d;</span>
         </button>
       );
     },
@@ -133,11 +128,10 @@ export default {
       description: "string",
     },
     icon: {
-      options: Object.keys(icons),
-      mapping: icons,
+      options: [undefined, "&#xea64", "&#xea62", "&#xeb19"],
       control: {
         type: "select",
-        labels: { InfoIcon: "info", InboxIcon: "inbox", AlertIcon: "alert" },
+        labels: { "&#xea62": "info", "&#xea64": "inbox", "&#xeb19": "alert" },
       },
       description: "icon",
     },
@@ -168,7 +162,7 @@ export default {
   args: {
     title: "Alert title",
     description: "Alert description alert description",
-    icon: InfoIcon,
+    icon: "&#xea62",
     firstActionText: "Action",
     secondActionText: "Action",
     backgroundColor: "bg-neutral-700",

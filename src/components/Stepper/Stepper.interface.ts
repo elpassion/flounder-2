@@ -1,3 +1,5 @@
+import { IconTypes } from "utils/iconType";
+
 type Sizes = "sm" | "md" | "lg";
 
 interface StepInterface {
@@ -25,7 +27,7 @@ export interface StepProps
   index: number;
   status: StepStatuses;
   onClick?: () => void;
-  icon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  icon?: IconTypes;
   completeVariant?: "default" | "check";
   className?: string;
 }

@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
 
-import { ReactComponent as SlashIcon } from "icons/slash.svg";
+import { IconTypes } from "utils/iconType";
 
 export interface ButtonProps {
   text: string;
@@ -12,8 +12,8 @@ export interface ButtonProps {
     | "destructive"
     | "destructiveGhost"
     | "destructiveOutlined";
-  leftIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
-  rightIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  leftIcon?: IconTypes;
+  rightIcon?: IconTypes;
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
   onClick: () => void;
@@ -21,14 +21,12 @@ export interface ButtonProps {
   ariaLabel?: string;
 }
 
-const icons = { undefined, SlashIcon };
-
 export const Button: ComponentStory<React.FC<ButtonProps>> = ({
   text,
   variant,
   size = "md",
-  leftIcon: LeftIcon,
-  rightIcon: RightIcon,
+  leftIcon,
+  rightIcon,
   disabled,
   onClick,
   className,
@@ -51,8 +49,14 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
 
   const sizeVariants = {
     sm: "h-8 gap-2 py-1.5 px-3.5 text-sm",
-    md: "h-11 text-md gap-2",
-    lg: "h-12 gap-4 text-lg",
+    md: "h-11 text-base py-2.5 px-4 gap-2",
+    lg: "h-12 gap-4 py-2.5 px-4 text-lg",
+  };
+
+  const iconSizeVariants = {
+    sm: "text-base",
+    md: "text-base",
+    lg: "text-2xl",
   };
 
   return (
@@ -61,7 +65,7 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
       aria-disabled={disabled}
       aria-label={ariaLabel}
       className={classNames(
-        "flex items-center justify-center rounded-lg border py-2.5 px-5",
+        "flex items-center justify-center rounded-lg border",
         "disabled:border-neutral-200 disabled:bg-neutral-200 disabled:text-white disabled:hover:shadow-none",
         "hover:shadow-button",
         styleVariants[variant],
@@ -70,16 +74,18 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
       )}
       onClick={onClick}
     >
-      {!!LeftIcon && (
-        <>
-          <LeftIcon height="100%" width="100%" />
-        </>
+      {!!leftIcon && (
+        <span
+          className={classNames("font-icons", iconSizeVariants[size])}
+          dangerouslySetInnerHTML={{ __html: `${leftIcon};` }}
+        />
       )}
       {text}
-      {!!RightIcon && (
-        <>
-          <RightIcon height="100%" width="100%" />
-        </>
+      {!!rightIcon && (
+        <span
+          className={classNames("font-icons", iconSizeVariants[size])}
+          dangerouslySetInnerHTML={{ __html: `${rightIcon};` }}
+        />
       )}
     </button>
   );
@@ -114,15 +120,13 @@ export default {
       description: "boolean",
     },
     leftIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: { type: "select", labels: { SlashIcon: "slash" } },
+      options: [undefined, "&#xea8a"],
+      control: { type: "select", labels: { "&#xea8a": "slash" } },
       description: "icon",
     },
     rightIcon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: { type: "select", labels: { SlashIcon: "slash" } },
+      options: [undefined, "&#xea8a"],
+      control: { type: "select", labels: { "&#xea8a": "slash" } },
       description: "icon",
     },
     onClick: {

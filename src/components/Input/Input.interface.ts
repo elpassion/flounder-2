@@ -1,3 +1,5 @@
+import { IconTypes } from "utils/iconType";
+
 type inputVariants =
   | "default"
   | "prefixText"
@@ -17,7 +19,7 @@ export interface TextProps {
 }
 
 export interface IconProps {
-  tooltipIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  tooltipIcon?: IconTypes;
   isError?: boolean;
 }
 
@@ -25,7 +27,7 @@ export interface PrefixProps {
   inputVariant?: inputVariants;
   prefixText: string;
   disabled?: boolean;
-  prefixIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  prefixIcon?: IconTypes;
 }
 
 export interface SuffixProps {
@@ -43,8 +45,8 @@ export interface InputProps {
   disabled?: boolean;
   errorMessage?: string;
   inputType?: string;
-  tooltipIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
-  prefixIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
+  tooltipIcon?: IconTypes;
+  prefixIcon?: IconTypes;
   inputVariant?: inputVariants;
   ariaLive?: "polite" | "assertive" | "off";
   ariaLabel?: string;

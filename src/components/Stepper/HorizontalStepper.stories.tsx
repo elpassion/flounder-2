@@ -8,8 +8,6 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 
-import { ReactComponent as SandboxIcon } from "icons/codesandbox.svg";
-import { ReactComponent as CheckIcon } from "icons/check.svg";
 import {
   StepperProps,
   StepProps,
@@ -22,13 +20,11 @@ const docs: string = `# Usage <br/>
 | ----------- | ----------- |
 | | Avoid using long step names in horizontal steppers. |`;
 
-const icons = { undefined, SandboxIcon };
-
 export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
   activeStep,
   steps,
   size = "md",
-  icon: Icon,
+  icon,
   completeVariant,
   onClick,
 }) => {
@@ -107,9 +103,17 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
         lg: "w-11 h-11 text-base p-2.5",
       };
 
+      const iconSizeVariants = {
+        sm: "text-base",
+        md: "text-base",
+        lg: "text-2xl",
+      };
+
       const renderCompleteContent = (index: number) =>
         completeVariant === "check" && status === StepStatuses.COMPLETE ? (
-          <CheckIcon strokeWidth="2" />
+          <span className={classNames("font-icons", iconSizeVariants[size])}>
+            &#xeace;
+          </span>
         ) : (
           `${index + 1}`
         );
@@ -125,7 +129,14 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
             )}
             onClick={onClick}
           >
-            {Icon ? <Icon /> : renderCompleteContent(index)}
+            {icon ? (
+              <span
+                className={classNames("font-icons", iconSizeVariants[size])}
+                dangerouslySetInnerHTML={{ __html: `${icon};` }}
+              />
+            ) : (
+              renderCompleteContent(index)
+            )}
           </button>
           <HorizontalStepper.TitleSection
             status={status}
@@ -195,9 +206,8 @@ export default {
       description: "sm | md | lg",
     },
     icon: {
-      options: Object.keys(icons),
-      mapping: icons,
-      control: { type: "select", labels: { SandboxIcon: "sandbox" } },
+      options: [undefined, "&#xeaf7"],
+      control: { type: "select", labels: { "&#xeaf7": "sandbox" } },
       description: "icon",
     },
     completeVariant: {

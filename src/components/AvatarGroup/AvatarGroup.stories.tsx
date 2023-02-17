@@ -13,6 +13,7 @@ import classNames from "classnames";
 interface UserInterface {
   name: string;
   src: string;
+  alt?: string;
 }
 
 interface AvatarGroupProps
@@ -75,11 +76,17 @@ export default {
       description: "shape of avatar",
       options: ["circle", "square"],
     },
+    contentType: {
+      control: "select",
+      description: "icon | text",
+      options: ["icon", "text"],
+    },
   },
   args: {
     visibleAvatars: 3,
     size: "md",
     shape: "circle",
+    contentType: "text",
     avatars: [
       {
         text: "Anna Kapusta",

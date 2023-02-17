@@ -1,15 +1,10 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
 
-import { ReactComponent as BellIcon } from "icons/bell.svg";
-import { ReactComponent as AlertIcon } from "icons/alert-triangle.svg";
-import { ReactComponent as InfoIcon } from "icons/info.svg";
-import { ReactComponent as CheckIcon } from "icons/check-square.svg";
-
-const icons = { BellIcon, AlertIcon, InfoIcon, CheckIcon };
+import { IconTypes } from "utils/iconType";
 
 interface InlineMessageProps {
-  icon?: React.FC;
+  icon?: IconTypes;
   text: string;
   variant?: "default" | "success" | "warning" | "info" | "error";
   className?: string;
@@ -17,11 +12,10 @@ interface InlineMessageProps {
 
 export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
   text,
-  icon: Icon = BellIcon,
+  icon = "&#xeaf8",
   variant = "default",
   className,
 }) => {
-  const iconSize = 18;
   const inlineMessageStyleVariants = {
     default: "bg-neutral-50 text-neutral-900",
     success: "bg-primary-100 text-primary-900",
@@ -46,9 +40,13 @@ export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
         className
       )}
     >
-      <span className={classNames("self-start", iconColorVariants[variant])}>
-        <Icon height={iconSize} width={iconSize} strokeWidth={2} />
-      </span>
+      <span
+        className={classNames(
+          "self-start font-icons text-lg",
+          iconColorVariants[variant]
+        )}
+        dangerouslySetInnerHTML={{ __html: `${icon};` }}
+      />
       <p className="text-xs font-medium">{text}</p>
     </div>
   );
@@ -68,15 +66,14 @@ export default {
       description: "default | success | warning | info | error",
     },
     icon: {
-      options: Object.keys(icons),
-      mapping: icons,
+      options: ["&#xeaf8", "&#xeb19", "&#xea62", "&#xeace"],
       control: {
         type: "select",
         labels: {
-          BellIcon: "bell",
-          AlertIcon: "alert",
-          InfoIcon: "info",
-          CheckIcon: "check",
+          "&#xeaf8": "bell",
+          "&#xeb19": "alert",
+          "&#xea62": "info",
+          "&#xeace": "check",
         },
       },
       description: "icon",
@@ -85,7 +82,7 @@ export default {
   args: {
     text: "This is default message - check it out!",
     variant: "default",
-    icon: BellIcon,
+    icon: "&#xeaf8",
   },
   parameters: {
     design: {

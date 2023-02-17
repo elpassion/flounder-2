@@ -17,12 +17,6 @@ import {
   TextToastProps,
   ToastProps,
 } from "./Toast.interface";
-import { ReactComponent as CloseIcon } from "icons/close.svg";
-import { ReactComponent as InboxIcon } from "icons/inbox.svg";
-import { ReactComponent as InfoIcon } from "icons/info.svg";
-import { ReactComponent as AlertIcon } from "icons/alert-triangle.svg";
-
-const icons = { undefined, InboxIcon, InfoIcon, AlertIcon };
 
 const docs: string = `# Usage <br/> 
 | DO | DON’T |
@@ -40,7 +34,6 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
   secondActionText,
   ...props
 }) => {
-  const iconSize = 22;
   const Toast = {
     BaseToast: ({
       children,
@@ -71,16 +64,15 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
 
       return <p className={textTypeVariants[textType]}>{children}</p>;
     },
-    Icon: ({ icon: Icon }: IconToastProps) => (
-      <Icon
-        height={iconSize}
-        width={iconSize}
-        className={`min-w-[${iconSize}px]`}
+    Icon: ({ icon }: IconToastProps) => (
+      <span
+        className="font-icons text-xl"
+        dangerouslySetInnerHTML={{ __html: `${icon};` }}
       />
     ),
     CloseButton: ({ onClose }: CloseButtonProps) => (
       <button onClick={onClose} aria-label="close">
-        <CloseIcon focusable="false" />
+        <span className="font-icons text-2xl">&#xea1d;</span>
       </button>
     ),
     Action: ({ children, onClick, className }: ActionToastProps) => {
@@ -159,11 +151,10 @@ export default {
       description: "string",
     },
     icon: {
-      options: Object.keys(icons),
-      mapping: icons,
+      options: [undefined, "&#xea64", "&#xea62", "&#xeb19"],
       control: {
         type: "select",
-        labels: { InfoIcon: "info", InboxIcon: "inbox", AlertIcon: "alert" },
+        labels: { "&#xea62": "info", "&#xea64": "inbox", "&#xeb19": "alert" },
       },
       description: "icon",
     },
@@ -182,7 +173,7 @@ export default {
   args: {
     title: "Alert title",
     description: "Alert description alert description",
-    icon: InfoIcon,
+    icon: "&#xea62",
     sectionVariants: "action",
     firstActionText: "Action",
     secondActionText: "Action",

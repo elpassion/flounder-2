@@ -305,7 +305,7 @@ export const Icon = () => {
               <tr className="divide-x divide-gray-200" key={icon}>
                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-center">
                   <span
-                    className="font-icons"
+                    className="font-icons text-2xl"
                     dangerouslySetInnerHTML={{ __html: `${icon};` }}
                   />
                 </td>
