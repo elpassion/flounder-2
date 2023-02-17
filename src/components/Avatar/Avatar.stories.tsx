@@ -13,7 +13,7 @@ import { ReactComponent as UserIcon } from "icons/user.svg";
 import {
   AvatarChildrenProps,
   AvatarProps,
-  BaseAvatarProps,
+  ContainerProps,
   IconProps,
   ImageProps,
 } from "./Avatar.interface";
@@ -33,7 +33,13 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
   const initials = text?.slice(0, 2).toUpperCase();
 
   const Avatar = {
-    BaseAvatar: ({ children, src, shape, size = "md" }: BaseAvatarProps) => {
+    Container: ({
+      children,
+      src,
+      shape,
+      size = "md",
+      className,
+    }: ContainerProps) => {
       const sizesVariants = {
         xxs: "h-5 w-5 p-1.5 text-xxs",
         xs: "h-6 w-6 p-1.5 text-xxs",
@@ -53,7 +59,8 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
             {
               "rounded-full": shape === "circle",
               "rounded-lg": shape === "square",
-            }
+            },
+            className
           )}
         >
           {children}
@@ -82,7 +89,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
   };
 
   return (
-    <Avatar.BaseAvatar size={size} src={src} {...props}>
+    <Avatar.Container size={size} src={src} {...props}>
       {src ? (
         <Avatar.Image src={src} {...props} />
       ) : (
@@ -91,7 +98,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({
           <Avatar.Icon {...props} size={size} />
         </>
       )}
-    </Avatar.BaseAvatar>
+    </Avatar.Container>
   );
 };
 

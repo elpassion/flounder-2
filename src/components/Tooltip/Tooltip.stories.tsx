@@ -19,6 +19,7 @@ export interface TooltipProps {
   position?: "top" | "right" | "bottom" | "left";
   supportingText?: string;
   variant?: "white" | "dark";
+  className?: string;
 }
 
 export const Tooltip: ComponentStory<React.FC<TooltipProps>> = ({
@@ -26,6 +27,7 @@ export const Tooltip: ComponentStory<React.FC<TooltipProps>> = ({
   supportingText,
   position = "top",
   variant = "white",
+  className,
 }) => {
   const positionVariants = {
     top: "before:-top-2 before:right-1/2 before:translate-x-1/2 before:shadow-tooltipTop",
@@ -49,11 +51,13 @@ export const Tooltip: ComponentStory<React.FC<TooltipProps>> = ({
 
   return (
     <div
+      role="tooltip"
       className={classNames(
         "relative flex w-fit max-w-xs flex-col gap-1.5 rounded border py-2 px-3 text-xs shadow-tooltip",
         "before:content'' before:absolute before:h-4 before:w-4 before:rotate-[135deg] before:rounded-[1px]",
         positionVariants[position],
-        colorVariants[variant]
+        colorVariants[variant],
+        className
       )}
     >
       <p className="font-medium">{text}</p>

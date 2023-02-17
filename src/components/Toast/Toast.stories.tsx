@@ -45,12 +45,14 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
     BaseToast: ({
       children,
       sectionVariants,
+      className,
       ...props
     }: BaseToastProps) => {
       return (
         <div
           className={classNames(
-            "grid w-full max-w-md grid-cols-[1fr_auto] rounded-lg bg-white text-neutral-500 shadow-xl"
+            "grid w-full max-w-md grid-cols-[1fr_auto] rounded-lg bg-white text-neutral-500 shadow-xl",
+            className
           )}
         >
           <div className="flex gap-2 px-4 py-5">{children}</div>
@@ -67,9 +69,7 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
         description: "text-xs font-normal",
       };
 
-      return (
-        <p className={classNames(textTypeVariants[textType])}>{children}</p>
-      );
+      return <p className={textTypeVariants[textType]}>{children}</p>;
     },
     Icon: ({ icon: Icon }: IconToastProps) => (
       <Icon
@@ -79,15 +79,15 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({
       />
     ),
     CloseButton: ({ onClose }: CloseButtonProps) => (
-      <button onClick={onClose}>
-        <CloseIcon />
+      <button onClick={onClose} aria-label="close">
+        <CloseIcon focusable="false" />
       </button>
     ),
-    Action: ({ children, className, onClick }: ActionToastProps) => {
+    Action: ({ children, onClick, className }: ActionToastProps) => {
       return (
         <button
           className={classNames(
-            "w-fit flex-1 border-l border-neutral-100 px-6 text-sm [&:nth-child(2)]:border-t",
+            "w-full flex-1 border-l border-neutral-100 px-6 text-sm [&:nth-child(2)]:border-t",
             className
           )}
           onClick={onClick}
@@ -169,7 +169,7 @@ export default {
     },
     sectionVariants: {
       control: "select",
-      options: [undefined , "close", "action"],
+      options: [undefined, "close", "action"],
       description: "close | action",
     },
     firstActionText: {

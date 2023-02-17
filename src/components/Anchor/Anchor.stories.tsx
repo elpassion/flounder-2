@@ -5,12 +5,16 @@ interface AnchorProps {
   text: string;
   link: string;
   decoration?: "none" | "bottom" | "left";
+  className?: string;
+  role?: string;
 }
 
 export const Anchor: ComponentStory<React.FC<AnchorProps>> = ({
   text,
   link,
   decoration = "none",
+  className,
+  role,
 }) => {
   const decorationVariants = {
     none: "text-primary-500 hover:text-primary-600 focus:text-primary-300",
@@ -24,8 +28,14 @@ export const Anchor: ComponentStory<React.FC<AnchorProps>> = ({
 
   return (
     <a
-      className={classNames("text-sm", decorationVariants[decoration], activeStyle)}
+      className={classNames(
+        "text-sm",
+        decorationVariants[decoration],
+        activeStyle,
+        className
+      )}
       href={link}
+      role={role}
     >
       {text}
     </a>
@@ -49,11 +59,15 @@ export default {
       options: ["none", "bottom", "left"],
       description: "none | bottom | left",
     },
+    role: {
+      description: "string",
+    },
   },
   args: {
     text: "Anchor item",
     link: "https://www.elpassion.com/",
     decoration: "none",
+    role: "menuItem",
   },
   parameters: {
     design: {

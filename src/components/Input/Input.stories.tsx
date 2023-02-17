@@ -40,6 +40,10 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
   inputVariant = "default",
   inputType = "text",
   prefixOrSuffixText = "",
+  ariaLive,
+  ariaLabel,
+  ariaDescribedBy,
+  ariaDescribedByError,
   ...props
 }) => {
   const isError = !!errorMessage;
@@ -206,8 +210,11 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
             inputVariantsStyle[inputVariant]
           )}
           disabled={disabled}
+          aria-disabled={disabled}
           required={required}
           type={inputType}
+          aria-label={ariaLabel}
+          aria-describedby={`${ariaDescribedBy} ${ariaDescribedByError}`}
         />
 
         <Input.Icon isError={isError} {...props} />
@@ -227,11 +234,22 @@ export const Input: ComponentStory<React.FC<InputProps>> = ({
         <Input.Text text={label} type="label" />
 
         {supportingText && !isError && (
-          <Input.Text text={supportingText} type="supportingText" />
+          <Input.Text
+            text={supportingText}
+            type="supportingText"
+            id={ariaDescribedBy}
+          />
         )}
       </label>
       <div className={classNames(!supportingText && "h-6")}>
-        {isError && <Input.Text text={errorMessage} type="errorMessage" />}
+        {isError && (
+          <Input.Text
+            text={errorMessage}
+            type="errorMessage"
+            id={ariaDescribedByError}
+            aria-live={ariaLive}
+          />
+        )}
       </div>
     </>
   );
@@ -295,6 +313,12 @@ export default {
       },
       description: "icon",
     },
+    ariaLive: {
+      control: "select",
+      options: ["polite", "assertive", "off"],
+      description: "polite | assertive | off",
+    },
+    ariaLabel: { description: "string" },
   },
   args: {
     label: "Label",
@@ -307,6 +331,8 @@ export default {
     type: "text",
     tooltipIcon: HelpIcon,
     prefixIcon: HelpIcon,
+    ariaLive: "polite",
+    ariaLabel: "",
   },
   parameters: {
     design: {

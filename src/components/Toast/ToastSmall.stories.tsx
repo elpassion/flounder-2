@@ -45,6 +45,7 @@ export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
       backgroundColor,
       sectionVariants,
       onClose,
+      className,
     }: BaseSmallToastProps) => {
       return (
         <div
@@ -53,7 +54,8 @@ export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
             sectionVariants === "close"
               ? "justify-between pr-2"
               : "justify-center pr-4",
-            backgroundColor
+            backgroundColor,
+            className
           )}
         >
           <div className="flex gap-2">{children}</div>
@@ -71,7 +73,9 @@ export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
       };
 
       return (
-        <p className={classNames(textTypeVariants[textType])}>{children}</p>
+        <p className={textTypeVariants[textType]}>
+          {children}
+        </p>
       );
     },
     Icon: ({ icon: Icon }: IconToastProps) => (
@@ -79,10 +83,10 @@ export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
         <Icon height={iconSize} width={iconSize} />
       </div>
     ),
-    Action: ({ children, className, onClick }: ActionToastProps) => {
+    Action: ({ children, onClick }: ActionToastProps) => {
       return (
         <button
-          className={classNames("w-fit text-sm underline", className)}
+          className="w-fit text-sm underline"
           onClick={onClick}
         >
           {children}
@@ -91,8 +95,8 @@ export const ToastSmall: ComponentStory<React.FC<ToastProps>> = ({
     },
     CloseButton: ({ onClose }: CloseButtonProps) => {
       return (
-        <button onClick={onClose} className="">
-          <CloseIcon />
+        <button onClick={onClose} aria-label="close">
+          <CloseIcon focusable="false"/>
         </button>
       );
     },

@@ -27,6 +27,7 @@ export interface StepProps
   onClick?: () => void;
   icon?: React.FC<React.SVGProps<SVGSVGElement>>;
   completeVariant?: "default" | "check";
+  className?: string;
 }
 
 export interface StepperProps

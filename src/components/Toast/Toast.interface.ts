@@ -4,10 +4,12 @@ export interface ToastChildrenProps extends React.PropsWithChildren {
 
 export interface CloseButtonProps {
   onClose?: () => void;
+  className?: string;
 }
 
 export interface IconToastProps {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  className?: string;
 }
 
 export interface TextToastProps extends ToastChildrenProps {

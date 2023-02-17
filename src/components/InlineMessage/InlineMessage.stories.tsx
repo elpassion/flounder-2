@@ -12,12 +12,14 @@ interface InlineMessageProps {
   icon?: React.FC;
   text: string;
   variant?: "default" | "success" | "warning" | "info" | "error";
+  className?: string;
 }
 
 export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
   text,
   icon: Icon = BellIcon,
   variant = "default",
+  className,
 }) => {
   const iconSize = 18;
   const inlineMessageStyleVariants = {
@@ -40,10 +42,11 @@ export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
     <div
       className={classNames(
         "flex items-center gap-2 rounded-lg p-3",
-        inlineMessageStyleVariants[variant]
+        inlineMessageStyleVariants[variant],
+        className
       )}
     >
-      <span className={classNames("self-start",iconColorVariants[variant])}>
+      <span className={classNames("self-start", iconColorVariants[variant])}>
         <Icon height={iconSize} width={iconSize} strokeWidth={2} />
       </span>
       <p className="text-xs font-medium">{text}</p>

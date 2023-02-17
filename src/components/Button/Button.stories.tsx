@@ -17,6 +17,8 @@ export interface ButtonProps {
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
   onClick: () => void;
+  className?: string;
+  ariaLabel?: string;
 }
 
 const icons = { undefined, SlashIcon };
@@ -29,6 +31,8 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
   rightIcon: RightIcon,
   disabled,
   onClick,
+  className,
+  ariaLabel,
 }) => {
   const styleVariants = {
     primary:
@@ -54,12 +58,15 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({
   return (
     <button
       disabled={disabled}
+      aria-disabled={disabled}
+      aria-label={ariaLabel}
       className={classNames(
         "flex items-center justify-center rounded-lg border py-2.5 px-5",
         "disabled:border-neutral-200 disabled:bg-neutral-200 disabled:text-white disabled:hover:shadow-none",
         "hover:shadow-button",
         styleVariants[variant],
-        sizeVariants[size]
+        sizeVariants[size],
+        className
       )}
       onClick={onClick}
     >
@@ -121,12 +128,18 @@ export default {
     onClick: {
       description: "function",
     },
+    ariaLabel: {
+      description: "string",
+    },
   },
   args: {
     text: "Button",
     variant: "primary",
     size: "md",
     disabled: false,
+    rightIcon: undefined,
+    leftIcon: undefined,
+    ariaLabel: "",
   },
   parameters: {
     design: {

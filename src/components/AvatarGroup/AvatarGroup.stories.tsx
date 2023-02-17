@@ -8,6 +8,7 @@ import {
 } from "@storybook/addon-docs";
 import { AvatarProps } from "../Avatar/Avatar.interface";
 import { Avatar } from "../Avatar/Avatar.stories";
+import classNames from "classnames";
 
 interface UserInterface {
   name: string;
@@ -18,6 +19,7 @@ interface AvatarGroupProps
   extends Pick<AvatarProps, "size" | "shape" | "contentType"> {
   avatars: UserInterface[];
   visibleAvatars?: number;
+  className?: string;
 }
 
 export const AvatarGroup: ComponentStory<React.FC<AvatarGroupProps>> = ({
@@ -26,11 +28,12 @@ export const AvatarGroup: ComponentStory<React.FC<AvatarGroupProps>> = ({
   size,
   shape,
   contentType,
+  className,
 }) => {
   const visibleAvatarsArray = avatars.slice(0, visibleAvatars);
 
   return (
-    <div className="flex -space-x-3">
+    <div className={classNames("flex -space-x-3", className)}>
       {visibleAvatarsArray.map((avatar) => (
         <Avatar
           {...avatar}

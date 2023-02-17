@@ -1,13 +1,15 @@
 type sizes = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 
-export interface BaseAvatarProps extends React.PropsWithChildren {
+export interface ContainerProps extends React.PropsWithChildren {
   shape: "circle" | "square";
   size?: sizes;
   src?: string;
+  className?: string;
 }
 
 export interface AvatarChildrenProps extends React.PropsWithChildren {
   contentType: "icon" | "text";
+  className?: string;
 }
 
 export interface ImageProps extends AvatarChildrenProps {
@@ -20,8 +22,8 @@ export interface IconProps extends AvatarChildrenProps {
 }
 
 export interface AvatarProps
-  extends BaseAvatarProps,
-    AvatarChildrenProps,
+  extends Pick<ContainerProps, "size" | "src" | "shape">,
+    Pick<AvatarChildrenProps, "contentType">,
     Pick<ImageProps, "alt"> {
   text?: string;
 }

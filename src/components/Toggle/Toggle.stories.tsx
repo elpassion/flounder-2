@@ -6,6 +6,8 @@ interface ToggleProps {
   labelText?: string;
   supportingText?: string;
   disabled?: boolean;
+  className?: string;
+  ariaLabel?: string;
 }
 
 export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
@@ -13,6 +15,8 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
   labelText,
   supportingText,
   disabled,
+  className,
+  ariaLabel,
 }) => {
   const sizeVariant = {
     sm: "h-5 w-9 after:h-4 after:w-4 peer-checked:after:translate-x-4",
@@ -31,6 +35,10 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
           type="checkbox"
           className="peer absolute left-1/2 hidden h-full w-full -translate-x-1/2 appearance-none rounded-md"
           disabled={disabled}
+          aria-disabled={disabled}
+          aria-describedby="help"
+          aria-label={ariaLabel}
+          role="switch"
         />
         <span
           className={classNames(
@@ -39,7 +47,8 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
             "hover:bg-neutral-200",
             "peer-checked:bg-primary-500",
             "peer-disabled:cursor-not-allowed peer-disabled:after:bg-neutral-200 peer-disabled:hover:bg-neutral-100",
-            sizeVariant[size]
+            sizeVariant[size],
+            className
           )}
         ></span>
         {labelText && (
@@ -57,6 +66,7 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
                   "mt-0.5 flex font-normal",
                   fontSizeVariant[size]
                 )}
+                aria-describedby="help"
               >
                 {supportingText}
               </span>
@@ -86,12 +96,16 @@ export default {
     disabled: {
       description: "boolean",
     },
+    ariaLabel: {
+      description: "string",
+    },
   },
   args: {
     size: "md",
     labelText: "",
     supportingText: "",
     disabled: false,
+    ariaLabel: "",
   },
   parameters: {
     design: {

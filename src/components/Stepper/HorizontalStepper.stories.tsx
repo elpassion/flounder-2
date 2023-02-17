@@ -90,6 +90,7 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
       status,
       size = "md",
       completeVariant = "default",
+      className,
       ...props
     }: StepProps) => {
       const stepStatusStyle = {
@@ -119,7 +120,8 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
             className={classNames(
               "flex items-center justify-center rounded-full border",
               stepStatusStyle[status],
-              sizeVariants[size]
+              sizeVariants[size],
+              className
             )}
             onClick={onClick}
           >

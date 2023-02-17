@@ -20,6 +20,9 @@ export interface RadioProps {
   supportingText: string;
   labelPosition?: "left" | "right";
   onChange?: () => void;
+  className?: string;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
 }
 
 const docs: string = `# Usage <br/> 
@@ -43,6 +46,9 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
   labelPosition,
   labelText,
   supportingText,
+  className,
+  ariaLabel,
+  ariaDescribedBy,
 }) => {
   const isMediumSize = size === "md";
   const fontColor = error ? "text-error-500" : "text-neutral-500";
@@ -61,7 +67,8 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
             "flex-row-reverse": labelPosition === "left",
             "w-[344px] max-w-full justify-between":
               supportingText && labelPosition === "left",
-          }
+          },
+          className
         )}
       >
         <input
@@ -70,8 +77,11 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
           name={name}
           className="peer absolute h-4 w-4 cursor-pointer opacity-0 disabled:cursor-default"
           disabled={disabled}
+          aria-disabled={disabled}
           checked={checked}
           onChange={onChange}
+          aria-describedby={ariaDescribedBy}
+          aria-label={ariaLabel}
         />
         <div
           className={classNames(
@@ -105,7 +115,10 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({
             </label>
           )}
           {supportingText && (
-            <p className={classNames("font-normal", fontSizeVariants[size])}>
+            <p
+              className={classNames("font-normal", fontSizeVariants[size])}
+              id={ariaDescribedBy}
+            >
               {supportingText}
             </p>
           )}
@@ -153,6 +166,9 @@ export default {
     onChange: {
       description: "function",
     },
+    ariaLabel: {
+      description: "string",
+    },
   },
   args: {
     id: "withSupportingText",
@@ -165,6 +181,7 @@ export default {
     error: false,
     size: "md",
     onChange: undefined,
+    ariaLabel: "",
   },
   parameters: {
     design: {

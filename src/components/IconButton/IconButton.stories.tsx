@@ -33,6 +33,8 @@ export interface IconButtonProps {
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
   onClick: () => void;
+  className?: string;
+  ariaLabel?: string;
 }
 
 export const IconButton: ComponentStory<React.FC<IconButtonProps>> = ({
@@ -41,6 +43,8 @@ export const IconButton: ComponentStory<React.FC<IconButtonProps>> = ({
   size = "md",
   disabled,
   onClick,
+  className,
+  ariaLabel,
 }) => {
   const styleVariants = {
     primary:
@@ -70,12 +74,15 @@ export const IconButton: ComponentStory<React.FC<IconButtonProps>> = ({
         "hover:shadow-button",
         "disabled:border-neutral-100 disabled:bg-neutral-100 disabled:text-neutral-200 disabled:hover:shadow-none",
         styleVariants[variant],
-        sizeVariants[size]
+        sizeVariants[size],
+        className
       )}
       disabled={disabled}
+      aria-disabled={disabled}
+      aria-label={ariaLabel}
       onClick={onClick}
     >
-      <Icon height="100%" width="100%"/>
+      <Icon height="100%" width="100%" />
     </button>
   );
 };
@@ -121,12 +128,16 @@ export default {
     onClick: {
       description: "function",
     },
+    ariaLabel: {
+      description: "string",
+    },
   },
   args: {
     icon: BookmarkIcon,
     variant: "primary",
     size: "md",
     disabled: false,
+    ariaLabel: "",
   },
   parameters: {
     design: {

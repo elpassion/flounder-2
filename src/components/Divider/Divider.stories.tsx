@@ -4,11 +4,13 @@ import classNames from "classnames";
 interface DividerProps {
   labelText: string;
   type: "horizontal" | "vertical";
+  className?: string;
 }
 
 export const Divider: ComponentStory<React.FC<DividerProps>> = ({
   labelText,
   type,
+  className,
 }) => {
   const dividerTypes = {
     horizontal:
@@ -23,7 +25,8 @@ export const Divider: ComponentStory<React.FC<DividerProps>> = ({
         "overflow-hidden text-center text-sm text-neutral-500",
         "before:inline-block before:bg-neutral-100 before:align-middle",
         "after:inline-block after:bg-neutral-100 after:align-middle",
-        dividerTypes[type]
+        dividerTypes[type],
+        className
       )}
     >
       <span>{labelText}</span>

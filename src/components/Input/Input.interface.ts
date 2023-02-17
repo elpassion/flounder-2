@@ -13,6 +13,7 @@ export interface DropdownButtonProps {
 export interface TextProps {
   text: string;
   type: "label" | "supportingText" | "errorMessage";
+  id?: string;
 }
 
 export interface IconProps {
@@ -45,4 +46,8 @@ export interface InputProps {
   tooltipIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
   prefixIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
   inputVariant?: inputVariants;
+  ariaLive?: "polite" | "assertive" | "off";
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
+  ariaDescribedByError?: string;
 }

@@ -22,6 +22,9 @@ export interface CheckboxProps {
   supportingText?: string;
   labelPosition?: "left" | "right";
   onChange?: () => void;
+  className?: string;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
 }
 
 const docs: string = `# Usage <br/> 
@@ -42,6 +45,9 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
   labelText,
   optionalLabelText,
   supportingText,
+  className,
+  ariaLabel,
+  ariaDescribedBy,
 }) => {
   const fontColor = error ? "text-error-500" : "text-neutral-500";
 
@@ -70,7 +76,8 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             "w-full max-w-[344px] justify-between":
               supportingText && labelPosition === "left",
           },
-          fontColor
+          fontColor,
+          className
         )}
       >
         <input
@@ -82,9 +89,12 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
             "disabled:cursor-default"
           )}
           disabled={disabled}
+          aria-disabled={disabled}
+          aria-label={ariaLabel}
           defaultChecked={checked}
           required={required}
           onChange={onChange}
+          aria-describedby={ariaDescribedBy}
         />
         <div
           className={classNames(
@@ -108,10 +118,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
           />
         </div>
         <div
-          className={classNames(
-            "peer-disabled:text-neutral-200",
-            fontColor
-          )}
+          className={classNames("peer-disabled:text-neutral-200", fontColor)}
         >
           {labelText && (
             <label
@@ -139,6 +146,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
                 "text-sm font-normal",
                 fontSizeVariants[size]
               )}
+              id={ariaDescribedBy}
             >
               {supportingText}
             </p>
@@ -190,6 +198,9 @@ export default {
     onChange: {
       description: "function",
     },
+    ariaLabel: {
+      description: "string",
+    },
   },
   args: {
     name: "withSupportingText",
@@ -203,6 +214,7 @@ export default {
     error: false,
     size: "md",
     onChange: undefined,
+    ariaLabel: "",
   },
   parameters: {
     design: {
