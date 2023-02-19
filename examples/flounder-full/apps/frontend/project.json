@@ -1,0 +1,140 @@
+{
+  "name": "frontend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/frontend",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/frontend",
+        "outputPath": "dist/apps/frontend"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/frontend"
+        },
+        "production": {}
+      },
+      "dependsOn": ["build-custom-server", "translate"]
+    },
+    "build-custom-server": {
+      "executor": "@nrwl/js:tsc",
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/frontend",
+        "main": "apps/frontend/src/run-next-server.ts",
+        "tsConfig": "apps/frontend/tsconfig.server.json",
+        "clean": false,
+        "assets": []
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      },
+      "dependsOn": ["^build"]
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "frontend:build",
+        "dev": true,
+        "port": 3000,
+        "hostname": "localhost",
+        "customServerTarget": "frontend:serve-custom-server"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "frontend:build:development",
+          "dev": true,
+          "customServerTarget": "frontend:serve-custom-server:development"
+        },
+        "production": {
+          "buildTarget": "frontend:build:production",
+          "dev": false,
+          "customServerTarget": "frontend:serve-custom-server:production"
+        }
+      },
+      "dependsOn": ["translate"]
+    },
+    "serve-custom-server": {
+      "executor": "@nrwl/js:node",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "frontend:build-custom-server"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "frontend:build-custom-server:development"
+        },
+        "production": {
+          "buildTarget": "frontend:build-custom-server:production"
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "frontend:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/frontend"],
+      "options": {
+        "jestConfig": "apps/frontend/jest.config.ts",
+        "passWithNoTests": true,
+        "coverageDirectory": "coverage/apps/frontend"
+      },
+      "dependsOn": ["translate"]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/frontend/**/*.{ts,tsx,js,jsx}"]
+      },
+      "dependsOn": ["translate"]
+    },
+    "tsc": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p ./apps/frontend/tsconfig.json"
+      },
+      "dependsOn": ["translate"]
+    },
+    "translate": {
+      "builder": "nx:run-commands",
+      "options": {
+        "commands": [
+          "formatjs extract 'apps/frontend/**/!(*.d).{ts,tsx}' --out-file 'apps/frontend/lang/extracted/en.json'",
+          "formatjs compile-folder 'apps/frontend/lang/extracted' 'apps/frontend/lang/compiled'"
+        ],
+        "parallel": false
+      }
+    },
+    "translate:check": {
+      "builder": "nx:run-commands",
+      "options": {
+        "command": "comparejson apps/frontend/lang/compiled/*json --exit"
+      },
+      "dependsOn": ["translate"]
+    },
+    "docker:build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./.aws/build_app.sh frontend {args.tag}"
+      }
+    },
+    "docker:deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./.aws/deploy_app.sh frontend {args.stage} {args.tag}"
+      }
+    }
+  },
+  "tags": []
+}

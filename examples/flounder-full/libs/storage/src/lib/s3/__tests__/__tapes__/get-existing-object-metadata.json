@@ -1,0 +1,41 @@
+[
+  {
+    "scope": "https://tempstorage.s3.eu-west-1.amazonaws.com:443",
+    "method": "HEAD",
+    "path": "/tempfile/3cc47c29-415b-461e-a2fd-72cd5608b739/2de3665e-2b8d-4fc1-b96b-d929bed9479a.png",
+    "body": "",
+    "status": 200,
+    "response": "",
+    "rawHeaders": [
+      "x-amz-id-2",
+      "B5ZG1K+koHDByUffrb1ynsk6N4+7GrCx/hLnHrVmcwenITu9DkCZs44adTbVD9hohXZEZGUKIeY=",
+      "x-amz-request-id",
+      "AYJMAQ7Y919VKE4Q",
+      "Date",
+      "Tue, 14 Dec 2021 12:42:43 GMT",
+      "Last-Modified",
+      "Tue, 14 Dec 2021 12:10:16 GMT",
+      "ETag",
+      "\"5202d8d129622b7a69bd560afb2e1fdf\"",
+      "x-amz-server-side-encryption",
+      "AES256",
+      "Cache-Control",
+      "no-cache",
+      "x-amz-meta-content-type",
+      "image/png",
+      "x-amz-meta-original-filename",
+      "148x148.png",
+      "x-amz-version-id",
+      "null",
+      "Accept-Ranges",
+      "bytes",
+      "Content-Type",
+      "image/png",
+      "Server",
+      "AmazonS3",
+      "Content-Length",
+      "363"
+    ],
+    "responseIsBinary": false
+  }
+]

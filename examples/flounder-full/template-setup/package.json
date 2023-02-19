@@ -1,0 +1,12 @@
+{
+  "name": "@elpassion/flounder",
+  "main": "index.js",
+  "version": "0.34.11",
+  "bin": {
+    "flounder": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^9.0.0",
+    "scaffe": "^1.2.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "EMAIL_SUBSCRIPTION": {
+    "NEW": {
+      "TITLE": "Nowa subskrypcja email",
+      "DESCRIPTION": "{email} został dodany do newslettera!"
+    }
+  }
+}

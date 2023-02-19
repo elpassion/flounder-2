@@ -1,0 +1,76 @@
+name: Deploy Prod (Production)
+
+on:
+  workflow_call:
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+
+jobs:
+  deploy:
+    permissions:
+      id-token: write
+      contents: read
+      actions: read
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: nrwl/nx-set-shas@v2
+
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          run_install: false
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "pnpm"
+          cache-dependency-path: "**/pnpm-lock.yaml"
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
+      - name: Set current date as env variable
+        run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Set last release tag to env
+        run: echo "LAST_RELEASE_TAG=$(git tag | grep prod | tail -2 | head -1)" >> $GITHUB_ENV
+
+      - name: Set last release sha to env
+        run: echo "LAST_RELEASE_SHA=$(git rev-list -n 1 ${{ env.LAST_RELEASE_TAG }} )" >> $GITHUB_ENV
+
+      - name: Set previous release tag hash to env
+        run: echo "BASE_SHA=${{ env.LAST_RELEASE_TAG == '' && env.NX_BASE || env.LAST_RELEASE_SHA }}" >> $GITHUB_ENV
+
+      - name: Set DOCKER_TAG to env
+        run: echo "DOCKER_TAG=${{ env.NOW }}_${{ github.sha }}_PR${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+
+      - name: Affected projects
+        run: pnpm nx print-affected --base ${{ env.BASE_SHA }} --head ${{ github.sha }} --select projects
+
+      - run: npm run ci:build -- --base ${{ env.BASE_SHA }} --head ${{ github.sha }}
+      - run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+      - run: npm run ci:docker:build -- --base ${{ env.BASE_SHA }} --head ${{ github.sha }} --tag="${{ env.DOCKER_TAG }}"
+      - run: npm run ci:docker:deploy -- --base ${{ env.BASE_SHA }} --head ${{ github.sha }} --tag="${{ env.DOCKER_TAG }}" --stage="prod"

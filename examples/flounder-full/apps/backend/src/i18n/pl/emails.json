@@ -1,0 +1,8 @@
+{
+  "EMAIL_SUBSCRIPTION": {
+    "NEW": {
+      "SUBJECT": "Witaj!",
+      "MESSAGE": "Witaj w naszym newsletterze!"
+    }
+  }
+}

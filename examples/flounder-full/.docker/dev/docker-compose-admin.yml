@@ -1,0 +1,10 @@
+version: "3.5"
+
+services:
+  admin:
+    build:
+      context: ../..
+      dockerfile: ../../apps/admin/Dockerfile
+    env_file:
+      - ../../apps/admin/.env.production.local
+    network_mode: host

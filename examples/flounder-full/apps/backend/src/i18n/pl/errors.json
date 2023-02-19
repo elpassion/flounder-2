@@ -1,0 +1,11 @@
+{
+  "NOT_FOUND": {
+    "RESOURCE": "Zasób nie odnaleziony"
+  },
+  "EMAIL_SUBSCRIPTION": {
+    "DUPLICATED": "Subskrycja na podany adres email istnieje"
+  },
+  "QUEUE": {
+    "CANNOT_CONNECT_TO_CLIENT": "Brak połączenia z klientem kolejki"
+  }
+}

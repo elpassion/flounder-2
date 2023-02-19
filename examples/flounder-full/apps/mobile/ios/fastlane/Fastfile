@@ -1,0 +1,139 @@
+default_platform(:ios)
+
+before_all do
+  ensure_git_branch(
+    branch: "main"
+  )
+  git_pull
+end
+
+platform :ios do
+  def update_version(options)
+    newVersion = ""
+    if options[:version]
+      version = options[:version]
+    else
+      version = UI.user_error!("[ERROR] Version not specified (major, minor, patch, 1.0.0)")
+    end
+
+    versionNameRegExp = /\d+.\d+.\d+/
+    versionNum = version[versionNameRegExp, 0]
+
+    iosDirectoryPath = "#{Dir.pwd}".gsub!('fastlane','');
+
+    if (versionNum)
+      newVersion = increment_version_number(
+        version_number: versionNum,
+        xcodeproj: "#{iosDirectoryPath}/Mobile.xcodeproj"
+      )
+    elsif (version == "major" || version == "minor" || version == "patch")
+      newVersion = increment_version_number(
+        bump_type: version,
+        xcodeproj: "#{iosDirectoryPath}/Mobile.xcodeproj"
+      )
+    else
+      UI.user_error!("[ERROR] Wrong version")
+    end
+
+    increment_build_number(xcodeproj: "#{iosDirectoryPath}/Mobile.xcodeproj")
+
+    filesUpdated = [
+      "#{iosDirectoryPath}/Mobile/Info.plist",
+      "#{iosDirectoryPath}/MobileTests/Info.plist",
+      "#{iosDirectoryPath}/Mobile.xcodeproj/project.pbxproj",
+    ]
+    git_commit(path: filesUpdated, message: "ci: iOS version bump to #{newVersion}")
+    push_to_git_remote
+  end
+
+  def create_temporary_keychain(keychain_name, keychain_password)
+    create_keychain(
+      name: keychain_name,
+      default_keychain: true,
+      password: keychain_password,
+      unlock: true,
+      timeout: 0
+    )
+  end
+
+  def delete_temporary_keychain(keychain_name)
+    delete_keychain(
+      name: keychain_name
+    ) if File.exist? File.expand_path("~/Library/Keychains/#{keychain_name}-db")
+  end
+
+  desc 'Fetch certificates and provisioning profiles'
+  private_lane :certificates do
+    iosDirectoryPath = "#{Dir.pwd}".gsub!('fastlane','');
+    match(
+      app_identifier: ENV["APPLE_APP_IDENTIFIER"],
+      type: 'appstore',
+      readonly: true,
+      force_for_new_devices: true,
+      skip_provisioning_profiles: false,
+      keychain_name: ENV["APPLE_TEMP_KEYCHAIN_NAME"],
+      keychain_password: ENV["APPLE_TEMP_KEYCHAIN_PASSWORD"],
+      git_basic_authorization: Base64.strict_encode64(ENV["GIT_AUTHORIZATION"])
+    )
+    profilePath = ENV["sigh_com.elpassion.flounder_appstore_profile-path"]
+    update_project_provisioning(
+      xcodeproj: "#{iosDirectoryPath}Mobile.xcodeproj",
+      profile: profilePath,
+      build_configuration: "Release",
+    )
+    update_project_team(
+      path: "#{iosDirectoryPath}Mobile.xcodeproj",
+      teamid: "#{ENV['APPLE_TEAM_ID']}"
+    )
+  end
+
+  desc "Build iOS release app"
+  private_lane :build do
+    certificates()
+
+    workspacePath = "#{Dir.pwd}".gsub!('fastlane','Mobile.xcworkspace');
+    build_app(
+      configuration: "Release",
+      workspace: workspacePath,
+      scheme: "Mobile",
+    )
+  end
+
+  desc "Deploy a new version to Testflight"
+  private_lane :deploy do
+    api_key = app_store_connect_api_key(
+      key_id: ENV['APPLE_API_KEY_ID'],
+      issuer_id: ENV['APPLE_API_ISSUER_ID'],
+      key_filepath: "#{Dir.pwd}/#{ENV['APPLE_API_KEY_FILE']}"
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      skip_waiting_for_build_processing: true,
+    )
+  end
+
+  desc "Build and deploy to Testflight"
+  lane :build_and_deploy do |options|
+    iosDirectoryPath = "#{Dir.pwd}".gsub!('fastlane','');
+    projectPath = "#{iosDirectoryPath}Mobile.xcodeproj"
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      path: projectPath
+    )
+    delete_temporary_keychain(ENV["APPLE_TEMP_KEYCHAIN_NAME"])
+    create_temporary_keychain(ENV["APPLE_TEMP_KEYCHAIN_NAME"], ENV["APPLE_TEMP_KEYCHAIN_PASSWORD"])
+
+    build
+    deploy
+
+    delete_temporary_keychain(ENV["APPLE_TEMP_KEYCHAIN_NAME"])
+
+    reset_git_repo(
+      force: true,
+      files: [projectPath]
+    )
+    git_pull
+    update_version(options)
+  end
+end
