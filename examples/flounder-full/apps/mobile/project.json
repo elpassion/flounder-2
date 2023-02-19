@@ -1,0 +1,155 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mobile/src",
+  "projectType": "application",
+  "targets": {
+    "start": {
+      "executor": "@nrwl/react-native:start",
+      "options": {
+        "port": 8081
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "nx start mobile"
+      }
+    },
+    "run-ios": {
+      "executor": "@nrwl/react-native:run-ios",
+      "options": {
+        "sync": false,
+        "resetCache": true
+      }
+    },
+    "bundle-ios": {
+      "executor": "@nrwl/react-native:bundle",
+      "outputs": [
+        "apps/mobile/build"
+      ],
+      "options": {
+        "entryFile": "src/main.tsx",
+        "platform": "ios",
+        "bundleOutput": "dist/apps/mobile/ios/main.jsbundle"
+      }
+    },
+    "run-android": {
+      "executor": "@nrwl/react-native:run-android",
+      "options": {
+        "sync": false,
+        "resetCache": true
+      }
+    },
+    "build-android": {
+      "executor": "@nrwl/react-native:build-android",
+      "outputs": [
+        "apps/mobile/android/app/build/outputs/bundle",
+        "apps/mobile/android/app/build/outputs/apk"
+      ],
+      "options": {}
+    },
+    "bundle-android": {
+      "executor": "@nrwl/react-native:bundle",
+      "options": {
+        "entryFile": "src/main.tsx",
+        "platform": "android",
+        "bundleOutput": "dist/apps/mobile/android/main.jsbundle"
+      }
+    },
+    "sync-deps": {
+      "executor": "@nrwl/react-native:sync-deps",
+      "options": {}
+    },
+    "ensure-symlink": {
+      "executor": "@nrwl/react-native:ensure-symlink",
+      "options": {}
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/mobile/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/mobile"
+      ],
+      "options": {
+        "jestConfig": "apps/mobile/jest.config.ts",
+        "passWithNoTests": true,
+        "coverageDirectory": "coverage/apps/mobile"
+      },
+      "dependsOn": [
+        "pre-test-cleanup"
+      ]
+    },
+    "fastlane-install-android": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "bundle install"
+        ],
+        "cwd": "apps/mobile/android"
+      }
+    },
+    "fastlane-deploy-android": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "bundle exec fastlane android build_and_deploy version:patch"
+        ],
+        "cwd": "apps/mobile/android"
+      }
+    },
+    "install-ios-pods": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "pod install"
+        ],
+        "cwd": "apps/mobile/ios"
+      }
+    },
+    "fastlane-install-ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "bundle install"
+        ],
+        "cwd": "apps/mobile/ios"
+      }
+    },
+    "fastlane-deploy-ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "bundle exec fastlane ios build_and_deploy version:patch"
+        ],
+        "cwd": "apps/mobile/ios"
+      }
+    },
+    "tsc": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p ./apps/mobile/tsconfig.json"
+      }
+    },
+    "pre-test-cleanup": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "rm -rf node_modules"
+        ],
+        "cwd": "apps/mobile"
+      }
+    }
+  },
+  "tags": [],
+  "name": "mobile"
+}

@@ -1,0 +1,120 @@
+{
+  "name": "admin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/admin",
+  "projectType": "application",
+  "defaultProject": "admin",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "defaultConfiguration": "production",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "root": "apps/admin",
+        "outputPath": "dist/apps/admin"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/admin"
+        },
+        "production": {}
+      },
+      "dependsOn": ["build-custom-server"]
+    },
+    "build-custom-server": {
+      "executor": "@nrwl/js:tsc",
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/admin",
+        "main": "apps/admin/src/run-next-server.ts",
+        "tsConfig": "apps/admin/tsconfig.server.json",
+        "clean": false,
+        "assets": []
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      },
+      "dependsOn": ["^build"]
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "admin:build",
+        "dev": true,
+        "port": 3002,
+        "hostname": "localhost",
+        "customServerTarget": "admin:serve-custom-server"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "admin:build:development",
+          "dev": true,
+          "customServerTarget": "admin:serve-custom-server:development"
+        },
+        "production": {
+          "buildTarget": "admin:build:production",
+          "dev": false,
+          "customServerTarget": "admin:serve-custom-server:production"
+        }
+      }
+    },
+    "serve-custom-server": {
+      "executor": "@nrwl/js:node",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "admin:build-custom-server"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "admin:build-custom-server:development"
+        },
+        "production": {
+          "buildTarget": "admin:build-custom-server:production"
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "admin:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/admin"],
+      "options": {
+        "jestConfig": "apps/admin/jest.config.ts",
+        "passWithNoTests": true,
+        "coverageDirectory": "coverage/apps/admin"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/admin/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "tsc": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p ./apps/admin/tsconfig.json"
+      }
+    },
+    "docker:build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./.aws/build_app.sh admin {args.tag}"
+      }
+    },
+    "docker:deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./.aws/deploy_app.sh admin {args.stage} {args.tag}"
+      }
+    }
+  },
+  "tags": []
+}

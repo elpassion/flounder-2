@@ -1,0 +1,31 @@
+name: Publish
+
+on:
+  workflow_call:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PACKAGEJSON_DIR: "template-setup"
+
+      - name: Generate template
+        run: "cd template-setup && node revert-to-template.js"
+
+      - run: "cd ../flounder-cookiecutter-template && npm publish"
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

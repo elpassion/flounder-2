@@ -1,0 +1,17 @@
+name: Compile and test and deploy mobile (run manually)
+
+on: workflow_dispatch
+
+jobs:
+  compile_and_test:
+    name: Compile and test
+    uses: elpassion/flounder/.github/workflows/compile-and-test.yml@main
+    secrets: inherit
+
+  deploy_mobile:
+    name: Deploy mobile
+    needs:
+      - compile_and_test
+    if: needs.compile_and_test.result == 'success'
+    uses: elpassion/flounder/.github/workflows/deploy-mobile.yml@main
+    secrets: inherit

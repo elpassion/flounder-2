@@ -1,0 +1,6 @@
+git_url("https://github.com/elpassion/flounder-certs")
+
+storage_mode("git")
+
+type("appstore") # can be: appstore, adhoc, enterprise or development
+

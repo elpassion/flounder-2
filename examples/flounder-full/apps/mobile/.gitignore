@@ -1,0 +1,6 @@
+.env
+.env.development
+android/api-**
+ios/fastlane/AuthKey_***
+ios/*.zip
+ios/*.ipa
