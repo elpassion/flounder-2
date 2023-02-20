@@ -3,7 +3,7 @@ import classNames from "classnames";
 import React from "react";
 
 interface IndicatorProps {
-  type?: "error" | "warning" | "processing" | "success";
+  type: "default" | "error" | "warning" | "processing" | "success";
   variant: "default" | "count" | "badge";
   text?: string;
   number?: number;
@@ -16,6 +16,7 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
   number,
 }) => {
   const indicatorTypes = {
+    default: "bg-neutral-50",
     error: "bg-error-100 text-error-900",
     warning: "bg-orange-100 text-orange-900",
     processing: "bg-blue-50 text-blue-900",
@@ -23,10 +24,11 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
   };
 
   const indicatorDotTypes = {
-    error: "bg-error-500",
-    warning: "bg-orange-500",
-    processing: "bg-blue-500",
-    success: "bg-green-500",
+    default: "bg-neutral-100 text-neutral-900",
+    error: "bg-error-500 text-white",
+    warning: "bg-orange-500 text-white",
+    processing: "bg-blue-500 text-white",
+    success: "bg-green-500 text-white",
   };
 
   const indicatorDotSizeTypes = {
@@ -36,14 +38,8 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
   };
 
   const indicatorWrapperTypes = {
-    badge: `inline-flex items-center gap-x-1.5 rounded-full py-1 py-1 px-2.5 text-xs font-medium ${
-      type ? indicatorTypes[type] : "bg-neutral-50"
-    }`,
-    count: `inline-flex h-6 w-6 min-w-fit shrink-0 justify-center rounded-full border-2 border-solid border-white px-1 text-sm font-medium shadow-lg ${
-      type
-        ? `${indicatorDotTypes[type]} text-white`
-        : "bg-neutral-100 text-neutral-900"
-    }`,
+    badge: `inline-flex items-center gap-x-1.5 rounded-full py-1 py-1 px-2.5 text-xs font-medium ${indicatorTypes[type]}`,
+    count: `inline-flex h-6 w-6 min-w-fit shrink-0 justify-center rounded-full border-2 border-solid border-white px-1 text-sm font-medium shadow-lg ${indicatorDotTypes[type]}`,
     default: `inline-flex items-center gap-x-1.5 text-sm font-medium`,
   };
 
@@ -55,7 +51,7 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
       <span
         className={classNames(
           "flex shrink-0 rounded-full",
-          type ? indicatorDotTypes[type] : "bg-neutral-100",
+          indicatorDotTypes[type],
           indicatorDotSizeTypes[variant]
         )}
       />
@@ -76,7 +72,7 @@ export default {
   argTypes: {
     type: {
       control: "select",
-      options: ["error", "warning", "processing", "success", undefined],
+      options: ["error", "warning", "processing", "success", "default"],
     },
     variant: {
       control: "select",
@@ -93,6 +89,7 @@ export default {
     variant: "count",
     number: 1,
     text: "Indicator",
+    type: "default",
   },
   parameters: {
     design: {
