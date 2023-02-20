@@ -8,7 +8,7 @@ on:
 jobs:
   compile_and_test:
     name: Compile and test
-    uses: elpassion/flounder/.github/workflows/compile-and-test.yml@main
+    uses: elpassion/flounder/.github/workflows/compile-and-test.yml@main #REPLACE_PROJECT
     secrets: inherit
 
   deploy_stg:
@@ -16,7 +16,7 @@ jobs:
     needs:
       - compile_and_test
     if: needs.compile_and_test.result == 'success'
-    uses: elpassion/flounder/.github/workflows/deploy-stg.yml@main
+    uses: elpassion/flounder/.github/workflows/deploy-stg.yml@main #REPLACE_PROJECT
     with:
       stage: stg
     secrets:
@@ -28,7 +28,7 @@ jobs:
     needs:
       - compile_and_test
     if: needs.compile_and_test.result == 'success' && needs.compile_and_test.outputs.mobile_affected == 'mobile'
-    uses: elpassion/flounder/.github/workflows/deploy-mobile.yml@main
+    uses: elpassion/flounder/.github/workflows/deploy-mobile.yml@main #REPLACE_PROJECT
     secrets: inherit
 
   test_visual_regression:
@@ -36,7 +36,7 @@ jobs:
     needs:
       - compile_and_test
     if: needs.compile_and_test.outputs.trigger_vrt
-    uses: elpassion/flounder/.github/workflows/test-visual-regression.yml@main
+    uses: elpassion/flounder/.github/workflows/test-visual-regression.yml@main #REPLACE_PROJECT
     secrets: inherit
 
   publish:
@@ -47,4 +47,4 @@ jobs:
       needs.compile_and_test.result == 'success' &&
       needs.deploy_stg.result == 'success' &&
       (needs.deploy_mobile.result == 'success' || needs.deploy_mobile.result == 'skipped')
-    uses: elpassion/flounder/.github/workflows/publish.yml@main
+    uses: elpassion/flounder/.github/workflows/publish.yml@main #REPLACE_PROJECT

@@ -12,7 +12,7 @@ enum Action {
 const validActions = Object.values(Action) as string[];
 
 const region = 'eu-west-1';
-const projectName = 'flounder';
+const projectName = 'flounder'; //REPLACE_PROJECT
 const secretManager = new SecretsManagerClient({ region: region });
 const getEncryptionKeySecretCommand = new GetSecretValueCommand({ SecretId: `${projectName}-stg-env-vars-encryption-key` });
 
