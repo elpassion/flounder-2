@@ -15,7 +15,7 @@ export const IconGroupButton: ComponentStory<
   React.FC<IconGroupButtonProps>
 > = ({ buttons, size, variant }) => {
   return (
-    <div className={"inline-flex"}>
+    <div className="inline-flex">
       {buttons.map((button, index) => (
         <IconButton
           variant={variant}
@@ -80,5 +80,11 @@ export default {
         icon: "&#xea8a",
       },
     ],
+  },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=3307%3A20132&t=ZdZnKV3DB1YUpHBE-0",
+    },
   },
 };

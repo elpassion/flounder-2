@@ -13,7 +13,7 @@ export const ButtonGroup: ComponentStory<React.FC<ButtonGroupProps>> = ({
   variant,
 }) => {
   return (
-    <div className={"inline-flex"}>
+    <div className="inline-flex">
       {buttons.map((button, index) => (
         <Button
           key={index}
@@ -83,7 +83,7 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2953%3A14621&t=rVpypypag1eT8SHD-0",
+      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=3307%3A20132&t=ZdZnKV3DB1YUpHBE-0",
     },
   },
 } as ComponentMeta<React.FC<ButtonGroupProps>>;

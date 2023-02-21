@@ -9,15 +9,15 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
   React.FC<ButtonGroupProps>
 > = ({ buttons, size, variant, style }) => {
   return (
-    <div className={"inline-flex gap-x-4"}>
+    <div className="inline-flex gap-x-4">
       {buttons.map((button, index) => (
-        <div className={"flex"}>
+        <div className="flex">
           <Button
             key={index}
             size={size}
             variant={variant}
             className={classNames(
-              "-mx-px rounded-r-none hover:z-10",
+              "rounded-r-none hover:z-10",
               buttonBorderVariants[variant]
             )}
             {...button}
@@ -26,7 +26,7 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
             <IconButton
               size={size}
               variant={variant}
-              icon={"&#xea8a"}
+              icon="&#xea8a"
               className={classNames(
                 "-ml-px rounded-l-none hover:z-10",
                 buttonBorderVariants[variant]
@@ -36,7 +36,7 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
             <Button
               size={size}
               variant={variant}
-              text={"Text"}
+              text="Text"
               className={classNames(
                 "-ml-px rounded-l-none hover:z-10",
                 buttonBorderVariants[variant]
@@ -99,5 +99,11 @@ export default {
         leftIcon: "&#xea8a",
       },
     ],
+  },
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=3307%3A20132&t=ZdZnKV3DB1YUpHBE-0",
+    },
   },
 } as ComponentMeta<React.FC<ButtonGroupProps>>;
