@@ -58,9 +58,8 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
       return (
         <button
           className={classNames(
-            `flex w-full items-center text-xs font-bold transition ease-in ${
-              iconAlign === "right" && "justify-between"
-            }`,
+            "flex w-full items-center text-xs font-bold transition ease-in",
+            iconAlign === "right" && "justify-between",
             buttonVariants[variant]
           )}
         >
