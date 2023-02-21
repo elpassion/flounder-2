@@ -6,13 +6,13 @@ import {
   buttonRadiusVariants,
 } from "../ButtonGroup/ButtonGroup.styles";
 
-interface IconGroupButtonProps
+interface IconButtonGroupProps
   extends Pick<IconButtonProps, "size" | "variant"> {
   buttons: Omit<IconButtonProps, "size" | "variant">[];
 }
 
-export const IconGroupButton: ComponentStory<
-  React.FC<IconGroupButtonProps>
+export const IconButtonGroup: ComponentStory<
+  React.FC<IconButtonGroupProps>
 > = ({ buttons, size, variant }) => {
   return (
     <div className="inline-flex">
@@ -34,8 +34,8 @@ export const IconGroupButton: ComponentStory<
 };
 
 export default {
-  title: "Molecules/IconGroupButton",
-  component: IconGroupButton,
+  title: "Molecules/IconButtonGroup",
+  component: IconButtonGroup,
   argTypes: {
     buttons: {
       control: {
