@@ -28,9 +28,9 @@ export const ProgressBar: ComponentStory<React.FC<ProgressBarProps>> = ({
               style={{ width: `${value}%` }}
             />
           </div>
-          {label !== "none" ? (
+          {label !== "none" && (
             <ProgressBar.Label value={value} label={label} />
-          ) : null}
+          )}
         </div>
       );
     },
@@ -87,7 +87,7 @@ export default {
   parameters: {
     design: {
       type: "figma",
-      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2953%3A14621&t=rVpypypag1eT8SHD-0",
+      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=3307%3A19117&t=OGq5t8JbqSEpLufw-0",
     },
   },
 } as ComponentMeta<React.FC<ProgressBarProps>>;
