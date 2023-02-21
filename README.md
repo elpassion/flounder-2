@@ -2,6 +2,13 @@
 
 Project with basic components to reuse in other projects.
 
+## TLDR
+
+The idea behind this project is to work similar to [tailwindui](https://tailwindui.com/components) meaning logicless styled components using tailwind classes. You have to manualy copy the component code and add your own logic. In theory it should allow FE developers to work when wireframes are ready. <br><br>
+Sample projects:
+* [repo 1](https://github.com/elpassion/test-elp-design-system-brief-1)
+* [repo 2](https://github.com/elpassion/test-elp-design-system-brief-2)
+
 ## How to use this library
 
 ### Install dependencies 
@@ -19,7 +26,7 @@ $ npx tailwindcss init -p
 
 ### Copy files
 
-In order to use this project you'll have to copy configuration file. Start with [tailwind.config.js](https://github.com/elpassion/design-system/blob/main/tailwind.config.js). Then copy [prettierrc.json](https://github.com/elpassion/design-system/blob/main/.prettierrc.json). Last don't forget to copy [icons font](https://github.com/elpassion/design-system/blob/main/src/fonts/fonticon.ttf)
+In order to use this project you'll have to copy configuration file. Start with [tailwind.config.js](https://github.com/elpassion/design-system/blob/main/tailwind.config.js). Then copy [prettierrc.json](https://github.com/elpassion/design-system/blob/main/.prettierrc.json). You can use icons locally from [icons font](https://github.com/elpassion/design-system/blob/main/src/fonts/fonticon.ttf) or use cdn [https://elpassion-design-system.s3.eu-west-1.amazonaws.com/fonticon.ttf](https://elpassion-design-system.s3.eu-west-1.amazonaws.com/fonticon.ttf)
 
 ## How to contribute
 
