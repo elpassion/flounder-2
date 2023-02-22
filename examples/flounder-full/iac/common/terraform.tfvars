@@ -3,12 +3,12 @@ roles_with_readonly_access = ["AWSServiceRoleForECS"]
 
 region = "eu-west-1"
 
-namespace = "flounder"
+namespace = "flounder" #REPLACE_PROJECT
 stage     = "stg"
 name      = "xxx"
 
-client  = "elpassion"
-project = "flounder"
+client  = "elpassion" #REPLACE_CLIENT
+project = "flounder" #REPLACE_PROJECT
 
 ecr_repositories = [
   "backend",

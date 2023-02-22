@@ -9,5 +9,5 @@ variable "repo_owner" {
 
 variable "repo_name" {
   type = string
-  default = "flounder"
+  default = "flounder" #REPLACE_PROJECT
 }

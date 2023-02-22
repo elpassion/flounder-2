@@ -5,8 +5,8 @@ roles_with_state_access = ["full-admin", "elp-prod-atlantis-ecs_task_execution"]
 namespace  = "elp"
 tenant     = "elpassion"
 stage      = "stg"
-name       = "flounder"
+name       = "flounder" #REPLACE_PROJECT
 attributes = ["tfstate"]
 
-client  = "elpassion"
-project = "flounder"
+client  = "elpassion" #REPLACE_CLINET
+project = "flounder" #REPLACE_PROJECT

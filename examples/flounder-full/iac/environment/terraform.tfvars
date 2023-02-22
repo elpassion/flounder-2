@@ -2,11 +2,11 @@
 
 region = "eu-west-1"
 
-namespace = "flounder"
-client    = "elpassion"
-project   = "flounder"
+namespace = "flounder" #REPLACE_PROJECT
+client    = "elpassion" #REPLACE_CLIENT
+project   = "flounder" #REPLACE_PROJECT
 
-internal_tld = "flounder.internal"
+internal_tld = "flounder.internal" #REPLACE_PROJECT
 
 vpc_az_count                   = 2
 vpc_public_networks_new_bits   = 6

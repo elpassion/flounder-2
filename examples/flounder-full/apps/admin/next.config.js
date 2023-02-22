@@ -18,7 +18,7 @@ const nextConfig = {
     PAGE_URL,
   },
   images: {
-    domains: ['flounder-stg-mainstorage.s3.eu-west-1.amazonaws.com', 'flounder-prod-mainstorage.s3.eu-west-1.amazonaws.com'],
+    domains: ['flounder-stg-mainstorage.s3.eu-west-1.amazonaws.com', 'flounder-prod-mainstorage.s3.eu-west-1.amazonaws.com'], //REPLACE_PROJECT
   },
 };
 

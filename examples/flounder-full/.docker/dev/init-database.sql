@@ -1,2 +1,2 @@
-CREATE DATABASE "flounder";
-CREATE DATABASE "flounder_test";
+CREATE DATABASE "flounder"; --REPLACE_PROJECT
+CREATE DATABASE "flounder_test"; --REPLACE_PROJECT

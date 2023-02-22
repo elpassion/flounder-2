@@ -36,9 +36,9 @@ In console inside IDE always before you start working run this command:
 
 ```bash
 # To login as correct user to aws.
-$ awsume -a flounder-developer
+$ awsume -a flounder-developer #REPLACE_PROJECT
 #or for longer duration of role
-$ awsume --role-duration 14400 flounder-developer
+$ awsume --role-duration 14400 flounder-developer #REPLACE_PROJECT
 ```
 
 #### Run

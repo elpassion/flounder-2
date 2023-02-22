@@ -9,9 +9,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "elpassion-stg-flounder-tfstate"
+    bucket         = "elpassion-stg-flounder-tfstate" #REPLACE_CLIENT REPLACE_PROJECT
     key            = "github.tfstate"
     region         = "eu-west-1" # Bucket region, not deployment region
-    dynamodb_table = "elpassion-stg-flounder-tfstate"
+    dynamodb_table = "elpassion-stg-flounder-tfstate" #REPLACE_CLIENT #REPLACE_PROJECT
   }
 }

@@ -39,7 +39,7 @@ transactional_email_sender_name_for_ses = "no-reply"
 backend_stage_specific_env_vars = {
 }
 
-cognito_user_pool_domain = "flounderka"
+cognito_user_pool_domain = "flounder-prod" #REPLACE_PROJECT
 
 redis_instance_type  = "cache.t3.micro"
 redis_engine_version = "6.x"

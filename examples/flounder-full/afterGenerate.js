@@ -15,20 +15,32 @@ const run = async () => {
   );
   await readline.close();
 
-  const clientNameRegex = /.*(elpassion).*REPLACE_CLIENT/g;
-  const projectNameRegex = /.*(fch).*REPLACE_PROJECT/g;
+  const projectToken = 'nixa';
+  const clientToken = 'nixa'
+
+  const clientNameRegex = new RegExp(`^.*(${clientToken}).*REPLACE_CLIENT.*$`, 'gm');
+  const projectNameRegex = new RegExp(`^.*(${projectToken}).*REPLACE_PROJECT.*$`, 'gm');
 
   console.log('Replacing project and client references...');
   replace.sync({
-    files: '**/*',
+    files: [
+      './.aws/**/*',
+      './.development/**/*',
+      './.docker/**/*',
+      './.github/**/*',
+      './README.md',
+      './apps/admin/next.config.js',
+      './iac/**/*',
+      './**/.env*'
+    ],
     ignore: ['node_modules/**/*', 'afterGenerate.js'],
     glob: {
       dot: true,
     },
     from: [clientNameRegex, projectNameRegex],
     to: [
-      (match) => match.replaceAll('elpassion', clientName),
-      (match) => match.replaceAll('fch', projectName),
+      (match) => match.replaceAll(clientToken, clientName),
+      (match) => match.replaceAll(projectToken, projectName),
     ],
   });
   console.log('Successfully replaced project files!');

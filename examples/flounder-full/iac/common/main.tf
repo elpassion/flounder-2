@@ -5,7 +5,7 @@ provider "aws" {
 locals {
   additional_tags0 = {
     Terraform      = true
-    TerraformState = "elpassion-stg-flounder-tfstate/common.tfstate" # FIXME
+    TerraformState = "elpassion-stg-flounder-tfstate/common.tfstate" # FIXME #REPLACE_PROJECT REPLACE_CLIENT
   }
   additional_tags1 = var.project != "" ? merge(local.additional_tags0, { Project = lower(format("%v", var.project)) }) : local.additional_tags0
   additional_tags  = var.client != "" ? merge(local.additional_tags1, { Client = lower(format("%v", var.client)) }) : local.additional_tags1

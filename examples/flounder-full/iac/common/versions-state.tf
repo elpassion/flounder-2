@@ -9,9 +9,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "elpassion-stg-flounder-tfstate" # FIXME
+    bucket         = "elpassion-stg-flounder-tfstate" # FIXME REPLACE_PROJECT REPLACE_CLIENT
     key            = "common.tfstate"
     region         = "eu-west-1"                      # Bucket region, not deployment region
-    dynamodb_table = "elpassion-stg-flounder-tfstate" # FIXME
+    dynamodb_table = "elpassion-stg-flounder-tfstate" # FIXME #REPLACE_PROJECT REPLACE_CLIENT
   }
 }

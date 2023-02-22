@@ -58,7 +58,7 @@ cognito_logout_urls = [
   "http://localhost:3002",
 ]
 
-cognito_user_pool_domain = "flounder"
+cognito_user_pool_domain = "flounder-stg" #REPLACE_PROJECT
 
 retooljet_s3_uploads_cors_additional_allowed_origins = ["https://*.retool.com", "https://*.tooljet.com"]
 
