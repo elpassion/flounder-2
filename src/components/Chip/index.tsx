@@ -11,7 +11,10 @@ const ChipComponents = {
     return (
       <div
         className={classNames(
-          "inline-flex cursor-pointer items-center gap-x-2 rounded-full border border-neutral-200 bg-neutral-50 px-2 py-1 text-neutral-500 transition hover:bg-neutral-100 focus:border-blue-500 focus:bg-neutral-50 active:border-neutral-100 active:bg-blue-500 active:text-white"
+          "inline-flex cursor-pointer items-center gap-x-2 rounded-full border border-neutral-200 bg-neutral-50 px-2 py-1 text-neutral-500 transition",
+          "hover:bg-neutral-100",
+          "active:border-neutral-100 active:bg-blue-500 active:text-white",
+          "focus:border-blue-500 focus:bg-neutral-50"
         )}
       >
         {prefixIcon && <ChipComponents.PrefixIcon prefixIcon={prefixIcon} />}
