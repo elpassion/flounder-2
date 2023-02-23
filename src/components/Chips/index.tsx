@@ -7,7 +7,7 @@ export interface ChipsProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ChipsComponents = {
-  BaseChip: ({ text, prefixIcon, suffixIcon }: ChipsProps) => {
+  BaseChips: ({ text, prefixIcon, suffixIcon }: ChipsProps) => {
     return (
       <div
         className={classNames(
@@ -49,13 +49,13 @@ const ChipsComponents = {
   },
 };
 
-export const Chip: React.FC<ChipsProps> = ({
+export const Chips: React.FC<ChipsProps> = ({
   text,
   prefixIcon,
   suffixIcon,
 }) => {
   return (
-    <ChipsComponents.BaseChip
+    <ChipsComponents.BaseChips
       text={text}
       prefixIcon={prefixIcon}
       suffixIcon={suffixIcon}
@@ -63,4 +63,4 @@ export const Chip: React.FC<ChipsProps> = ({
   );
 };
 
-export default Chip;
+export default Chips;

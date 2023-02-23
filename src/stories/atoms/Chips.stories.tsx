@@ -1,14 +1,14 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ChipProps } from "../../components/Chips";
-import { Chip as ChipComponent } from "../../components/Chips";
+import { ChipsProps } from "../../components/Chips";
+import { Chips as ChipsComponent } from "../../components/Chips";
 
-export const Chip: ComponentStory<React.FC<ChipProps>> = ({ ...props }) => (
-  <ChipComponent {...props} />
+export const Chips: ComponentStory<React.FC<ChipsProps>> = ({ ...props }) => (
+  <ChipsComponent {...props} />
 );
 
 export default {
   title: "Atoms/Chip",
-  component: Chip,
+  component: Chips,
   argTypes: {
     text: {
       description: "Enabled",
@@ -49,4 +49,4 @@ export default {
       url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2225%3A6724&t=MVA9T40duNaxfbWE-0",
     },
   },
-} as ComponentMeta<React.FC<ChipProps>>;
+} as ComponentMeta<React.FC<ChipsProps>>;
