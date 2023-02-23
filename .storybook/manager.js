@@ -6,7 +6,7 @@ addons.setConfig({
   sidebar: {
     renderLabel: ({ name, type }) => {
       if (type === "root") {
-        const mode = useDarkMode() ? "rgb(212 212 212)" : "rgb(163 163 163)";
+        const mode = useDarkMode() ? "rgb(245 245 245)" : "rgb(82 82 82)";
 
         return <span style={{ color: mode }}>{name}</span>;
       }
