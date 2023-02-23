@@ -13,7 +13,7 @@ export const Badge: React.FC<BadgeProps> = ({ text, size, variant }) => {
     lg: "text-base px-4 py-2.5",
   };
 
-  const badgeStyleVariants = {
+  const badgeVariants = {
     filled: "bg-neutral-50",
     outline: "",
   };
@@ -23,7 +23,7 @@ export const Badge: React.FC<BadgeProps> = ({ text, size, variant }) => {
       className={classNames(
         "rounded border border-solid border-neutral-200 font-semibold text-neutral-500",
         badgeSizeVariants[size],
-        badgeStyleVariants[variant]
+        badgeVariants[variant]
       )}
     >
       {text}
