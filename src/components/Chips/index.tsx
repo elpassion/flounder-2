@@ -1,13 +1,13 @@
 import classNames from "classnames";
 
-export interface ChipProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ChipsProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;
   prefixIcon?: string;
   suffixIcon?: string;
 }
 
-const ChipComponents = {
-  BaseChip: ({ text, prefixIcon, suffixIcon }: ChipProps) => {
+const ChipsComponents = {
+  BaseChip: ({ text, prefixIcon, suffixIcon }: ChipsProps) => {
     return (
       <div
         className={classNames(
@@ -17,7 +17,7 @@ const ChipComponents = {
           "focus:border-blue-500 focus:bg-neutral-50"
         )}
       >
-        {prefixIcon && <ChipComponents.PrefixIcon prefixIcon={prefixIcon} />}
+        {prefixIcon && <ChipsComponents.PrefixIcon prefixIcon={prefixIcon} />}
         <span
           className={classNames(
             "text-xs font-semibold",
@@ -27,11 +27,11 @@ const ChipComponents = {
         >
           {text}
         </span>
-        {suffixIcon && <ChipComponents.SuffixIcon suffixIcon={suffixIcon} />}
+        {suffixIcon && <ChipsComponents.SuffixIcon suffixIcon={suffixIcon} />}
       </div>
     );
   },
-  PrefixIcon: ({ prefixIcon }: Pick<ChipProps, "prefixIcon">) => {
+  PrefixIcon: ({ prefixIcon }: Pick<ChipsProps, "prefixIcon">) => {
     return (
       <span
         className={classNames("w-4 text-center font-icons text-sm")}
@@ -39,7 +39,7 @@ const ChipComponents = {
       />
     );
   },
-  SuffixIcon: ({ suffixIcon }: Pick<ChipProps, "suffixIcon">) => {
+  SuffixIcon: ({ suffixIcon }: Pick<ChipsProps, "suffixIcon">) => {
     return (
       <span
         className={classNames("w-4 text-center font-icons text-sm")}
@@ -49,9 +49,13 @@ const ChipComponents = {
   },
 };
 
-export const Chip: React.FC<ChipProps> = ({ text, prefixIcon, suffixIcon }) => {
+export const Chip: React.FC<ChipsProps> = ({
+  text,
+  prefixIcon,
+  suffixIcon,
+}) => {
   return (
-    <ChipComponents.BaseChip
+    <ChipsComponents.BaseChip
       text={text}
       prefixIcon={prefixIcon}
       suffixIcon={suffixIcon}
