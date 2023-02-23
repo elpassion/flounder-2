@@ -6,9 +6,8 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { AvatarProps } from "../Avatar/Avatar.interface";
-import { Avatar } from "../Avatar/Avatar.stories";
-import classNames from "classnames";
+import { AvatarProps } from "components/Avatar/Avatar.interface";
+import { AvatarGroup as AvatarGroupComponent } from "components/AvatarGroup";
 
 interface UserInterface {
   name: string;
@@ -24,38 +23,8 @@ interface AvatarGroupProps
 }
 
 export const AvatarGroup: ComponentStory<React.FC<AvatarGroupProps>> = ({
-  avatars,
-  visibleAvatars = 3,
-  size,
-  shape,
-  contentType,
-  className,
-}) => {
-  const visibleAvatarsArray = avatars.slice(0, visibleAvatars);
-
-  return (
-    <div className={classNames("flex -space-x-3", className)}>
-      {visibleAvatarsArray.map((avatar) => (
-        <Avatar
-          {...avatar}
-          size={size}
-          shape={shape}
-          contentType={contentType}
-        />
-      ))}
-
-      {avatars.length > visibleAvatars && (
-        <Avatar
-          text={`+${avatars.length - visibleAvatars}`}
-          shape={shape}
-          size={size}
-          contentType={"text"}
-          src={""}
-        />
-      )}
-    </div>
-  );
-};
+  ...props
+}) => <AvatarGroupComponent {...props} />;
 
 export default {
   title: "Molecules/AvatarGroup",

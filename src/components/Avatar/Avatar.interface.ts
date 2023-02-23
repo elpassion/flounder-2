@@ -8,7 +8,6 @@ export interface ContainerProps extends React.PropsWithChildren {
 }
 
 export interface AvatarChildrenProps extends React.PropsWithChildren {
-  contentType: "icon" | "text";
   className?: string;
 }
 
@@ -18,12 +17,12 @@ export interface ImageProps extends AvatarChildrenProps {
 }
 
 export interface IconProps extends AvatarChildrenProps {
-  size: sizes;
+  size?: sizes;
 }
 
 export interface AvatarProps
   extends Pick<ContainerProps, "size" | "src" | "shape">,
-    Pick<AvatarChildrenProps, "contentType">,
     Pick<ImageProps, "alt"> {
+  contentType: "icon" | "text";
   text?: string;
 }

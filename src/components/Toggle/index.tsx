@@ -1,7 +1,6 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
 
-interface ToggleProps {
+export interface ToggleProps {
   size: "sm" | "md";
   labelText?: string;
   supportingText?: string;
@@ -10,7 +9,7 @@ interface ToggleProps {
   ariaLabel?: string;
 }
 
-export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
+export const Toggle: React.FC<ToggleProps> = ({
   size = "sm",
   labelText,
   supportingText,
@@ -78,39 +77,4 @@ export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({
   );
 };
 
-export default {
-  title: "Atoms/Toggle",
-  component: Toggle,
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["sm", "md"],
-      description: "sm | md",
-    },
-    labelText: {
-      description: "string",
-    },
-    supportingText: {
-      description: "string",
-    },
-    disabled: {
-      description: "boolean",
-    },
-    ariaLabel: {
-      description: "string",
-    },
-  },
-  args: {
-    size: "md",
-    labelText: "",
-    supportingText: "",
-    disabled: false,
-    ariaLabel: "",
-  },
-  parameters: {
-    design: {
-      type: "figma",
-      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2757%3A14552&t=rVpypypag1eT8SHD-0",
-    },
-  },
-} as ComponentMeta<React.FC<ToggleProps>>;
+export default Toggle;

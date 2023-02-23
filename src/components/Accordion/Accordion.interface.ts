@@ -1,4 +1,5 @@
 import React from "react";
+import { IconTypes } from "utils/iconType";
 
 interface AccordionItemProps {
   id: number;
@@ -7,19 +8,24 @@ interface AccordionItemProps {
   expanded?: boolean;
 }
 
-type AccordionIconAlignProps = "left" | "right";
+type iconPositions = "left" | "right";
+
+export interface AccordionIconProps {
+  icon: IconTypes;
+  iconPosition: iconPositions;
+}
 
 export interface AccordionProps {
   variant: "bordered" | "solid";
-  iconAlign: AccordionIconAlignProps;
+  iconPosition: iconPositions;
   items: AccordionItemProps[];
 }
 
 export interface AccordionButtonProps
   extends Pick<AccordionItemProps, "title" | "expanded">,
-    Pick<AccordionProps, "iconAlign">,
+    Pick<AccordionProps, "iconPosition" | "variant">,
     React.PropsWithChildren {}
 
 export interface AccordionBodyProps
   extends Pick<AccordionItemProps, "description" | "expanded">,
-    Pick<AccordionProps, "iconAlign"> {}
+    Pick<AccordionProps, "iconPosition"> {}

@@ -1,13 +1,12 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
 import classNames from "classnames";
 
-interface DividerProps {
+export interface DividerProps {
   labelText: string;
   type: "horizontal" | "vertical";
   className?: string;
 }
 
-export const Divider: ComponentStory<React.FC<DividerProps>> = ({
+export const Divider: React.FC<DividerProps> = ({
   labelText,
   type,
   className,
@@ -34,28 +33,4 @@ export const Divider: ComponentStory<React.FC<DividerProps>> = ({
   );
 };
 
-export default {
-  title: "Atoms/Divider",
-  component: Divider,
-  argTypes: {
-    labelText: {
-      description: "string",
-      type: { required: true, name: "string" },
-    },
-    type: {
-      control: "select",
-      options: ["horizontal", "vertical"],
-      description: "horizontal | vertical",
-    },
-  },
-  args: {
-    labelText: "Label",
-    type: "horizontal",
-  },
-  parameters: {
-    design: {
-      type: "figma",
-      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2691%3A16074&t=DuE9MGHwYmaApj8X-4",
-    },
-  },
-} as ComponentMeta<React.FC<DividerProps>>;
+export default Divider;

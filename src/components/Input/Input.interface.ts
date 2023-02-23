@@ -19,6 +19,7 @@ export interface TextProps {
 }
 
 export interface IconProps {
+  inputVariant: inputVariants;
   tooltipIcon?: IconTypes;
   isError?: boolean;
 }
@@ -28,15 +29,17 @@ export interface PrefixProps {
   prefixText: string;
   disabled?: boolean;
   prefixIcon?: IconTypes;
+  isError?: boolean;
 }
 
 export interface SuffixProps {
   inputVariant?: inputVariants;
   suffixText: string;
   disabled?: boolean;
+  isError?: boolean;
 }
 
-export interface InputProps {
+export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   label: string;
   placeholder?: string;
   supportingText?: string;

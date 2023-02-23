@@ -1,0 +1,85 @@
+import classNames from "classnames";
+import {
+  AvatarChildrenProps,
+  AvatarProps,
+  ContainerProps,
+  IconProps,
+  ImageProps,
+} from "./Avatar.interface";
+
+const AvatarComponents = {
+  Container: ({ children, shape, size = "md", className }: ContainerProps) => {
+    const sizesVariants = {
+      xxs: "h-5 w-5 text-xxs",
+      xs: "h-6 w-6 text-xxs",
+      sm: "h-8 w-8 text-xs",
+      md: "h-10 w-10 text-base",
+      lg: "h-12 w-12 text-lg",
+      xl: "h-14 w-14 text-lg",
+      xxl: "h-16 w-16 text-lg",
+    };
+
+    return (
+      <div
+        className={classNames(
+          "flex items-center justify-center overflow-hidden bg-neutral-100 text-neutral-500",
+          sizesVariants[size],
+          {
+            "rounded-full": shape === "circle",
+            "rounded-lg": shape === "square",
+          },
+          className
+        )}
+      >
+        {children}
+      </div>
+    );
+  },
+  Icon: ({ size = "md" }: IconProps) => {
+    const sizeVariants = {
+      xxs: "text-[8px]",
+      xs: "text-xxs",
+      sm: "text-sm",
+      md: "text-lg",
+      lg: "text-2xl",
+      xl: "text-[28px]",
+      xxl: "text-[32px]",
+    };
+
+    return (
+      <span className={classNames("font-icons", sizeVariants[size])}>
+        &#xea0c;
+      </span>
+    );
+  },
+  Image: ({ src, alt = "avatar" }: ImageProps) => (
+    <img src={src} alt={alt} className="w-full" />
+  ),
+  Text: ({ children }: AvatarChildrenProps) => <span>{children}</span>,
+};
+
+export const Avatar: React.FC<AvatarProps> = ({
+  src,
+  text,
+  contentType,
+  size,
+  ...props
+}) => {
+  const initials = text?.slice(0, 2).toUpperCase();
+  return (
+    <AvatarComponents.Container size={size} {...props}>
+      {src ? (
+        <AvatarComponents.Image src={src} />
+      ) : (
+        <>
+          {contentType === "text" && (
+            <AvatarComponents.Text>{initials}</AvatarComponents.Text>
+          )}
+          {contentType === "icon" && <AvatarComponents.Icon size={size} />}
+        </>
+      )}
+    </AvatarComponents.Container>
+  );
+};
+
+export default Avatar;

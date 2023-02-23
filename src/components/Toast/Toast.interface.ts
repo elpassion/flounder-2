@@ -29,21 +29,12 @@ export interface CloseSectionProps
 export interface ActionSectionProps extends ActionToastProps {
   firstActionText?: string;
   secondActionText?: string;
+  firstActionOnClick?: () => void;
+  secondActionOnClick?: () => void;
 }
 
-export interface BaseToastProps
-  extends ToastChildrenProps,
-    ActionSectionProps,
-    CloseSectionProps {
-  sectionVariants?: "close" | "action";
-  backgroundColor?: string;
-}
-
-export interface BaseSmallToastProps
-  extends ToastChildrenProps,
-    CloseButtonProps {
-  backgroundColor?: string;
-  sectionVariants?: "close";
+export interface ContainerProps extends React.PropsWithChildren {
+  className?: string;
 }
 
 export interface ToastProps extends ActionToastProps, CloseButtonProps {
@@ -52,4 +43,6 @@ export interface ToastProps extends ActionToastProps, CloseButtonProps {
   icon?: IconTypes;
   firstActionText?: string;
   secondActionText?: string;
+  sectionVariants?: "close" | "action";
+  backgroundColor?: string;
 }
