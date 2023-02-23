@@ -1,37 +1,9 @@
-import { ComponentStory } from "@storybook/react";
-import { IconButton, IconButtonProps } from "../IconButton/IconButton.stories";
-import classNames from "classnames";
-import {
-  buttonBorderVariants,
-  buttonRadiusVariants,
-} from "../ButtonGroup/ButtonGroup.styles";
-
-interface IconButtonGroupProps
-  extends Pick<IconButtonProps, "size" | "variant"> {
-  buttons: Omit<IconButtonProps, "size" | "variant">[];
-}
-
+import { IconButtonGroupProps } from "components/IconButtonGroup";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { IconButtonGroup as IconButtonGroupComponent } from "components/IconButtonGroup";
 export const IconButtonGroup: ComponentStory<
   React.FC<IconButtonGroupProps>
-> = ({ buttons, size, variant }) => {
-  return (
-    <div className="inline-flex">
-      {buttons.map((button, index) => (
-        <IconButton
-          variant={variant}
-          key={index}
-          size={size}
-          className={classNames(
-            "hover:z-10",
-            buttonRadiusVariants(buttons)[index] || "-ml-px rounded-none",
-            buttonBorderVariants[variant]
-          )}
-          {...button}
-        />
-      ))}
-    </div>
-  );
-};
+> = ({ ...props }) => <IconButtonGroupComponent {...props} />;
 
 export default {
   title: "Molecules/IconButtonGroup",
@@ -87,4 +59,4 @@ export default {
       url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=3307%3A20132&t=ZdZnKV3DB1YUpHBE-0",
     },
   },
-};
+} as ComponentMeta<React.FC<IconButtonGroupProps>>;

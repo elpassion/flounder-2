@@ -1,4 +1,4 @@
-import { ButtonProps } from "../Button/Button.stories";
+import { ButtonProps } from "components/Button";
 
 export interface ButtonGroupProps
   extends Pick<ButtonProps, "size" | "variant"> {

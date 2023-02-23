@@ -1,35 +1,10 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Button } from "../Button/Button.stories";
-import classNames from "classnames";
-import { ButtonGroupProps } from "./ButtonGroup.interface";
-import {
-  buttonBorderVariants,
-  buttonRadiusVariants,
-} from "./ButtonGroup.styles";
+import { ButtonGroupProps } from "components/ButtonGroup/ButtonGroup.interface";
+import { ButtonGroup as ButtonGroupComponent } from "components/ButtonGroup";
 
 export const ButtonGroup: ComponentStory<React.FC<ButtonGroupProps>> = ({
-  buttons,
-  size,
-  variant,
-}) => {
-  return (
-    <div className="inline-flex">
-      {buttons.map((button, index) => (
-        <Button
-          key={index}
-          size={size}
-          variant={variant}
-          className={classNames(
-            "hover:z-10",
-            buttonRadiusVariants(buttons)[index] || "-ml-px rounded-none",
-            buttonBorderVariants[variant]
-          )}
-          {...button}
-        />
-      ))}
-    </div>
-  );
-};
+  ...props
+}) => <ButtonGroupComponent {...props} />;
 
 export default {
   title: "Molecules/ButtonGroup",
