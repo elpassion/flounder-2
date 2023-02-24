@@ -20,7 +20,7 @@ const ChipsComponents = {
         {prefixIcon && <ChipsComponents.PrefixIcon prefixIcon={prefixIcon} />}
         <span
           className={classNames(
-            "text-xs font-semibold",
+            "text-xs font-medium",
             !prefixIcon && "ml-2.5",
             !suffixIcon && "mr-2.5"
           )}

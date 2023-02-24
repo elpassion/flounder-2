@@ -21,7 +21,7 @@ export const Badge: React.FC<BadgeProps> = ({ text, size, variant }) => {
   return (
     <span
       className={classNames(
-        "rounded border border-solid border-neutral-200 font-semibold text-neutral-500",
+        "rounded border border-solid border-neutral-200 font-medium text-neutral-500",
         badgeSizeVariants[size],
         badgeVariants[variant]
       )}

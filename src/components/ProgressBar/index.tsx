@@ -16,7 +16,7 @@ const ProgressBarComponents = {
     return (
       <div
         className={classNames(
-          "text-xs font-semibold text-neutral-500",
+          "text-xs font-medium text-neutral-500",
           progressBarLabelVariants[label]
         )}
         style={{ left: `${value}%` }}
