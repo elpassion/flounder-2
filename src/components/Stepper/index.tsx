@@ -131,7 +131,8 @@ export const StepperComponents = {
             "text-sm font-medium empty:hidden",
             titleStatusColorVariants[status],
             titleSizeVariants[size],
-            variant === "vertical" && sizeMarginVariants[size]
+            variant === "vertical" && sizeMarginVariants[size],
+            variant === "horizontal" && "hidden sm:block"
           )}
         >
           {stepTitle}
@@ -139,7 +140,8 @@ export const StepperComponents = {
         <p
           className={classNames(
             "text-sm empty:hidden",
-            descriptionStatusColorVariants[status]
+            descriptionStatusColorVariants[status],
+            variant === "horizontal" && "hidden sm:block"
           )}
         >
           {stepDescription}

@@ -11,6 +11,33 @@ const sharedStyles = {
   brandTarget: "_self",
 };
 
+const initialBreakpoints = {
+  mobile1: {
+    name: "Small mobile",
+    styles: {
+      height: "568px",
+      width: "360px",
+    },
+    type: "mobile",
+  },
+  mobile2: {
+    name: "Large mobile",
+    styles: {
+      height: "896px",
+      width: "414px",
+    },
+    type: "mobile",
+  },
+  tablet: {
+    name: "Tablet",
+    styles: {
+      height: "1112px",
+      width: "834px",
+    },
+    type: "tablet",
+  },
+};
+
 export const parameters = {
   actions: { argTypesRegex: "^on.*" },
   darkMode: {
@@ -24,6 +51,9 @@ export const parameters = {
       base: "light",
       brandImage: logo,
     }),
+  },
+  viewport: {
+    viewports: initialBreakpoints,
   },
 };
 
