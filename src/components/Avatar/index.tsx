@@ -70,6 +70,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   ...props
 }) => {
   const initials = name?.slice(0, 2).toUpperCase();
+  const withTextLabels = label || capition;
 
   const labelSizeVariants = {
     xxs: "text-xxs",
@@ -92,7 +93,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center">
       <AvatarComponents.Container size={size} {...props}>
         {src ? (
           <AvatarComponents.Image src={src} />
@@ -105,16 +106,18 @@ export const Avatar: React.FC<AvatarProps> = ({
           </>
         )}
       </AvatarComponents.Container>
-      <div className="flex flex-col gap-1 text-neutral-500">
-        <AvatarComponents.Text
-          className={`font-medium ${labelSizeVariants[size]}`}
-        >
-          {label}
-        </AvatarComponents.Text>
-        <AvatarComponents.Text className={capitionSizeVariants[size]}>
-          {capition}
-        </AvatarComponents.Text>
-      </div>
+      {withTextLabels && (
+        <div className="ml-2 flex flex-col gap-1 text-neutral-500">
+          <AvatarComponents.Text
+            className={classNames("font-medium", labelSizeVariants[size])}
+          >
+            {label}
+          </AvatarComponents.Text>
+          <AvatarComponents.Text className={capitionSizeVariants[size]}>
+            {capition}
+          </AvatarComponents.Text>
+        </div>
+      )}
     </div>
   );
 };

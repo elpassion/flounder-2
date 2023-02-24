@@ -20,10 +20,11 @@ export interface IconProps extends AvatarChildrenProps {
 }
 
 export interface AvatarProps
-  extends Pick<ContainerProps, "size" | "shape">,
-    Pick<ImageProps, "alt" | "src"> {
+  extends Pick<ContainerProps, "size" | "shape" | "className">,
+    Pick<ImageProps, "alt"> {
   name?: string;
   label?: string;
   capition?: string;
   contentType: "icon" | "text";
+  src?: string;
 }

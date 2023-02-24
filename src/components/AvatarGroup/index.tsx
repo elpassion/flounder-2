@@ -43,7 +43,6 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
           shape={shape}
           size={size}
           contentType={"text"}
-          src={""}
         />
       )}
     </div>
