@@ -39,7 +39,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
 
       {avatars.length > visibleAvatars && (
         <Avatar
-          text={`+${avatars.length - visibleAvatars}`}
+          name={`+${avatars.length - visibleAvatars}`}
           shape={shape}
           size={size}
           contentType={"text"}

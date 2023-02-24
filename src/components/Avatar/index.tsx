@@ -55,30 +55,67 @@ const AvatarComponents = {
   Image: ({ src, alt = "avatar" }: ImageProps) => (
     <img src={src} alt={alt} className="w-full" />
   ),
-  Text: ({ children }: AvatarChildrenProps) => <span>{children}</span>,
+  Text: ({ children, className }: AvatarChildrenProps) => (
+    <span className={className}>{children}</span>
+  ),
 };
 
 export const Avatar: React.FC<AvatarProps> = ({
+  name,
+  label,
+  capition,
+  size = "md",
   src,
-  text,
   contentType,
-  size,
   ...props
 }) => {
-  const initials = text?.slice(0, 2).toUpperCase();
+  const initials = name?.slice(0, 2).toUpperCase();
+
+  const labelSizeVariants = {
+    xxs: "text-xxs",
+    xs: "text-xs",
+    sm: "text-xs",
+    md: "text-xs",
+    lg: "text-sm",
+    xl: "text-base",
+    xxl: "text-lg",
+  };
+
+  const capitionSizeVariants = {
+    xxs: "hidden",
+    xs: "hidden",
+    sm: "text-xs",
+    md: "text-xs",
+    lg: "text-xs",
+    xl: "text-sm",
+    xxl: "text-sm",
+  };
+
   return (
-    <AvatarComponents.Container size={size} {...props}>
-      {src ? (
-        <AvatarComponents.Image src={src} />
-      ) : (
-        <>
-          {contentType === "text" && (
-            <AvatarComponents.Text>{initials}</AvatarComponents.Text>
-          )}
-          {contentType === "icon" && <AvatarComponents.Icon size={size} />}
-        </>
-      )}
-    </AvatarComponents.Container>
+    <div className="flex items-center gap-2">
+      <AvatarComponents.Container size={size} {...props}>
+        {src ? (
+          <AvatarComponents.Image src={src} />
+        ) : (
+          <>
+            {contentType === "text" && (
+              <AvatarComponents.Text>{initials}</AvatarComponents.Text>
+            )}
+            {contentType === "icon" && <AvatarComponents.Icon size={size} />}
+          </>
+        )}
+      </AvatarComponents.Container>
+      <div className="flex flex-col gap-1 text-neutral-500">
+        <AvatarComponents.Text
+          className={`font-medium ${labelSizeVariants[size]}`}
+        >
+          {label}
+        </AvatarComponents.Text>
+        <AvatarComponents.Text className={capitionSizeVariants[size]}>
+          {capition}
+        </AvatarComponents.Text>
+      </div>
+    </div>
   );
 };
 

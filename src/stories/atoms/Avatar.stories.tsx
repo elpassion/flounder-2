@@ -23,7 +23,9 @@ export default {
   title: "Atoms/Avatar",
   component: Avatar,
   argTypes: {
-    text: { description: "string" },
+    name: { description: "string" },
+    label: { description: "string" },
+    capition: { description: "string" },
     shape: {
       control: "select",
       description: "circle | square",
@@ -63,7 +65,9 @@ export default {
     alt: { description: "string" },
   },
   args: {
-    text: "Anna Kapusta",
+    name: "Anna Kapusta",
+    label: "Anna Kapusta",
+    capition: "anna@kapusta.pl",
     shape: "square",
     size: "md",
     contentType: "text",

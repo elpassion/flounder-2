@@ -58,35 +58,35 @@ export default {
     contentType: "text",
     avatars: [
       {
-        text: "Anna Kapusta",
+        name: "Anna Kapusta",
         src: "images/red.png",
       },
       {
-        text: "Bartek Kapusta",
+        name: "Bartek Kapusta",
         src: "images/yellow.png",
       },
       {
-        text: "Cezary Kapusta",
+        name: "Cezary Kapusta",
         src: "images/blue.png",
       },
       {
-        text: "Daria Kapusta",
+        name: "Daria Kapusta",
         src: "images/red.png",
       },
       {
-        text: "Ewa Kapusta",
+        name: "Ewa Kapusta",
         src: "images/yellow.png",
       },
       {
-        text: "Fryderyk Kapusta",
+        name: "Fryderyk Kapusta",
         src: "images/blue.png",
       },
       {
-        text: "Grażyna Kapusta",
+        name: "Grażyna Kapusta",
         src: "images/red.png",
       },
       {
-        text: "Hanna Kapusta",
+        name: "Hanna Kapusta",
         src: "images/blue.png",
       },
     ],
