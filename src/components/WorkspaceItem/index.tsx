@@ -1,7 +1,9 @@
 import classNames from "classnames";
 import { Avatar } from "components/Avatar";
+import { AvatarProps } from "components/Avatar/Avatar.interface";
 
-export interface WorkspaceItemProps {
+export interface WorkspaceItemProps
+  extends Pick<AvatarProps, "shape" | "src" | "contentType" | "alt"> {
   size?: "sm" | "md" | "lg";
   variant?: "onlyAvatar" | "fullWidth";
 }
@@ -9,6 +11,10 @@ export interface WorkspaceItemProps {
 export const WorkspaceItem: React.FC<WorkspaceItemProps> = ({
   size = "md",
   variant = "fullWidth",
+  shape = "square",
+  contentType = "text",
+  src,
+  alt,
 }) => {
   //TIP:classes to use for active state
   const activeStyle = "bg-neutral-200 border-neutral-200";
@@ -29,15 +35,17 @@ export const WorkspaceItem: React.FC<WorkspaceItemProps> = ({
       className={classNames(
         "flex cursor-pointer items-center gap-3 rounded-lg border-transparent p-2 text-neutral-500",
         "hover:border-neutral-100 hover:bg-neutral-100",
-        "focus:border-neutral-200 focus:bg-neutral-50",
+        "active:border-neutral-200 active:bg-neutral-50",
         styleVariants[variant]
       )}
     >
       <Avatar
-        shape="square"
         name="Anna Kapusta"
-        contentType="text"
+        shape={shape}
+        contentType={contentType}
+        src={src}
         size={size}
+        alt={alt}
         className="!bg-neutral-300 !text-neutral-700"
       />
       {variant === "fullWidth" && (

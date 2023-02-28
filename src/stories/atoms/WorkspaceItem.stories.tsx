@@ -26,10 +26,46 @@ export default {
       options: ["onlyAvatar", "fullWidth"],
       description: "onlyAvatar | fullWidth",
     },
+    shape: {
+      control: "select",
+      description: "circle | square",
+      options: ["circle", "square"],
+    },
+    src: {
+      description: "image src",
+      control: {
+        type: "select",
+        labels: {
+          "images/red.png": "red",
+          "images/peach.png": "peach",
+          "images/yellow.png": "yellow",
+          "images/blue.png": "blue",
+          "images/pink.png": "pink",
+        },
+      },
+      options: [
+        undefined,
+        "images/red.png",
+        "images/peach.png",
+        "images/yellow.png",
+        "images/blue.png",
+        "images/pink.png",
+      ],
+    },
+    contentType: {
+      control: "select",
+      description: "icon | text",
+      options: ["icon", "text"],
+    },
+    alt: { description: "string" },
   },
   args: {
     size: "md",
     variant: "fullWidth",
+    shape: "square",
+    contentType: "text",
+    src: undefined,
+    alt: "avatar alt",
   },
   parameters: {
     design: {
