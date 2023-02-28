@@ -74,7 +74,6 @@ const PaginationComponents = {
     direction,
     onClick,
     title,
-    ...props
   }: ArrowButtonProps) => (
     <button
       type={"button"}
@@ -87,7 +86,6 @@ const PaginationComponents = {
         direction === "right" && variant === "default" && "-ml-px rounded-r-lg"
       )}
       onClick={onClick}
-      {...props}
     >
       <span
         className={classNames(
