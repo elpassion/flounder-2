@@ -1,0 +1,102 @@
+name: Compile and test
+
+on:
+  push:
+    paths:
+      - examples/flounder-full/**
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_call:
+    outputs:
+      mobile_affected:
+        description: 'Returns string if mobile app requires deploy'
+        value: ${{ jobs.compile-and-test.outputs.mobile_affected }}
+      trigger_vrt:
+        description: 'Returns if visual regression tests should be run'
+        value: ${{ jobs.compile-and-test.outputs.trigger_vrt }}
+
+jobs:
+  compile-and-test:
+    outputs:
+      mobile_affected: ${{ steps.check_mobile_deploy.outputs.mobile_affected }}
+      trigger_vrt: ${{ steps.ui_affected_check.outputs.trigger_vrt }}
+    concurrency:
+      group: 'compile-and-test'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./examples/flounder-full
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:latest
+        ports:
+          - '6379:6379'
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: nrwl/nx-set-shas@v2
+
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          run_install: false
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Check if mobile deploy needed
+        id: check_mobile_deploy
+        run: echo "mobile_affected=$(pnpm nx print-affected --base=origin/main~1 --head=HEAD --select projects | grep -o 'mobile')" >> $GITHUB_OUTPUT
+
+      - run: echo "mobile_affected=$(pnpm nx print-affected --base=origin/main~1 --head=HEAD --select projects | grep -o 'mobile')"
+
+      - name: Check if should trigger visual regression tests
+        id: ui_affected_check
+        run: |
+          if pnpm nx print-affected --base=origin/main~2 --select projects | grep ui
+          then
+            echo "trigger_vrt=true" >> $GITHUB_OUTPUT
+          fi
+
+      - run: npm run ci:lint
+      - run: npm run ci:compile
+        if: always()
+      - run: npm run ci:test
+        env:
+          NODE_ENV: test
+          API_PORT: 3001
+          API_ALLOWED_ORIGINS: http://localhost:3000,http://localhost:5000,http://localhost:3002
+          DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/postgres'
+          AWS_ACCESS_KEY_ID: awsaccesskeyid
+          AWS_SECRET_ACCESS_KEY: awssecretaccesskey
+          AWS_REGION: eu-west-1
+        if: always()
+
+      - run: pnpm run ci:translate:check
+        if: always()
