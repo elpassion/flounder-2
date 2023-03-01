@@ -8,4 +8,4 @@ on:
 
 jobs:
   flounder-full:
-    uses: elpassion/flounder-2/examples/flounder-full/.github/workflows/compile-and-test.yml@ci-example-setup
+    uses: ./examples/flounder-full/.github/workflows/compile-and-test.yml@ci-example-setup
