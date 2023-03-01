@@ -1,4 +1,4 @@
-# flounder
+# Flounder v2.0
 
 ## Development environment
 
