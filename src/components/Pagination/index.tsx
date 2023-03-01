@@ -174,7 +174,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   size,
   prevTitle,
   nextTitle,
-  rangeSize,
 }) => {
   const paginationVariants = {
     default: "",
@@ -193,7 +192,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         direction={"left"}
         onClick={onPrevious}
       />
-      {buildPagination(totalPages, currentPage, rangeSize).map((page) =>
+      {buildPagination(totalPages, currentPage, 2).map((page) =>
         page === -1 || page === -2 ? (
           <PaginationComponents.DotButton
             variant={variant}

@@ -8,7 +8,6 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   nextTitle: string;
   variant: "default" | "outlined" | "ghost";
   size: "sm" | "md" | "lg";
-  rangeSize: number;
 }
 
 export interface ArrowButtonProps

@@ -46,13 +46,6 @@ export default {
         type: "text",
       },
     },
-    rangeSize: {
-      control: {
-        type: "range",
-        min: 1,
-        max: 3,
-      },
-    },
     onPage: {
       action: "onPage",
     },
@@ -64,7 +57,6 @@ export default {
     variant: "outlined",
     prevTitle: "Previous",
     nextTitle: "Next",
-    rangeSize: 2,
     onPage: (page: number) => console.log(`Page ${page} clicked`),
   },
   parameters: {
