@@ -150,7 +150,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   size,
   prevTitle,
   nextTitle,
-  rangeSize = 2,
+  rangeSize,
 }) => {
   return (
     <div
