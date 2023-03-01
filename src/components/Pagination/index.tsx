@@ -5,14 +5,6 @@ import {
   PageButtonProps,
   PaginationProps,
 } from "./Pagination.interface";
-import {
-  buttonArrowStyles,
-  buttonPageSizeStyles,
-  buttonPageStateStyles,
-  buttonSizeStyles,
-  buttonVariants,
-  paginationVariants,
-} from "./Pagination.styles";
 
 const buildRange = (
   from: number,
@@ -65,6 +57,38 @@ const buildPagination = (
   output.push(...endRange);
 
   return Array.from(new Set(output));
+};
+
+const buttonVariants = {
+  default: "border-neutral-400 border-1 border",
+  outlined: "border-neutral-400 border-1 rounded-lg border",
+  ghost: "",
+};
+
+const buttonArrowStyles = {
+  default: "hover:bg-neutral-50",
+  outlined: "bg-white hover:bg-neutral-50",
+  ghost: "hover:text-neutral-700",
+};
+
+const buttonSizeStyles = {
+  sm: "h-8 gap-2 py-2 px-3.5 text-sm",
+  md: "h-11 text-base py-2.5 px-4 gap-2",
+  lg: "h-12 gap-4 py-2.5 px-4 text-lg",
+};
+
+const buttonPageSizeStyles = {
+  sm: "h-8 w-8 text-sm",
+  md: "h-11 w-11 text-base",
+  lg: "h-12 w-12 text-lg",
+};
+
+const buttonPageStateStyles = {
+  default:
+    "hover:bg-neutral-50 bg-white active:bg-neutral-100 focus:bg-neutral-50 focus:border-neutral-600",
+  outlined:
+    "hover:bg-neutral-50 bg-white active:bg-neutral-100 focus:bg-neutral-50",
+  ghost: "hover:bg-neutral-50 active:bg-neutral-100 focus:bg-neutral-50",
 };
 
 const PaginationComponents = {
@@ -152,6 +176,12 @@ export const Pagination: React.FC<PaginationProps> = ({
   nextTitle,
   rangeSize,
 }) => {
+  const paginationVariants = {
+    default: "",
+    outlined: "gap-x-2",
+    ghost: "gap-x-1",
+  };
+
   return (
     <div
       className={classNames("flex items-center", paginationVariants[variant])}
