@@ -5,9 +5,9 @@ import {
   buttonRadiusVariants,
 } from "../ButtonGroup/ButtonGroup.styles";
 
-export interface IconButtonGroupProps
-  extends Pick<IconButtonProps, "size" | "variant"> {
+export interface IconButtonGroupProps extends Pick<IconButtonProps, "size"> {
   buttons: Omit<IconButtonProps, "size" | "variant">[];
+  variant: "primary" | "outlined" | "ghost";
 }
 
 export const IconButtonGroup: React.FC<IconButtonGroupProps> = ({

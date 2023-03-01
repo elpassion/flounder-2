@@ -25,14 +25,7 @@ export default {
     variant: {
       control: {
         type: "select",
-        options: [
-          "primary",
-          "outlined",
-          "ghost",
-          "destructive",
-          "destructiveGhost",
-          "destructiveOutlined",
-        ],
+        options: ["primary", "outlined", "ghost"],
       },
     },
   },

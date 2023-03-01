@@ -2,9 +2,6 @@ export const buttonBorderVariants = {
   primary: "border-primary-100 hover:border-primary-100",
   outlined: "",
   ghost: "",
-  destructive: "border-error-100 hover:border-error-100",
-  destructiveOutlined: "",
-  destructiveGhost: "",
 };
 
 export const buttonRadiusVariants = (array: string | any[]) => {
