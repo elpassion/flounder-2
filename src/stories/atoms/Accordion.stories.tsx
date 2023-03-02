@@ -7,7 +7,7 @@ import {
   Title,
 } from "@storybook/addon-docs";
 import { AccordionProps } from "components/Accordion/Accordion.interface";
-import { Accordion as AccordionComponent } from "components/Accordion";
+import AccordionComponent from "components/Accordion";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
@@ -30,20 +30,29 @@ export default {
   title: "Atoms/Accordion",
   component: Accordion,
   argTypes: {
+    expandedId: {
+      control: {
+        type: "select",
+        options: [1, 2, 3],
+      },
+    },
     variant: {
       control: {
         type: "select",
         options: ["bordered", "solid"],
+        description: "bordered | solid",
       },
     },
     iconPosition: {
       control: {
         type: "select",
         options: ["left", "right"],
+        description: "left | right",
       },
     },
   },
   args: {
+    expandedId: 1,
     variant: "bordered",
     iconPosition: "left",
     items: [
@@ -51,19 +60,16 @@ export default {
         id: 1,
         title: "Accordion 1",
         description: "Accordion 1 description",
-        expanded: true,
       },
       {
         id: 2,
         title: "Accordion 2",
         description: "Accordion 2 description",
-        expanded: false,
       },
       {
         id: 3,
         title: "Accordion 3",
         description: "Accordion 3 description",
-        expanded: false,
       },
     ],
   },

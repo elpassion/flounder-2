@@ -1,30 +1,29 @@
 import classNames from "classnames";
 import { ProgressBarProps } from "./ProgressBar.interface";
+import * as ProgressBarComponents from "./";
 
-const ProgressBarComponents = {
-  Label: ({ value, label }: ProgressBarProps) => {
-    const progressBarLabelVariants = {
-      right: "",
-      bottom: "",
-      topFloating:
-        "absolute -top-2 text-neutral-500 transform -translate-x-1/2 bg-white px-2 py-1 rounded shadow",
-      bottomFloating:
-        "absolute -bottom-2 text-neutral-500 transform -translate-x-1/2 bg-white px-2 py-1 rounded shadow",
-      none: "",
-    };
+export const Label: React.FC<ProgressBarProps> = ({ value, label }) => {
+  const progressBarLabelVariants = {
+    right: "",
+    bottom: "",
+    topFloating:
+      "absolute -top-2 text-neutral-500 transform -translate-x-1/2 bg-white px-2 py-1 rounded shadow",
+    bottomFloating:
+      "absolute -bottom-2 text-neutral-500 transform -translate-x-1/2 bg-white px-2 py-1 rounded shadow",
+    none: "",
+  };
 
-    return (
-      <div
-        className={classNames(
-          "text-xs font-medium text-neutral-500",
-          progressBarLabelVariants[label]
-        )}
-        style={{ left: `${value}%` }}
-      >
-        {value}%
-      </div>
-    );
-  },
+  return (
+    <div
+      className={classNames(
+        "text-xs font-medium text-neutral-500",
+        progressBarLabelVariants[label]
+      )}
+      style={{ left: `${value}%` }}
+    >
+      {value}%
+    </div>
+  );
 };
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({ value, label }) => {

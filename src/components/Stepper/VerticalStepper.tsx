@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 import { StepperProps, StepStatuses } from "./Stepper.interface";
-import { StepperComponents } from "components/Stepper";
+import * as StepperComponents from "components/Stepper";
 
 export const VerticalStepper: React.FC<StepperProps> = ({
   activeStep,

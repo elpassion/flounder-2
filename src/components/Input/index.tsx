@@ -8,6 +8,7 @@ import {
   TextProps,
   IconProps,
 } from "components/Input/Input.interface";
+import * as InputComponents from "./";
 
 const inputBorderColorStyle: { [key: string]: string } = {
   true: "border-error-500 focus:border-error-500",
@@ -28,123 +29,132 @@ const inputVariantsStyle = {
   suffixDropdown: "col-end-2 rounded-l-lg border-r-0",
 };
 
-const InputComponents = {
-  Prefix: ({
-    inputVariant,
-    prefixText,
-    prefixIcon = "&#xea6b",
-    isError,
-    disabled,
-  }: PrefixProps) => {
-    const isPrefix =
-      inputVariant === "prefixText" ||
-      inputVariant === "prefixDropdown" ||
-      inputVariant === "prefixIcon";
+export const Prefix: React.FC<PrefixProps> = ({
+  inputVariant,
+  prefixText,
+  prefixIcon = "&#xea6b",
+  isError,
+  disabled,
+}) => {
+  const isPrefix =
+    inputVariant === "prefixText" ||
+    inputVariant === "prefixDropdown" ||
+    inputVariant === "prefixIcon";
 
-    const styleVariants = {
-      prefixText: "bg-neutral-50 text-neutral-400 border-neutral-200",
-      prefixDropdown: `relative bg-white ${
-        inputBorderColorStyle[String(isError)]
-      } ${
+  const styleVariants = {
+    prefixText: "bg-neutral-50 text-neutral-400 border-neutral-200",
+    prefixDropdown: classNames(
+      "relative bg-white",
+      inputBorderColorStyle[String(isError)],
+      focusColorStyle[String(isError)],
+      "peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white"
+    ),
+    prefixIcon: classNames(
+      "relative bg-white flex items-center",
+      inputBorderColorStyle[String(isError)],
+      focusColorStyle[String(isError)],
+      "peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white"
+    ),
+  };
+
+  if (!isPrefix) return <></>;
+
+  return (
+    <div
+      className={classNames(
+        "col-end-2 row-start-2 rounded-l-lg border border-r-0 py-2.5 pl-3.5",
+        styleVariants[inputVariant],
+        "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200"
+      )}
+    >
+      {inputVariant === "prefixText" && (
+        <span className="pr-3.5">{prefixText}</span>
+      )}
+      {inputVariant === "prefixDropdown" && (
+        <InputComponents.DropdownButton text={prefixText} disabled={disabled} />
+      )}
+      {inputVariant === "prefixIcon" && (
+        <span
+          className={classNames(
+            "font-icons text-xl",
+            disabled ? "text-neutral-200" : "text-neutral-400"
+          )}
+          dangerouslySetInnerHTML={{ __html: `${prefixIcon};` }}
+        />
+      )}
+    </div>
+  );
+};
+export const Suffix: React.FC<SuffixProps> = ({
+  inputVariant,
+  suffixText,
+  isError,
+  ...props
+}) => {
+  if (inputVariant !== "suffixDropdown") return <></>;
+
+  return (
+    <div
+      className={classNames(
+        "relative rounded-r-lg border border-l-0 bg-white py-2.5 pr-3.5 text-neutral-900",
+        "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200",
+        "peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-left-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white",
+        inputBorderColorStyle[String(isError)],
         focusColorStyle[String(isError)]
-      } peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white`,
-      prefixIcon: `relative bg-white flex items-center ${
-        inputBorderColorStyle[String(isError)]
-      } ${
-        focusColorStyle[String(isError)]
-      } peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-right-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white`,
-    };
+      )}
+    >
+      <InputComponents.DropdownButton text={suffixText} {...props} />
+    </div>
+  );
+};
+export const DropdownButton: React.FC<DropdownButtonProps> = ({
+  text,
+  disabled,
+}) => (
+  <button className="flex items-center gap-2" disabled={disabled}>
+    <span>{text}</span>
+    <span className="font-icons text-base">&#xeacb;</span>
+  </button>
+);
+export const Text: React.FC<TextProps> = ({ text, type }) => {
+  const textStyleVariants = {
+    label:
+      "order-first col-start-1 col-end-3 font-medium text-neutral-700 peer-disabled:text-neutral-200",
+    supportingText:
+      "col-start-1 col-end-3 text-neutral-400 peer-disabled:text-neutral-200",
+    errorMessage: "col-start-1 col-end-3 m-0 p-0 pt-1.5 text-error-500",
+  };
+  return (
+    <p className={classNames("m-0 p-0 text-sm", textStyleVariants[type])}>
+      {text}
+    </p>
+  );
+};
+export const Icon: React.FC<IconProps> = ({
+  tooltipIcon,
+  inputVariant,
+  isError,
+}) => {
+  if (!tooltipIcon) return <></>;
 
-    if (!isPrefix) return <></>;
-
-    return (
-      <div
-        className={classNames(
-          "col-end-2 row-start-2 rounded-l-lg border border-r-0 py-2.5 pl-3.5",
-          styleVariants[inputVariant],
-          "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200"
-        )}
-      >
-        {inputVariant === "prefixText" && (
-          <span className="pr-3.5">{prefixText}</span>
-        )}
-        {inputVariant === "prefixDropdown" && (
-          <InputComponents.DropdownButton
-            text={prefixText}
-            disabled={disabled}
-          />
-        )}
-        {inputVariant === "prefixIcon" && (
-          <span
-            className={classNames(
-              "font-icons text-xl",
-              disabled ? "text-neutral-200" : "text-neutral-400"
-            )}
-            dangerouslySetInnerHTML={{ __html: `${prefixIcon};` }}
-          />
-        )}
-      </div>
-    );
-  },
-  Suffix: ({ inputVariant, suffixText, isError, ...props }: SuffixProps) => {
-    if (inputVariant !== "suffixDropdown") return <></>;
-
-    return (
-      <div
-        className={classNames(
-          "relative rounded-r-lg border border-l-0 bg-white py-2.5 pr-3.5 text-neutral-900",
-          "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200",
-          "peer-focus:after:content'' peer-focus:after:absolute peer-focus:after:-left-2 peer-focus:after:-top-px peer-focus:after:h-[calc(100%+2px)] peer-focus:after:w-2 peer-focus:after:border-y peer-focus:after:bg-white",
-          inputBorderColorStyle[String(isError)],
-          focusColorStyle[String(isError)]
-        )}
-      >
-        <InputComponents.DropdownButton text={suffixText} {...props} />
-      </div>
-    );
-  },
-  DropdownButton: ({ text, disabled }: DropdownButtonProps) => (
-    <button className="flex items-center gap-2" disabled={disabled}>
-      <span>{text}</span>
-      <span className="font-icons text-base">&#xeacb;</span>
-    </button>
-  ),
-  Text: ({ text, type }: TextProps) => {
-    const textStyleVariants = {
-      label:
-        "order-first col-start-1 col-end-3 font-medium text-neutral-700 peer-disabled:text-neutral-200",
-      supportingText:
-        "col-start-1 col-end-3 text-neutral-400 peer-disabled:text-neutral-200",
-      errorMessage: "col-start-1 col-end-3 m-0 p-0 pt-1.5 text-error-500",
-    };
-    return (
-      <p className={classNames("m-0 p-0 text-sm", textStyleVariants[type])}>
-        {text}
-      </p>
-    );
-  },
-  Icon: ({ tooltipIcon, inputVariant, isError }: IconProps) => {
-    if (!tooltipIcon) return <></>;
-
-    return (
-      <div
-        className={classNames(
-          "absolute right-3.5 row-start-2 row-end-3 flex h-full items-center text-neutral-300",
-          "peer-disabled:text-neutral-200",
-          inputVariantsStyle[inputVariant]
-        )}
-      >
-        {isError ? (
-          <span className="font-icons text-base text-error-500">&#xeb1b;</span>
-        ) : (
-          <span
-            className="font-icons text-base"
-            dangerouslySetInnerHTML={{ __html: `${tooltipIcon};` }}
-          />
-        )}
-      </div>
-    );
-  },
+  return (
+    <div
+      className={classNames(
+        "absolute right-3.5 row-start-2 row-end-3 flex h-full items-center text-neutral-300",
+        "peer-disabled:text-neutral-200",
+        inputVariantsStyle[inputVariant]
+      )}
+    >
+      {isError ? (
+        <span className="font-icons text-base text-error-500">&#xeb1b;</span>
+      ) : (
+        <span
+          className="font-icons text-base"
+          dangerouslySetInnerHTML={{ __html: `${tooltipIcon};` }}
+        />
+      )}
+    </div>
+  );
 };
 
 export const Input: React.FC<InputProps> = ({

@@ -5,7 +5,6 @@ interface AccordionItemProps {
   id: number;
   title: string;
   description: React.ReactNode;
-  expanded?: boolean;
 }
 
 type iconPositions = "left" | "right";
@@ -18,14 +17,18 @@ export interface AccordionIconProps {
 export interface AccordionProps {
   variant: "bordered" | "solid";
   iconPosition: iconPositions;
+  expandedId: number;
   items: AccordionItemProps[];
 }
 
 export interface AccordionButtonProps
-  extends Pick<AccordionItemProps, "title" | "expanded">,
+  extends Pick<AccordionItemProps, "title">,
     Pick<AccordionProps, "iconPosition" | "variant">,
-    React.PropsWithChildren {}
+    React.PropsWithChildren {
+  expanded: boolean;
+}
 
 export interface AccordionBodyProps
-  extends Pick<AccordionItemProps, "description" | "expanded">,
-    Pick<AccordionProps, "iconPosition"> {}
+  extends Pick<AccordionItemProps, "description">,
+    Pick<AccordionProps, "iconPosition"> {
+}
