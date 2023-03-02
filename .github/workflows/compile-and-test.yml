@@ -49,7 +49,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: ./examples/flounder-full/.github/actions/initial-setup
+      - name: Dump workflow context
+        env:
+          WORKFLOW_CONTEXT: ${{ toJson(job) }}
+        run: echo "$WORKFLOW_CONTEXT"
+
+      - name: Initial setup
+        uses: ${{ `pwd` }}examples/flounder-full/.github/actions/initial-setup
 
       - name: Check if mobile deploy needed
         id: check_mobile_deploy
