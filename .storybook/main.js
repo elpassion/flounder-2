@@ -6,14 +6,6 @@ module.exports = {
     "storybook-addon-designs",
     "storybook-dark-mode",
     "@storybook/preset-create-react-app",
-    {
-      name: "@storybook/addon-storysource",
-      options: {
-        loaderOptions: {
-          parser: "typescript",
-        },
-      },
-    },
   ],
   framework: "@storybook/react",
   core: {
