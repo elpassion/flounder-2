@@ -12,22 +12,19 @@ export default {
   component: Textarea,
   argTypes: {
     label: {
-      description: "Label",
-    },
-    showLabel: {
-      description: "Show Label",
+      name: "Label",
     },
     placeholder: {
-      description: "Placeholder",
+      name: "Placeholder",
     },
     supportingText: {
-      description: "Supporting Text",
+      name: "Supporting Text",
     },
     disabled: {
-      description: "Disabled",
+      name: "Disabled",
     },
-    destructive: {
-      description: "Destructive",
+    error: {
+      name: "Error",
       if: {
         arg: "disabled",
         eq: false,
@@ -36,11 +33,9 @@ export default {
   },
   args: {
     label: "Label",
-    showLabel: true,
     placeholder: "Placeholder",
     supportingText: "Supporting Text",
-    showSupportingText: true,
     disabled: false,
-    destructive: false,
+    error: false,
   },
 };
