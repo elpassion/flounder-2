@@ -2,7 +2,7 @@ import {
   Textarea as TextareaComponent,
   TextareaProps,
 } from "components/Textarea";
-import { ComponentStory } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 export const Textarea: ComponentStory<React.FC<TextareaProps>> = ({
   ...props
 }) => <TextareaComponent {...props} />;
@@ -38,4 +38,10 @@ export default {
     disabled: false,
     error: false,
   },
-};
+  parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=3766%3A29784&t=g7Z8gn261nJ9WobI-0",
+    },
+  },
+} as ComponentMeta<React.FC<TextareaProps>>;
