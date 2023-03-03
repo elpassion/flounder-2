@@ -7,7 +7,7 @@ export const Chips: ComponentStory<React.FC<ChipsProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "🟢 Atoms/Chips",
+  title: "🟠 Atoms/Chips",
   component: Chips,
   argTypes: {
     text: {
