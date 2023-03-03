@@ -5,15 +5,15 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-import { WorkspaceItemProps } from "components/WorkspaceItem";
-import { WorkspaceItem as WorkspaceItemComponent } from "components/WorkspaceItem";
+import { WorkspaceItemProps } from "components/Items/Items.interface";
+import { WorkspaceItem as WorkspaceItemComponent } from "components/Items/WorkspaceItem";
 
 export const WorkspaceItem: ComponentStory<React.FC<WorkspaceItemProps>> = ({
   ...props
 }) => <WorkspaceItemComponent {...props} />;
 
 export default {
-  title: "🟢 Atoms/WorkspaceItem",
+  title: "🟢 Molecules/Items/WorkspaceItem",
   component: WorkspaceItem,
   argTypes: {
     size: {
@@ -23,8 +23,8 @@ export default {
     },
     variant: {
       control: "select",
-      options: ["onlyAvatar", "fullWidth"],
-      description: "onlyAvatar | fullWidth",
+      options: ["onlyIcon", "fullWidth"],
+      description: "onlyIcon | fullWidth",
     },
     shape: {
       control: "select",

@@ -12,7 +12,7 @@ export const Search: ComponentStory<React.FC> = ({ ...props }) => (
 );
 
 export default {
-  title: "Molecules/Search",
+  title: "🟠 Molecules/Search",
   component: Search,
   argTypes: {
     placeholder: {
