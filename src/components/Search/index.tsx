@@ -48,7 +48,7 @@ export const Search: React.FC<SearchProps> = ({
         suffixVariant={suffixVariant}
         prefixVariant="icon"
         onChange={(e) => onChange(e)}
-        helpIcon="&#xea2b"
+        helpIcon={isTyping ? "&#xea2b" : undefined}
         disabled={disabled}
         className={classNames(
           "h-11 !text-neutral-400 focus:!border-blue-500 focus:shadow-none peer-focus:!border-blue-500 peer-focus:shadow-none",
@@ -64,8 +64,8 @@ export const Search: React.FC<SearchProps> = ({
             inlineSuffixAndPrefixVariantStyles
           )}
           iconClassName={classNames(
-            variant === "inline" && "text-base",
-            inlineVariantIconStyles
+            inlineVariantIconStyles,
+            isTyping && "text-blue-500"
           )}
         />
         <Input.Suffix
