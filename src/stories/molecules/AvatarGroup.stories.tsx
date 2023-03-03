@@ -27,7 +27,7 @@ export const AvatarGroup: ComponentStory<React.FC<AvatarGroupProps>> = ({
 }) => <AvatarGroupComponent {...props} />;
 
 export default {
-  title: "Molecules/AvatarGroup",
+  title: "🟢 Molecules/AvatarGroup",
   component: AvatarGroup,
   argTypes: {
     visibleAvatars: {

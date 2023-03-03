@@ -7,7 +7,7 @@ export const Pagination: ComponentStory<React.FC<PaginationProps>> = ({
 }) => <PaginationComponent {...props} />;
 
 export default {
-  title: "Atoms/Pagination",
+  title: "🟠 Atoms/Pagination",
   component: Pagination,
   argTypes: {
     currentPage: {

@@ -7,7 +7,7 @@ export const Badge: ComponentStory<React.FC<BadgeProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "Atoms/Badge",
+  title: "🟢 Atoms/Badge",
   component: Badge,
   argTypes: {
     text: {

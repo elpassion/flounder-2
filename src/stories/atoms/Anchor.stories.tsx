@@ -7,7 +7,7 @@ export const Anchor: ComponentStory<React.FC<AnchorProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "Atoms/Anchor",
+  title: "🟢 Atoms/Anchor",
   component: Anchor,
   argTypes: {
     text: {

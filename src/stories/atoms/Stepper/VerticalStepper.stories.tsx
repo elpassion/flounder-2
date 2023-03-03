@@ -14,7 +14,7 @@ export const VerticalStepper: ComponentStory<React.FC<StepperProps>> = ({
 }) => <VerticalStepperComponent {...props} />;
 
 export default {
-  title: "Atoms/Stepper/VerticalStepper",
+  title: "🟢 Atoms/Stepper/VerticalStepper",
   component: VerticalStepper,
   argTypes: {
     activeStep: {

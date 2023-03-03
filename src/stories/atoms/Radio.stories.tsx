@@ -24,7 +24,7 @@ export const Radio: ComponentStory<React.FC<RadioProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "Atoms/Radio",
+  title: "🟢 Atoms/Radio",
   component: Radio,
   argTypes: {
     id: {

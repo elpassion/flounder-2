@@ -7,7 +7,7 @@ export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
 }) => <InlineMessageComponents {...props} />;
 
 export default {
-  title: "Atoms/InlineMessage",
+  title: "🟢 Atoms/InlineMessage",
   component: InlineMessage,
   argTypes: {
     text: {

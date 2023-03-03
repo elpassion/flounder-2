@@ -20,7 +20,7 @@ export const Checkbox: ComponentStory<React.FC<CheckboxProps>> = ({
 }) => <CheckboxComponent {...props} />;
 
 export default {
-  title: "Atoms/Checkbox",
+  title: "🟢 Atoms/Checkbox",
   component: Checkbox,
   argTypes: {
     name: {

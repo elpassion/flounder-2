@@ -6,7 +6,7 @@ export const IconButtonGroup: ComponentStory<
 > = ({ ...props }) => <IconButtonGroupComponent {...props} />;
 
 export default {
-  title: "Molecules/IconButtonGroup",
+  title: "🟢 Molecules/IconButtonGroup",
   component: IconButtonGroup,
   argTypes: {
     buttons: {

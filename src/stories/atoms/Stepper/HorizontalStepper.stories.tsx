@@ -20,7 +20,7 @@ export const HorizontalStepper: ComponentStory<React.FC<StepperProps>> = ({
 }) => <HorizontalStepperComponent {...props} />;
 
 export default {
-  title: "Atoms/Stepper",
+  title: "🟢 Atoms/Stepper",
   component: HorizontalStepper,
   argTypes: {
     activeStep: {

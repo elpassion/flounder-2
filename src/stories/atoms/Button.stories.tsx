@@ -7,7 +7,7 @@ export const Button: ComponentStory<React.FC<ButtonProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "Atoms/Button",
+  title: "🟢 Atoms/Button",
   component: Button,
   argTypes: {
     text: {

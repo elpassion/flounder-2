@@ -7,7 +7,7 @@ export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
 }) => <IndicatorComponent {...props} />;
 
 export default {
-  title: "Atoms/Indicator",
+  title: "🟢 Atoms/Indicator",
   component: Indicator,
   argTypes: {
     type: {

@@ -36,6 +36,6 @@ export const Icon = () => {
 };
 
 export default {
-  title: "Atoms/Icon",
+  title: "🟢 Atoms/Icon",
   component: Icon,
 };

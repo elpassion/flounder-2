@@ -7,7 +7,7 @@ export const ButtonGroup: ComponentStory<React.FC<ButtonGroupProps>> = ({
 }) => <ButtonGroupComponent {...props} />;
 
 export default {
-  title: "Molecules/ButtonGroup",
+  title: "🟠 Molecules/ButtonGroup",
   component: ButtonGroup,
   argTypes: {
     buttons: {

@@ -7,7 +7,7 @@ export const ProgressBar: ComponentStory<React.FC<ProgressBarProps>> = ({
 }) => <ProgressBarComponent {...props} />;
 
 export default {
-  title: "Atoms/ProgressBar",
+  title: "🟠 Atoms/ProgressBar",
   component: ProgressBar,
   argTypes: {
     value: {

@@ -22,7 +22,7 @@ export const IconButton: ComponentStory<React.FC<IconButtonProps>> = ({
 }) => <IconButtonComponent {...props} />;
 
 export default {
-  title: "Atoms/IconButton",
+  title: "🟢 Atoms/IconButton",
   component: IconButton,
   argTypes: {
     icon: {

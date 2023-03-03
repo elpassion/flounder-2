@@ -20,7 +20,7 @@ export const Tooltip: ComponentStory<React.FC<TooltipProps>> = ({
 }) => <TooltipComponent {...props} />;
 
 export default {
-  title: "Atoms/Tooltip",
+  title: "🟢 Atoms/Tooltip",
   component: Tooltip,
   argTypes: {
     text: {

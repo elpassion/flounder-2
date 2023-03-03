@@ -27,7 +27,7 @@ export const Accordion: ComponentStory<React.FC<AccordionProps>> = ({
 }) => <AccordionComponent {...props} />;
 
 export default {
-  title: "Atoms/Accordion",
+  title: "🟢 Atoms/Accordion",
   component: Accordion,
   argTypes: {
     expandedId: {

@@ -20,7 +20,7 @@ export const Avatar: ComponentStory<React.FC<AvatarProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "Atoms/Avatar",
+  title: "🟢 Atoms/Avatar",
   component: Avatar,
   argTypes: {
     name: { description: "string" },

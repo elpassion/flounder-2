@@ -7,7 +7,7 @@ export const ButtonGroupWithSideDecorator: ComponentStory<
 > = ({ ...props }) => <ButtonGroupWithSideDecoratorComponent {...props} />;
 
 export default {
-  title: "Molecules/ButtonGroup/ButtonGroupWithSideDecorator",
+  title: "🟠 Molecules/ButtonGroup/ButtonGroupWithSideDecorator",
   component: ButtonGroupWithSideDecorator,
   argTypes: {
     buttons: {

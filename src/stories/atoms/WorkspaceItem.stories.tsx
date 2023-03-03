@@ -13,7 +13,7 @@ export const WorkspaceItem: ComponentStory<React.FC<WorkspaceItemProps>> = ({
 }) => <WorkspaceItemComponent {...props} />;
 
 export default {
-  title: "Atoms/WorkspaceItem",
+  title: "🟢 Atoms/WorkspaceItem",
   component: WorkspaceItem,
   argTypes: {
     size: {

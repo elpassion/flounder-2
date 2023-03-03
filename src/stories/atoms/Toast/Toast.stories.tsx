@@ -22,7 +22,7 @@ export const Toast: ComponentStory<React.FC<ToastProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "Atoms/Toast",
+  title: "🟠 Atoms/Toast",
   component: Toast,
   argTypes: {
     title: {
