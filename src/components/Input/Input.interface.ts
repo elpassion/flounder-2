@@ -1,11 +1,7 @@
 import { IconTypes } from "utils/iconType";
 
-type inputVariants =
-  | "default"
-  | "prefixText"
-  | "prefixDropdown"
-  | "prefixIcon"
-  | "suffixDropdown";
+type suffixVariants = "dropdown";
+type prefixVariants = "text" | "dropdown" | "icon";
 
 export interface DropdownButtonProps {
   text: string;
@@ -19,40 +15,53 @@ export interface TextProps {
 }
 
 export interface IconProps {
-  inputVariant: inputVariants;
-  tooltipIcon?: IconTypes;
+  helpIcon?: IconTypes;
   isError?: boolean;
+  onIconClick?: () => void;
 }
-
 export interface PrefixProps {
-  inputVariant?: inputVariants;
-  prefixText: string;
+  prefixText?: string;
   disabled?: boolean;
   prefixIcon?: IconTypes;
   isError?: boolean;
+  className?: string;
+  prefixVariant?: prefixVariants;
+  iconClassName?: string;
 }
 
 export interface SuffixProps {
-  inputVariant?: inputVariants;
   suffixText: string;
   disabled?: boolean;
   isError?: boolean;
+  className?: string;
+  suffixVariant?: suffixVariants;
 }
 
-export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
-  label: string;
+export interface BaseInputProps
+  extends React.HTMLAttributes<HTMLInputElement>,
+    React.PropsWithChildren,
+    Omit<IconProps, "inputVariant"> {
   placeholder?: string;
+  isError?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  inputType?: string;
+  suffixVariant?: suffixVariants;
+  prefixVariant?: prefixVariants;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
+  ariaDescribedByError?: string;
+}
+
+export interface InputProps
+  extends Omit<BaseInputProps, "isError">,
+    Pick<PrefixProps, "iconClassName"> {
+  label?: string;
   supportingText?: string;
   prefixOrSuffixText?: string;
-  required?: boolean;
-  disabled?: boolean;
   errorMessage?: string;
   inputType?: string;
   tooltipIcon?: IconTypes;
   prefixIcon?: IconTypes;
-  inputVariant?: inputVariants;
   ariaLive?: "polite" | "assertive" | "off";
-  ariaLabel?: string;
-  ariaDescribedBy?: string;
-  ariaDescribedByError?: string;
 }

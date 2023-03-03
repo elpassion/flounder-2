@@ -41,17 +41,15 @@ export default {
     errorMessage: {
       description: "string",
     },
-    inputVariant: {
+    suffixVariant: {
       control: "select",
-      options: [
-        "default",
-        "prefixText",
-        "prefixDropdown",
-        "prefixIcon",
-        "suffixDropdown",
-      ],
-      description:
-        "default | prefixText | prefixDropdown | prefixIcon | suffixDropdown",
+      options: [undefined, "dropdown"],
+      description: "dropdown",
+    },
+    prefixVariant: {
+      control: "select",
+      options: [undefined, "text", "dropdown", "icon"],
+      description: "text | dropdown | icon",
     },
     prefixOrSuffixText: {
       description: "string",
@@ -90,7 +88,8 @@ export default {
     supportingText: "Write here some tips",
     disabled: false,
     errorMessage: "",
-    inputVariant: "default",
+    suffixVariant: undefined,
+    prefixVariant: undefined,
     prefixOrSuffixText: "https://",
     tooltipIcon: "&#xea6b",
     prefixIcon: "&#xea6b",

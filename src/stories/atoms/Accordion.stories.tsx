@@ -31,10 +31,7 @@ export default {
   component: Accordion,
   argTypes: {
     expandedId: {
-      control: {
-        type: "select",
-        options: [1, 2, 3],
-      },
+      control: { type: "number", min: 1, max: 3, step: 1 },
     },
     variant: {
       control: {
