@@ -68,6 +68,7 @@ export default {
         icon: "&#xea87",
       },
     ],
+    onClick: (id) => console.log(id),
   },
   parameters: {
     design: {

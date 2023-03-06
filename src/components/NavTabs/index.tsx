@@ -6,10 +6,11 @@ interface Tab {
   icon?: string;
 }
 
-export interface NavTabsProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface NavTabsProps {
   layout: "horizontal" | "vertical";
   tabs: Tab[];
   activeTab: string;
+  onClick?: (id: string) => void;
   type: "filled" | "outlined" | "line";
 }
 
@@ -18,7 +19,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
   tabs,
   activeTab,
   type,
-  ...props
+  onClick,
 }) => {
   const layoutVariant = {
     horizontal: "",
@@ -38,7 +39,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
   };
 
   return (
-    <div className={classNames("flex", layoutVariant[layout])} {...props}>
+    <div className={classNames("flex", layoutVariant[layout])}>
       {tabs.map(({ id, label, icon }) => (
         <div
           key={id}
@@ -48,6 +49,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
             id === activeTab && `text-primary-800 ${activeVariant[type]}`,
             layout !== "vertical" && "justify-center"
           )}
+          onClick={() => onClick && onClick(id)}
         >
           {icon && (
             <span
