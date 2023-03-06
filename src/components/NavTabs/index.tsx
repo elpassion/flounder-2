@@ -1,11 +1,12 @@
 import classNames from "classnames";
 
-interface Tab extends React.HTMLAttributes<HTMLDivElement> {
+interface Tab {
+  id: string;
   label: string;
   icon?: string;
 }
 
-export interface NavTabsProps {
+export interface NavTabsProps extends React.HTMLAttributes<HTMLDivElement> {
   layout: "horizontal" | "vertical";
   tabs: Tab[];
   activeTab: string;
@@ -17,6 +18,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
   tabs,
   activeTab,
   type,
+  ...props
 }) => {
   const layoutVariant = {
     horizontal: "",
@@ -36,10 +38,9 @@ export const NavTabs: React.FC<NavTabsProps> = ({
   };
 
   return (
-    <div className={classNames("flex", layoutVariant[layout])}>
-      {tabs.map(({ id, label, icon, ...props }) => (
+    <div className={classNames("flex", layoutVariant[layout])} {...props}>
+      {tabs.map(({ id, label, icon }) => (
         <div
-          {...props}
           key={id}
           className={classNames(
             "flex flex-1 cursor-pointer items-center gap-x-1.5 py-1.5 px-2 text-xs font-medium text-neutral-400 transition",
