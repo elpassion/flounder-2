@@ -59,7 +59,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
               }}
             />
           )}
-          <div className={classNames("shrink-0")}>{label}</div>
+          <div className="shrink-0">{label}</div>
         </div>
       ))}
     </div>
