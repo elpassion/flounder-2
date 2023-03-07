@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import type { ChipsProps } from "./chips.interface";
+import type { ChipsProps } from "./Chips.interface";
 
 const ChipsComponents = {
   BaseChips: ({ text, prefixIcon, suffixIcon }: ChipsProps) => {
