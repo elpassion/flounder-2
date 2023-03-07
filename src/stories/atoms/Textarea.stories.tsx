@@ -8,7 +8,7 @@ export const Textarea: ComponentStory<React.FC<TextareaProps>> = ({
 }) => <TextareaComponent {...props} />;
 
 export default {
-  title: "Atoms/Textarea",
+  title: "🟠 Atoms/Textarea",
   component: Textarea,
   argTypes: {
     label: {
