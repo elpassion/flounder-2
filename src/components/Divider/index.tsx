@@ -11,11 +11,12 @@ export const Divider: React.FC<DividerProps> = ({
   type,
   className,
 }) => {
+  // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
   const dividerTypes = {
     horizontal:
-      "before:relative  before:right-2 before:-ml-[50%] before:h-px before:w-6/12 after:relative after:left-2 after:-mr-[50%] after:h-px after:w-6/12",
+      "before:relative before:right-2 before:-ml-[50%] before:h-px before:w-6/12 after:relative after:left-2 after:-mr-[50%] after:h-px after:w-6/12",
     vertical:
-      "relative flex h-96 items-center justify-center before:absolute before:top-0 before:h-[calc(50%-theme(space.4))] before:w-px after:absolute after:bottom-0 after:h-[calc(50%-theme(space.4))] after:w-px",
+      "relative flex items-center justify-center before:absolute before:top-0 before:h-[calc(50%-theme(space.4))] before:w-px after:absolute after:bottom-0 after:h-[calc(50%-theme(space.4))] after:w-px",
   };
 
   return (

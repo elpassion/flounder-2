@@ -11,6 +11,7 @@ export const Toast: React.FC<ToastProps> = ({
   onClose,
 }) => {
   return (
+    // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
     <ToastComponents.Container className="grid w-full max-w-md grid-cols-[1fr_auto] bg-white text-neutral-500">
       <div className="flex gap-2 px-4 py-5">
         {icon && <ToastComponents.Icon icon={icon} />}

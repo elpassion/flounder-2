@@ -20,8 +20,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
     right:
       "before:-right-2 before:bottom-1/2 before:translate-y-1/2 before:shadow-tooltipRight",
     bottom:
-      "before:-bottom-[7px] before:right-1/2 before:translate-x-1/2 before:shadow-tooltipBottom",
-    left: "before:-left-[7px] before:bottom-1/2 before:translate-y-1/2 before:shadow-tooltipLeft",
+      "before:-bottom-2 before:right-1/2 before:translate-x-1/2 before:shadow-tooltipBottom",
+    left: "before:-left-2 before:bottom-1/2 before:translate-y-1/2 before:shadow-tooltipLeft",
   };
 
   const colorVariants = {
@@ -40,7 +40,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
       role="tooltip"
       className={classNames(
         "relative flex w-fit max-w-xs flex-col gap-1.5 rounded border py-2 px-3 text-xs shadow-tooltip",
-        "before:content'' before:absolute before:h-4 before:w-4 before:rotate-[135deg] before:rounded-[1px]",
+        "before:content'' before:absolute before:h-4 before:w-4 before:rotate-[135deg] before:rounded-px",
         positionVariants[position],
         colorVariants[variant],
         className
@@ -50,7 +50,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
       {supportingText && (
         <p
           className={classNames(
-            "min-w-[192px]",
+            "min-w-min",
             supportingTextColorVariants[variant]
           )}
         >

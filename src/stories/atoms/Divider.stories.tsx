@@ -4,7 +4,7 @@ import { Divider as DividerComponent } from "components/Divider";
 
 export const Divider: ComponentStory<React.FC<DividerProps>> = ({
   ...props
-}) => <DividerComponent {...props} />;
+}) => <DividerComponent {...props} className="h-96" />;
 
 export default {
   title: "🟢 Atoms/Divider",

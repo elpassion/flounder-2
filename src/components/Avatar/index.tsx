@@ -42,6 +42,7 @@ export const Container: React.FC<ContainerProps> = ({
 };
 
 export const Icon: React.FC<IconProps> = ({ size = "md" }) => {
+  // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
   const sizeVariants = {
     xxs: "text-[8px]",
     xs: "text-xxs",

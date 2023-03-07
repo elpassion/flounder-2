@@ -76,6 +76,9 @@ module.exports = {
       fontSize: {
         xxs: "10px",
       },
+      borderRadius: {
+        px: '1px',
+      }
     },
   },
   plugins: [require("@tailwindcss/forms")],

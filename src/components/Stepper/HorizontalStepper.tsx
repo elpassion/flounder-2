@@ -10,6 +10,7 @@ export const HorizontalStepper: React.FC<StepperProps> = ({
   completeVariant,
   onClick,
 }) => {
+  // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
   const connectorSizeVariants = {
     sm: "after:-left-[calc(50%-20px)] after:top-2.5 after:w-[calc(100%-48px)]",
     md: "after:-left-[calc(50%-20px)] after:top-4 after:w-[calc(100%-48px)]",

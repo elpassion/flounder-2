@@ -54,6 +54,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
     withPrefixAndSuffix: "border-x-0 !rounded-none",
   };
 
+  // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
   const containerVariantsStyle = {
     default: "grid-cols-1",
     withSuffix: "grid-cols-[1fr_auto]",

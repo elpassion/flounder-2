@@ -16,7 +16,7 @@ export const SmallToast: React.FC<ToastProps> = ({
   return (
     <ToastComponents.Container
       className={classNames(
-        "flex w-max min-w-[280px] max-w-xs gap-2 py-3.5 pl-4 text-white ",
+        "flex w-max min-w-min max-w-xs gap-2 py-3.5 pl-4 text-white ",
         sectionVariants === "close"
           ? "justify-between pr-2"
           : "justify-center pr-4",

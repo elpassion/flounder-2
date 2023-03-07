@@ -46,7 +46,7 @@ export const Radio: React.FC<RadioProps> = ({
           fontColor,
           {
             "flex-row-reverse": labelPosition === "left",
-            "w-[344px] max-w-full justify-between":
+            "min-w-min max-w-full justify-between":
               supportingText && labelPosition === "left",
           },
           className

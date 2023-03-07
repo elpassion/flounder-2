@@ -57,6 +57,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           "group flex w-fit items-baseline gap-2",
           {
             "flex-row-reverse": labelPosition === "left",
+            // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
+            // Also not a good idea to make it max-width if we want to make it reusable in different forms/pages/cases
             "w-full max-w-[344px] justify-between":
               supportingText && labelPosition === "left",
           },

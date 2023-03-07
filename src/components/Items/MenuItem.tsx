@@ -21,6 +21,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   return (
     <Items.Container
       className={classNames(
+        // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
         "grid h-9 grid-cols-[auto_1fr_auto] grid-rows-1 border",
         styleVariants[variant]
       )}

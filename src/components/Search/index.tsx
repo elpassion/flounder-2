@@ -41,6 +41,7 @@ export const Search: React.FC<SearchProps> = ({
     <div
       className={classNames(
         "flex items-end gap-2",
+        // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
         variant === "inline" && "!w-[100px]"
       )}
     >
@@ -51,6 +52,7 @@ export const Search: React.FC<SearchProps> = ({
         helpIcon={isTyping ? "&#xea2b" : undefined}
         disabled={disabled}
         className={classNames(
+          // @TODO: Check if important is really neccessary
           "h-11 !text-neutral-400 focus:!border-blue-500 focus:shadow-none peer-focus:!border-blue-500 peer-focus:shadow-none",
           inlineInputVariantStyles
         )}
