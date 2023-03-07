@@ -48,7 +48,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
           onClick={() => onClick(id)}
         >
           {icon && (
-            <div className="h-4 aspect-square text-center">
+            <div className="w-4 aspect-square text-center">
               {icon}
             </div>
           )}
