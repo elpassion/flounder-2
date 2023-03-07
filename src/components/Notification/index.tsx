@@ -117,7 +117,7 @@ export const Notification: React.FC<NotificationProps> = ({
     ) : (
       <NotificationComponents.EmptyState />
     )}
-    <footer className="flex items-center justify-center p-4">
+    <footer className="flex items-center justify-end p-4">
       <Button
         variant="primary"
         size="sm"
