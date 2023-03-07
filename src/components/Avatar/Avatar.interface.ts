@@ -1,7 +1,7 @@
 type sizes = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 
 export interface ContainerProps extends React.PropsWithChildren {
-  shape: "circle" | "square";
+  shape?: "circle" | "square";
   size?: sizes;
   className?: string;
 }
@@ -25,6 +25,6 @@ export interface AvatarProps
   name?: string;
   label?: string;
   capition?: string;
-  contentType: "icon" | "text";
+  contentType?: "icon" | "text";
   src?: string;
 }

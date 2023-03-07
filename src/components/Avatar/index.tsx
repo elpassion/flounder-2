@@ -10,7 +10,7 @@ import * as AvatarComponents from "./";
 
 export const Container: React.FC<ContainerProps> = ({
   children,
-  shape,
+  shape = "circle",
   size = "md",
   className,
 }) => {
@@ -75,7 +75,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   capition,
   size = "md",
   src,
-  contentType,
+  contentType = "icon",
   ...props
 }) => {
   const initials = name?.slice(0, 2).toUpperCase();

@@ -59,10 +59,14 @@ module.exports = {
         },
       },
       boxShadow: {
+        "elevation-xs": "0 1px 2px rgba(27, 36, 44, 0.12)",
+        "elevation-sm":
+          "0 2px 12px -1px rgba(27, 36, 44, 0.1), 0 2px 2px -1px rgba(27, 36, 44, 0.08)",
+        "elevation-md": "0 8px 16px rgba(27, 36, 44, 0.12)",
+        "elevation-lg":
+          "0 16px 26px -4px rgba(27, 36, 44, 0.2), 0 0 4px -1px rgba(27, 36, 44, 0.04",
         button:
           "0px 4px 4px rgba(82, 97, 107, 0.1), 0px 8px 16px rgba(0, 12, 48, 0.12)",
-        tooltip:
-          "0px 2px 12px -1px rgba(27, 36, 44, 0.1), 0px 2px 2px -1px rgba(27, 36, 44, 0.08)",
         tooltipTop:
           "-2px 0 2px -2px rgba(27, 36, 44, 0.08), 0 2px 2px -2px rgba(27, 36, 44, 0.08)",
         tooltipRight:
