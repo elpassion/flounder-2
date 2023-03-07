@@ -1,6 +1,6 @@
-import { NotificationProps } from "components/Notification/Notification.interface";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Notification as NotificationComponent } from "components/Notification";
+import type { NotificationProps } from "components/Notification/Notification.interface";
 
 const eventsExample = [
   {

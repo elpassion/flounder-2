@@ -1,13 +1,13 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   ArgsTable,
   Primary,
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { AvatarProps } from "components/Avatar/Avatar.interface";
 import { AvatarGroup as AvatarGroupComponent } from "components/AvatarGroup";
+import type { AvatarProps } from "components/Avatar/Avatar.interface";
 
 interface UserInterface {
   name: string;

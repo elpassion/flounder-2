@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { DividerProps } from "components/Divider";
 import { Divider as DividerComponent } from "components/Divider";
+import type { DividerProps } from "components/Divider";
 
 export const Divider: ComponentStory<React.FC<DividerProps>> = ({
   ...props

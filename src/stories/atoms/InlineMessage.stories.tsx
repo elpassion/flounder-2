@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { InlineMessageProps } from "components/InlineMessage";
 import { InlineMessage as InlineMessageComponents } from "components/InlineMessage";
+import type { InlineMessageProps } from "components/InlineMessage";
 
 export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
   ...props

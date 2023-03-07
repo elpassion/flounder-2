@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ChipsProps } from "../../components/Chips";
-import { Chips as ChipsComponent } from "../../components/Chips";
+import { Chips as ChipsComponent } from "components/Chips";
+import type { ChipsProps } from "components/Chips";
 
 export const Chips: ComponentStory<React.FC<ChipsProps>> = ({ ...props }) => (
   <ChipsComponent {...props} />

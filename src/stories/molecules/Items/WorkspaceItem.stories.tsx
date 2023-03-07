@@ -5,8 +5,8 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-import { WorkspaceItemProps } from "components/Items/Items.interface";
 import { WorkspaceItem as WorkspaceItemComponent } from "components/Items/WorkspaceItem";
+import type { WorkspaceItemProps } from "components/Items/Items.interface";
 
 export const WorkspaceItem: ComponentStory<React.FC<WorkspaceItemProps>> = ({
   ...props

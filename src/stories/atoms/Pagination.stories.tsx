@@ -1,6 +1,7 @@
 import { ComponentStory } from "@storybook/react";
-import { PaginationProps } from "components/Pagination/Pagination.interface";
 import { Pagination as PaginationComponent } from "components/Pagination";
+import type { PaginationProps } from "components/Pagination/Pagination.interface";
+
 
 export const Pagination: ComponentStory<React.FC<PaginationProps>> = ({
   ...props

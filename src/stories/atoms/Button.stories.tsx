@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ButtonProps } from "components/Button";
 import { Button as ButtonComponent } from "components/Button";
+import type { ButtonProps } from "components/Button";
 
 export const Button: ComponentStory<React.FC<ButtonProps>> = ({ ...props }) => (
   <ButtonComponent {...props} />

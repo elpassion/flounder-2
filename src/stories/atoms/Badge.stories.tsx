@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { BadgeProps } from "components/Badge";
-import { Badge as BadgeComponent } from "components/Badge";
+import { Badge as BadgeComponent,  } from "components/Badge";
+import type { BadgeProps } from "components/Badge";
 
 export const Badge: ComponentStory<React.FC<BadgeProps>> = ({ ...props }) => (
   <BadgeComponent {...props} />

@@ -6,8 +6,8 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-import { CheckboxProps } from "components/Checkbox";
 import { Checkbox as CheckboxComponent } from "components/Checkbox";
+import type { CheckboxProps } from "components/Checkbox";
 
 const docs: string = `# Usage <br/> 
 | DO | DON’T |

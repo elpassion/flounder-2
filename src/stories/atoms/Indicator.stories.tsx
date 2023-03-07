@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { IndicatorProps } from "components/Indicator/Indicator.interface";
 import { Indicator as IndicatorComponent } from "components/Indicator";
+import type { IndicatorProps } from "components/Indicator/Indicator.interface";
 
 export const Indicator: ComponentStory<React.FC<IndicatorProps>> = ({
   ...props

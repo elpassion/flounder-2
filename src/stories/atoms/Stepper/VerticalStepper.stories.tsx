@@ -5,9 +5,8 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-
-import { StepperProps } from "components/Stepper/Stepper.interface";
 import { VerticalStepper as VerticalStepperComponent } from "components/Stepper/VerticalStepper";
+import type { StepperProps } from "components/Stepper/Stepper.interface";
 
 export const VerticalStepper: ComponentStory<React.FC<StepperProps>> = ({
   ...props

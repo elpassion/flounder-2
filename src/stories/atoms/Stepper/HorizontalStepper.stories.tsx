@@ -6,9 +6,8 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-
-import { StepperProps } from "components/Stepper/Stepper.interface";
 import { HorizontalStepper as HorizontalStepperComponent } from "components/Stepper/HorizontalStepper";
+import type { StepperProps } from "components/Stepper/Stepper.interface";
 
 const docs: string = `# Usage <br/> 
 | <div style="width:20vw">DO</div>  | DON’T |

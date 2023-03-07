@@ -6,8 +6,8 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-import { ToastProps } from "components/Toast/Toast.interface";
 import { Toast as ToastComponent } from "components/Toast/Toast";
+import type { ToastProps } from "components/Toast/Toast.interface";
 
 const docs: string = `# Usage <br/> 
 | DO | DON’T |

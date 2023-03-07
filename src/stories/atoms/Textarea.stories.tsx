@@ -1,8 +1,7 @@
-import {
-  Textarea as TextareaComponent,
-  TextareaProps,
-} from "components/Textarea";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { Textarea as TextareaComponent } from "components/Textarea";
+import type {   TextareaProps } from "components/Textarea";
+
 export const Textarea: ComponentStory<React.FC<TextareaProps>> = ({
   ...props
 }) => <TextareaComponent {...props} />;

@@ -6,7 +6,6 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-
 import { AvatarProps } from "components/Avatar/Avatar.interface";
 import { Avatar as AvatarComponent } from "components/Avatar";
 
