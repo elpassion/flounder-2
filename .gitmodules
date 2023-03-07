@@ -1,3 +1,6 @@
+[submodule "examples/flounder"]
+	path = examples/flounder
+	url = git@github.com:elpassion/flounder.git
 [submodule "packages/design-system"]
 	path = packages/design-system
 	url = https://github.com/elpassion/design-system.git

@@ -1,1 +1,0 @@
-export const MAILER_MODULE_OPTIONS = Symbol('MAILER_MODULE_OPTIONS');
