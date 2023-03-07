@@ -1,5 +1,11 @@
 # create-flounder-app
 
+Project requires bun to run to install bun:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
 To install dependencies:
 
 ```bash
