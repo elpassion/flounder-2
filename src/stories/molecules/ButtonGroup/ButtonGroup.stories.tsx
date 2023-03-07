@@ -30,7 +30,6 @@ export default {
     },
   },
   args: {
-    style: "default",
     size: "md",
     variant: "primary",
     buttons: [
