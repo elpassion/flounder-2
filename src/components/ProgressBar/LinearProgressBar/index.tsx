@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import { ProgressBarProps } from "./ProgressBar.interface";
-import * as ProgressBarComponents from "./";
+import { LinearProgressBarProps } from "./LinearProgressBar.interface";
+import * as LinearProgressBarComponents from ".";
 
-export const Label: React.FC<ProgressBarProps> = ({ value, label }) => {
+export const Label: React.FC<LinearProgressBarProps> = ({ value, label }) => {
   const progressBarLabelVariants = {
     right: "",
     bottom: "",
@@ -26,7 +26,10 @@ export const Label: React.FC<ProgressBarProps> = ({ value, label }) => {
   );
 };
 
-export const ProgressBar: React.FC<ProgressBarProps> = ({ value, label }) => {
+export const LinearProgressBar: React.FC<LinearProgressBarProps> = ({
+  value,
+  label,
+}) => {
   const progressBarLayoutVariants = {
     right: "flex items-center gap-x-2",
     bottom: "flex flex-col gap-y-2 items-end",
@@ -44,10 +47,10 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ value, label }) => {
         />
       </div>
       {label !== "none" && (
-        <ProgressBarComponents.Label value={value} label={label} />
+        <LinearProgressBarComponents.Label value={value} label={label} />
       )}
     </div>
   );
 };
 
-export default ProgressBar;
+export default LinearProgressBar;

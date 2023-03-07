@@ -80,6 +80,11 @@ module.exports = {
       fontSize: {
         xxs: "10px",
       },
+      // TODO: RM AFTER MOVED TO FIGMA TOKENS
+      width: {
+        smCircularProgress: "68px",
+        lgCircularProgress: "176px",
+      },
       borderRadius: {
         px: '1px',
       }

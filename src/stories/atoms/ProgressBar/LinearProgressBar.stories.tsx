@@ -1,14 +1,14 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ProgressBarProps } from "components/ProgressBar/ProgressBar.interface";
-import { ProgressBar as ProgressBarComponent } from "components/ProgressBar";
+import { LinearProgressBarProps } from "components/ProgressBar/LinearProgressBar/LinearProgressBar.interface";
+import { LinearProgressBar as LinearProgressBarComponent } from "components/ProgressBar/LinearProgressBar";
 
-export const ProgressBar: ComponentStory<React.FC<ProgressBarProps>> = ({
-  ...props
-}) => <ProgressBarComponent {...props} />;
+export const LinearProgressBar: ComponentStory<
+  React.FC<LinearProgressBarProps>
+> = ({ ...props }) => <LinearProgressBarComponent {...props} />;
 
 export default {
-  title: "🟠 Atoms/ProgressBar",
-  component: ProgressBar,
+  title: "🟢 Atoms/ProgressBar/LinearProgressBar",
+  component: LinearProgressBar,
   argTypes: {
     value: {
       control: {
@@ -34,4 +34,4 @@ export default {
       url: "https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=3307%3A19117&t=OGq5t8JbqSEpLufw-0",
     },
   },
-} as ComponentMeta<React.FC<ProgressBarProps>>;
+} as ComponentMeta<React.FC<LinearProgressBarProps>>;
