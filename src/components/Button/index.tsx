@@ -9,8 +9,8 @@ export const Button: React.FC<ButtonProps> = ({
   rightIcon,
   disabled,
   onClick,
-  className,
   ariaLabel,
+  className
 }) => {
   const styleVariants = {
     primary:
@@ -45,7 +45,7 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled}
       aria-label={ariaLabel}
       className={classNames(
-        "flex items-center justify-center rounded-lg border",
+        "flex items-center justify-center rounded-lg border whitespace-nowrap ",
         "disabled:border-neutral-200 disabled:bg-neutral-200 disabled:text-white disabled:hover:shadow-none",
         "hover:shadow-button",
         styleVariants[variant],

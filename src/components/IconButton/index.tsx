@@ -1,22 +1,5 @@
 import classNames from "classnames";
-
-import { IconTypes } from "utils/iconType";
-
-export interface IconButtonProps {
-  icon: IconTypes;
-  variant?:
-    | "primary"
-    | "outlined"
-    | "ghost"
-    | "destructive"
-    | "destructiveOutlined"
-    | "destructiveGhost";
-  size?: "sm" | "md" | "lg";
-  disabled?: boolean;
-  onClick: () => void;
-  className?: string;
-  ariaLabel?: string;
-}
+import type { IconButtonProps } from "./IconButton.interface";
 
 export const IconButton: React.FC<IconButtonProps> = ({
   icon,

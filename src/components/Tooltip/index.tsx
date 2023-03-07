@@ -32,7 +32,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     <div
       role="tooltip"
       className={classNames(
-        "relative flex w-fit max-w-xs flex-col gap-1.5 rounded border py-2 px-3 text-xs shadow-tooltip",
+        "relative flex w-fit max-w-xs flex-col gap-1.5 rounded border py-2 px-3 text-xs shadow-elevation-sm",
         "before:content'' before:absolute before:h-4 before:w-4 before:rotate-[135deg] before:rounded-px",
         positionVariants[position],
         colorVariants[variant],
