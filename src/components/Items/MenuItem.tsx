@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import * as Items from "components/Items";
-import { MenuItemProps } from "./Items.interface";
+import type { MenuItemProps } from "./Items.interface";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
   text,

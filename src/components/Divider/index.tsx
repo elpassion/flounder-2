@@ -1,10 +1,5 @@
 import classNames from "classnames";
-
-export interface DividerProps {
-  labelText: string;
-  type: "horizontal" | "vertical";
-  className?: string;
-}
+import type { DividerProps } from "./Divider.interface";
 
 export const Divider: React.FC<DividerProps> = ({
   labelText,

@@ -1,20 +1,6 @@
 import classNames from "classnames";
-
 import Avatar from "components/Avatar";
-import { AvatarProps } from "components/Avatar/Avatar.interface";
-
-interface UserInterface {
-  name: string;
-  src: string;
-  alt?: string;
-}
-
-interface AvatarGroupProps
-  extends Pick<AvatarProps, "size" | "shape" | "contentType"> {
-  avatars: UserInterface[];
-  visibleAvatars?: number;
-  className?: string;
-}
+import type { AvatarGroupProps } from "./AvatarGroup.interface";
 
 export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   avatars,

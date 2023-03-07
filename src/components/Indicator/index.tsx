@@ -1,10 +1,10 @@
 import classNames from "classnames";
-import {
+import * as IndicatorComponents from "./";
+import type {
   IndicatorComponentsProps,
   IndicatorProps,
   IndicatorWrapperProps,
 } from "./Indicator.interface";
-import * as IndicatorComponents from "./";
 
 const indicatorDotTypes = {
   default: "bg-neutral-100 text-neutral-900",

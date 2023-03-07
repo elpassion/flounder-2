@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import {
+import type {
   AvatarChildrenProps,
   AvatarProps,
   ContainerProps,

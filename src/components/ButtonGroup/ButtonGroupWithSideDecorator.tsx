@@ -1,8 +1,8 @@
-import { ButtonGroupProps } from "./ButtonGroup.interface";
-import { Button } from "components/Button";
 import classNames from "classnames";
+import { Button } from "components/Button";
 import { IconButton } from "components/IconButton";
-import { buttonBorderVariants } from "./ButtonGroup.styles";
+import { buttonBorderVariants } from "./helpers";
+import type { ButtonGroupProps } from "./ButtonGroup.interface";
 
 export const ButtonGroupWithSideDecorator: React.FC<ButtonGroupProps> = ({
   buttons,

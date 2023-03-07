@@ -1,5 +1,5 @@
-import { AvatarProps } from "components/Avatar/Avatar.interface";
-import { IconTypes } from "utils/iconType";
+import type { IconTypes } from "utils/iconType";
+import type { AvatarProps } from "components/Avatar/Avatar.interface";
 
 type ItemVariants = "onlyIcon" | "fullWidth";
 

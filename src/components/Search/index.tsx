@@ -1,14 +1,10 @@
+import { useState } from "react";
 import classNames from "classnames";
 import Button from "components/Button";
 import IconButton from "components/IconButton";
 import * as Input from "components/Input";
-import { BaseInputProps } from "components/Input/Input.interface";
-import { useState } from "react";
+import type { SearchProps } from "./Search.interface";
 
-export interface SearchProps extends BaseInputProps {
-  variant?: "default" | "withButton" | "withIconButton" | "inline";
-  suffixText?: string;
-}
 
 export const Search: React.FC<SearchProps> = ({
   variant = "default",

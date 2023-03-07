@@ -1,13 +1,6 @@
 import classNames from "classnames";
+import type { InlineMessageProps } from "./InlineMessage.interface";
 
-import { IconTypes } from "utils/iconType";
-
-export interface InlineMessageProps {
-  icon?: IconTypes;
-  text: string;
-  variant?: "default" | "success" | "warning" | "info" | "error";
-  className?: string;
-}
 
 export const InlineMessage: React.FC<InlineMessageProps> = ({
   text,

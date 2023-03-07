@@ -1,14 +1,11 @@
-import { IconButton, IconButtonProps } from "components/IconButton";
 import classNames from "classnames";
+import { IconButton } from "components/IconButton";
 import {
   buttonBorderVariants,
   buttonRadiusVariants,
-} from "../ButtonGroup/ButtonGroup.styles";
+} from "../ButtonGroup/helpers";
+import type { IconButtonGroupProps } from "./IconButtonGroup.interface";
 
-export interface IconButtonGroupProps extends Pick<IconButtonProps, "size"> {
-  buttons: Omit<IconButtonProps, "size" | "variant">[];
-  variant: "primary" | "outlined" | "ghost";
-}
 
 export const IconButtonGroup: React.FC<IconButtonGroupProps> = ({
   buttons,

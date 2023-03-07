@@ -1,12 +1,5 @@
 import classNames from "classnames";
-
-export interface AnchorProps {
-  text: string;
-  link: string;
-  decoration?: "none" | "bottom" | "left";
-  className?: string;
-  role?: string;
-}
+import type { AnchorProps } from "./Anchor.interface";
 
 export const Anchor: React.FC<AnchorProps> = ({
   text,

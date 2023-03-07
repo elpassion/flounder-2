@@ -1,4 +1,5 @@
 import { IconTypes } from "utils/iconType";
+import type { HTMLAttributes, PropsWithChildren } from "react";
 
 type suffixVariants = "dropdown";
 type prefixVariants = "text" | "dropdown" | "icon";
@@ -38,8 +39,8 @@ export interface SuffixProps {
 }
 
 export interface BaseInputProps
-  extends React.HTMLAttributes<HTMLInputElement>,
-    React.PropsWithChildren,
+  extends HTMLAttributes<HTMLInputElement>,
+    PropsWithChildren,
     Omit<IconProps, "inputVariant"> {
   placeholder?: string;
   isError?: boolean;

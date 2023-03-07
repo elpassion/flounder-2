@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { CircularProgressBarProps } from "./CircularProgressBar.interface";
+import type { CircularProgressBarProps } from "./CircularProgressBar.interface";
 
 export const CircularProgressBar: React.FC<CircularProgressBarProps> = ({
   size,

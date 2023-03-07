@@ -1,10 +1,5 @@
 import classNames from "classnames";
-
-export interface ChipsProps extends React.HTMLAttributes<HTMLDivElement> {
-  text: string;
-  prefixIcon?: string;
-  suffixIcon?: string;
-}
+import type { ChipsProps } from "./chips.interface";
 
 const ChipsComponents = {
   BaseChips: ({ text, prefixIcon, suffixIcon }: ChipsProps) => {

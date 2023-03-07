@@ -1,9 +1,7 @@
 import classNames from "classnames";
-
 import { Avatar } from "components/Avatar";
 import * as Items from "components/Items";
-
-import { WorkspaceItemProps } from "./Items.interface";
+import type { WorkspaceItemProps } from "./Items.interface";
 
 export const WorkspaceItem: React.FC<WorkspaceItemProps> = ({
   size = "md",

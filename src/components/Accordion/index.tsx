@@ -1,6 +1,5 @@
 import classNames from "classnames";
-
-import {
+import {type 
   AccordionBodyProps,
   AccordionButtonProps,
   AccordionIconProps,

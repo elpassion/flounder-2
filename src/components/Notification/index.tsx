@@ -1,16 +1,15 @@
 import classNames from "classnames";
-
 import Avatar from "components/Avatar";
 import Button from "components/Button";
 import IconButton from "components/IconButton";
 import Indicator from "components/Indicator";
-import {
+import * as NotificationComponents from "./";
+import * as Skeleton from "components/Skeleton";
+import type {
   ContainerProps,
   EventProps,
   NotificationProps,
 } from "./Notification.interface";
-import * as NotificationComponents from "./";
-import * as Skeleton from "components/Skeleton";
 
 export const Container: React.FC<ContainerProps> = ({
   children,

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ContainerProps, IconProps } from "./Items.interface";
+import type { ContainerProps, IconProps } from "./Items.interface";
 
 export const Container: React.FC<ContainerProps> = ({
   children,

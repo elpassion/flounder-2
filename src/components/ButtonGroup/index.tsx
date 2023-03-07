@@ -1,10 +1,10 @@
-import { Button } from "components/Button";
 import classNames from "classnames";
-import { ButtonGroupProps } from "./ButtonGroup.interface";
+import { Button } from "components/Button";
 import {
   buttonBorderVariants,
   buttonRadiusVariants,
-} from "./ButtonGroup.styles";
+} from "./helpers";
+import type { ButtonGroupProps } from "./ButtonGroup.interface";
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
   buttons,

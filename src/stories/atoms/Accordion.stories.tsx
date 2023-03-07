@@ -6,7 +6,7 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { AccordionProps } from "components/Accordion/Accordion.interface";
+import { AccordionProps } from "components/Anchor/Anchor.interface";
 import AccordionComponent from "components/Accordion";
 
 const docs: string = `# Usage <br/> 

@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { LinearProgressBarProps } from "./LinearProgressBar.interface";
 import * as LinearProgressBarComponents from ".";
+import type { LinearProgressBarProps } from "./LinearProgressBar.interface";
 
 export const Label: React.FC<LinearProgressBarProps> = ({ value, label }) => {
   const progressBarLabelVariants = {

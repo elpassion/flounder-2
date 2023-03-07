@@ -1,22 +1,5 @@
 import classNames from "classnames";
-
-import { IconTypes } from "utils/iconType";
-
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  text: string;
-  variant:
-    | "primary"
-    | "outlined"
-    | "ghost"
-    | "destructive"
-    | "destructiveGhost"
-    | "destructiveOutlined";
-  leftIcon?: IconTypes;
-  rightIcon?: IconTypes;
-  disabled?: boolean;
-  size?: "sm" | "md" | "lg";
-  ariaLabel?: string;
-}
+import type { ButtonProps } from "./Button.interface";
 
 export const Button: React.FC<ButtonProps> = ({
   text,

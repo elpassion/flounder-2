@@ -1,6 +1,6 @@
 import classNames from "classnames";
-
-import {
+import * as InputComponents from "./";
+import type {
   SuffixProps,
   InputProps,
   PrefixProps,
@@ -9,7 +9,6 @@ import {
   IconProps,
   BaseInputProps,
 } from "components/Input/Input.interface";
-import * as InputComponents from "./";
 
 const inputBorderColorStyle: { [key: string]: string } = {
   true: "border-error-500 focus:border-error-500",

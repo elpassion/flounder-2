@@ -1,10 +1,5 @@
 import classNames from "classnames";
-
-export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  text: string;
-  size: "sm" | "md" | "lg";
-  variant: "filled" | "outline";
-}
+import type { BadgeProps } from "./Badge.interface";
 
 export const Badge: React.FC<BadgeProps> = ({ text, size, variant }) => {
   const badgeSizeVariants = {
