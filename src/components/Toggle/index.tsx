@@ -1,13 +1,5 @@
 import classNames from "classnames";
-
-export interface ToggleProps {
-  size: "sm" | "md";
-  labelText?: string;
-  supportingText?: string;
-  disabled?: boolean;
-  className?: string;
-  ariaLabel?: string;
-}
+import type { ToggleProps } from "./Toggle.interface";
 
 export const Toggle: React.FC<ToggleProps> = ({
   size = "sm",

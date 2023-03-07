@@ -1,11 +1,5 @@
 import classNames from "classnames";
-
-export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label: string;
-  supportingText?: string;
-  error?: boolean;
-}
+import type { TextareaProps } from "./Textarea.interface";
 
 export const Textarea: React.FC<TextareaProps> = ({
   error,

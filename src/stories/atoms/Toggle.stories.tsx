@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Toggle as ToggleComponent } from "components/Toggle";
-import type { ToggleProps } from "components/Toggle";
+import type { ToggleProps } from "components/Toggle/Toggle.interface";
 
 export const Toggle: ComponentStory<React.FC<ToggleProps>> = ({ ...props }) => (
   <ToggleComponent {...props} />

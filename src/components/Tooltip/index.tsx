@@ -1,12 +1,5 @@
 import classNames from "classnames";
-
-export interface TooltipProps {
-  text: string;
-  position?: "top" | "right" | "bottom" | "left";
-  supportingText?: string;
-  variant?: "white" | "dark";
-  className?: string;
-}
+import type { TooltipProps } from "./Tooltip.interface";
 
 export const Tooltip: React.FC<TooltipProps> = ({
   text,

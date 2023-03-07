@@ -7,7 +7,7 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 import { IconButton as IconButtonComponent } from "components/IconButton";
-import type { IconButtonProps } from "components/IconButton";
+import type { IconButtonProps } from "components/IconButton/IconButton.interface";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:30vw">DON’T</div> |

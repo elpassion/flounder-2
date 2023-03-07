@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Textarea as TextareaComponent } from "components/Textarea";
-import type {   TextareaProps } from "components/Textarea";
+import type { TextareaProps } from "components/Textarea/Textarea.interface";
 
 export const Textarea: ComponentStory<React.FC<TextareaProps>> = ({
   ...props

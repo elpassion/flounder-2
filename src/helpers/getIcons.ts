@@ -1,15 +1,4 @@
-export interface IconConfigFile {
-  name: string;
-  icons: { [key: string]: string };
-}
-
-export interface Icon {
-  name: string;
-  symbol: {
-    unicode: string;
-    entity: string;
-  };
-}
+import type { Icon, IconConfigFile } from "./types";
 
 export const getIcons = ({ icons }: IconConfigFile): Icon[] => {
   return Object.keys(icons)

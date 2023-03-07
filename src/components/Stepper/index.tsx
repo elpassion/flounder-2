@@ -1,11 +1,14 @@
 import classNames from "classnames";
+import * as StepperComponents from "./";
 import {
+  StepStatuses,
+} from "./Stepper.interface";
+import type {
   ContainerProps,
   StepProps,
-  StepStatuses,
   TitleSectionProps,
 } from "./Stepper.interface";
-import * as StepperComponents from "./";
+
 
 export const Container: React.FC<ContainerProps> = ({
   children,

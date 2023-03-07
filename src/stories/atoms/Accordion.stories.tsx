@@ -6,8 +6,8 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { AccordionProps } from "components/Anchor/Anchor.interface";
 import AccordionComponent from "components/Accordion";
+import type { AccordionProps } from "components/Accordion/Accordion.interface";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |

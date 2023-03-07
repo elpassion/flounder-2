@@ -1,4 +1,4 @@
-import { IconTypes } from "utils/iconType";
+import type { IconTypes } from "utils/iconType";
 
 type Sizes = "sm" | "md" | "lg";
 type StepperVariants = "horizontal" | "vertical";

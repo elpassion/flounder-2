@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { NavTabs as NavTabsComponent } from "components/NavTabs";
-import type { NavTabsProps} from "components/NavTabs";
+import type { NavTabsProps} from "components/NavTabs/NavTabs.interface";
 
 const SvgIcon = () => { return (
   <svg

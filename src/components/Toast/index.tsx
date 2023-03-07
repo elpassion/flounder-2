@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import {
+import * as ToastComponents from "./";
+import type {
   ActionSectionProps,
   ActionToastProps,
   CloseButtonProps,
@@ -8,7 +9,6 @@ import {
   IconToastProps,
   TextToastProps,
 } from "./Toast.interface";
-import * as ToastComponents from "./";
 
 export const Action: React.FC<ActionToastProps> = ({
   children,

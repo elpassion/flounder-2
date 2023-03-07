@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Anchor as AnchorComponent } from "components/Anchor";
-import type { AnchorProps} from "components/Anchor";
+import type { AnchorProps } from "components/Anchor/Anchor.interface";
 
 export const Anchor: ComponentStory<React.FC<AnchorProps>> = ({ ...props }) => (
   <AnchorComponent {...props} />
