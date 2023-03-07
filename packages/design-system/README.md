@@ -14,14 +14,7 @@ Sample projects:
 ### Install dependencies 
 
 ```bash
-$ npm install -D tailwindcss postcss autoprefixer @tailwindcss/forms prettier prettier-plugin-tailwindcss
-$ npm install classnames
-```
-
-### Init config
-
-```bash
-$ npx tailwindcss init -p
+$ npm install
 ```
 
 ### Copy files
@@ -29,12 +22,6 @@ $ npx tailwindcss init -p
 In order to use this project you'll have to copy configuration file. Start with [tailwind.config.js](https://github.com/elpassion/design-system/blob/main/tailwind.config.js). Then copy [prettierrc.json](https://github.com/elpassion/design-system/blob/main/.prettierrc.json). You can use icons locally from [icons font](https://github.com/elpassion/design-system/blob/main/src/fonts/fonticon.ttf) or use cdn [https://elpassion-design-system.s3.eu-west-1.amazonaws.com/fonticon.ttf](https://elpassion-design-system.s3.eu-west-1.amazonaws.com/fonticon.ttf)
 
 ## How to contribute
-
-### Install dependencies 
-
-```bash
-$ npm install
-```
 
 ### Run
 
@@ -56,5 +43,5 @@ We support [tailwind class strategy](https://tailwindcss.com/docs/dark-mode#togg
 [**jira**](https://elpassion.atlassian.net/browse/ELPDES) <br/>
 [**slack**](https://app.slack.com/client/T04RX1Z0P/C04JD9E37MY) <br/>
 [**figma**](https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2054%3A3026&t=4KYtpNsJBJG5fIry-1)<br/>
-[**repo**](https://github.com/elpassion/design-system) <br/>
+[**repo**](https://github.com/elpassion/flounder-2/tree/main/packages/design-system) <br/>
 [**github pages**](https://elpassion.github.io/design-system/?path=/story/intro--page) <br/>
