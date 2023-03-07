@@ -10,7 +10,7 @@ export default {
   title: "🟢 Atoms/ProgressBar/LinearProgressBar",
   component: LinearProgressBar,
   argTypes: {
-    value: {
+    progress: {
       control: {
         type: "range",
         min: 0,
@@ -25,7 +25,7 @@ export default {
     },
   },
   args: {
-    value: 50,
+    progress: 50,
     label: "none",
   },
   parameters: {

@@ -1,4 +1,4 @@
 export interface LinearProgressBarProps {
-  value: number;
+  progress: number;
   label: "none" | "right" | "bottom" | "topFloating" | "bottomFloating";
 }

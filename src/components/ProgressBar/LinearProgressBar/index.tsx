@@ -2,7 +2,10 @@ import classNames from "classnames";
 import * as LinearProgressBarComponents from ".";
 import type { LinearProgressBarProps } from "./LinearProgressBar.interface";
 
-export const Label: React.FC<LinearProgressBarProps> = ({ value, label }) => {
+export const Label: React.FC<LinearProgressBarProps> = ({
+  progress,
+  label,
+}) => {
   const progressBarLabelVariants = {
     right: "",
     bottom: "",
@@ -19,15 +22,15 @@ export const Label: React.FC<LinearProgressBarProps> = ({ value, label }) => {
         "text-xs font-medium text-neutral-500",
         progressBarLabelVariants[label]
       )}
-      style={{ left: `${value}%` }}
+      style={{ left: `${progress}%` }}
     >
-      {value}%
+      {progress}%
     </div>
   );
 };
 
 export const LinearProgressBar: React.FC<LinearProgressBarProps> = ({
-  value,
+  progress,
   label,
 }) => {
   const progressBarLayoutVariants = {
@@ -43,11 +46,11 @@ export const LinearProgressBar: React.FC<LinearProgressBarProps> = ({
       <div className="h-2 w-full rounded-full bg-neutral-100">
         <div
           className="h-full rounded-full bg-primary-500"
-          style={{ width: `${value}%` }}
+          style={{ width: `${progress}%` }}
         />
       </div>
       {label !== "none" && (
-        <LinearProgressBarComponents.Label value={value} label={label} />
+        <LinearProgressBarComponents.Label progress={progress} label={label} />
       )}
     </div>
   );
