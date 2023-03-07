@@ -1,16 +1,17 @@
 import classNames from "classnames";
+import { TIcon } from "helpers/types";
 
 interface Tab {
   id: string;
   label: string;
-  icon?: string;
+  icon?: TIcon;
 }
 
 export interface NavTabsProps {
   layout: "horizontal" | "vertical";
   tabs: Tab[];
   activeTab: string;
-  onClick?: (id: string) => void;
+  onClick: (id: string) => void;
   type: "filled" | "outlined" | "line";
 }
 
@@ -21,11 +22,6 @@ export const NavTabs: React.FC<NavTabsProps> = ({
   type,
   onClick,
 }) => {
-  const layoutVariant = {
-    horizontal: "",
-    vertical: "flex-col gap-y-1",
-  };
-
   const typeVariant = {
     filled: "rounded-lg",
     outlined: "border border-transparent rounded-lg",
@@ -39,7 +35,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
   };
 
   return (
-    <div className={classNames("flex", layoutVariant[layout])}>
+    <div className={classNames("flex", {"flex-col gap-y-1": layout === 'vertical'})}>
       {tabs.map(({ id, label, icon }) => (
         <div
           key={id}
@@ -49,15 +45,12 @@ export const NavTabs: React.FC<NavTabsProps> = ({
             id === activeTab && `text-primary-800 ${activeVariant[type]}`,
             layout !== "vertical" && "justify-center"
           )}
-          onClick={() => onClick && onClick(id)}
+          onClick={() => onClick(id)}
         >
           {icon && (
-            <span
-              className={classNames("h-4 w-4 text-center font-icons")}
-              dangerouslySetInnerHTML={{
-                __html: icon,
-              }}
-            />
+            <div className="h-4 aspect-square text-center">
+              {icon}
+            </div>
           )}
           <div className="shrink-0">{label}</div>
         </div>
