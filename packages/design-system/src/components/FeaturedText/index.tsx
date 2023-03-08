@@ -13,6 +13,9 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
   size,
   align,
   linkedText,
+  linkedUrl,
+  imageSrc,
+  imageAlt,
 }) => {
   const featuredTextVariants = {
     iconTop: "flex-col gap-y-4",
@@ -31,12 +34,6 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
     lg: "text-2xl",
   };
 
-  const featuredTextContentSizes = {
-    sm: "text-sm",
-    md: "text-base",
-    lg: "text-lg",
-  };
-
   const learnMoreSizeVariants = {
     sm: "gap-x-3 text-sm",
     md: "gap-x-3 text-base",
@@ -49,8 +46,23 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
     lg: "text-2xl",
   };
 
+  const iconSizes = {
+    sm: "text-xs",
+    md: "text-lg",
+    lg: "text-2xl",
+  };
+
+  const assetWrapperSizes = {
+    sm: "w-8 h-8",
+    md: "w-10 h-10",
+    lg: "w-12 h-12",
+  };
+
   const isTextVariant = variant === "text";
   const textAlignment = featuredTextAlign[align || "left"];
+
+  const isIconVariant = !isTextVariant && icon && !imageSrc;
+  const isImageVariant = !isTextVariant && imageSrc;
 
   const getFeaturedTextStyles = ({
     size,
@@ -79,7 +91,31 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
         textAlignment
       )}
     >
-      {!isTextVariant && <div className="">{icon}</div>}
+      {isIconVariant && (
+        <div
+          className={classNames(
+            "flex items-center justify-center rounded-md bg-neutral-50",
+            assetWrapperSizes[size]
+          )}
+        >
+          <span
+            className={classNames("font-icons", iconSizes[size])}
+            dangerouslySetInnerHTML={{ __html: `${icon};` }}
+          />
+        </div>
+      )}
+
+      {isImageVariant && (
+        <img
+          src={imageSrc}
+          alt={imageAlt || ""}
+          className={classNames(
+            "flex items-center rounded-md bg-center object-cover",
+            assetWrapperSizes[size]
+          )}
+        />
+      )}
+
       <div className={classNames("flex flex-col", textAlignment)}>
         <h6
           className={classNames(
@@ -98,7 +134,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
             learnMoreSizeVariants[size]
           )}
         >
-          <a href="#">{linkedText}</a>
+          <a href={linkedUrl}>{linkedText}</a>
           <span className={classNames("font-icons", learnMoreIconSizes[size])}>
             &#xeb12;
           </span>

@@ -8,6 +8,9 @@ export interface FeaturedTextProps {
   title: string;
   content: string;
   linkedText: string;
+  linkedUrl: string;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 export type TFeaturedTextSize = "sm" | "md" | "lg";
