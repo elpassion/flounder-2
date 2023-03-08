@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import * as Input from "components/Input";
+import * as Input from "../../components/Input";
 import { useState } from "react";
 import {
   DropdownListItemProps,

@@ -1,4 +1,4 @@
-import { AvatarProps } from "components/Avatar/Avatar.interface";
+import { AvatarProps } from "../../components/Avatar/Avatar.interface";
 
 interface UserInterface {
   name: string;

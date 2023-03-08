@@ -1,10 +1,10 @@
 import classNames from "classnames";
-import Avatar from "components/Avatar";
-import Button from "components/Button";
-import IconButton from "components/IconButton";
-import Indicator from "components/Indicator";
+import Avatar from "../../components/Avatar";
+import Button from "../../components/Button";
+import IconButton from "../../components/IconButton";
+import Indicator from "../../components/Indicator";
 import * as NotificationComponents from "./";
-import * as Skeleton from "components/Skeleton";
+import * as Skeleton from "../../components/Skeleton";
 import type {
   ContainerProps,
   EventProps,
@@ -108,7 +108,10 @@ export const Notification: React.FC<NotificationProps> = ({
     {events ? (
       <>
         {events.map(({ ...props }) => (
-          <NotificationComponents.SingleNotification {...props} {...avatarProps} />
+          <NotificationComponents.SingleNotification
+            {...props}
+            {...avatarProps}
+          />
         ))}
         <NotificationComponents.EventSkeleton />
         <NotificationComponents.EventSkeleton />

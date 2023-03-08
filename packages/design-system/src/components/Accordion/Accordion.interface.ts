@@ -1,5 +1,5 @@
 import React from "react";
-import { IconTypes } from "utils/iconType";
+import { IconTypes } from "../../utils/iconType";
 
 interface AccordionItemProps {
   id: number;

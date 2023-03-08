@@ -1,4 +1,4 @@
-import { IconTypes } from "utils/iconType";
+import { IconTypes } from "../../utils/iconType";
 import type { HTMLAttributes, PropsWithChildren } from "react";
 
 type suffixVariants = "dropdown";
