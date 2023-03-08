@@ -1,5 +1,24 @@
 import classNames from "classnames";
-import type { ButtonProps } from "./Button.interface";
+
+import { IconTypes } from "utils/iconType";
+
+type VariantType =
+  | "primary"
+  | "outlined"
+  | "ghost"
+  | "destructive"
+  | "destructiveGhost"
+  | "destructiveOutlined";
+
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  text: string;
+  variant: VariantType;
+  leftIcon?: IconTypes;
+  rightIcon?: IconTypes;
+  disabled?: boolean;
+  size?: "sm" | "md" | "lg";
+  ariaLabel?: string;
+}
 
 export const Button: React.FC<ButtonProps> = ({
   text,
@@ -14,17 +33,17 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const styleVariants = {
     primary:
-      "border-primary-500 bg-primary-500 text-white hover:bg-primary-700 hover:border-primary-700 active:border-primary-800 active:bg-primary-800",
+      "border-button-primary bg-button-primary text-button-primary hover:bg-button-primary-hover hover:border-buttom-primary-hover active:border-buttom-primary-active active:bg-button-primary-active",
     outlined:
-      "border-primary-500 bg-white text-primary-500 hover:border-primary-700 hover:text-primary-700 active:border-primary-800 active:text-primary-800",
+      "border-button-outlined bg-button-outlined text-button-outlined hover:border-button-outlined-hover hover:text-button-outlined-hover active:border-button-outlined-active active:border-button-outlined-active",
     ghost:
-      "border-transparent text-primary-500 hover:bg-primary-50 hover:text-primary-700 active:bg-primary-100 active:text-primary-800",
+      "border-button-ghost bg-button-ghost text-button-ghost hover:bg-button-ghost-hover hover:text-button-ghost-hover active:bg-button-ghost-active active:text-button-ghost-active",
     destructive:
-      "border-error-500 bg-error-500 text-white hover:border-error-500 hover:bg-error-700 active:border-error-500 active:bg-error-800",
+      "border-button-destructive bg-button-destructive text-button-destructive hover:border-button-destructive-hover hover:bg-button-destructive-hover active:border-button-destructive-active active:bg-button-destructive-active",
     destructiveGhost:
-      "border-transparent text-error-500 hover:bg-error-50 hover:text-error-700 active:bg-error-100 active:text-error-800",
+      "border-button-destructiveGhost text-button-destructiveGhost hover:bg-button-destructiveGhost-hover hover:text-button-destructiveGhost-hover active:bg-button-destructiveGhost-active active:text-button-destructiveGhost-active",
     destructiveOutlined:
-      "border-error-500 bg-white text-error-500 hover:border-error-700 hover:text-error-700 active:border-error-800 active:text-error-800",
+      "border-button-destructiveOutlined bg-button-destructiveOutlined text-button-destructiveOutlined hover:border-button-destructiveOutlined-hover hover:text-button-destructiveOutlined-hover active:border-button-destructiveOutlined-active active:text-button-destructiveOutlined-active",
   };
 
   const sizeVariants = {
@@ -45,8 +64,8 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled}
       aria-label={ariaLabel}
       className={classNames(
-        "flex items-center justify-center rounded-lg border whitespace-nowrap ",
-        "disabled:border-neutral-200 disabled:bg-neutral-200 disabled:text-white disabled:hover:shadow-none",
+        "flex items-center justify-center rounded-lg border whitespace-nowrap",
+        "disabled:!border-button-disabled disabled:!bg-button-disabled disabled:!text-button-disabled disabled:hover:!shadow-none",
         "hover:shadow-button",
         styleVariants[variant],
         sizeVariants[size],
@@ -71,4 +90,4 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button
+export default Button;
