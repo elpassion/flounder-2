@@ -43,21 +43,26 @@ export default {
         options: ["sm", "md", "lg"],
       },
     },
-    iconPosition: {
+    variant: {
       type: "select",
-      options: ["iconTop", "iconLeft"],
+      options: ["text", "iconTop", "iconLeft"],
+    },
+    align: {
+      type: "select",
+      options: ["left", "center"],
     },
   },
   args: {
     title: "Featured text",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    size: "sm",
+    align: "left",
+    variant: "iconTop",
     icon: (
       <span>
         <SvgIcon />
       </span>
     ),
-    size: "sm",
-    iconPosition: "iconTop",
   },
 };
