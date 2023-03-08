@@ -1,7 +1,12 @@
 {
-  "name": "design-system",
-  "version": "0.1.2",
+  "name": "@elpassion/taco",
+  "version": "0.1.0",
   "private": true,
+  "main": "index.js",
+  "repository": {
+    "url": "URL",
+    "type": "git"
+  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
