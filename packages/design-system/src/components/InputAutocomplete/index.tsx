@@ -1,7 +1,7 @@
+import { useState } from "react";
 import classNames from "classnames";
 import * as Input from "../../components/Input";
-import { useState } from "react";
-import {
+import type {
   DropdownListItemProps,
   DropdownProps,
   InputAutocompleteProps,

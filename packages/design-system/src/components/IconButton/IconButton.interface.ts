@@ -1,4 +1,4 @@
-import { IconTypes } from "../../utils/iconType";
+import type { IconTypes } from "../../utils/iconType";
 import type { HTMLAttributes } from "react";
 
 export interface IconButtonProps

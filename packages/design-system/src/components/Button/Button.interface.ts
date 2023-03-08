@@ -1,4 +1,4 @@
-import { IconTypes } from "../../utils/iconType";
+import type { IconTypes } from "../../utils/iconType";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   text: string;

@@ -1,4 +1,4 @@
-import type { HTMLAttributes} from "react";
+import type { HTMLAttributes } from "react";
 export interface PaginationProps extends HTMLAttributes<HTMLDivElement> {
   currentPage: number;
   totalPages: number;
