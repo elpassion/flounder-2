@@ -1,11 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import Button from "./components/Button";
+import Checkbox from "./components/Checkbox";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <div>REMOVE ME</div>
-  </React.StrictMode>
-);
+// Test base components
+export { Button, Checkbox };

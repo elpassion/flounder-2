@@ -6,7 +6,7 @@ export const Container: React.FC<ContainerProps> = ({
   className,
 }) => {
   //TIP:classes to use for active state
-  const activeStyle = "bg-neutral-200 border-neutral-200";
+  // const activeStyle = "bg-neutral-200 border-neutral-200";
 
   return (
     <button
