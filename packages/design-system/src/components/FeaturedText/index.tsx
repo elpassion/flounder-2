@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import {
+  FeaturedTextIconProps,
   FeaturedTextProps,
   TFeaturedTextSize,
   TFeaturedTextVariant,
@@ -8,19 +9,17 @@ import {
 export const FeaturedText: React.FC<FeaturedTextProps> = ({
   title,
   content,
-  icon,
   variant,
   size,
   align,
   linkedText,
   linkedUrl,
-  imageSrc,
-  imageAlt,
+  ...props
 }) => {
   const featuredTextVariants = {
+    text: "",
     iconTop: "flex-col gap-y-4",
     iconLeft: "flex-row gap-x-6",
-    text: "",
   };
 
   const featuredTextAlign = {
@@ -46,23 +45,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
     lg: "text-2xl",
   };
 
-  const iconSizes = {
-    sm: "text-xs",
-    md: "text-lg",
-    lg: "text-2xl",
-  };
-
-  const assetWrapperSizes = {
-    sm: "w-8 h-8",
-    md: "w-10 h-10",
-    lg: "w-12 h-12",
-  };
-
-  const isTextVariant = variant === "text";
   const textAlignment = featuredTextAlign[align || "left"];
-
-  const isIconVariant = !isTextVariant && icon && !imageSrc;
-  const isImageVariant = !isTextVariant && imageSrc;
 
   const getFeaturedTextStyles = ({
     size,
@@ -91,31 +74,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
         textAlignment
       )}
     >
-      {isIconVariant && (
-        <div
-          className={classNames(
-            "flex items-center justify-center rounded-md bg-neutral-50",
-            assetWrapperSizes[size]
-          )}
-        >
-          <span
-            className={classNames("font-icons", iconSizes[size])}
-            dangerouslySetInnerHTML={{ __html: `${icon};` }}
-          />
-        </div>
-      )}
-
-      {isImageVariant && (
-        <img
-          src={imageSrc}
-          alt={imageAlt || ""}
-          className={classNames(
-            "flex items-center rounded-md bg-center object-cover",
-            assetWrapperSizes[size]
-          )}
-        />
-      )}
-
+      <FeaturedTextIcon size={size} variant={variant} {...props} />
       <div className={classNames("flex flex-col", textAlignment)}>
         <h6
           className={classNames(
@@ -141,5 +100,58 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
         </div>
       </div>
     </div>
+  );
+};
+
+export const FeaturedTextIcon: React.FC<FeaturedTextIconProps> = ({
+  imageSrc,
+  size,
+  icon,
+  variant,
+  imageAlt,
+}) => {
+  const isTextVariant = variant === "text";
+  const isIconVariant = !isTextVariant && icon && !imageSrc;
+  const isImageVariant = !isTextVariant && imageSrc;
+
+  const iconSizes = {
+    sm: "text-xs",
+    md: "text-lg",
+    lg: "text-2xl",
+  };
+
+  const iconWrapperSizes = {
+    sm: "w-8 h-8",
+    md: "w-10 h-10",
+    lg: "w-12 h-12",
+  };
+
+  return (
+    <>
+      {isIconVariant && (
+        <div
+          className={classNames(
+            "flex items-center justify-center rounded-md bg-neutral-50",
+            iconWrapperSizes[size]
+          )}
+        >
+          <span
+            className={classNames("font-icons", iconSizes[size])}
+            dangerouslySetInnerHTML={{ __html: `${icon};` }}
+          />
+        </div>
+      )}
+
+      {isImageVariant && (
+        <img
+          src={imageSrc}
+          alt={imageAlt || ""}
+          className={classNames(
+            "flex items-center rounded-md bg-center object-cover",
+            iconWrapperSizes[size]
+          )}
+        />
+      )}
+    </>
   );
 };
