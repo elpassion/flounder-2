@@ -1,4 +1,4 @@
-import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
+import type { AvatarProps } from "../Avatar/Avatar.interface";
 
 interface EventInterface {
   name: string;

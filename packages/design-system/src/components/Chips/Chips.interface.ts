@@ -1,4 +1,4 @@
-import type { HTMLAttributes} from "react";
+import type { HTMLAttributes } from "react";
 
 export interface ChipsProps extends HTMLAttributes<HTMLDivElement> {
   text: string;

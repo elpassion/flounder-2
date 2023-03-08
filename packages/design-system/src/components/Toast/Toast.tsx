@@ -1,5 +1,5 @@
-import * as ToastComponents from "../../components/Toast";
-import type { ToastProps } from "../../components/Toast/Toast.interface";
+import * as ToastComponents from "./";
+import type { ToastProps } from "./Toast.interface";
 
 export const Toast: React.FC<ToastProps> = ({
   title,

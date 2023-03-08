@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Button } from "../../components/Button";
+import { Button } from "../Button";
 import { buttonBorderVariants, buttonRadiusVariants } from "./helpers";
 import type { ButtonGroupProps } from "./ButtonGroup.interface";
 

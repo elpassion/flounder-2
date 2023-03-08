@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import * as StepperComponents from "../../components/Stepper";
+import * as StepperComponents from "./";
 import { StepStatuses } from "./Stepper.interface";
 import type { StepperProps } from "./Stepper.interface";
 

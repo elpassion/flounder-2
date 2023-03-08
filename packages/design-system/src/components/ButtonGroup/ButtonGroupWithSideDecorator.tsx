@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { Button } from "../../components/Button";
-import { IconButton } from "../../components/IconButton";
+import { Button } from "../Button";
+import { IconButton } from "../IconButton";
 import { buttonBorderVariants } from "./helpers";
 import type { ButtonGroupProps } from "./ButtonGroup.interface";
 

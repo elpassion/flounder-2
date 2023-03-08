@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { IconButton } from "../../components/IconButton";
+import { IconButton } from "../IconButton";
 import {
   buttonBorderVariants,
   buttonRadiusVariants,

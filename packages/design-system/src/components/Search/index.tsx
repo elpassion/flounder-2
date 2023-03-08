@@ -1,8 +1,8 @@
 import { useState } from "react";
 import classNames from "classnames";
-import Button from "../../components/Button";
-import IconButton from "../../components/IconButton";
-import * as Input from "../../components/Input";
+import Button from "../Button";
+import IconButton from "../IconButton";
+import * as Input from "../Input";
 import type { SearchProps } from "./Search.interface";
 
 export const Search: React.FC<SearchProps> = ({
