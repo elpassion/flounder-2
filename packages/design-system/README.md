@@ -3,6 +3,7 @@
 ### TACO UI
 
 TACO UI is a system of React components highly based on tailwindcss, it is available as an [npm package](#).
+[See full documentation here](https://elpassion.github.io/design-system/?path=/story/intro--page) via storybook
 
 **npm:**
 
