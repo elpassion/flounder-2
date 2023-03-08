@@ -1,5 +1,9 @@
 import classNames from "classnames";
-import { FeaturedTextProps } from "./Featuredtext.interface";
+import {
+  FeaturedTextProps,
+  TFeaturedTextSize,
+  TFeaturedTextVariant,
+} from "./FeaturedText.interface";
 
 export const FeaturedText: React.FC<FeaturedTextProps> = ({
   title,
@@ -8,6 +12,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
   variant,
   size,
   align,
+  linkedText,
 }) => {
   const featuredTextVariants = {
     iconTop: "flex-col gap-y-4",
@@ -32,10 +37,38 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
     lg: "text-lg",
   };
 
-  const learnMoreGapSize = {
-    sm: "gap-x-3",
-    md: "gap-x-3",
-    lg: "gap-x-5",
+  const learnMoreSizeVariants = {
+    sm: "gap-x-3 text-sm",
+    md: "gap-x-3 text-base",
+    lg: "gap-x-5 text-lg",
+  };
+
+  const learnMoreIconSizes = {
+    sm: "text-base",
+    md: "text-base",
+    lg: "text-2xl",
+  };
+
+  const isTextVariant = variant === "text";
+  const textAlignment = featuredTextAlign[align || "left"];
+
+  const getFeaturedTextStyles = ({
+    size,
+    variant,
+  }: {
+    size: TFeaturedTextSize;
+    variant: TFeaturedTextVariant;
+  }): string => {
+    switch (size) {
+      case "sm":
+        return "text-sm pb-3";
+      case "md":
+        return "text-base pb-4";
+      case "lg":
+        return variant === "text" ? "text-lg pb-4" : "text-base pb-6";
+      default:
+        throw new Error("Please provide proper featured text size variant");
+    }
   };
 
   return (
@@ -43,16 +76,11 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
       className={classNames(
         "flex font-normal text-neutral-600",
         featuredTextVariants[variant],
-        featuredTextAlign[align || "left"]
+        textAlignment
       )}
     >
-      {variant !== "text" && <div className="">{icon}</div>}
-      <div
-        className={classNames(
-          "flex flex-col",
-          featuredTextAlign[align || "left"]
-        )}
-      >
+      {!isTextVariant && <div className="">{icon}</div>}
+      <div className={classNames("flex flex-col", textAlignment)}>
         <h6
           className={classNames(
             "pb-2 font-medium",
@@ -61,15 +89,19 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
         >
           {title}
         </h6>
-        <p className={classNames(featuredTextContentSizes[size])}>{content}</p>
+        <p className={classNames(getFeaturedTextStyles({ size, variant }))}>
+          {content}
+        </p>
         <div
           className={classNames(
-            "flex items-center text-primary-500",
-            learnMoreGapSize[size]
+            "flex items-center font-medium text-primary-500",
+            learnMoreSizeVariants[size]
           )}
         >
-          <a href="#">Learn more</a>
-          <span className={classNames("font-icons")}>&#xeb12;</span>
+          <a href="#">{linkedText}</a>
+          <span className={classNames("font-icons", learnMoreIconSizes[size])}>
+            &#xeb12;
+          </span>
         </div>
       </div>
     </div>

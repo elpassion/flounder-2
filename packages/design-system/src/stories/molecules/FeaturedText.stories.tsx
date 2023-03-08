@@ -1,6 +1,6 @@
 import { ComponentStory } from "@storybook/react";
-import { FeaturedTextProps } from "components/FeaturedText/Featuredtext.interface";
 import { FeaturedText as FeaturedTextComponent } from "components/FeaturedText";
+import { FeaturedTextProps } from "components/FeaturedText/FeaturedText.interface";
 
 const SvgIcon = () => {
   return (
@@ -37,6 +37,9 @@ export default {
     content: {
       description: "string",
     },
+    linkedText: {
+      description: "string",
+    },
     size: {
       control: {
         type: "select",
@@ -53,9 +56,10 @@ export default {
     },
   },
   args: {
-    title: "Featured text",
+    title: "Featured component title",
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Your community is there for your and they want to help you grow but even though they want to.",
+    linkedText: "Learn more",
     size: "sm",
     align: "left",
     variant: "iconTop",
