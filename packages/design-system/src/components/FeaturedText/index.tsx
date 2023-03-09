@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import {
-  FeaturedTextIconProps,
   FeaturedTextProps,
   TFeaturedTextSize,
   TFeaturedTextVariant,
@@ -15,7 +14,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
   align,
   linkedText,
   linkedUrl,
-  ...props
+  icon,
 }) => {
   const featuredTextVariants = {
     text: "",
@@ -44,6 +43,12 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
     sm: "w-4 h-4",
     md: "w-4 h-4",
     lg: "w-6 h-6",
+  };
+
+  const iconWrapperSizes = {
+    sm: "w-8 h-8",
+    md: "w-10 h-10",
+    lg: "w-12 h-12",
   };
 
   const textAlignment = featuredTextAlign[align || "left"];
@@ -75,7 +80,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
         textAlignment
       )}
     >
-      <FeaturedTextIcon size={size} variant={variant} {...props} />
+      <div className={classNames(iconWrapperSizes[size])}>{icon}</div>
       <div className={classNames("flex flex-col", textAlignment)}>
         <h6
           className={classNames(
@@ -99,58 +104,5 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
         </div>
       </div>
     </div>
-  );
-};
-
-export const FeaturedTextIcon: React.FC<FeaturedTextIconProps> = ({
-  imageSrc,
-  size,
-  icon,
-  variant,
-  imageAlt,
-}) => {
-  const isTextVariant = variant === "text";
-  const isIconVariant = !isTextVariant && icon && !imageSrc;
-  const isImageVariant = !isTextVariant && imageSrc;
-
-  const iconSizes = {
-    sm: "text-xs",
-    md: "text-lg",
-    lg: "text-2xl",
-  };
-
-  const iconWrapperSizes = {
-    sm: "w-8 h-8",
-    md: "w-10 h-10",
-    lg: "w-12 h-12",
-  };
-
-  return (
-    <>
-      {isIconVariant && (
-        <div
-          className={classNames(
-            "flex flex-shrink-0 items-center justify-center rounded-md bg-neutral-50",
-            iconWrapperSizes[size]
-          )}
-        >
-          <span
-            className={classNames("font-icons", iconSizes[size])}
-            dangerouslySetInnerHTML={{ __html: `${icon};` }}
-          />
-        </div>
-      )}
-
-      {isImageVariant && (
-        <img
-          src={imageSrc}
-          alt={imageAlt || ""}
-          className={classNames(
-            "flex items-center rounded-md bg-center object-cover",
-            iconWrapperSizes[size]
-          )}
-        />
-      )}
-    </>
   );
 };
