@@ -1,21 +1,22 @@
-import React from "react";
-import { IconTypes } from "utils/iconType";
+import type { ReactNode, PropsWithChildren } from "react";
+import type { TIcon } from "../../helpers/types";
 
 interface AccordionItemProps {
   id: number;
   title: string;
-  description: React.ReactNode;
+  description: ReactNode;
 }
 
 type iconPositions = "left" | "right";
 
 export interface AccordionIconProps {
-  icon: IconTypes;
+  icon: TIcon;
   iconPosition: iconPositions;
 }
 
 export interface AccordionProps {
   variant: "bordered" | "solid";
+  icon?: "chevron" | "plus";
   iconPosition: iconPositions;
   expandedId: number;
   items: AccordionItemProps[];
@@ -24,7 +25,7 @@ export interface AccordionProps {
 export interface AccordionButtonProps
   extends Pick<AccordionItemProps, "title">,
     Pick<AccordionProps, "iconPosition" | "variant">,
-    React.PropsWithChildren {
+    PropsWithChildren {
   expanded: boolean;
 }
 

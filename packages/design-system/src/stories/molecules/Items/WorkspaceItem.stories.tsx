@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   Title,
@@ -5,8 +6,8 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-import { WorkspaceItem as WorkspaceItemComponent } from "components/Items/WorkspaceItem";
-import type { WorkspaceItemProps } from "components/Items/Items.interface";
+import { WorkspaceItem as WorkspaceItemComponent } from "../../../components/Items/WorkspaceItem";
+import type { WorkspaceItemProps } from "../../../components/Items/Items.interface";
 
 export const WorkspaceItem: ComponentStory<React.FC<WorkspaceItemProps>> = ({
   ...props
@@ -36,20 +37,20 @@ export default {
       control: {
         type: "select",
         labels: {
-          "images/red.png": "red",
-          "images/peach.png": "peach",
-          "images/yellow.png": "yellow",
-          "images/blue.png": "blue",
-          "images/pink.png": "pink",
+          "/red.png": "red",
+          "/peach.png": "peach",
+          "/yellow.png": "yellow",
+          "/blue.png": "blue",
+          "/pink.png": "pink",
         },
       },
       options: [
         undefined,
-        "images/red.png",
-        "images/peach.png",
-        "images/yellow.png",
-        "images/blue.png",
-        "images/pink.png",
+        "/red.png",
+        "/peach.png",
+        "/yellow.png",
+        "/blue.png",
+        "/pink.png",
       ],
     },
     contentType: {

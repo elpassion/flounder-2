@@ -1,11 +1,13 @@
 import classNames from "classnames";
-import {type 
+import { ReactComponent as Chevron } from '../../svgs/chevron-down.svg';
+import { ReactComponent as Minus } from '../../svgs/minus.svg';
+import * as Accordion from "./";
+import type { 
   AccordionBodyProps,
   AccordionButtonProps,
   AccordionIconProps,
   AccordionProps,
 } from "./Accordion.interface";
-import * as Accordion from "./";
 
 export const Body: React.FC<AccordionBodyProps> = ({
   description,
@@ -73,10 +75,7 @@ export const Icon: React.FC<AccordionIconProps> = ({ icon, iconPosition }) => {
         iconVariants[iconPosition]
       )}
     >
-      <span
-        className="font-icons text-2xl"
-        dangerouslySetInnerHTML={{ __html: `${icon};` }}
-      />
+      {icon}
     </div>
   );
 };
@@ -86,11 +85,13 @@ const AccordionComponent: React.FC<AccordionProps> = ({
   iconPosition,
   expandedId,
   items,
+  icon = "chevron"
 }) => {
   return (
     <div className="w-full">
       {items.map(({ title, id, description }) => {
         const isExpanded = id === expandedId;
+
         return (
           <div key={id} className="mb-3">
             <Accordion.Button
@@ -99,10 +100,22 @@ const AccordionComponent: React.FC<AccordionProps> = ({
               iconPosition={iconPosition}
               variant={variant}
             >
-              <Accordion.Icon
+              {icon === "chevron" ? (<Accordion.Icon
                 iconPosition={iconPosition}
-                icon={isExpanded ? "&#xea26" : "&#xeac0"}
-              />
+                icon={<Chevron className={classNames("transition transform w-5 h-5", {
+                  "rotate-0": isExpanded,
+                  "-rotate-90": !isExpanded
+                })} />}
+              />) : (<Accordion.Icon
+                iconPosition={iconPosition}
+                icon={<div className="relative w-4 h-4 flex items-center justify-center">
+                <Minus />
+                <Minus className={classNames("absolute transition transform", {
+                  "rotate-0": isExpanded,
+                  "-rotate-90": !isExpanded
+                })} />
+                </div>}
+              />)}
             </Accordion.Button>
             {isExpanded && (
               <Accordion.Body

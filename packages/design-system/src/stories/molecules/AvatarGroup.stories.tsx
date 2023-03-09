@@ -6,8 +6,8 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { AvatarGroup as AvatarGroupComponent } from "components/AvatarGroup";
-import type { AvatarProps } from "components/Avatar/Avatar.interface";
+import { AvatarGroup as AvatarGroupComponent } from "../../components/AvatarGroup";
+import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
 
 interface UserInterface {
   name: string;
@@ -59,35 +59,35 @@ export default {
     avatars: [
       {
         name: "Anna Kapusta",
-        src: "images/red.png",
+        src: "/red.png",
       },
       {
         name: "Bartek Kapusta",
-        src: "images/yellow.png",
+        src: "/yellow.png",
       },
       {
         name: "Cezary Kapusta",
-        src: "images/blue.png",
+        src: "/blue.png",
       },
       {
         name: "Daria Kapusta",
-        src: "images/red.png",
+        src: "/red.png",
       },
       {
         name: "Ewa Kapusta",
-        src: "images/yellow.png",
+        src: "/yellow.png",
       },
       {
         name: "Fryderyk Kapusta",
-        src: "images/blue.png",
+        src: "/blue.png",
       },
       {
         name: "Grażyna Kapusta",
-        src: "images/red.png",
+        src: "/red.png",
       },
       {
         name: "Hanna Kapusta",
-        src: "images/blue.png",
+        src: "/blue.png",
       },
     ],
   },

@@ -1,5 +1,8 @@
 import classNames from "classnames";
 import * as InputComponents from "./";
+import Icon from "../Icon"
+import { ReactComponent as Chevron } from '../../svgs/chevron-down.svg';
+
 import type {
   SuffixProps,
   InputProps,
@@ -8,7 +11,7 @@ import type {
   TextProps,
   IconProps,
   BaseInputProps,
-} from "components/Input/Input.interface";
+} from "./Input.interface";
 
 const inputBorderColorStyle: { [key: string]: string } = {
   true: "border-error-500 focus:border-error-500",
@@ -87,7 +90,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
         aria-describedby={`${ariaDescribedBy} ${ariaDescribedByError}`}
         onChange={onChange}
       />
-      <InputComponents.Icon isError={isError} helpIcon={helpIcon} />
+      <InputComponents.Iconed isError={isError} helpIcon={helpIcon} />
       {children}
     </label>
   );
@@ -147,6 +150,7 @@ export const Prefix: React.FC<PrefixProps> = ({
     </div>
   );
 };
+
 export const Suffix: React.FC<SuffixProps> = ({
   suffixVariant,
   suffixText,
@@ -171,13 +175,14 @@ export const Suffix: React.FC<SuffixProps> = ({
     </div>
   );
 };
+
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
   text,
   disabled,
 }) => (
-  <button className="flex items-center gap-2" disabled={disabled}>
+  <button className="flex items-center justify-center h-full gap-2" disabled={disabled}>
     <span>{text}</span>
-    <span className="font-icons text-base">&#xeacb;</span>
+    <Chevron className="stroke-current w-5 aspect-square" />
   </button>
 );
 export const Text: React.FC<TextProps> = ({ text, type }) => {
@@ -194,7 +199,8 @@ export const Text: React.FC<TextProps> = ({ text, type }) => {
     </p>
   );
 };
-export const Icon: React.FC<IconProps> = ({
+
+export const Iconed: React.FC<IconProps> = ({
   helpIcon,
   isError,
   onIconClick,
@@ -210,12 +216,9 @@ export const Icon: React.FC<IconProps> = ({
       onClick={onIconClick}
     >
       {isError ? (
-        <span className="font-icons text-base text-error-500">&#xeb1b;</span>
+        <Icon size="sm" icon="&#xeb1b" className="text-error-500"/>
       ) : (
-        <span
-          className="font-icons text-base"
-          dangerouslySetInnerHTML={{ __html: `${helpIcon};` }}
-        />
+        <Icon size="sm" icon={helpIcon}/>
       )}
     </div>
   );

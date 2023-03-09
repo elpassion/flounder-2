@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Icon from "../Icon";
 import type { ChipsProps } from "./Chips.interface";
 
 const ChipsComponents = {
@@ -13,13 +14,7 @@ const ChipsComponents = {
         )}
       >
         {prefixIcon && <ChipsComponents.PrefixIcon prefixIcon={prefixIcon} />}
-        <span
-          className={classNames(
-            "text-xs font-medium",
-            !prefixIcon && "ml-2.5",
-            !suffixIcon && "mr-2.5"
-          )}
-        >
+        <span className="text-xs font-medium">
           {text}
         </span>
         {suffixIcon && <ChipsComponents.SuffixIcon suffixIcon={suffixIcon} />}
@@ -28,18 +23,12 @@ const ChipsComponents = {
   },
   PrefixIcon: ({ prefixIcon }: Pick<ChipsProps, "prefixIcon">) => {
     return (
-      <span
-        className={classNames("w-4 text-center font-icons text-sm")}
-        dangerouslySetInnerHTML={{ __html: `${prefixIcon};` }}
-      />
+      prefixIcon ? <Icon className="w-4 text-center text-sm" icon={prefixIcon} /> : null
     );
   },
   SuffixIcon: ({ suffixIcon }: Pick<ChipsProps, "suffixIcon">) => {
     return (
-      <span
-        className={classNames("w-4 text-center font-icons text-sm")}
-        dangerouslySetInnerHTML={{ __html: `${suffixIcon};` }}
-      />
+      suffixIcon ? <Icon className="w-4 text-center text-sm" icon={suffixIcon} /> : null
     );
   },
 };

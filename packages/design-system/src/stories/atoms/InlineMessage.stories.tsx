@@ -1,6 +1,8 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { InlineMessage as InlineMessageComponents } from "components/InlineMessage";
-import type { InlineMessageProps } from "components/InlineMessage/InlineMessage.interface";
+import { InlineMessage as InlineMessageComponents } from "../../components/InlineMessage";
+import Icon from "../../components/Icon";
+import type { InlineMessageProps } from "../../components/InlineMessage/InlineMessage.interface";
 
 export const InlineMessage: ComponentStory<React.FC<InlineMessageProps>> = ({
   ...props
@@ -19,24 +21,11 @@ export default {
       options: ["default", "success", "warning", "info", "error"],
       description: "default | success | warning | info | error",
     },
-    icon: {
-      options: ["&#xeaf8", "&#xeb19", "&#xea62", "&#xeace"],
-      control: {
-        type: "select",
-        labels: {
-          "&#xeaf8": "bell",
-          "&#xeb19": "alert",
-          "&#xea62": "info",
-          "&#xeace": "check",
-        },
-      },
-      description: "icon",
-    },
   },
   args: {
     text: "This is default message - check it out!",
     variant: "default",
-    icon: "&#xeaf8",
+    icon: <Icon icon="&#xea05" size="sm" />
   },
   parameters: {
     design: {

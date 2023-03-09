@@ -1,47 +1,45 @@
-# TACO - design system
+## Installation
 
-Project with basic components to reuse in other projects.
+### TACO UI
 
-## TLDR
+TACO UI is a system of React components highly based on tailwindcss, it is available as an [npm package](#).<br />
+[See full documentation here](https://elpassion.github.io/flounder-2) via storybook
 
-The idea behind this project is to work similar to [tailwindui](https://tailwindui.com/components) meaning logicless styled components using tailwind classes. You have to manualy copy the component code and add your own logic. In theory it should allow FE developers to work when wireframes are ready. <br><br>
-Sample projects:
-* [repo 1](https://github.com/elpassion/test-elp-design-system-brief-1)
-* [repo 2](https://github.com/elpassion/test-elp-design-system-brief-2)
+**npm:**
 
-## How to use this library
+```sh
+p/npm install @elpassion/taco
+```
 
-### Install dependencies 
+**yarn:**
 
-```bash
-$ npm install
+```sh
+yarn add @elpassion/taco
 ```
 
 ### Copy files
 
-In order to use this project you'll have to copy configuration file. Start with [tailwind.config.js](https://github.com/elpassion/design-system/blob/main/tailwind.config.js). Then copy [prettierrc.json](https://github.com/elpassion/design-system/blob/main/.prettierrc.json). You can use icons locally from [icons font](https://github.com/elpassion/design-system/blob/main/src/fonts/fonticon.ttf) or use cdn [https://elpassion-design-system.s3.eu-west-1.amazonaws.com/fonticon.ttf](https://elpassion-design-system.s3.eu-west-1.amazonaws.com/fonticon.ttf)
+In order to use this library you'll have to generate tokens file and wire it to your tailwind config with `funtionc()`.
 
-## How to contribute
+### Optionally (WIP) (Now it's still required for some compoennts to work)
 
-### Run
+You can use icons locally from [icons font](https://github.com/elpassion/design-system/blob/main/src/fonts/fonticon.ttf) or use cdn [https://elpassion-design-system.s3.eu-west-1.amazonaws.com/fonticon.ttf](https://elpassion-design-system.s3.eu-west-1.amazonaws.com/fonticon.ttf)
 
-Run the app in the development mode:
+Then use it in your app for example:
 
-```bash
-$ npm run storybook
+```js
+import React from 'react';
+import Button from '@elpassion/taco';
+
+export default function App() {
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  return (
+    <div className="App">
+      <Button {...props} />
+    </div>
+  );
+}
 ```
 
-Open [http://localhost:6006](http://localhost:6006) to view it in the browser.\
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-
-### Dark mode
-We support [tailwind class strategy](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually).
-
-## Usefull links
-[**jira**](https://elpassion.atlassian.net/browse/ELPDES) <br/>
-[**slack**](https://app.slack.com/client/T04RX1Z0P/C04JD9E37MY) <br/>
-[**figma**](https://www.figma.com/file/xy6otn2JWHNdF70Tuq0UbS/TACO-Design-System-%5BDRAFT%5D?node-id=2054%3A3026&t=4KYtpNsJBJG5fIry-1)<br/>
-[**repo**](https://github.com/elpassion/flounder-2/tree/main/packages/design-system) <br/>
-[**github pages**](https://elpassion.github.io/design-system/?path=/story/intro--page) <br/>
+## Optionally

@@ -1,6 +1,7 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Chips as ChipsComponent } from "components/Chips";
-import type { ChipsProps } from "components/Chips/Chips.interface";
+import { Chips as ChipsComponent } from "../../components/Chips";
+import type { ChipsProps } from "../../components/Chips/Chips.interface";
 
 export const Chips: ComponentStory<React.FC<ChipsProps>> = ({ ...props }) => (
   <ChipsComponent {...props} />
@@ -14,7 +15,7 @@ export default {
       description: "Enabled",
     },
     suffixIcon: {
-      options: ["&#xeaf4", "&#xea65"],
+      options: ["&#xeaf4", "&#xea65", undefined],
       control: {
         type: "select",
         labels: {
@@ -26,7 +27,7 @@ export default {
       description: "icon",
     },
     prefixIcon: {
-      options: ["&#xeaf4", "&#xea65"],
+      options: ["&#xeaf4", "&#xea65", undefined],
       control: {
         type: "select",
         labels: {
@@ -40,8 +41,8 @@ export default {
   },
   args: {
     text: "Enabled",
-    suffixIcon: "&#xeaf4",
-    prefixIcon: "&#xea65",
+    suffixIcon: undefined,
+    prefixIcon: undefined,
   },
   parameters: {
     design: {

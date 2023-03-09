@@ -1,6 +1,7 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ButtonGroup as ButtonGroupComponent } from "components/ButtonGroup";
-import type { ButtonGroupProps } from "components/ButtonGroup/ButtonGroup.interface";
+import { ButtonGroup as ButtonGroupComponent } from "../../../components/ButtonGroup";
+import type { ButtonGroupProps } from "../../../components/ButtonGroup/ButtonGroup.interface";
 
 export const ButtonGroup: ComponentStory<React.FC<ButtonGroupProps>> = ({
   ...props

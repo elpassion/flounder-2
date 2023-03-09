@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   ArgsTable,
@@ -5,7 +6,7 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { Search as SearchComponent } from "components/Search";
+import { Search as SearchComponent } from "../../components/Search";
 
 export const Search: ComponentStory<React.FC> = ({ ...props }) => (
   <SearchComponent {...props} />

@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   ArgsTable,
@@ -6,8 +7,8 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import AccordionComponent from "components/Accordion";
-import type { AccordionProps } from "components/Accordion/Accordion.interface";
+import AccordionComponent from "../../components/Accordion";
+import type { AccordionProps } from "../../components/Accordion/Accordion.interface";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
@@ -47,11 +48,19 @@ export default {
         description: "left | right",
       },
     },
+    icon: {
+      control: {
+        type: "select",
+        options: ["chevron", "plus"],
+        description: "chevron | plus",
+      },
+    },
   },
   args: {
     expandedId: 1,
     variant: "bordered",
     iconPosition: "left",
+    icon: "chevron",
     items: [
       {
         id: 1,

@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import * as Items from "components/Items";
+import Icon from "../Icon";
+import * as Items from "./";
 import type { MenuItemProps } from "./Items.interface";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -26,14 +27,14 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         styleVariants[variant]
       )}
     >
-      {isLeftIconVisible && <Items.Icon icon={leftIcon} />}
+      {isLeftIconVisible && <Icon icon={leftIcon} />}
       <div className="col-start-2 flex items-center gap-2">
         {isMiddleIconVisible && (
-          <Items.Icon icon={middleIcon} className="text-xl" />
+          <Icon icon={middleIcon} className="text-xl" />
         )}
         {variant === "fullWidth" && <p className="text-sm">{text}</p>}
       </div>
-      {isRightIconVisible && <Items.Icon icon={rightIcon} />}
+      {isRightIconVisible && <Icon icon={rightIcon} />}
     </Items.Container>
   );
 };

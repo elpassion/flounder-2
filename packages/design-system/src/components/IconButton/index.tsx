@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Icon from "../Icon";
 import type { IconButtonProps } from "./IconButton.interface";
 
 export const IconButton: React.FC<IconButtonProps> = ({
@@ -31,12 +32,6 @@ export const IconButton: React.FC<IconButtonProps> = ({
     lg: "p-3 w-12 h-12",
   };
 
-  const iconSizeVariants = {
-    sm: "text-base",
-    md: "text-xl",
-    lg: "text-2xl",
-  };
-
   return (
     <button
       className={classNames(
@@ -52,10 +47,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
       aria-label={ariaLabel}
       onClick={onClick}
     >
-      <span
-        className={classNames("font-icons", iconSizeVariants[size])}
-        dangerouslySetInnerHTML={{ __html: `${icon};` }}
-      />
+      <Icon size={size} icon={icon} />
     </button>
   );
 };

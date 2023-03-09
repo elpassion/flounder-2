@@ -1,13 +1,13 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   ArgsTable,
   Primary,
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { MenuItem as MenuItemComponent } from "components/Items/MenuItem";
-import type { MenuItemProps } from "components/Items/Items.interface";
+import { MenuItem as MenuItemComponent } from "../../../components/Items/MenuItem";
+import type { MenuItemProps } from "../../../components/Items/Items.interface";
 
 export const MenuItem: ComponentStory<React.FC<MenuItemProps>> = ({
   ...props

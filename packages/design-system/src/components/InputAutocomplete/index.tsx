@@ -1,7 +1,8 @@
-import classNames from "classnames";
-import * as Input from "components/Input";
 import { useState } from "react";
-import {
+import classNames from "classnames";
+import { ReactComponent as Plus } from '../../svgs/plus.svg';
+import * as Input from "../Input";
+import type {
   DropdownListItemProps,
   DropdownProps,
   InputAutocompleteProps,
@@ -64,7 +65,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       {isCreatable && (
         <div className="mt-3 border-t border-neutral-100 pt-3">
           <button className="flex items-center gap-2 text-sm text-blue-500">
-            <span className="font-icons text-base">&#xeac0;</span>Add
+            <Plus className="w-3 aspect-square" /> Add new
           </button>
         </div>
       )}

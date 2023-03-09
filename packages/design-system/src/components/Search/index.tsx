@@ -1,14 +1,12 @@
 import { useState } from "react";
 import classNames from "classnames";
-import Button from "components/Button";
-import IconButton from "components/IconButton";
-import * as Input from "components/Input";
+import Button from "../Button";
+import IconButton from "../IconButton";
+import * as Input from "../Input";
 import type { SearchProps } from "./Search.interface";
-
 
 export const Search: React.FC<SearchProps> = ({
   variant = "default",
-  disabled,
   suffixText = "",
   ...props
 }) => {
@@ -46,7 +44,6 @@ export const Search: React.FC<SearchProps> = ({
         prefixVariant="icon"
         onChange={(e) => onChange(e)}
         helpIcon={isTyping ? "&#xea2b" : undefined}
-        disabled={disabled}
         className={classNames(
           // @TODO: Check if important is really neccessary
           "h-11 !text-neutral-400 focus:!border-blue-500 focus:shadow-none peer-focus:!border-blue-500 peer-focus:shadow-none",
@@ -56,6 +53,7 @@ export const Search: React.FC<SearchProps> = ({
       >
         <Input.Prefix
           prefixVariant="icon"
+          // @TODO: Refactor and pass icon as node with classes already form parent component
           prefixIcon="&#xea37"
           className={classNames(
             "h-11 peer-focus:!border-blue-500 peer-focus:shadow-none",
@@ -76,20 +74,10 @@ export const Search: React.FC<SearchProps> = ({
         />
       </Input.BaseInput>
       {variant === "withButton" && (
-        <Button
-          variant="primary"
-          text="Search"
-          disabled={disabled}
-          className={buttonStyles}
-        />
+        <Button variant="primary" text="Search" className={buttonStyles} />
       )}
       {variant === "withIconButton" && (
-        <IconButton
-          variant="primary"
-          icon="&#xea37"
-          disabled={disabled}
-          className={buttonStyles}
-        />
+        <IconButton variant="primary" icon="&#xea37" className={buttonStyles} />
       )}
     </div>
   );

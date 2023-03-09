@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   Title,
@@ -6,8 +7,8 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-import { Avatar as AvatarComponent } from "components/Avatar";
-import type { AvatarProps } from "components/Avatar/Avatar.interface";
+import { Avatar as AvatarComponent } from "../../components/Avatar";
+import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
@@ -40,20 +41,20 @@ export default {
       control: {
         type: "select",
         labels: {
-          "images/red.png": "red",
-          "images/peach.png": "peach",
-          "images/yellow.png": "yellow",
-          "images/blue.png": "blue",
-          "images/pink.png": "pink",
+          "/red.png": "red",
+          "/peach.png": "peach",
+          "/yellow.png": "yellow",
+          "/blue.png": "blue",
+          "/pink.png": "pink",
         },
       },
       options: [
         undefined,
-        "images/red.png",
-        "images/peach.png",
-        "images/yellow.png",
-        "images/blue.png",
-        "images/pink.png",
+        "/red.png",
+        "/peach.png",
+        "/yellow.png",
+        "/blue.png",
+        "/pink.png",
       ],
     },
     contentType: {

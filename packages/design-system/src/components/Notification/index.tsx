@@ -1,10 +1,10 @@
 import classNames from "classnames";
-import Avatar from "components/Avatar";
-import Button from "components/Button";
-import IconButton from "components/IconButton";
-import Indicator from "components/Indicator";
+import Avatar from "../Avatar";
+import Button from "../Button";
+import IconButton from "../IconButton";
+import Indicator from "../Indicator";
 import * as NotificationComponents from "./";
-import * as Skeleton from "components/Skeleton";
+import * as Skeleton from "../Skeleton";
 import type {
   ContainerProps,
   EventProps,
@@ -86,6 +86,7 @@ export const Notification: React.FC<NotificationProps> = ({
       <Button
         variant="ghost"
         text="Mark all as read"
+        // @todo: Refactor buttons to pass SVG props and replace
         leftIcon="&#xeace"
         size="sm"
         className={classNames(
@@ -96,6 +97,7 @@ export const Notification: React.FC<NotificationProps> = ({
       />
       <IconButton
         variant="ghost"
+        // @todo: Refactor buttons to pass SVG props and replace
         icon="&#xea29"
         size="sm"
         className={classNames(
@@ -108,7 +110,10 @@ export const Notification: React.FC<NotificationProps> = ({
     {events ? (
       <>
         {events.map(({ ...props }) => (
-          <NotificationComponents.SingleNotification {...props} {...avatarProps} />
+          <NotificationComponents.SingleNotification
+            {...props}
+            {...avatarProps}
+          />
         ))}
         <NotificationComponents.EventSkeleton />
         <NotificationComponents.EventSkeleton />

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import Avatar from "components/Avatar";
+import Avatar from "../Avatar";
 import type { AvatarGroupProps } from "./AvatarGroup.interface";
 
 export const AvatarGroup: React.FC<AvatarGroupProps> = ({
@@ -28,7 +28,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
           name={`+${avatars.length - visibleAvatars}`}
           shape={shape}
           size={size}
-          contentType={"text"}
+          contentType="text"
         />
       )}
     </div>

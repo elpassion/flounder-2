@@ -1,8 +1,10 @@
-import iconConfigFile from "fonts/fonticon.json";
-import { getIcons } from "helpers/getIcons";
+import React from "react";
+import iconConfigFile from "../../fonts/fonticon.json";
+import { getIcons } from "../../helpers/getIcons";
 
 export const Icon = () => {
   const icons = getIcons(iconConfigFile);
+  
   return (
     <>
       <table className="min-w-full divide-y divide-gray-300">
