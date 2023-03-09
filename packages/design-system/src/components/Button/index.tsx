@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Icon from "../Icon";
 import type { ButtonProps } from "./Button.interface";
 
 export const Button: React.FC<ButtonProps> = ({
@@ -33,12 +34,6 @@ export const Button: React.FC<ButtonProps> = ({
     lg: "h-12 gap-4 py-2.5 px-4 text-lg",
   };
 
-  const iconSizeVariants = {
-    sm: "text-base",
-    md: "text-base",
-    lg: "text-2xl",
-  };
-
   return (
     <button
       disabled={disabled}
@@ -55,17 +50,11 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
     >
       {!!leftIcon && (
-        <span
-          className={classNames("font-icons", iconSizeVariants[size])}
-          dangerouslySetInnerHTML={{ __html: `${leftIcon};` }}
-        />
+        <Icon icon={leftIcon} size={size} />
       )}
       {text}
       {!!rightIcon && (
-        <span
-          className={classNames("font-icons", iconSizeVariants[size])}
-          dangerouslySetInnerHTML={{ __html: `${rightIcon};` }}
-        />
+        <Icon icon={rightIcon} size={size} />
       )}
     </button>
   );
