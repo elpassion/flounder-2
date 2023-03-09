@@ -2,9 +2,14 @@
   "name": "@elpassion/taco",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
+  "main": "cjs/index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
-    "url": "URL",
+    "url": "https://github.com/elpassion/flounder-2.git",
     "type": "git"
   },
   "devDependencies": {

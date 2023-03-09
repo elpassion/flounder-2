@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { LinearProgressBar as LinearProgressBarComponent } from "../../../components/ProgressBar/LinearProgressBar";
 import type { LinearProgressBarProps } from "../../../components/ProgressBar/LinearProgressBar/LinearProgressBar.interface";

@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Textarea as TextareaComponent } from "../../components/Textarea";
 import type { TextareaProps } from "../../components/Textarea/Textarea.interface";

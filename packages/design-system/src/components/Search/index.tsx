@@ -53,6 +53,7 @@ export const Search: React.FC<SearchProps> = ({
       >
         <Input.Prefix
           prefixVariant="icon"
+          // @TODO: Refactor and pass icon as node with classes already form parent component
           prefixIcon="&#xea37"
           className={classNames(
             "h-11 peer-focus:!border-blue-500 peer-focus:shadow-none",

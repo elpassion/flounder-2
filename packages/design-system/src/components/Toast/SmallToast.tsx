@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Icon from "../Icon";
 import * as ToastComponents from "./";
 import type { ToastProps } from "./Toast.interface";
 
@@ -23,7 +24,7 @@ export const SmallToast: React.FC<ToastProps> = ({
       )}
     >
       <div className="flex gap-2">
-        {icon && <ToastComponents.Icon icon={icon} />}
+        {icon && <Icon size="md" icon={icon} />}
         <div className="flex flex-col">
           {title && (
             <div className="flex gap-4">

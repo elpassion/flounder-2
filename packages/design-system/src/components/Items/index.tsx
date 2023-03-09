@@ -1,13 +1,10 @@
 import classNames from "classnames";
-import type { ContainerProps, IconProps } from "./Items.interface";
+import type { ContainerProps } from "./Items.interface";
 
 export const Container: React.FC<ContainerProps> = ({
   children,
   className,
 }) => {
-  //TIP:classes to use for active state
-  // const activeStyle = "bg-neutral-200 border-neutral-200";
-
   return (
     <button
       className={classNames(
@@ -22,9 +19,3 @@ export const Container: React.FC<ContainerProps> = ({
   );
 };
 
-export const Icon: React.FC<IconProps> = ({ icon, className }) => (
-  <span
-    className={classNames("font-icons", className)}
-    dangerouslySetInnerHTML={{ __html: `${icon};` }}
-  />
-);

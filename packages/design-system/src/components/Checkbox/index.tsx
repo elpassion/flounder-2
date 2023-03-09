@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { ReactComponent as Check } from '../../svgs/_check.svg';
 import type { CheckboxProps } from "./Checkbox.interface";
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -28,12 +29,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     sm: "text-sm",
     md: "text-base",
   };
-
-  const iconSizeVariants = {
-    sm: "text-xs",
-    md: "text-sm",
-  };
-
+  
   return (
     <>
       <div
@@ -81,9 +77,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             error && "peer-focus:border-error-500 peer-focus:ring-0"
           )}
         >
-          <span
-          className={classNames("font-icons", iconSizeVariants[size])}
-        >&#xeace;</span>
+          <Check className="block w-3/5 aspect-square" />
         </div>
         <div
           className={classNames("peer-disabled:text-neutral-200", fontColor)}
