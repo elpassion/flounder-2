@@ -3,7 +3,7 @@ name: Deploy storybook to GitHub Pages
 on:
   push:
     paths:
-      - examples/flounder-full/**
+      - packages/design-system/**
   pull_request:
     types: [opened, synchronize, reopened]
 
