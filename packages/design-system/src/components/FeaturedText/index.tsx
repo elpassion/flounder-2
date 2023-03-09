@@ -4,7 +4,7 @@ import {
   TFeaturedTextSize,
   TFeaturedTextVariant,
 } from "./Featuredtext.interface";
-import { ReactComponent as ArrowRight } from "../../icons/arrow-right.svg";
+import { ReactComponent as ArrowRight } from "../../svgs/arrow-right.svg";
 
 export const FeaturedText: React.FC<FeaturedTextProps> = ({
   title,

@@ -1,6 +1,7 @@
 import { ComponentStory } from "@storybook/react";
-import { FeaturedText as FeaturedTextComponent } from "components/FeaturedText";
-import { FeaturedTextProps } from "components/FeaturedText/Featuredtext.interface";
+import React from "react";
+import { FeaturedText as FeaturedTextComponent } from "../../components/FeaturedText";
+import { FeaturedTextProps } from "../../components/FeaturedText/Featuredtext.interface";
 
 export const FeaturedText: ComponentStory<React.FC<FeaturedTextProps>> = ({
   ...props
@@ -14,9 +15,9 @@ const StoryIcon: React.FC<{ src: string }> = ({ src }) => (
   />
 );
 
-const rectangle = <StoryIcon src="images/rectangle.png" />;
-const peach = <StoryIcon src="images/peach.png" />;
-const pink = <StoryIcon src="images/pink.png" />;
+const rectangle = <StoryIcon src="static/rectangle.png" />;
+const peach = <StoryIcon src="static/peach.png" />;
+const pink = <StoryIcon src="static/pink.png" />;
 const phoneIcon = (
   <div className="flex aspect-square w-full flex-shrink-0 items-center justify-center rounded-md bg-neutral-50">
     <span
@@ -81,6 +82,6 @@ export default {
     align: "left",
     variant: "iconTop",
     linkedUrl: "https://google.com",
-    icon: <StoryIcon src="images/rectangle.png" />,
+    icon: <StoryIcon src="static/rectangle.png" />,
   },
 };
