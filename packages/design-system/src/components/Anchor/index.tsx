@@ -15,15 +15,11 @@ export const Anchor: React.FC<AnchorProps> = ({
     left: "border-l-2 px-4 py-2 border-neutral-100 text-neutral-400 hover:border-neutral-400 focus:border-neutral-600",
   };
 
-  //TIP:classes to use for active tab link
-  const activeStyle = "text-primary-500 border-primary-500";
-
   return (
     <a
       className={classNames(
         "text-sm",
         decorationVariants[decoration],
-        activeStyle,
         className
       )}
       href={link}
@@ -34,4 +30,4 @@ export const Anchor: React.FC<AnchorProps> = ({
   );
 };
 
-export default Anchor
+export default Anchor;

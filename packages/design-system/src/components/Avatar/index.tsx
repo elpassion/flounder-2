@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import * as AvatarComponents from "./";
+import { ReactComponent as User } from '../../svgs/_user.svg';
 import type {
   AvatarChildrenProps,
   AvatarProps,
   ContainerProps,
-  IconProps,
   ImageProps,
 } from "./Avatar.interface";
 
@@ -38,25 +38,6 @@ export const Container: React.FC<ContainerProps> = ({
     >
       {children}
     </div>
-  );
-};
-
-export const Icon: React.FC<IconProps> = ({ size = "md" }) => {
-  // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
-  const sizeVariants = {
-    xxs: "text-[8px]",
-    xs: "text-xxs",
-    sm: "text-sm",
-    md: "text-lg",
-    lg: "text-2xl",
-    xl: "text-[28px]",
-    xxl: "text-[32px]",
-  };
-
-  return (
-    <span className={classNames("font-icons", sizeVariants[size])}>
-      &#xea0c;
-    </span>
   );
 };
 
@@ -111,7 +92,7 @@ export const Avatar: React.FC<AvatarProps> = ({
             {contentType === "text" && (
               <AvatarComponents.Text>{initials}</AvatarComponents.Text>
             )}
-            {contentType === "icon" && <AvatarComponents.Icon size={size} />}
+            {contentType === "icon" && <User className="block w-3/5 aspect-square"/>}
           </>
         )}
       </AvatarComponents.Container>

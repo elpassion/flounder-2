@@ -15,10 +15,6 @@ export interface ImageProps extends AvatarChildrenProps {
   alt?: string;
 }
 
-export interface IconProps extends AvatarChildrenProps {
-  size?: sizes;
-}
-
 export interface AvatarProps
   extends Pick<ContainerProps, "size" | "shape" | "className">,
     Pick<ImageProps, "alt"> {
