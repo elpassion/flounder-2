@@ -40,18 +40,19 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
   };
 
   const learnMoreIconSizes = {
-    sm: "w-4 h-4",
-    md: "w-4 h-4",
-    lg: "w-6 h-6",
+    sm: "w-4 aspect-square",
+    md: "w-4 aspect-square",
+    lg: "w-6 aspect-square",
   };
 
   const iconWrapperSizes = {
-    sm: "w-8 h-8",
-    md: "w-10 h-10",
-    lg: "w-12 h-12",
+    sm: "w-8 aspect-square",
+    md: "w-10 aspect-square",
+    lg: "w-12 aspect-square",
   };
 
   const textAlignment = featuredTextAlign[align || "left"];
+  const isIconVariant = variant !== "text" && icon;
 
   const getFeaturedTextStyles = ({
     size,
@@ -80,7 +81,11 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
         textAlignment
       )}
     >
-      <div className={classNames(iconWrapperSizes[size])}>{icon}</div>
+      {isIconVariant && (
+        <div className={classNames("flex-shrink-0", iconWrapperSizes[size])}>
+          {icon}
+        </div>
+      )}
       <div className={classNames("flex flex-col", textAlignment)}>
         <h6
           className={classNames(
@@ -100,7 +105,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
           )}
         >
           <a href={linkedUrl}>{linkedText}</a>
-          <ArrowRight className={classNames(learnMoreIconSizes[size])} />
+          <ArrowRight className={learnMoreIconSizes[size]} />
         </div>
       </div>
     </div>

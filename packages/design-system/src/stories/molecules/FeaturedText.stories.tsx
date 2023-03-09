@@ -6,6 +6,28 @@ export const FeaturedText: ComponentStory<React.FC<FeaturedTextProps>> = ({
   ...props
 }) => <FeaturedTextComponent {...props} />;
 
+const StoryIcon: React.FC<{ src: string }> = ({ src }) => (
+  <img
+    src={src}
+    alt="story icon"
+    className="flex aspect-square w-full items-center rounded-md bg-center object-cover"
+  />
+);
+
+const rectangle = <StoryIcon src="images/rectangle.png" />;
+const peach = <StoryIcon src="images/peach.png" />;
+const pink = <StoryIcon src="images/pink.png" />;
+const phoneIcon = (
+  <div className="flex aspect-square w-full flex-shrink-0 items-center justify-center rounded-md bg-neutral-50">
+    <span
+      className="font-icons"
+      dangerouslySetInnerHTML={{ __html: `&#xeb1d` }}
+    />
+  </div>
+);
+
+const icons = { rectangle, phoneIcon, peach, pink };
+
 export default {
   title: "🟢 Molecules/FeaturedText",
   component: FeaturedText,
@@ -33,41 +55,21 @@ export default {
       type: "select",
       options: ["left", "center"],
     },
-    imageSrc: {
-      description: "image src",
-      control: {
-        type: "select",
-        labels: {
-          "images/red.png": "red",
-          "images/peach.png": "peach",
-          "images/yellow.png": "yellow",
-          "images/blue.png": "blue",
-          "images/pink.png": "pink",
-          "images/rectangle.png": "rectangle",
-        },
-      },
-      options: [
-        undefined,
-        "images/red.png",
-        "images/peach.png",
-        "images/yellow.png",
-        "images/blue.png",
-        "images/pink.png",
-        "images/rectangle.png",
-      ],
-    },
     icon: {
       description: "icon",
       control: {
         type: "select",
         labels: {
-          "&#xea87": "document",
-          "&#xea01": "wifi",
-          "&#xea11": "box",
-          "&#xeb1d": "phone",
+          undefined: "none",
+          phoneIcon: "phone icon",
+          rectangle: "aspect ratio rectangle",
+          peach: "avatar 1",
+          pink: "avatar 2",
         },
       },
-      options: [undefined, "&#xea87", "&#xea01", "&#xea11", "&#xeb1d"],
+
+      options: [undefined, ...Object.keys(icons)],
+      mapping: icons,
     },
   },
   args: {
@@ -79,7 +81,6 @@ export default {
     align: "left",
     variant: "iconTop",
     linkedUrl: "https://google.com",
-    imageSrc: "images/rectangle.png",
-    icon: "&#xeb1d",
+    icon: <StoryIcon src="images/rectangle.png" />,
   },
 };
