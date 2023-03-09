@@ -1,5 +1,5 @@
-import iconConfigFile from "fonts/fonticon.json";
-import { getIcons } from "helpers/getIcons";
+import iconConfigFile from "../../fonts/fonticon.json";
+import { getIcons } from "../../helpers/getIcons";
 
 export const Icon = () => {
   const icons = getIcons(iconConfigFile);

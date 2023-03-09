@@ -1,4 +1,4 @@
-import { TIcon } from "helpers/types";
+import type { TIcon } from "../../helpers/types";
 
 export interface DropdownProps {
   dropdownTitle?: string;

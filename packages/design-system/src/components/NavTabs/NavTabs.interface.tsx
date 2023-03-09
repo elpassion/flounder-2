@@ -1,4 +1,4 @@
-import type { TIcon } from "helpers/types";
+import type { TIcon } from "../../helpers/types";
 
 interface Tab {
   id: string;

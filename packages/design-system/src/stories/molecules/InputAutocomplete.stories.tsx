@@ -5,9 +5,9 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { InputAutocompleteProps } from "components/InputAutocomplete/InputAutocomplete.interface";
-import { InputAutocomplete as InputAutocompleteComponent } from "components/InputAutocomplete";
-import Avatar from "components/Avatar";
+import { InputAutocompleteProps } from "../../components/InputAutocomplete/InputAutocomplete.interface";
+import { InputAutocomplete as InputAutocompleteComponent } from "../../components/InputAutocomplete";
+import Avatar from "../../components/Avatar";
 
 const SvgIcon = () => {
   return (
