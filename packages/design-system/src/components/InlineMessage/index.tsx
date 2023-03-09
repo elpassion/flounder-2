@@ -1,9 +1,9 @@
 import classNames from "classnames";
 import type { InlineMessageProps } from "./InlineMessage.interface";
 
-
 export const InlineMessage: React.FC<InlineMessageProps> = ({
   text,
+  // @TODO: Replace with inline SVG to allow mount without font by default
   icon = "&#xeaf8",
   variant = "default",
   className,

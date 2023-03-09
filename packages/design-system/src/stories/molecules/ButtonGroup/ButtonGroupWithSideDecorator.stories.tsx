@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ButtonGroupWithSideDecorator as ButtonGroupWithSideDecoratorComponent } from "components/ButtonGroup/ButtonGroupWithSideDecorator";
-import type{ ButtonGroupProps } from "components/ButtonGroup/ButtonGroup.interface";
+import { ButtonGroupWithSideDecorator as ButtonGroupWithSideDecoratorComponent } from "../../../components/ButtonGroup/ButtonGroupWithSideDecorator";
+import type { ButtonGroupProps } from "../../../components/ButtonGroup/ButtonGroup.interface";
 
 export const ButtonGroupWithSideDecorator: ComponentStory<
   React.FC<ButtonGroupProps>

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { LinearProgressBar as LinearProgressBarComponent } from "components/ProgressBar/LinearProgressBar";
-import type { LinearProgressBarProps } from "components/ProgressBar/LinearProgressBar/LinearProgressBar.interface";
+import { LinearProgressBar as LinearProgressBarComponent } from "../../../components/ProgressBar/LinearProgressBar";
+import type { LinearProgressBarProps } from "../../../components/ProgressBar/LinearProgressBar/LinearProgressBar.interface";
 
 export const LinearProgressBar: ComponentStory<
   React.FC<LinearProgressBarProps>

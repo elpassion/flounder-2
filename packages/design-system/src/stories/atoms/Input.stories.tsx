@@ -6,8 +6,8 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { Input as InputComponent } from "components/Input";
-import type { InputProps } from "components/Input/Input.interface";
+import { Input as InputComponent } from "../../components/Input";
+import type { InputProps } from "../../components/Input/Input.interface";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |

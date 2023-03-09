@@ -6,8 +6,8 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { Radio as RadioComponent } from "components/Radio";
-import type { RadioProps } from "components/Radio/Radio.interface";
+import { Radio as RadioComponent } from "../../components/Radio";
+import type { RadioProps } from "../../components/Radio/Radio.interface";
 
 const docs: string = `# Usage <br/> 
 | DO | DON’T |

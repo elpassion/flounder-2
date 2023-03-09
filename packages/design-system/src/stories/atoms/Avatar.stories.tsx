@@ -6,8 +6,8 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-import { Avatar as AvatarComponent } from "components/Avatar";
-import type { AvatarProps } from "components/Avatar/Avatar.interface";
+import { Avatar as AvatarComponent } from "../../components/Avatar";
+import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |

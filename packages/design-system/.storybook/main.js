@@ -5,7 +5,12 @@ module.exports = {
     "@storybook/addon-a11y",
     "storybook-addon-designs",
     "storybook-dark-mode",
-    "@storybook/preset-create-react-app",
+    {
+      name: "@storybook/preset-create-react-app",
+      options: {
+        scriptsPackageName: 'react-scripts'
+      }
+    }
   ],
   framework: "@storybook/react",
   core: {

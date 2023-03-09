@@ -1,11 +1,10 @@
 import classNames from "classnames";
-import { IconButton } from "components/IconButton";
+import { IconButton } from "../IconButton";
 import {
   buttonBorderVariants,
   buttonRadiusVariants,
 } from "../ButtonGroup/helpers";
 import type { IconButtonGroupProps } from "./IconButtonGroup.interface";
-
 
 export const IconButtonGroup: React.FC<IconButtonGroupProps> = ({
   buttons,

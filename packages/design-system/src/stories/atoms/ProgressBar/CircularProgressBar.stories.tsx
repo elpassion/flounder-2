@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { CircularProgressBar as CircularProgressBarComponent } from "components/ProgressBar/CircularProgressBar";
-import type { CircularProgressBarProps } from "components/ProgressBar/CircularProgressBar/CircularProgressBar.interface";
+import { CircularProgressBar as CircularProgressBarComponent } from "../../../components/ProgressBar/CircularProgressBar";
+import type { CircularProgressBarProps } from "../../../components/ProgressBar/CircularProgressBar/CircularProgressBar.interface";
 
 export const CircularProgressBar: ComponentStory<
   React.FC<CircularProgressBarProps>

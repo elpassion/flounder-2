@@ -1,5 +1,5 @@
-import { IconTypes } from "utils/iconType";
 import type { HTMLAttributes, PropsWithChildren } from "react";
+import type { IconTypes } from "../../utils/iconType";
 
 type suffixVariants = "dropdown";
 type prefixVariants = "text" | "dropdown" | "icon";

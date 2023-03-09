@@ -6,8 +6,8 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { AvatarGroup as AvatarGroupComponent } from "components/AvatarGroup";
-import type { AvatarProps } from "components/Avatar/Avatar.interface";
+import { AvatarGroup as AvatarGroupComponent } from "../../components/AvatarGroup";
+import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
 
 interface UserInterface {
   name: string;
