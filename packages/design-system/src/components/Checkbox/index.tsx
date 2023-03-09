@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReactComponent as Check } from '../../svgs/_check.svg';
+import { ReactComponent as Check } from '../../svgs/check.svg';
 import type { CheckboxProps } from "./Checkbox.interface";
 
 export const Checkbox: React.FC<CheckboxProps> = ({

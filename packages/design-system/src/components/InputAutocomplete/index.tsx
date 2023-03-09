@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
-import { ReactComponent as Plus } from '../../svgs/_plus.svg';
+import { ReactComponent as Plus } from '../../svgs/plus.svg';
 import * as Input from "../Input";
 import type {
   DropdownListItemProps,

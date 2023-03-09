@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReactComponent as Check } from '../../svgs/_check.svg';
+import { ReactComponent as Check } from '../../svgs/check.svg';
 import * as StepperComponents from "./";
 import Icon from "../Icon";
 import {

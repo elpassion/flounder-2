@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import * as AvatarComponents from "./";
-import { ReactComponent as User } from '../../svgs/_user.svg';
+import { ReactComponent as User } from '../../svgs/user.svg';
 import type {
   AvatarChildrenProps,
   AvatarProps,

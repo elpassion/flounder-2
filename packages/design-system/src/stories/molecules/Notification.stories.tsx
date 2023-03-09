@@ -6,7 +6,7 @@ import type { NotificationProps } from "../../components/Notification/Notificati
 const eventsExample = [
   {
     name: "Julia",
-    src: "images/red.png",
+    src: "/red.png",
     message: "mentioned you in the comment",
     time: "5 minutes ago",
     details: "Hello, how are you?",
@@ -14,7 +14,7 @@ const eventsExample = [
   },
   {
     name: "Mark",
-    src: "images/yellow.png",
+    src: "/yellow.png",
     message: "mentioned you in the comment",
     time: "1 hour ago",
     details: "Hello, how are you?",
@@ -22,7 +22,7 @@ const eventsExample = [
   },
   {
     name: "Sonia",
-    src: "images/peach.png",
+    src: "/peach.png",
     message: "mentioned you in the comment",
     time: "2 days ago",
     details: "Hello, how are you?",

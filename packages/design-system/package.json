@@ -18,9 +18,9 @@
     "test": "react-scripts test",
     "lint": "eslint \"{**/*,*}.{ts,tsx}\"",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s ./src",
-    "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages --ci"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^6.5.16",

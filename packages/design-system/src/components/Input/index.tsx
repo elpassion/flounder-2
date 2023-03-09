@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import * as InputComponents from "./";
 import Icon from "../Icon"
-import { ReactComponent as Chevron } from '../../svgs/_chevron-down.svg';
+import { ReactComponent as Chevron } from '../../svgs/chevron-down.svg';
 
 import type {
   SuffixProps,

@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { ReactComponent as Chevron } from '../../svgs/_chevron-down.svg';
-import { ReactComponent as Minus } from '../../svgs/_minus.svg';
+import { ReactComponent as Chevron } from '../../svgs/chevron-down.svg';
+import { ReactComponent as Minus } from '../../svgs/minus.svg';
 import * as Accordion from "./";
 import type { 
   AccordionBodyProps,
