@@ -2,8 +2,6 @@ name: Deploy storybook to GitHub Pages
 
 on:
   push:
-    paths:
-      - packages/design-system/**
     branches:
       - main
 
