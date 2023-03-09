@@ -15,9 +15,9 @@ const StoryIcon: React.FC<{ src: string }> = ({ src }) => (
   />
 );
 
-const rectangle = <StoryIcon src="static/rectangle.png" />;
-const peach = <StoryIcon src="static/peach.png" />;
-const pink = <StoryIcon src="static/pink.png" />;
+const rectangle = <StoryIcon src="/rectangle.png" />;
+const peach = <StoryIcon src="/peach.png" />;
+const pink = <StoryIcon src="/pink.png" />;
 const phoneIcon = (
   <div className="flex aspect-square w-full flex-shrink-0 items-center justify-center rounded-md bg-neutral-50">
     <span
@@ -82,6 +82,6 @@ export default {
     align: "left",
     variant: "iconTop",
     linkedUrl: "https://google.com",
-    icon: <StoryIcon src="static/rectangle.png" />,
+    icon: <StoryIcon src="/rectangle.png" />,
   },
 };
