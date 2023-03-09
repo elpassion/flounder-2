@@ -1,4 +1,6 @@
 import classNames from "classnames";
+import { ReactComponent as Chevron } from '../../svgs/_chevron-down.svg';
+import { ReactComponent as Minus } from '../../svgs/_minus.svg';
 import * as Accordion from "./";
 import type { 
   AccordionBodyProps,
@@ -73,11 +75,7 @@ export const Icon: React.FC<AccordionIconProps> = ({ icon, iconPosition }) => {
         iconVariants[iconPosition]
       )}
     >
-      <span
-        className="font-icons text-2xl"
-        // @TODO: Replace with inline SVG to allow usage without font import
-        dangerouslySetInnerHTML={{ __html: `${icon};` }}
-      />
+      {icon}
     </div>
   );
 };
@@ -87,11 +85,13 @@ const AccordionComponent: React.FC<AccordionProps> = ({
   iconPosition,
   expandedId,
   items,
+  icon = "chevron"
 }) => {
   return (
     <div className="w-full">
       {items.map(({ title, id, description }) => {
         const isExpanded = id === expandedId;
+
         return (
           <div key={id} className="mb-3">
             <Accordion.Button
@@ -100,11 +100,22 @@ const AccordionComponent: React.FC<AccordionProps> = ({
               iconPosition={iconPosition}
               variant={variant}
             >
-              <Accordion.Icon
+              {icon === "chevron" ? (<Accordion.Icon
                 iconPosition={iconPosition}
-                // @TODO: Replace with inline SVG to allow usage without font import
-                icon={isExpanded ? "&#xea26" : "&#xeac0"}
-              />
+                icon={<Chevron className={classNames("transition transform w-5 h-5", {
+                  "rotate-0": isExpanded,
+                  "-rotate-90": !isExpanded
+                })} />}
+              />) : (<Accordion.Icon
+                iconPosition={iconPosition}
+                icon={<div className="relative w-4 h-4 flex items-center justify-center">
+                <Minus />
+                <Minus className={classNames("absolute transition transform", {
+                  "rotate-0": isExpanded,
+                  "-rotate-90": !isExpanded
+                })} />
+                </div>}
+              />)}
             </Accordion.Button>
             {isExpanded && (
               <Accordion.Body
