@@ -3,8 +3,7 @@ import type { InlineMessageProps } from "./InlineMessage.interface";
 
 export const InlineMessage: React.FC<InlineMessageProps> = ({
   text,
-  // @TODO: Replace with inline SVG to allow mount without font by default
-  icon = "&#xeaf8",
+  icon,
   variant = "default",
   className,
 }) => {
@@ -32,13 +31,9 @@ export const InlineMessage: React.FC<InlineMessageProps> = ({
         className
       )}
     >
-      <span
-        className={classNames(
-          "self-start font-icons text-lg",
-          iconColorVariants[variant]
-        )}
-        dangerouslySetInnerHTML={{ __html: `${icon};` }}
-      />
+      <div className={classNames("flex items-center justify-center self-start w-5 h-5", iconColorVariants[variant])}>
+        {icon}
+      </div>
       <p className="text-xs font-medium">{text}</p>
     </div>
   );

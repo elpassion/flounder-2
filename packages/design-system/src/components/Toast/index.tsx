@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import * as ToastComponents from "./";
+import Icon from '../Icon';
 import type {
   ActionSectionProps,
   ActionToastProps,
   CloseButtonProps,
   CloseSectionProps,
   ContainerProps,
-  IconToastProps,
   TextToastProps,
 } from "./Toast.interface";
 
@@ -21,6 +21,7 @@ export const Action: React.FC<ActionToastProps> = ({
     </button>
   );
 };
+
 export const ActionsSection: React.FC<ActionSectionProps> = ({
   firstActionText,
   secondActionText,
@@ -57,9 +58,10 @@ export const ActionsSection: React.FC<ActionSectionProps> = ({
 };
 export const CloseButton: React.FC<CloseButtonProps> = ({ onClose }) => (
   <button onClick={onClose} aria-label="close">
-    <span className="font-icons text-2xl">&#xea1d;</span>
+    <Icon size="lg" icon="&#xea1d"/>
   </button>
 );
+
 export const CloseButtonSection: React.FC<CloseSectionProps> = ({
   onClose,
 }) => {
@@ -79,12 +81,7 @@ export const Container: React.FC<ContainerProps> = ({
     </div>
   );
 };
-export const Icon: React.FC<IconToastProps> = ({ icon }) => (
-  <span
-    className="font-icons text-xl"
-    dangerouslySetInnerHTML={{ __html: `${icon};` }}
-  />
-);
+
 export const Text: React.FC<TextToastProps> = ({
   children,
   textType,

@@ -1,3 +1,4 @@
+import React from "react";
 import iconConfigFile from "../../fonts/fonticon.json";
 import { getIcons } from "../../helpers/getIcons";
 

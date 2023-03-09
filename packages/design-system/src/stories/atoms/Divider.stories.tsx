@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Divider as DividerComponent } from "../../components/Divider";
 import type { DividerProps } from "../../components/Divider/Divider.interface";

@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Icon from "../Icon";
 import type {
   ArrowButtonProps,
   DotButtonProps,
@@ -111,14 +112,10 @@ const PaginationComponents = {
       )}
       onClick={onClick}
     >
-      <span
-        className={classNames(
-          "font-icons",
-          direction === "right" && "order-last"
-        )}
-        dangerouslySetInnerHTML={{
-          __html: direction === "left" ? "&#xeaf5" : "&#xeb24",
-        }}
+      <Icon
+        //@TODO: Replace with SVG icons and rotate
+        className={classNames({"order-last": direction === "right"})}
+        icon={direction === "left" ? '&#xeaf5' : '&#xeb24'}
       />
       {title}
     </button>
@@ -150,7 +147,7 @@ const PaginationComponents = {
   DotButton: ({ variant, size }: DotButtonProps) => {
     return (
       <button
-        type={"button"}
+        type="button"
         className={classNames(
           "-ml-px flex shrink-0 items-center justify-center font-medium text-neutral-400 transition",
           buttonVariants[variant],
@@ -189,7 +186,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         variant={variant}
         size={size}
         title={prevTitle}
-        direction={"left"}
+        direction="left"
         onClick={onPrevious}
       />
       {buildPagination(totalPages, currentPage, 2).map((page) =>
@@ -215,7 +212,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         variant={variant}
         size={size}
         title={nextTitle}
-        direction={"right"}
+        direction="right"
         onClick={onNext}
       />
     </div>
