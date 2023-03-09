@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import * as AvatarComponents from "./";
 import type {
   AvatarChildrenProps,
   AvatarProps,
@@ -6,7 +7,6 @@ import type {
   IconProps,
   ImageProps,
 } from "./Avatar.interface";
-import * as AvatarComponents from "./";
 
 export const Container: React.FC<ContainerProps> = ({
   children,

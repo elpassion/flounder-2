@@ -1,4 +1,4 @@
-import { IconTypes } from "utils/iconType";
+import type { IconTypes } from "../../utils/iconType";
 
 export interface InlineMessageProps {
   icon?: IconTypes;

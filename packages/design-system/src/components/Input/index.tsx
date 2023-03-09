@@ -8,7 +8,7 @@ import type {
   TextProps,
   IconProps,
   BaseInputProps,
-} from "components/Input/Input.interface";
+} from "./Input.interface";
 
 const inputBorderColorStyle: { [key: string]: string } = {
   true: "border-error-500 focus:border-error-500",

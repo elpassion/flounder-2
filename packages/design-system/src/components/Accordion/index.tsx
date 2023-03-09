@@ -1,11 +1,11 @@
 import classNames from "classnames";
-import {type 
+import * as Accordion from "./";
+import type { 
   AccordionBodyProps,
   AccordionButtonProps,
   AccordionIconProps,
   AccordionProps,
 } from "./Accordion.interface";
-import * as Accordion from "./";
 
 export const Body: React.FC<AccordionBodyProps> = ({
   description,
@@ -75,6 +75,7 @@ export const Icon: React.FC<AccordionIconProps> = ({ icon, iconPosition }) => {
     >
       <span
         className="font-icons text-2xl"
+        // @TODO: Replace with inline SVG to allow usage without font import
         dangerouslySetInnerHTML={{ __html: `${icon};` }}
       />
     </div>
@@ -101,6 +102,7 @@ const AccordionComponent: React.FC<AccordionProps> = ({
             >
               <Accordion.Icon
                 iconPosition={iconPosition}
+                // @TODO: Replace with inline SVG to allow usage without font import
                 icon={isExpanded ? "&#xea26" : "&#xeac0"}
               />
             </Accordion.Button>

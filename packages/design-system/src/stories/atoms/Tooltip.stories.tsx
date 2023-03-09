@@ -6,8 +6,8 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
-import { Tooltip as TooltipComponent } from "components/Tooltip";
-import type { TooltipProps } from "components/Tooltip/Tooltip.interface";
+import { Tooltip as TooltipComponent } from "../../components/Tooltip";
+import type { TooltipProps } from "../../components/Tooltip/Tooltip.interface";
 
 const docs: string = `# Usage <br/> 
 | DO  | DON’T |

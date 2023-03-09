@@ -1,6 +1,6 @@
-import { addons } from "@storybook/addons";
 import React from "react";
 import { useDarkMode } from "storybook-dark-mode";
+import { addons } from "@storybook/addons";
 
 addons.setConfig({
   sidebar: {
