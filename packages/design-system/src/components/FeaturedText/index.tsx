@@ -4,7 +4,7 @@ import {
   FeaturedTextProps,
   TFeaturedTextSize,
   TFeaturedTextVariant,
-} from "./FeaturedText.interface";
+} from "./Featuredtext.interface";
 
 export const FeaturedText: React.FC<FeaturedTextProps> = ({
   title,
@@ -23,8 +23,8 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
   };
 
   const featuredTextAlign = {
-    left: "",
-    center: "items-center",
+    left: "text-left",
+    center: "items-center text-center",
   };
 
   const featuredTextTitleSizes = {

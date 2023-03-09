@@ -1,13 +1,13 @@
 import { ComponentStory } from "@storybook/react";
 import { FeaturedText as FeaturedTextComponent } from "components/FeaturedText";
-import { FeaturedTextProps } from "components/FeaturedText/FeaturedText.interface";
+import { FeaturedTextProps } from "components/FeaturedText/Featuredtext.interface";
 
 export const FeaturedText: ComponentStory<React.FC<FeaturedTextProps>> = ({
   ...props
 }) => <FeaturedTextComponent {...props} />;
 
 export default {
-  title: "🟠 Molecules/FeaturedText",
+  title: "🟢 Molecules/FeaturedText",
   component: FeaturedText,
   argTypes: {
     title: {
