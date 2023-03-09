@@ -131,7 +131,7 @@ export const FeaturedTextIcon: React.FC<FeaturedTextIconProps> = ({
       {isIconVariant && (
         <div
           className={classNames(
-            "flex items-center justify-center rounded-md bg-neutral-50",
+            "flex flex-shrink-0 items-center justify-center rounded-md bg-neutral-50",
             iconWrapperSizes[size]
           )}
         >
