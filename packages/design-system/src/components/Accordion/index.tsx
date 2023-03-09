@@ -75,6 +75,7 @@ export const Icon: React.FC<AccordionIconProps> = ({ icon, iconPosition }) => {
     >
       <span
         className="font-icons text-2xl"
+        // @TODO: Replace with inline SVG to allow usage without font import
         dangerouslySetInnerHTML={{ __html: `${icon};` }}
       />
     </div>
