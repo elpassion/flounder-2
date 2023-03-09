@@ -5,6 +5,7 @@ import {
   TFeaturedTextSize,
   TFeaturedTextVariant,
 } from "./Featuredtext.interface";
+import { ReactComponent as ArrowRight } from "../../icons/arrow-right.svg";
 
 export const FeaturedText: React.FC<FeaturedTextProps> = ({
   title,
@@ -40,9 +41,9 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
   };
 
   const learnMoreIconSizes = {
-    sm: "text-base",
-    md: "text-base",
-    lg: "text-2xl",
+    sm: "w-4 h-4",
+    md: "w-4 h-4",
+    lg: "w-6 h-6",
   };
 
   const textAlignment = featuredTextAlign[align || "left"];
@@ -94,9 +95,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
           )}
         >
           <a href={linkedUrl}>{linkedText}</a>
-          <span className={classNames("font-icons", learnMoreIconSizes[size])}>
-            &#xeb12;
-          </span>
+          <ArrowRight className={classNames(learnMoreIconSizes[size])} />
         </div>
       </div>
     </div>
