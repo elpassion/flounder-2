@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "main": "cjs/index.js",
-  "module": "esm/index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
   "files": [
     "dist"
   ],
