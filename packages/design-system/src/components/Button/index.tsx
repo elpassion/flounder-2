@@ -1,7 +1,8 @@
 import classNames from "classnames";
 
-import { IconTypes } from "utils/iconType";
+import { IconTypes } from "../../utils/iconType";
 
+// TODO: replace with interface
 type VariantType =
   | "primary"
   | "outlined"

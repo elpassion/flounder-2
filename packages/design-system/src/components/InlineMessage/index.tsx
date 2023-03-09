@@ -1,8 +1,8 @@
 import classNames from "classnames";
 
-<<<<<<< HEAD
-import { IconTypes } from "utils/iconType";
+import { IconTypes } from "../../utils/iconType";
 
+// TODO: replace variant with interface
 export interface InlineMessageProps {
   icon?: IconTypes;
   text: string;
@@ -10,8 +10,6 @@ export interface InlineMessageProps {
   className?: string;
 }
 
-=======
->>>>>>> main
 export const InlineMessage: React.FC<InlineMessageProps> = ({
   text,
   // @TODO: Replace with inline SVG to allow mount without font by default
