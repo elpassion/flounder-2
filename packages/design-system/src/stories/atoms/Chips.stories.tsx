@@ -5,9 +5,15 @@ import { Chips as ChipsComponent } from "../../components/Chips";
 import type { ChipsProps } from "../../components/Chips/Chips.interface";
 import Icon from "../../components/Icon";
 
-const bellIcon = <Icon className="w-4 text-center text-sm" icon="&#xeaeb" />;
-const badgeIcon = <Icon className="w-4 text-center text-sm" icon="&#xeb00" />;
-const plusIcon = <Icon className="w-4 text-center text-sm" icon="&#xeabc" />;
+const bellIcon = (
+  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeaeb" />
+);
+const badgeIcon = (
+  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeb00" />
+);
+const plusIcon = (
+  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeabc" />
+);
 const avatarPeach = (
   <img
     src="/peach.png"
@@ -23,7 +29,7 @@ export const Chips: ComponentStory<React.FC<ChipsProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "🟠 Atoms/Chips",
+  title: "🟢 Atoms/Chips",
   component: Chips,
   argTypes: {
     text: {
