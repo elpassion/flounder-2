@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 export type TIcon = ReactNode;
 
@@ -13,4 +13,8 @@ export interface Icon {
     unicode: string;
     entity: string;
   };
+}
+
+export interface GenericKeys {
+  [key: string]: string | GenericKeys;
 }

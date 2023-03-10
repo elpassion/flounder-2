@@ -1,10 +1,8 @@
 import classNames from "classnames";
-import { ReactComponent as Check } from '../../svgs/check.svg';
+import CheckSvg from "../../svgs/CheckSvg";
 import * as StepperComponents from "./";
 import Icon from "../Icon";
-import {
-  StepStatuses,
-} from "./Stepper.interface";
+import { StepStatuses } from "./Stepper.interface";
 import type {
   ContainerProps,
   StepProps,
@@ -50,15 +48,9 @@ export const Step: React.FC<StepProps> = ({
 }) => {
   const renderContent = (index: number, status: StepStatuses) => {
     if (completeVariant === "check" && status === StepStatuses.COMPLETE) {
-      return (
-        <Check className="block w-4/5 aspect-square" />
-      );
+      return <CheckSvg className="block aspect-square w-4/5" />;
     }
-    return icon ? (
-      <Icon icon={icon} />
-    ) : (
-      <>{`${index + 1}`}</>
-    );
+    return icon ? <Icon icon={icon} /> : <>{`${index + 1}`}</>;
   };
 
   return (

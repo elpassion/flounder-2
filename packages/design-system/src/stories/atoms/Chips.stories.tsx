@@ -1,41 +1,70 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+
 import { Chips as ChipsComponent } from "../../components/Chips";
 import type { ChipsProps } from "../../components/Chips/Chips.interface";
+import Icon from "../../components/Icon";
+
+const bellIcon = (
+  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeaeb" />
+);
+const badgeIcon = (
+  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeb00" />
+);
+const plusIcon = (
+  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeabc" />
+);
+const avatarPeach = (
+  <img
+    src="/peach.png"
+    alt="test avatar"
+    className="aspect-square w-4 rounded-full"
+  />
+);
+
+const icons = { bellIcon, badgeIcon, plusIcon, avatarPeach };
 
 export const Chips: ComponentStory<React.FC<ChipsProps>> = ({ ...props }) => (
   <ChipsComponent {...props} />
 );
 
 export default {
-  title: "🟠 Atoms/Chips",
+  title: "🟢 Atoms/Chips",
   component: Chips,
   argTypes: {
     text: {
       description: "Enabled",
     },
     suffixIcon: {
-      options: ["&#xeaf4", "&#xea65", undefined],
+      options: [undefined, ...Object.keys(icons)],
+      mapping: icons,
       control: {
         type: "select",
         labels: {
-          "&#xeaf4": "bookmark",
-          "&#xea65": "trash",
+          undefined: "none",
+          bellIcon: "bell icon",
+          badgeIcon: "badge icon",
+          plusIcon: "plus icon",
+          avatarPeach: "avatar",
         },
       },
-      type: { required: true, name: "string" },
+      type: { name: "string" },
       description: "icon",
     },
     prefixIcon: {
-      options: ["&#xeaf4", "&#xea65", undefined],
+      options: [undefined, ...Object.keys(icons)],
+      mapping: icons,
       control: {
         type: "select",
         labels: {
-          "&#xeaf4": "bookmark",
-          "&#xea65": "trash",
+          undefined: "none",
+          bellIcon: "bell icon",
+          badgeIcon: "badge icon",
+          plusIcon: "plus icon",
+          avatarPeach: "avatar",
         },
       },
-      type: { required: true, name: "string" },
+      type: { name: "string" },
       description: "icon",
     },
   },

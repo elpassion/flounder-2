@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import * as InputComponents from "./";
-import Icon from "../Icon"
-import { ReactComponent as Chevron } from '../../svgs/chevron-down.svg';
+import ChevronDownSvg from "../../svgs/ChevronDownSvg";
+import Icon from "../Icon";
 
 import type {
   SuffixProps,
@@ -180,9 +180,12 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
   text,
   disabled,
 }) => (
-  <button className="flex items-center justify-center h-full gap-2" disabled={disabled}>
+  <button
+    className="flex h-full items-center justify-center gap-2"
+    disabled={disabled}
+  >
     <span>{text}</span>
-    <Chevron className="stroke-current w-5 aspect-square" />
+    <ChevronDownSvg className="aspect-square w-5 stroke-current" />
   </button>
 );
 export const Text: React.FC<TextProps> = ({ text, type }) => {
@@ -216,9 +219,9 @@ export const Iconed: React.FC<IconProps> = ({
       onClick={onIconClick}
     >
       {isError ? (
-        <Icon size="sm" icon="&#xeb1b" className="text-error-500"/>
+        <Icon size="sm" icon="&#xeb1b" className="text-error-500" />
       ) : (
-        <Icon size="sm" icon={helpIcon}/>
+        <Icon size="sm" icon={helpIcon} />
       )}
     </div>
   );
