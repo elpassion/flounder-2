@@ -28,12 +28,37 @@ import Toast from "./components/Toast/Toast";
 import SmallToast from "./components/Toast/SmallToast";
 import Toggle from "./components/Toggle";
 import Tooltip from "./components/Tooltip";
+import { initDefaultTheme } from "./helpers/generators";
 
-export { 
-  Accordion, Anchor, Avatar, AvatarGroup, Badge, Button,
-  ButtonGroup, Checkbox, Chips,  Divider, Icon, IconButton,
-  IconButtonGroup, MenuItem, WorkspaceItem, NavTabs, Notification,
-  Pagination, CircularProgressBar, LinearProgressBar, Radio,
-  Search, HorizontalStepper, VerticalStepper, Textarea, Toast,
-  SmallToast, Toggle, Tooltip
+export {
+  initDefaultTheme,
+  Accordion,
+  Anchor,
+  Avatar,
+  AvatarGroup,
+  Badge,
+  Button,
+  ButtonGroup,
+  Checkbox,
+  Chips,
+  Divider,
+  Icon,
+  IconButton,
+  IconButtonGroup,
+  MenuItem,
+  WorkspaceItem,
+  NavTabs,
+  Notification,
+  Pagination,
+  CircularProgressBar,
+  LinearProgressBar,
+  Radio,
+  Search,
+  HorizontalStepper,
+  VerticalStepper,
+  Textarea,
+  Toast,
+  SmallToast,
+  Toggle,
+  Tooltip,
 };
