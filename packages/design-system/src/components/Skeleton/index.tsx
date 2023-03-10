@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import type { SkeletonProps } from "./Skeleton.interface";
 
-
 export const Circle = ({ height, width, className }: SkeletonProps) => (
   <div
     className={classNames(
