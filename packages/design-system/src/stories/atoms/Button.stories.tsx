@@ -32,7 +32,15 @@ export default {
       options: ["sm", "md", "lg"],
       description: "sm | md | lg",
     },
+    type: {
+      control: "select",
+      options: ["button", "submit", "reset"],
+      description: "button | submit | reset",
+    },
     disabled: {
+      description: "boolean",
+    },
+    isFluid: {
       description: "boolean",
     },
     leftIcon: {
@@ -56,6 +64,8 @@ export default {
     text: "Button",
     variant: "primary",
     size: "md",
+    type: "button",
+    isFluid: false,
     disabled: false,
     rightIcon: undefined,
     leftIcon: undefined,

@@ -11,7 +11,9 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   onClick,
   ariaLabel,
-  className
+  className,
+  isFluid,
+  type = "button",
 }) => {
   const styleVariants = {
     primary:
@@ -40,24 +42,22 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled}
       aria-label={ariaLabel}
       className={classNames(
-        "flex items-center justify-center rounded-lg border whitespace-nowrap ",
+        "flex items-center justify-center whitespace-nowrap rounded-lg border ",
         "disabled:border-neutral-200 disabled:bg-neutral-200 disabled:text-white disabled:hover:shadow-none",
         "hover:shadow-button",
         styleVariants[variant],
         sizeVariants[size],
+        { "w-full": isFluid },
         className
       )}
+      type={type}
       onClick={onClick}
     >
-      {!!leftIcon && (
-        <Icon icon={leftIcon} size={size} />
-      )}
+      {!!leftIcon && <Icon icon={leftIcon} size={size} />}
       {text}
-      {!!rightIcon && (
-        <Icon icon={rightIcon} size={size} />
-      )}
+      {!!rightIcon && <Icon icon={rightIcon} size={size} />}
     </button>
   );
 };
 
-export default Button
+export default Button;
