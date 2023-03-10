@@ -1,10 +1,16 @@
 import { ReactNode } from "react";
 
-export interface DropdownProps {
-  variant?: TDropdownVariant;
+export interface IDropdownOption {
+  value: string;
+  label: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+}
+export interface DropdownProps {
+  variant?: TDropdownVariant;
   caption?: string;
+  isMulti?: boolean;
+  options: IDropdownOption[];
 }
 
 type TDropdownVariant =
