@@ -1,10 +1,10 @@
 import classNames from "classnames";
+import ArrowRight from "../../svgs/ArrowRight";
 import {
   FeaturedTextProps,
   TFeaturedTextSize,
   TFeaturedTextVariant,
 } from "./Featuredtext.interface";
-import { ReactComponent as ArrowRight } from "../../svgs/arrow-right.svg";
 
 export const FeaturedText: React.FC<FeaturedTextProps> = ({
   title,
