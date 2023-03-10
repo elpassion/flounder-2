@@ -1,6 +1,6 @@
 import React from "react";
 import iconConfigFile from "../../fonts/fonticon.json";
-import { getIcons } from "../../helpers/getIcons";
+import { getIcons, getIconsObject } from "../../helpers/getIcons";
 import Icon from "../../components/Icon";
 
 export const Icons = () => {
@@ -14,7 +14,7 @@ export const Icons = () => {
             return (
               <tr className="divide-x divide-gray-200" key={icon.name}>
                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-center">
-                  <Icon icon={`${icon.symbol.entity}`} />
+                  <Icon icon={`${icon.name}`} size="md" />
                 </td>
                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-center">
                   <span className="text-sm text-gray-700">{icon.name}</span>

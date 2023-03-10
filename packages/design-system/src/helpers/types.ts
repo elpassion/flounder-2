@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 export type TIcon = ReactNode;
 
@@ -10,6 +10,13 @@ export interface IconConfigFile {
 export interface Icon {
   name: string;
   symbol: {
+    unicode: string;
+    entity: string;
+  };
+}
+
+export interface IconObject {
+  [name: string]: {
     unicode: string;
     entity: string;
   };
