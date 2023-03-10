@@ -14,8 +14,9 @@ export interface DropdownProps {
   skipMenuGap?: boolean;
 }
 
-type TDropdownVariant =
+export type TDropdownVariant =
   | "default"
   | "person"
+  | "toggle"
   | "checkbox-left"
   | "checkbox-right";

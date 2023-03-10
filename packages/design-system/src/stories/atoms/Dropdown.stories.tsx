@@ -48,10 +48,20 @@ export default {
       control: "select",
       options: [true, undefined],
     },
+    isMulti: {
+      control: "select",
+      options: [true, false],
+    },
+    variant: {
+      control: "select",
+      options: ["default", "toggle", "checkbox-right", "checkbox-left"],
+    },
   },
   args: {
     options: dropdownOptions,
     skipMenuGap: true,
+    isMulti: false,
+    variant: "default",
   },
   parameters: {
     design: {

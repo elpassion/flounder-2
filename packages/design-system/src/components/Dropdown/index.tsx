@@ -46,7 +46,8 @@ const DropdownComponents = {
     );
   },
   DropdownOption: (props: OptionProps<IDropdownOption>) => {
-    const { label, leftIcon, rightIcon } = props.data;
+    const { data } = props;
+    const { label, leftIcon, rightIcon } = data;
     return (
       <Option {...props}>
         <div className="flex items-center justify-between">
