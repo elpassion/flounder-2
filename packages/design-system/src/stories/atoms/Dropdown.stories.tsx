@@ -7,12 +7,26 @@ import {
 } from "../../components/Dropdown/Dropdown.interface";
 import Icon from "../../components/Icon";
 
+const avatarExample = (
+  <img
+    src="/peach.png"
+    alt="test avatar"
+    className="aspect-square w-4 rounded-full"
+  />
+);
+
 const dropdownOptions: IDropdownOption[] = [
-  { value: "account", label: "Account", leftIcon: <Icon icon="&#xeaeb" /> },
+  { value: "account", label: "Account", leftIcon: avatarExample },
   {
     value: "settings",
     label: "Settings",
     leftIcon: <Icon icon="&#xeb14" />,
+  },
+  {
+    value: "notifications",
+    label: "Notifications",
+    leftIcon: <Icon icon="&#xeaeb" />,
+    rightIcon: <Icon icon="&#xeab0" />,
   },
   {
     value: "label",
@@ -29,8 +43,15 @@ export const Dropdown: ComponentStory<React.FC<DropdownProps>> = ({
 export default {
   title: "🟠 Atoms/Dropdown",
   component: Dropdown,
+  argTypes: {
+    skipMenuGap: {
+      control: "select",
+      options: [true, undefined],
+    },
+  },
   args: {
     options: dropdownOptions,
+    skipMenuGap: true,
   },
   parameters: {
     design: {

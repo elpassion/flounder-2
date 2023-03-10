@@ -7,10 +7,11 @@ export interface IDropdownOption {
   rightIcon?: ReactNode;
 }
 export interface DropdownProps {
+  options: IDropdownOption[];
   variant?: TDropdownVariant;
   caption?: string;
   isMulti?: boolean;
-  options: IDropdownOption[];
+  skipMenuGap?: boolean;
 }
 
 type TDropdownVariant =

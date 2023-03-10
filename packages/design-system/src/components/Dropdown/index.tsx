@@ -1,20 +1,47 @@
 import { DropdownProps, IDropdownOption } from "./Dropdown.interface";
-import ReactSelect, { components, OptionProps } from "react-select";
+import ReactSelect, { components, MenuProps, OptionProps } from "react-select";
 import { forwardRef } from "react";
 
-const { Option } = components;
+const { Option, Menu } = components;
 
 export const Dropdown = forwardRef((props: DropdownProps, ref) => {
   return <DropdownComponents.BaseDropdown {...props} {...ref} />;
 });
 
 const DropdownComponents = {
-  BaseDropdown: ({ isMulti, variant, caption, options }: DropdownProps) => {
+  BaseDropdown: ({
+    isMulti,
+    variant,
+    caption,
+    options,
+    skipMenuGap,
+  }: DropdownProps) => {
+    const MENU_WIDTH = `calc(100% - 2px)` as const;
+
+    const customDropdownStyles = {
+      menu: (base: any) => ({
+        ...base,
+        marginTop: skipMenuGap ? 0 : 8,
+        marginLeft: 1,
+        borderRadius: skipMenuGap ? "0 0 8px 8px" : "8px",
+        width: MENU_WIDTH,
+      }),
+      control: (base: any) => ({
+        ...base,
+        borderRadius: skipMenuGap ? "8px 8px 0 0" : "8px",
+      }),
+    };
+
     return (
       <ReactSelect
+        menuIsOpen={true}
         options={options}
         isMulti={isMulti}
-        components={{ Option: DropdownComponents.DropdownOption }}
+        components={{
+          Option: DropdownComponents.DropdownOption,
+          Menu: DropdownComponents.DropdownMenu,
+        }}
+        styles={customDropdownStyles}
       />
     );
   },
@@ -31,5 +58,8 @@ const DropdownComponents = {
         </div>
       </Option>
     );
+  },
+  DropdownMenu: (props: MenuProps<IDropdownOption>) => {
+    return <Menu {...props} />;
   },
 };
