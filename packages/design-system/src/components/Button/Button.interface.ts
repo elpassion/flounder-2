@@ -14,4 +14,6 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
   ariaLabel?: string;
+  type?: "button" | "submit" | "reset";
+  isFluid?: boolean;
 }
