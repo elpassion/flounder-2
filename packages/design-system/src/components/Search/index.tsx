@@ -5,7 +5,7 @@ import IconButton from "../IconButton";
 import * as Input from "../Input";
 import type { SearchProps } from "./Search.interface";
 
-export const Search: React.FC<SearchProps> = ({
+const Search: React.FC<SearchProps> = ({
   variant = "default",
   suffixText = "",
   ...props
@@ -82,3 +82,5 @@ export const Search: React.FC<SearchProps> = ({
     </div>
   );
 };
+
+export default Search;
