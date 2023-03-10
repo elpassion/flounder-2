@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import * as AvatarComponents from "./";
-import { ReactComponent as User } from '../../svgs/user.svg';
+import UserSvg from "../../svgs/UserSvg";
 import type {
   AvatarChildrenProps,
   AvatarProps,
@@ -92,7 +92,9 @@ export const Avatar: React.FC<AvatarProps> = ({
             {contentType === "text" && (
               <AvatarComponents.Text>{initials}</AvatarComponents.Text>
             )}
-            {contentType === "icon" && <User className="block w-3/5 aspect-square"/>}
+            {contentType === "icon" && (
+              <UserSvg className="block aspect-square w-3/5" />
+            )}
           </>
         )}
       </AvatarComponents.Container>

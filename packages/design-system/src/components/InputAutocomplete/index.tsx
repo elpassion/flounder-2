@@ -1,6 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
-import { ReactComponent as Plus } from '../../svgs/plus.svg';
+import PlusSvg from "../../svgs/PlusSvg";
 import * as Input from "../Input";
 import type {
   DropdownListItemProps,
@@ -65,7 +65,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       {isCreatable && (
         <div className="mt-3 border-t border-neutral-100 pt-3">
           <button className="flex items-center gap-2 text-sm text-blue-500">
-            <Plus className="w-3 aspect-square" /> Add new
+            <PlusSvg className="aspect-square w-3" /> Add new
           </button>
         </div>
       )}

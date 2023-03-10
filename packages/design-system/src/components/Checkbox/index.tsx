@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReactComponent as Check } from '../../svgs/check.svg';
+import CheckSvg from "../../svgs/CheckSvg";
 import type { CheckboxProps } from "./Checkbox.interface";
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -29,7 +29,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     sm: "text-sm",
     md: "text-base",
   };
-  
+
   return (
     <>
       <div
@@ -77,7 +77,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             error && "peer-focus:border-error-500 peer-focus:ring-0"
           )}
         >
-          <Check className="block w-3/5 aspect-square" />
+          <CheckSvg className="block aspect-square w-3/5" />
         </div>
         <div
           className={classNames("peer-disabled:text-neutral-200", fontColor)}
@@ -119,4 +119,4 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   );
 };
 
-export default Checkbox
+export default Checkbox;
