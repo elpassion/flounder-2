@@ -1,10 +1,11 @@
 import React from "react";
 import iconConfigFile from "../../fonts/fonticon.json";
 import { getIcons } from "../../helpers/getIcons";
+import Icon from "../../components/Icon";
 
-export const Icon = () => {
+export const Icons = () => {
   const icons = getIcons(iconConfigFile);
-  
+
   return (
     <>
       <table className="min-w-full divide-y divide-gray-300">
@@ -13,12 +14,7 @@ export const Icon = () => {
             return (
               <tr className="divide-x divide-gray-200" key={icon.name}>
                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-center">
-                  <span
-                    className="font-icons text-2xl"
-                    dangerouslySetInnerHTML={{
-                      __html: `${icon.symbol.entity};`,
-                    }}
-                  />
+                  <Icon icon={`${icon.symbol.entity}`} />
                 </td>
                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-center">
                   <span className="text-sm text-gray-700">{icon.name}</span>
@@ -39,5 +35,5 @@ export const Icon = () => {
 
 export default {
   title: "🟢 Atoms/Icon",
-  component: Icon,
+  component: Icons,
 };
