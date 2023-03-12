@@ -2,12 +2,13 @@ import classNames from "classnames";
 import { IconProps } from "./Icon.interface";
 
 // @TODO: Refactor not using dangerously inner html
+// @TODO: Replace passing entities in favor of icon names
 export const Icon: React.FC<IconProps> = ({
   size = "none",
   icon,
   className,
   customIcon,
-  iconName,
+  iconName, // Refactor to mainly use this
   ...rest
 }) => {
   const iconSizeVariants = {

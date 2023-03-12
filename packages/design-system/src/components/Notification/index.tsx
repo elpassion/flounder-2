@@ -12,6 +12,8 @@ import type {
   EventProps,
   NotificationProps,
 } from "./Notification.interface";
+import Icon from "../Icon";
+import BellSvg from "../../svgs/BellSvg";
 
 export const Container: React.FC<ContainerProps> = ({
   children,
@@ -70,7 +72,9 @@ export const EventSkeleton: React.FC = () => (
 export const EmptyState: React.FC = () => (
   <div className="flex flex-col items-center justify-center gap-4 px-4 py-6">
     <div className="flex h-36 w-36 items-center justify-center rounded-full bg-blue-50">
-      <span className="font-icons text-[102px] text-blue-400">&#xeaf8;</span>
+      <Icon
+        customIcon={<BellSvg className="aspect-square w-20 text-blue-400" />}
+      />
     </div>
     <p className="w-44 text-center text-sm">
       We’ll let you know when we get news for you.

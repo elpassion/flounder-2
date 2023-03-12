@@ -7,9 +7,9 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import { storybookAvatarImageControl } from "../utils";
 import { Avatar as AvatarComponent } from "../../components/Avatar";
 import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
-import { getImageUrl } from "../utils";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
@@ -37,20 +37,7 @@ export default {
       description: "xxs | xs | sm | md | lg | xl | xxl",
       options: ["xxs", "xs", "sm", "md", "lg", "xl", "xxl"],
     },
-    src: {
-      description: "image src",
-      control: {
-        type: "select",
-      },
-      options: [
-        undefined,
-        getImageUrl("/red.png"),
-        getImageUrl("/peach.png"),
-        getImageUrl("/yellow.png"),
-        getImageUrl("/blue.png"),
-        getImageUrl("/rpinked.png"),
-      ],
-    },
+    src: storybookAvatarImageControl,
     contentType: {
       control: "select",
       description: "icon | text",

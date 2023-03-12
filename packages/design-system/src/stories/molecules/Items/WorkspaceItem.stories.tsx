@@ -6,6 +6,7 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import { storybookAvatarImageControl } from "../../utils";
 import { WorkspaceItem as WorkspaceItemComponent } from "../../../components/Items/WorkspaceItem";
 import type { WorkspaceItemProps } from "../../../components/Items/Items.interface";
 
@@ -24,35 +25,15 @@ export default {
     },
     variant: {
       control: "select",
-      options: ["onlyIcon", "fullWidth"],
-      description: "onlyIcon | fullWidth",
+      options: ["onlyIcon", "fullWidth", "fitWidth"],
+      description: "onlyIcon | fullWidth | fitWidth",
     },
     shape: {
       control: "select",
       description: "circle | square",
       options: ["circle", "square"],
     },
-    src: {
-      description: "image src",
-      control: {
-        type: "select",
-        labels: {
-          "/red.png": "red",
-          "/peach.png": "peach",
-          "/yellow.png": "yellow",
-          "/blue.png": "blue",
-          "/pink.png": "pink",
-        },
-      },
-      options: [
-        undefined,
-        "/red.png",
-        "/peach.png",
-        "/yellow.png",
-        "/blue.png",
-        "/pink.png",
-      ],
-    },
+    src: storybookAvatarImageControl,
     contentType: {
       control: "select",
       description: "icon | text",

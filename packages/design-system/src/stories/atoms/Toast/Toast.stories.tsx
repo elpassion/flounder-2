@@ -7,6 +7,7 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import { storybookIconControl } from "../../utils";
 import { Toast as ToastComponent } from "../../../components/Toast/Toast";
 import type { ToastProps } from "../../../components/Toast/Toast.interface";
 
@@ -32,14 +33,7 @@ export default {
     description: {
       description: "string",
     },
-    icon: {
-      options: [undefined, "&#xea5f", "&#xea5d", "&#xeb09"],
-      control: {
-        type: "select",
-        labels: { "&#xea5d": "info", "&#xea5f": "inbox", "&#xeb09": "alert" },
-      },
-      description: "icon",
-    },
+    icon: storybookIconControl,
     sectionVariants: {
       control: "select",
       options: [undefined, "close", "action"],
@@ -55,7 +49,7 @@ export default {
   args: {
     title: "Alert title",
     description: "Alert description alert description",
-    icon: "&#xea5f",
+    icon: undefined,
     sectionVariants: "action",
     firstActionText: "Action",
     secondActionText: "Action",

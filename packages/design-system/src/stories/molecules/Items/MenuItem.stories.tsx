@@ -6,12 +6,17 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
+import { storybookIconControl } from "../../utils";
 import { MenuItem as MenuItemComponent } from "../../../components/Items/MenuItem";
 import type { MenuItemProps } from "../../../components/Items/Items.interface";
 
 export const MenuItem: ComponentStory<React.FC<MenuItemProps>> = ({
   ...props
-}) => <MenuItemComponent {...props} />;
+}) => (
+  <div className="w-56">
+    <MenuItemComponent {...props} />
+  </div>
+);
 
 export default {
   title: "🟠 Molecules/Items/MenuItem",
@@ -20,48 +25,19 @@ export default {
     text: { description: "string" },
     variant: {
       control: "select",
-      options: ["onlyIcon", "fullWidth"],
-      description: "onlyIcon | fullWidth",
+      options: ["onlyIcon", "fullWidth", "fitWidth"],
+      description: "onlyIcon | fullWidth | fitWidth",
     },
-    leftIcon: {
-      control: {
-        type: "select",
-        labels: {
-          "&#xeabb": "chevron right",
-        },
-      },
-      if: { arg: "variant", eq: "fullWidth" },
-      options: [undefined, "&#xeabb"],
-      description: "icon",
-    },
-    middleIcon: {
-      control: {
-        type: "select",
-        labels: {
-          "&#xea63": "house",
-        },
-      },
-      options: [undefined, "&#xea63"],
-      description: "icon",
-    },
-    rightIcon: {
-      control: {
-        type: "select",
-        labels: {
-          "&#xeac0": "chevron down",
-        },
-      },
-      if: { arg: "variant", eq: "fullWidth" },
-      options: [undefined, "&#xeac0"],
-      description: "icon",
-    },
+    leftIcon: storybookIconControl,
+    middleIcon: storybookIconControl,
+    rightIcon: storybookIconControl,
   },
   args: {
     text: "Menu Item",
     variant: "fullWidth",
-    middleIcon: "&#xea63",
-    leftIcon: "&#xeabb",
-    rightIcon: "&#xeac0",
+    middleIcon: "homeIcon",
+    leftIcon: "chevronRightIcon",
+    rightIcon: "chevronDownIcon",
   },
   parameters: {
     design: {

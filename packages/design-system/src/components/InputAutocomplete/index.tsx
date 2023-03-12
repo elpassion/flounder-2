@@ -89,7 +89,7 @@ export const InputAutocomplete: React.FC<InputAutocompleteProps> = ({
         prefixVariant="icon"
         helpIcon={isTyping && <HelpCircleSvg className="h-4 w-4" />}
         className={classNames(
-          "pl-10 focus:border-neutral-400 focus:shadow-none",
+          "pl-1 focus:border-neutral-400 focus:shadow-none",
           !!isTyping && "focus:!border-blue-500"
         )}
       >

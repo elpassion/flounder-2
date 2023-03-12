@@ -51,9 +51,9 @@ export const BaseInput: React.FC<BaseInputProps> = ({
       : "default";
 
   const inputVariantStyles = {
-    default: "",
+    default: "px-3.5",
     withSuffix: "rounded-r-none border-r-0",
-    withPrefix: "rounded-l-none border-l-0",
+    withPrefix: "rounded-l-none border-l-0 pl-1",
     withPrefixAndSuffix: "border-x-0 !rounded-none",
   };
 

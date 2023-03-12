@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
+import Icon from "../../components/Icon";
 import { NavTabs as NavTabsComponent } from "../../components/NavTabs";
 import type { NavTabsProps } from "../../components/NavTabs/NavTabs.interface";
 
@@ -7,9 +8,9 @@ const SvgIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      fill="#000"
+      width="12"
+      height="12"
+      fill="currentColor"
       version="1.1"
       viewBox="0 0 31.671 31.671"
       xmlSpace="preserve"
@@ -65,55 +66,27 @@ export default {
       {
         id: "1",
         label: "Nav Tab 1",
-        icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xea87",
-            }}
-          />
-        ),
+        icon: <Icon icon="&#xea87" />,
       },
       {
         id: "2",
         label: "Nav Tab 2",
-        icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xea87",
-            }}
-          />
-        ),
+        icon: <Icon icon="&#xea87" />,
       },
       {
         id: "3",
         label: "Nav Tab 3",
-        icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xea87",
-            }}
-          />
-        ),
+        icon: <Icon icon="&#xea87" />,
       },
       {
         id: "4",
         label: "Nav Tab 4",
-        icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xea87",
-            }}
-          />
-        ),
+        icon: <Icon icon="&#xea87" />,
       },
       {
         id: "5",
         label: "Nav Tab 5",
-        icon: <SvgIcon />,
+        icon: <Icon customIcon={<SvgIcon />} />,
       },
     ],
     onClick: (id) => console.log(id),

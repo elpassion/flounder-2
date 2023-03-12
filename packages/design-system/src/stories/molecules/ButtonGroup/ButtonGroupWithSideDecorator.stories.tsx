@@ -1,8 +1,8 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import UserSvg from "../../../svgs/UserSvg";
 import { ButtonGroupWithSideDecorator as ButtonGroupWithSideDecoratorComponent } from "../../../components/ButtonGroup/ButtonGroupWithSideDecorator";
 import type { ButtonGroupProps } from "../../../components/ButtonGroup/ButtonGroup.interface";
-import UserSvg from "../../../svgs/UserSvg";
 
 export const ButtonGroupWithSideDecorator: ComponentStory<
   React.FC<ButtonGroupProps>

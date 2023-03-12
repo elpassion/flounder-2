@@ -7,6 +7,7 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import CogSvg from "../../../svgs/CogSvg";
 import { HorizontalStepper as HorizontalStepperComponent } from "../../../components/Stepper/HorizontalStepper";
 import type { StepperProps } from "../../../components/Stepper/Stepper.interface";
 
@@ -44,7 +45,7 @@ export default {
     steps: [
       {
         id: "first",
-        icon: "&#xea13",
+        icon: <CogSvg className="aspect-square w-full" />,
         stepTitle: "first step",
         stepDescription: "step description",
       },
@@ -55,7 +56,7 @@ export default {
       },
       {
         id: "third",
-        icon: "&#xea59",
+        icon: <CogSvg className="aspect-square w-full" />,
         stepTitle: "third step",
         stepDescription: "step description",
       },
@@ -66,7 +67,7 @@ export default {
       },
       {
         id: "fifth",
-        icon: "&#xeaf7",
+        icon: <CogSvg className="aspect-square w-full" />,
         stepTitle: "fifth step",
         stepDescription: "step description",
       },
