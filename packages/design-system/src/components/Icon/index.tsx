@@ -2,11 +2,12 @@ import classNames from "classnames";
 import { IconProps } from "./Icon.interface";
 
 // @TODO: Refactor not using dangerously inner html
-const Icon: React.FC<IconProps> = ({
+export const Icon: React.FC<IconProps> = ({
   size = "none",
   icon,
   className,
   customIcon,
+  iconName,
   ...rest
 }) => {
   const iconSizeVariants = {
@@ -19,6 +20,8 @@ const Icon: React.FC<IconProps> = ({
   if (customIcon) {
     return <>{customIcon}</>;
   }
+
+  //@TODO: Add possibility ot resolve by iconName
 
   return (
     <span
