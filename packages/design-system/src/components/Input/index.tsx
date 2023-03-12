@@ -142,10 +142,8 @@ export const Prefix: React.FC<PrefixProps> = ({
       {prefixVariant === "icon" && (
         <div
           className={classNames(
-            "justify-cente flex h-full w-10 items-center py-2 px-2.5",
-            {
-              "text-neutral-200": disabled,
-            }
+            "font-icons",
+            disabled ? "text-neutral-200" : "text-neutral-400"
           )}
         >
           <Icon customIcon={prefixIcon} />
