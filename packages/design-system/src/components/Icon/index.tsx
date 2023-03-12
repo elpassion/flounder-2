@@ -1,10 +1,12 @@
 import classNames from "classnames";
 import { IconProps } from "./Icon.interface";
 
+// @TODO: Refactor not using dangerously inner html
 const Icon: React.FC<IconProps> = ({
-  size = 'none',
+  size = "none",
   icon,
   className,
+  customIcon,
   ...rest
 }) => {
   const iconSizeVariants = {
@@ -14,9 +16,17 @@ const Icon: React.FC<IconProps> = ({
     lg: "text-2xl",
   };
 
+  if (customIcon) {
+    return <>{customIcon}</>;
+  }
+
   return (
     <span
-      className={classNames(iconSizeVariants[size], "font-icons leading-tight", className)}
+      className={classNames(
+        iconSizeVariants[size],
+        "font-icons leading-tight",
+        className
+      )}
       dangerouslySetInnerHTML={{ __html: `${icon};` }}
       {...rest}
     />

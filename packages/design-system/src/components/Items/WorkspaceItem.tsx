@@ -1,6 +1,6 @@
 import classNames from "classnames";
+import CameraSvg from "../../svgs/CameraSvg";
 import { Avatar } from "../Avatar";
-import Icon from "../Icon";
 import * as Items from "./";
 import type { WorkspaceItemProps } from "./Items.interface";
 
@@ -41,7 +41,7 @@ export const WorkspaceItem: React.FC<WorkspaceItemProps> = ({
           <p className={classNames("font-medium", sizeTextVariants[size])}>
             Flounder
           </p>
-          <Icon icon="&#xeacb" />
+          <CameraSvg className="h-4 w-4" />
         </>
       )}
     </Items.Container>

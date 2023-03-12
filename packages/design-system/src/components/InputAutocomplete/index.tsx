@@ -1,5 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
+import HelpCircleSvg from "../../svgs/HelpCircleSvg";
 import PlusSvg from "../../svgs/PlusSvg";
 import * as Input from "../Input";
 import type {
@@ -85,7 +86,7 @@ export const InputAutocomplete: React.FC<InputAutocompleteProps> = ({
       <Input.BaseInput
         onChange={(e) => onChange(e)}
         prefixVariant="icon"
-        helpIcon={isTyping ? "&#xea27" : undefined}
+        helpIcon={isTyping && <HelpCircleSvg className="h-4 w-4" />}
         className={classNames(
           "focus:border-neutral-400 focus:shadow-none",
           !!isTyping && "focus:!border-blue-500"

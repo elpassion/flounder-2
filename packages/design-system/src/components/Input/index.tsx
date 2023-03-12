@@ -1,8 +1,7 @@
 import classNames from "classnames";
 import * as InputComponents from "./";
+import AlertCircleSvg from "../../svgs/AlertCircleSvg";
 import ChevronDownSvg from "../../svgs/ChevronDownSvg";
-import Icon from "../Icon";
-
 import type {
   SuffixProps,
   InputProps,
@@ -63,6 +62,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
     withPrefix: "grid-cols-[auto_1fr]",
     withPrefixAndSuffix: "grid-cols-[auto_1fr_auto]",
   };
+
   return (
     <label
       className={classNames(
@@ -90,6 +90,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
         aria-describedby={`${ariaDescribedBy} ${ariaDescribedByError}`}
         onChange={onChange}
       />
+
       <InputComponents.Iconed isError={isError} helpIcon={helpIcon} />
       {children}
     </label>
@@ -188,6 +189,7 @@ export const DropdownButton: React.FC<DropdownButtonProps> = ({
     <ChevronDownSvg className="aspect-square w-5 stroke-current" />
   </button>
 );
+
 export const Text: React.FC<TextProps> = ({ text, type }) => {
   const textStyleVariants = {
     label:
@@ -219,9 +221,9 @@ export const Iconed: React.FC<IconProps> = ({
       onClick={onIconClick}
     >
       {isError ? (
-        <Icon size="sm" icon="&#xeb1b" className="text-error-500" />
+        <AlertCircleSvg className="block h-4 w-4 text-error-500" />
       ) : (
-        <Icon size="sm" icon={helpIcon} />
+        helpIcon
       )}
     </div>
   );

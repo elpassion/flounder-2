@@ -1,4 +1,5 @@
 import type { HTMLAttributes, PropsWithChildren } from "react";
+import { TIcon } from "../../helpers/types";
 import type { IconTypes } from "../../utils/iconType";
 
 type suffixVariants = "dropdown";
@@ -16,7 +17,7 @@ export interface TextProps {
 }
 
 export interface IconProps {
-  helpIcon?: IconTypes;
+  helpIcon?: TIcon;
   isError?: boolean;
   onIconClick?: () => void;
 }

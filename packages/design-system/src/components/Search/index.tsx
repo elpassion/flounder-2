@@ -1,5 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
+import HelpCircleSvg from "../../svgs/HelpCircleSvg";
 import Button from "../Button";
 import IconButton from "../IconButton";
 import * as Input from "../Input";
@@ -43,7 +44,7 @@ export const Search: React.FC<SearchProps> = ({
         suffixVariant={suffixVariant}
         prefixVariant="icon"
         onChange={(e) => onChange(e)}
-        helpIcon={isTyping ? "&#xea27" : undefined}
+        helpIcon={isTyping && <HelpCircleSvg className="h-4 w-4" />}
         className={classNames(
           // @TODO: Check if important is really neccessary
           "h-11 !text-neutral-400 focus:!border-blue-500 focus:shadow-none peer-focus:!border-blue-500 peer-focus:shadow-none",

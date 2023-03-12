@@ -49,17 +49,17 @@ export const SingleNotification: React.FC<EventProps> = ({
 );
 
 export const EventSkeleton: React.FC = () => (
-  <div className="flex animate-pulse items-start gap-4 py-3 px-4 text-sm">
-    <Skeleton.Circle height="h-10" width="w-10" />
+  <div className="flex items-start gap-4 py-3 px-4 text-sm">
+    <Skeleton.Circle />
     <div className="flex-1">
       <div className="mb-1 flex gap-2">
-        <Skeleton.Text />
-        <Skeleton.Text width="w-44" />
+        <Skeleton.Text width={48} />
+        <Skeleton.Text width={168} />
       </div>
-      <Skeleton.Text height="h-3" width="w-16" />
+      <Skeleton.Text height={12} width={64} />
       <div className="mt-1 flex gap-2">
-        <Skeleton.Text width="w-3" />
-        <Skeleton.Text width="w-44" />
+        <Skeleton.Text width={20} />
+        <Skeleton.Text width={160} />
       </div>
     </div>
   </div>

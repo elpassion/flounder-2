@@ -18,7 +18,7 @@ const plusIcon = (
 const avatarPeach = (
   <img
     src={getImageUrl("/peach.png")}
-    alt="test avatar"
+    alt="Avatar"
     className="aspect-square w-4 rounded-full"
   />
 );

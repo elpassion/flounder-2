@@ -53,9 +53,9 @@ export const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
     >
-      {!!leftIcon && <Icon icon={leftIcon} size={size} />}
+      {leftIcon && <Icon icon="&#xeb0c" size={size} />}
       {text}
-      {!!rightIcon && <Icon icon={rightIcon} size={size} />}
+      {rightIcon && <Icon icon={rightIcon} size={size} />}
     </button>
   );
 };
