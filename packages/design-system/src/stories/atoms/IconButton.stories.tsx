@@ -8,6 +8,7 @@ import {
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
 import { IconButton as IconButtonComponent } from "../../components/IconButton";
+import UserSvg from "../../svgs/UserSvg";
 import type { IconButtonProps } from "../../components/IconButton/IconButton.interface";
 
 const docs: string = `# Usage <br/> 
@@ -26,18 +27,6 @@ export default {
   title: "🟢 Atoms/IconButton",
   component: IconButton,
   argTypes: {
-    icon: {
-      options: ["&#xeae7", "&#xea65"],
-      control: {
-        type: "select",
-        labels: {
-          "&#xeae7": "bookmark",
-          "&#xea65": "trash",
-        },
-      },
-      type: { required: true, name: "string" },
-      description: "icon",
-    },
     variant: {
       control: "select",
       options: [
@@ -67,7 +56,7 @@ export default {
     },
   },
   args: {
-    icon: "&#xea65",
+    icon: <UserSvg className="aspect-square w-full" />,
     variant: "primary",
     size: "md",
     disabled: false,

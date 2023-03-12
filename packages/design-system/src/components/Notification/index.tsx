@@ -3,6 +3,8 @@ import Avatar from "../Avatar";
 import Button from "../Button";
 import IconButton from "../IconButton";
 import Indicator from "../Indicator";
+import CheckSvg from "../../svgs/CheckSvg";
+import CogSvg from "../../svgs/CogSvg";
 import * as NotificationComponents from "./";
 import * as Skeleton from "../Skeleton";
 import type {
@@ -86,8 +88,7 @@ export const Notification: React.FC<NotificationProps> = ({
       <Button
         variant="ghost"
         text="Mark all as read"
-        // @todo: Refactor buttons to pass SVG props and replace
-        leftIcon="&#xeac3"
+        leftIcon={<CheckSvg />}
         size="sm"
         className={classNames(
           "px-3 py-2 text-blue-500",
@@ -97,8 +98,7 @@ export const Notification: React.FC<NotificationProps> = ({
       />
       <IconButton
         variant="ghost"
-        // @todo: Refactor buttons to pass SVG props and replace
-        icon="&#xeb14"
+        icon={<CogSvg />}
         size="sm"
         className={classNames(
           "text-neutral-900",
