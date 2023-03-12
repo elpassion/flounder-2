@@ -2,6 +2,8 @@ import classNames from "classnames";
 import * as InputComponents from "./";
 import AlertCircleSvg from "../../svgs/AlertCircleSvg";
 import ChevronDownSvg from "../../svgs/ChevronDownSvg";
+import SearchSvg from "../../svgs/SearchSvg";
+import Icon from "../Icon";
 import type {
   SuffixProps,
   InputProps,
@@ -73,7 +75,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
       <input
         placeholder={placeholder}
         className={classNames(
-          "peer row-start-2 w-full rounded-lg border bg-white py-2 pl-3.5 pr-10 text-neutral-900",
+          "peer row-start-2 w-full rounded-lg border bg-white py-2 pr-10 text-neutral-900",
           "placeholder:text-neutral-400",
           "disabled:bg-neutral-50 disabled:placeholder:text-neutral-200",
           "focus:shadow-focused focus:shadow-secondary-50 focus:outline-none focus:ring-0 focus:placeholder:text-white",
@@ -100,11 +102,10 @@ export const BaseInput: React.FC<BaseInputProps> = ({
 export const Prefix: React.FC<PrefixProps> = ({
   prefixVariant,
   prefixText = "",
-  prefixIcon = "&#xea32",
+  prefixIcon = <SearchSvg className="block aspect-square h-5/6" />,
   isError = false,
   disabled,
   className,
-  iconClassName,
 }) => {
   const isPrefix = !!prefixVariant;
 
@@ -127,26 +128,28 @@ export const Prefix: React.FC<PrefixProps> = ({
   return (
     <div
       className={classNames(
-        "col-end-2 row-start-2 rounded-l-lg border border-r-0 py-2.5 pl-3.5 !pr-0",
+        "col-end-2 row-start-2 flex items-center justify-center overflow-hidden rounded-l-lg border border-r-0",
         styleVariants[prefixVariant],
         "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200",
         className
       )}
       style={{ clipPath: "inset(-5px 0px -5px -5px)" }}
     >
-      {prefixVariant === "text" && <span className="pr-3.5">{prefixText}</span>}
+      {prefixVariant === "text" && <span className="px-3">{prefixText}</span>}
       {prefixVariant === "dropdown" && (
         <InputComponents.DropdownButton text={prefixText} disabled={disabled} />
       )}
       {prefixVariant === "icon" && (
-        <span
+        <div
           className={classNames(
-            "font-icons",
-            disabled && "text-neutral-200",
-            iconClassName
+            "justify-cente flex h-full w-10 items-center py-2 px-2.5",
+            {
+              "text-neutral-200": disabled,
+            }
           )}
-          dangerouslySetInnerHTML={{ __html: `${prefixIcon};` }}
-        />
+        >
+          <Icon customIcon={prefixIcon} />
+        </div>
       )}
     </div>
   );

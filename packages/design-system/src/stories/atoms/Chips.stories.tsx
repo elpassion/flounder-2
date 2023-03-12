@@ -1,29 +1,8 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-
+import { storybookIconControl } from "../utils";
 import { Chips as ChipsComponent } from "../../components/Chips";
 import type { ChipsProps } from "../../components/Chips/Chips.interface";
-import Icon from "../../components/Icon";
-import { getImageUrl } from "../utils";
-
-const bellIcon = (
-  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeaeb" />
-);
-const badgeIcon = (
-  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeb00" />
-);
-const plusIcon = (
-  <Icon className="h-4 w-4 text-center text-sm" icon="&#xeabc" />
-);
-const avatarPeach = (
-  <img
-    src={getImageUrl("/peach.png")}
-    alt="Avatar"
-    className="aspect-square w-4 rounded-full"
-  />
-);
-
-const icons = { bellIcon, badgeIcon, plusIcon, avatarPeach };
 
 export const Chips: ComponentStory<React.FC<ChipsProps>> = ({ ...props }) => (
   <ChipsComponent {...props} />
@@ -36,38 +15,8 @@ export default {
     text: {
       description: "Enabled",
     },
-    suffixIcon: {
-      options: [undefined, ...Object.keys(icons)],
-      mapping: icons,
-      control: {
-        type: "select",
-        labels: {
-          undefined: "none",
-          bellIcon: "bell icon",
-          badgeIcon: "badge icon",
-          plusIcon: "plus icon",
-          avatarPeach: "avatar",
-        },
-      },
-      type: { name: "string" },
-      description: "icon",
-    },
-    prefixIcon: {
-      options: [undefined, ...Object.keys(icons)],
-      mapping: icons,
-      control: {
-        type: "select",
-        labels: {
-          undefined: "none",
-          bellIcon: "bell icon",
-          badgeIcon: "badge icon",
-          plusIcon: "plus icon",
-          avatarPeach: "avatar",
-        },
-      },
-      type: { name: "string" },
-      description: "icon",
-    },
+    suffixIcon: storybookIconControl,
+    prefixIcon: storybookIconControl,
   },
   args: {
     text: "Enabled",

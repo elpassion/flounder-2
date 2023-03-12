@@ -32,6 +32,10 @@ export const IconButton: React.FC<IconButtonProps> = ({
     lg: "p-3 w-12 h-12",
   };
 
+  if (!icon) {
+    return null;
+  }
+
   return (
     <button
       className={classNames(

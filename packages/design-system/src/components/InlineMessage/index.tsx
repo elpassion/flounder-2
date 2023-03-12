@@ -31,9 +31,17 @@ export const InlineMessage: React.FC<InlineMessageProps> = ({
         className
       )}
     >
-      <div className={classNames("flex items-center justify-center self-start w-5 h-5", iconColorVariants[variant])}>
-        {icon}
-      </div>
+      {icon && (
+        <div
+          className={classNames(
+            "flex h-4 w-4 items-center justify-center self-start",
+            iconColorVariants[variant]
+          )}
+        >
+          {icon}
+        </div>
+      )}
+
       <p className="text-xs font-medium">{text}</p>
     </div>
   );

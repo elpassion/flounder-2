@@ -1,6 +1,5 @@
 import type { HTMLAttributes, PropsWithChildren } from "react";
-import { TIcon } from "../../helpers/types";
-import type { IconTypes } from "../../utils/iconType";
+import type { TIcon } from "../../helpers/types";
 
 type suffixVariants = "dropdown";
 type prefixVariants = "text" | "dropdown" | "icon";
@@ -24,11 +23,10 @@ export interface IconProps {
 export interface PrefixProps {
   prefixText?: string;
   disabled?: boolean;
-  prefixIcon?: IconTypes;
+  prefixIcon?: TIcon;
   isError?: boolean;
   className?: string;
   prefixVariant?: prefixVariants;
-  iconClassName?: string;
 }
 
 export interface SuffixProps {
@@ -57,13 +55,13 @@ export interface BaseInputProps
 
 export interface InputProps
   extends Omit<BaseInputProps, "isError">,
-    Pick<PrefixProps, "iconClassName"> {
+    PrefixProps {
   label?: string;
   supportingText?: string;
   prefixOrSuffixText?: string;
   errorMessage?: string;
   inputType?: string;
-  tooltipIcon?: IconTypes;
-  prefixIcon?: IconTypes;
+  tooltipIcon?: TIcon;
+  prefixIcon?: TIcon;
   ariaLive?: "polite" | "assertive" | "off";
 }

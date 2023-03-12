@@ -7,8 +7,8 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import { storybookIconControl } from "../utils";
 import { IconButton as IconButtonComponent } from "../../components/IconButton";
-import UserSvg from "../../svgs/UserSvg";
 import type { IconButtonProps } from "../../components/IconButton/IconButton.interface";
 
 const docs: string = `# Usage <br/> 
@@ -45,6 +45,7 @@ export default {
       options: ["sm", "md", "lg"],
       description: "sm | md | lg",
     },
+    icon: storybookIconControl,
     disabled: {
       description: "boolean",
     },
@@ -56,7 +57,7 @@ export default {
     },
   },
   args: {
-    icon: <UserSvg className="aspect-square w-full" />,
+    icon: "userIcon",
     variant: "primary",
     size: "md",
     disabled: false,
