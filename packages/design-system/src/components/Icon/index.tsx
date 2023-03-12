@@ -30,7 +30,7 @@ export const Icon: React.FC<IconProps> = ({
         "font-icons leading-tight",
         className
       )}
-      dangerouslySetInnerHTML={{ __html: `${icon};` }}
+      dangerouslySetInnerHTML={{ __html: `${icon}` }}
       {...rest}
     />
   );
