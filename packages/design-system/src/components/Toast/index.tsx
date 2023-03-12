@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import * as ToastComponents from "./";
-import Icon from '../Icon';
+import Icon from "../Icon";
 import type {
   ActionSectionProps,
   ActionToastProps,
@@ -58,7 +58,7 @@ export const ActionsSection: React.FC<ActionSectionProps> = ({
 };
 export const CloseButton: React.FC<CloseButtonProps> = ({ onClose }) => (
   <button onClick={onClose} aria-label="close">
-    <Icon size="lg" icon="&#xea1d"/>
+    <Icon size="sm" icon="&#xea60" />
   </button>
 );
 

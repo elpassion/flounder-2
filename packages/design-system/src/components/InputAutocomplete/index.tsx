@@ -85,7 +85,7 @@ export const InputAutocomplete: React.FC<InputAutocompleteProps> = ({
       <Input.BaseInput
         onChange={(e) => onChange(e)}
         prefixVariant="icon"
-        helpIcon={isTyping ? "&#xea2b" : undefined}
+        helpIcon={isTyping ? "&#xea27" : undefined}
         className={classNames(
           "focus:border-neutral-400 focus:shadow-none",
           !!isTyping && "focus:!border-blue-500"
@@ -93,10 +93,10 @@ export const InputAutocomplete: React.FC<InputAutocompleteProps> = ({
       >
         <Input.Prefix
           prefixVariant="icon"
-          prefixIcon="&#xea37"
+          prefixIcon="&#xea32"
           className={classNames(
             "peer-focus:border-neutral-400 peer-focus:shadow-none",
-            isTyping && "peer-focus:!border-blue-500"
+            isTyping && "text-blue-500 peer-focus:!border-blue-500"
           )}
           iconClassName={classNames(!!isTyping && "text-blue-500")}
         />

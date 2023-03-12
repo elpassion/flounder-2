@@ -87,7 +87,7 @@ export const Notification: React.FC<NotificationProps> = ({
         variant="ghost"
         text="Mark all as read"
         // @todo: Refactor buttons to pass SVG props and replace
-        leftIcon="&#xeace"
+        leftIcon="&#xeac3"
         size="sm"
         className={classNames(
           "px-3 py-2 text-blue-500",
@@ -98,7 +98,7 @@ export const Notification: React.FC<NotificationProps> = ({
       <IconButton
         variant="ghost"
         // @todo: Refactor buttons to pass SVG props and replace
-        icon="&#xea29"
+        icon="&#xeb14"
         size="sm"
         className={classNames(
           "text-neutral-900",

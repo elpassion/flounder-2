@@ -33,10 +33,10 @@ export default {
       description: "string",
     },
     icon: {
-      options: [undefined, "&#xea64", "&#xea62", "&#xeb19"],
+      options: [undefined, "&#xea5f", "&#xea5d", "&#xeb09"],
       control: {
         type: "select",
-        labels: { "&#xea62": "info", "&#xea64": "inbox", "&#xeb19": "alert" },
+        labels: { "&#xea5d": "info", "&#xea5f": "inbox", "&#xeb09": "alert" },
       },
       description: "icon",
     },
@@ -67,7 +67,7 @@ export default {
   args: {
     title: "Alert title",
     description: "Alert description alert description",
-    icon: "&#xea62",
+    icon: "&#xea5f",
     firstActionText: "Action",
     secondActionText: "Action",
     backgroundColor: "bg-neutral-700",

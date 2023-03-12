@@ -9,6 +9,7 @@ import {
 import { InputAutocompleteProps } from "../../components/InputAutocomplete/InputAutocomplete.interface";
 import { InputAutocomplete as InputAutocompleteComponent } from "../../components/InputAutocomplete";
 import Avatar from "../../components/Avatar";
+import { getImageUrl } from "../utils";
 
 const SvgIcon = () => {
   return (
@@ -57,7 +58,7 @@ export default {
           <span
             className="font-icons text-base leading-none"
             dangerouslySetInnerHTML={{
-              __html: "&#xeb20;",
+              __html: "&#xeaf6;",
             }}
           />
         ),
@@ -66,7 +67,7 @@ export default {
       { label: "Desert Slim Black Jeans", icon: <SvgIcon /> },
       {
         label: "Desert Slim Red Jeans",
-        icon: <Avatar src="images/peach.png" size="xxs" />,
+        icon: <Avatar src={getImageUrl("/peach.png")} size="xxs" />,
       },
       { label: "Bunny Print Hoodie", icon: <SvgIcon /> },
     ],

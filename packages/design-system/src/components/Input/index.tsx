@@ -99,7 +99,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
 export const Prefix: React.FC<PrefixProps> = ({
   prefixVariant,
   prefixText = "",
-  prefixIcon = "&#xea6b",
+  prefixIcon = "&#xea32",
   isError = false,
   disabled,
   className,
@@ -141,7 +141,7 @@ export const Prefix: React.FC<PrefixProps> = ({
         <span
           className={classNames(
             "font-icons",
-            disabled ? "text-neutral-200" : "text-neutral-400",
+            disabled && "text-neutral-200",
             iconClassName
           )}
           dangerouslySetInnerHTML={{ __html: `${prefixIcon};` }}

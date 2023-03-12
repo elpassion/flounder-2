@@ -44,13 +44,13 @@ export default {
       description: "boolean",
     },
     leftIcon: {
-      options: [undefined, "&#xea8a"],
-      control: { type: "select", labels: { "&#xea8a": "slash" } },
+      options: [undefined, "&#xeb0b"],
+      control: { type: "select", labels: { "&#xeb0b": "3-layers" } },
       description: "icon",
     },
     rightIcon: {
-      options: [undefined, "&#xea8a"],
-      control: { type: "select", labels: { "&#xea8a": "slash" } },
+      options: [undefined, "&#xeb0b"],
+      control: { type: "select", labels: { "&#xeb0b": "3-layers" } },
       description: "icon",
     },
     onClick: {

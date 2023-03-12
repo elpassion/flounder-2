@@ -5,7 +5,7 @@ import IconButton from "../IconButton";
 import * as Input from "../Input";
 import type { SearchProps } from "./Search.interface";
 
-const Search: React.FC<SearchProps> = ({
+export const Search: React.FC<SearchProps> = ({
   variant = "default",
   suffixText = "",
   ...props
@@ -43,7 +43,7 @@ const Search: React.FC<SearchProps> = ({
         suffixVariant={suffixVariant}
         prefixVariant="icon"
         onChange={(e) => onChange(e)}
-        helpIcon={isTyping ? "&#xea2b" : undefined}
+        helpIcon={isTyping ? "&#xea27" : undefined}
         className={classNames(
           // @TODO: Check if important is really neccessary
           "h-11 !text-neutral-400 focus:!border-blue-500 focus:shadow-none peer-focus:!border-blue-500 peer-focus:shadow-none",
@@ -54,7 +54,7 @@ const Search: React.FC<SearchProps> = ({
         <Input.Prefix
           prefixVariant="icon"
           // @TODO: Refactor and pass icon as node with classes already form parent component
-          prefixIcon="&#xea37"
+          prefixIcon="&#xea32"
           className={classNames(
             "h-11 peer-focus:!border-blue-500 peer-focus:shadow-none",
             inlineSuffixAndPrefixVariantStyles

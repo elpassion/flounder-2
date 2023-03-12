@@ -114,8 +114,8 @@ const PaginationComponents = {
     >
       <Icon
         //@TODO: Replace with SVG icons and rotate
-        className={classNames({"order-last": direction === "right"})}
-        icon={direction === "left" ? '&#xeaf5' : '&#xeb24'}
+        className={classNames({ "order-last": direction === "right" })}
+        icon={direction === "left" ? "&#xeae8" : "&#xeb12"}
       />
       {title}
     </button>

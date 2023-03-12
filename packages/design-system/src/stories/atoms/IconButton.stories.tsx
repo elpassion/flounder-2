@@ -27,11 +27,11 @@ export default {
   component: IconButton,
   argTypes: {
     icon: {
-      options: ["&#xeaf4", "&#xea65"],
+      options: ["&#xeae7", "&#xea65"],
       control: {
         type: "select",
         labels: {
-          "&#xeaf4": "bookmark",
+          "&#xeae7": "bookmark",
           "&#xea65": "trash",
         },
       },

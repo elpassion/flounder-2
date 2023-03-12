@@ -9,6 +9,7 @@ import {
 } from "@storybook/addon-docs";
 import { Avatar as AvatarComponent } from "../../components/Avatar";
 import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
+import { getImageUrl } from "../utils";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
@@ -40,21 +41,14 @@ export default {
       description: "image src",
       control: {
         type: "select",
-        labels: {
-          "/red.png": "red",
-          "/peach.png": "peach",
-          "/yellow.png": "yellow",
-          "/blue.png": "blue",
-          "/pink.png": "pink",
-        },
       },
       options: [
         undefined,
-        "/red.png",
-        "/peach.png",
-        "/yellow.png",
-        "/blue.png",
-        "/pink.png",
+        getImageUrl("/red.png"),
+        getImageUrl("/peach.png"),
+        getImageUrl("/yellow.png"),
+        getImageUrl("/blue.png"),
+        getImageUrl("/rpinked.png"),
       ],
     },
     contentType: {

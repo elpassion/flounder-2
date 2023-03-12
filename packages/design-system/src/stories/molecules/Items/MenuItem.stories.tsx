@@ -27,47 +27,41 @@ export default {
       control: {
         type: "select",
         labels: {
-          "&#xea68": "house",
-          "&#xeac5": "chevron right",
-          "&#xeacb": "chevron down",
+          "&#xeabb": "chevron right",
         },
       },
       if: { arg: "variant", eq: "fullWidth" },
-      options: [undefined, "&#xeac5", "&#xea68", "&#xeacb"],
+      options: [undefined, "&#xeabb"],
       description: "icon",
     },
     middleIcon: {
       control: {
         type: "select",
         labels: {
-          "&#xea68": "house",
-          "&#xeac5": "chevron right",
-          "&#xeacb": "chevron down",
+          "&#xea63": "house",
         },
       },
-      options: [undefined, "&#xeac5", "&#xea68", "&#xeacb"],
+      options: [undefined, "&#xea63"],
       description: "icon",
     },
     rightIcon: {
       control: {
         type: "select",
         labels: {
-          "&#xea68": "house",
-          "&#xeac5": "chevron right",
-          "&#xeacb": "chevron down",
+          "&#xeac0": "chevron down",
         },
       },
       if: { arg: "variant", eq: "fullWidth" },
-      options: [undefined, "&#xeac5", "&#xea68", "&#xeacb"],
+      options: [undefined, "&#xeac0"],
       description: "icon",
     },
   },
   args: {
     text: "Menu Item",
     variant: "fullWidth",
-    middleIcon: "&#xea68",
-    leftIcon: "&#xeac5",
-    rightIcon: "&#xeacb",
+    middleIcon: "&#xea63",
+    leftIcon: "&#xeabb",
+    rightIcon: "&#xeac0",
   },
   parameters: {
     design: {

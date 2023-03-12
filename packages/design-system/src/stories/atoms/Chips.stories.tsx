@@ -4,6 +4,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Chips as ChipsComponent } from "../../components/Chips";
 import type { ChipsProps } from "../../components/Chips/Chips.interface";
 import Icon from "../../components/Icon";
+import { getImageUrl } from "../utils";
 
 const bellIcon = (
   <Icon className="h-4 w-4 text-center text-sm" icon="&#xeaeb" />
@@ -16,7 +17,7 @@ const plusIcon = (
 );
 const avatarPeach = (
   <img
-    src="/peach.png"
+    src={getImageUrl("/peach.png")}
     alt="test avatar"
     className="aspect-square w-4 rounded-full"
   />
