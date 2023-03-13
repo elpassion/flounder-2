@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from "@rollup/plugin-node-resolve";
+import json from "@rollup/plugin-json";
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
 import pkg from "./rollup-package.json";
@@ -23,6 +24,7 @@ export default {
       includeDependencies: true
     }),
     resolve(),
+    json(),
     typescript({
       exclude: ["**/stories/**", "./setupTests.ts"],
       clean: true,
