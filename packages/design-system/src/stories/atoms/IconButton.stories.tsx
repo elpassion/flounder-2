@@ -7,6 +7,7 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import { storybookIconControl } from "../utils";
 import { IconButton as IconButtonComponent } from "../../components/IconButton";
 import type { IconButtonProps } from "../../components/IconButton/IconButton.interface";
 
@@ -26,18 +27,6 @@ export default {
   title: "🟢 Atoms/IconButton",
   component: IconButton,
   argTypes: {
-    icon: {
-      options: ["&#xeaf4", "&#xea65"],
-      control: {
-        type: "select",
-        labels: {
-          "&#xeaf4": "bookmark",
-          "&#xea65": "trash",
-        },
-      },
-      type: { required: true, name: "string" },
-      description: "icon",
-    },
     variant: {
       control: "select",
       options: [
@@ -56,6 +45,7 @@ export default {
       options: ["sm", "md", "lg"],
       description: "sm | md | lg",
     },
+    icon: storybookIconControl,
     disabled: {
       description: "boolean",
     },
@@ -67,7 +57,7 @@ export default {
     },
   },
   args: {
-    icon: "&#xea65",
+    icon: "userIcon",
     variant: "primary",
     size: "md",
     disabled: false,

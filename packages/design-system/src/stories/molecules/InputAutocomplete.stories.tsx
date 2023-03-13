@@ -6,29 +6,12 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
-import { InputAutocompleteProps } from "../../components/InputAutocomplete/InputAutocomplete.interface";
-import { InputAutocomplete as InputAutocompleteComponent } from "../../components/InputAutocomplete";
+import { getImageUrl } from "../utils";
+import UserSvg from "../../svgs/UserSvg";
 import Avatar from "../../components/Avatar";
-
-const SvgIcon = () => {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M7.99992 3.99992V7.99992L10.6666 9.33325M14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6818 1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325C11.6818 1.33325 14.6666 4.31802 14.6666 7.99992Z"
-        stroke="#7B8A95"
-        stroke-width="1.4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  );
-};
+import Icon from "../../components/Icon";
+import { InputAutocomplete as InputAutocompleteComponent } from "../../components/InputAutocomplete";
+import type { InputAutocompleteProps } from "../../components/InputAutocomplete/InputAutocomplete.interface";
 
 export const InputAutocomplete: ComponentStory<
   React.FC<InputAutocompleteProps>
@@ -53,19 +36,24 @@ export default {
     dropdownItems: [
       {
         label: "Desert Slim Jeans",
-        icon: (
-          <span className="font-icons text-base leading-none text-neutral-300">
-            &#xeaf6;
-          </span>
-        ),
+        icon: <Icon icon="&#xeafe" size="sm" />,
       },
-      { label: "Logo T-Shirt", icon: <SvgIcon /> },
-      { label: "Desert Slim Black Jeans", icon: <SvgIcon /> },
+      {
+        label: "Logo T-Shirt",
+        icon: <Icon customIcon={<UserSvg className="aspect-square w-4" />} />,
+      },
+      {
+        label: "Desert Slim Black Jeans",
+        icon: <Icon customIcon={<UserSvg className="aspect-square w-4" />} />,
+      },
       {
         label: "Desert Slim Red Jeans",
-        icon: <Avatar src="/peach.png" size="xxs" />,
+        icon: <Avatar src={getImageUrl("/peach.png")} size="xxs" />,
       },
-      { label: "Bunny Print Hoodie", icon: <SvgIcon /> },
+      {
+        label: "Bunny Print Hoodie",
+        icon: <Icon customIcon={<UserSvg className="aspect-square w-4" />} />,
+      },
     ],
   },
   parameters: {

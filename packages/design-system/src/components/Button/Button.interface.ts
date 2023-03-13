@@ -1,4 +1,4 @@
-import type { IconTypes } from "../../utils/iconType";
+import type { TIcon } from "../../helpers/types";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   text: string;
@@ -9,8 +9,8 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     | "destructive"
     | "destructiveGhost"
     | "destructiveOutlined";
-  leftIcon?: IconTypes;
-  rightIcon?: IconTypes;
+  leftIcon?: TIcon;
+  rightIcon?: TIcon;
   disabled?: boolean;
   size?: "sm" | "md" | "lg";
   ariaLabel?: string;

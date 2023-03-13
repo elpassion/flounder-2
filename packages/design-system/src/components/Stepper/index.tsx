@@ -50,7 +50,7 @@ export const Step: React.FC<StepProps> = ({
     if (completeVariant === "check" && status === StepStatuses.COMPLETE) {
       return <CheckSvg className="block aspect-square w-4/5" />;
     }
-    return icon ? <Icon icon={icon} /> : <>{`${index + 1}`}</>;
+    return icon ? <Icon customIcon={icon} /> : <>{`${index + 1}`}</>;
   };
 
   return (

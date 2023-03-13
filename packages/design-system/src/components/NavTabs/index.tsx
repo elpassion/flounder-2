@@ -21,7 +21,11 @@ export const NavTabs: React.FC<NavTabsProps> = ({
   };
 
   return (
-    <div className={classNames("flex", {"flex-col gap-y-1": layout === 'vertical'})}>
+    <div
+      className={classNames("flex", {
+        "flex-col gap-y-1": layout === "vertical",
+      })}
+    >
       {tabs.map(({ id, label, icon }) => (
         <div
           key={id}
@@ -34,7 +38,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
           onClick={() => onClick(id)}
         >
           {icon && (
-            <div className="w-4 h-4">
+            <div className="flex aspect-square w-4 items-center justify-center">
               {icon}
             </div>
           )}
