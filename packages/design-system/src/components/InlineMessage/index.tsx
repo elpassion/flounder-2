@@ -1,5 +1,14 @@
 import classNames from "classnames";
-import type { InlineMessageProps } from "./InlineMessage.interface";
+
+import { IconTypes } from "../../utils/iconType";
+
+// TODO: replace variant with interface
+export interface InlineMessageProps {
+  icon?: IconTypes;
+  text: string;
+  variant?: "default" | "success" | "warning" | "info" | "error";
+  className?: string;
+}
 
 export const InlineMessage: React.FC<InlineMessageProps> = ({
   text,
@@ -8,11 +17,11 @@ export const InlineMessage: React.FC<InlineMessageProps> = ({
   className,
 }) => {
   const inlineMessageStyleVariants = {
-    default: "bg-neutral-50 text-neutral-900",
-    success: "bg-primary-100 text-primary-900",
-    warning: "bg-orange-100 text-orange-900",
-    info: "bg-blue-100 text-blue-900",
-    error: "bg-error-100 text-900",
+    default: "bg-inlineMessage text-inlineMessage",
+    success: "bg-inlineMessage-success text-inlineMessage-success",
+    warning: "bg-inlineMessage-warning text-inlineMessage-warning",
+    info: "bg-inlineMessage-info text-inlineMessage-info",
+    error: "bg-inlineMessage-error text-inlineMessage-error",
   };
 
   const iconColorVariants = {

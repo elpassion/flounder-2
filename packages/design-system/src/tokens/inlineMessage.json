@@ -1,0 +1,86 @@
+{
+  "default": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{default.background}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{default.text}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "success": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{success.background}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{success.text}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "warning": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{warning.background}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{warning.text}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "info": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{info.background}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{info.text}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "error": {
+    "color": {
+      "background": {
+        "default": {
+          "value": "{error.background}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{error.text}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "base": {
+    "value": "{base}",
+    "type": "borderRadius"
+  }
+}
