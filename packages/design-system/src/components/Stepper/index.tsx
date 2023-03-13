@@ -1,14 +1,13 @@
 import classNames from "classnames";
+import CheckSvg from "../../svgs/CheckSvg";
 import * as StepperComponents from "./";
-import {
-  StepStatuses,
-} from "./Stepper.interface";
+import Icon from "../Icon";
+import { StepStatuses } from "./Stepper.interface";
 import type {
   ContainerProps,
   StepProps,
   TitleSectionProps,
 } from "./Stepper.interface";
-
 
 export const Container: React.FC<ContainerProps> = ({
   children,
@@ -19,6 +18,20 @@ export const Container: React.FC<ContainerProps> = ({
       {children}
     </ol>
   );
+};
+
+const stepStatusStyle = {
+  complete:
+    "bg-primary-500 text-white border-primary-500 hover:bg-primary-600 hover:border-primary-600 focus:bg-primary-700 focus:border-primary-700",
+  current:
+    "bg-primary-500 text-white shadow-focused shadow-primary-50 border-primary-500 hover:bg-primary-600 hover:border-primary-600 focus:bg-primary-700 focus:border-primary-700",
+  incomplete:
+    "bg-neutral-50 text-neutral-300 border-neutral-50 hover:bg-neutral-100 hover:border-neutral-100 focus:bg-white focus:border-neutral-100",
+};
+const sizeVariants = {
+  sm: "w-6 h-6 text-xs p-1",
+  md: "w-8 h-8 text-sm p-2",
+  lg: "w-11 h-11 text-base p-2.5",
 };
 
 export const Step: React.FC<StepProps> = ({
@@ -33,42 +46,11 @@ export const Step: React.FC<StepProps> = ({
   stepDescription,
   variant,
 }) => {
-  const stepStatusStyle = {
-    complete:
-      "bg-primary-500 text-white border-primary-500 hover:bg-primary-600 hover:border-primary-600 focus:bg-primary-700 focus:border-primary-700",
-    current:
-      "bg-primary-500 text-white shadow-focused shadow-primary-50 border-primary-500 hover:bg-primary-600 hover:border-primary-600 focus:bg-primary-700 focus:border-primary-700",
-    incomplete:
-      "bg-neutral-50 text-neutral-300 border-neutral-50 hover:bg-neutral-100 hover:border-neutral-100 focus:bg-white focus:border-neutral-100",
-  };
-  const sizeVariants = {
-    sm: "w-6 h-6 text-xs p-1",
-    md: "w-8 h-8 text-sm p-2",
-    lg: "w-11 h-11 text-base p-2.5",
-  };
-
-  const iconSizeVariants = {
-    sm: "text-base",
-    md: "text-base",
-    lg: "text-2xl",
-  };
-
   const renderContent = (index: number, status: StepStatuses) => {
     if (completeVariant === "check" && status === StepStatuses.COMPLETE) {
-      return (
-        <span className={classNames("font-icons", iconSizeVariants[size])}>
-          &#xeace;
-        </span>
-      );
+      return <CheckSvg className="block aspect-square w-4/5" />;
     }
-    return icon ? (
-      <span
-        className={classNames("font-icons", iconSizeVariants[size])}
-        dangerouslySetInnerHTML={{ __html: `${icon};` }}
-      />
-    ) : (
-      <>{`${index + 1}`}</>
-    );
+    return icon ? <Icon customIcon={icon} /> : <>{`${index + 1}`}</>;
   };
 
   return (
@@ -94,6 +76,31 @@ export const Step: React.FC<StepProps> = ({
   );
 };
 
+const titleStatusColorVariants = {
+  complete: "text-neutral-700",
+  current: "text-primary-800",
+  incomplete: "text-neutral-400",
+};
+const descriptionStatusColorVariants = {
+  complete: "text-neutral-500",
+  current: "text-primary-700",
+  incomplete: "text-neutral-300",
+};
+const titleSizeVariants = {
+  sm: "text-sm",
+  md: "text-sm",
+  lg: "text-base",
+};
+const sizeMarginVariants = {
+  sm: "",
+  md: "mt-1",
+  lg: "mt-2",
+};
+const stepperVariantsStyle = {
+  horizontal: "items-center",
+  vertical: "",
+};
+
 export const TitleSection: React.FC<TitleSectionProps> = ({
   stepTitle,
   stepDescription,
@@ -101,30 +108,6 @@ export const TitleSection: React.FC<TitleSectionProps> = ({
   size = "md",
   variant,
 }) => {
-  const titleStatusColorVariants = {
-    complete: "text-neutral-700",
-    current: "text-primary-800",
-    incomplete: "text-neutral-400",
-  };
-  const descriptionStatusColorVariants = {
-    complete: "text-neutral-500",
-    current: "text-primary-700",
-    incomplete: "text-neutral-300",
-  };
-  const titleSizeVariants = {
-    sm: "text-sm",
-    md: "text-sm",
-    lg: "text-base",
-  };
-  const sizeMarginVariants = {
-    sm: "",
-    md: "mt-1",
-    lg: "mt-2",
-  };
-  const stepperVariantsStyle = {
-    horizontal: "items-center",
-    vertical: "",
-  };
   const mobileHorizontalStyles = variant === "horizontal" && "hidden sm:block";
 
   return (

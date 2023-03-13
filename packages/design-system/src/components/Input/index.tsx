@@ -1,5 +1,9 @@
 import classNames from "classnames";
 import * as InputComponents from "./";
+import AlertCircleSvg from "../../svgs/AlertCircleSvg";
+import ChevronDownSvg from "../../svgs/ChevronDownSvg";
+import SearchSvg from "../../svgs/SearchSvg";
+import Icon from "../Icon";
 import type {
   SuffixProps,
   InputProps,
@@ -47,9 +51,9 @@ export const BaseInput: React.FC<BaseInputProps> = ({
       : "default";
 
   const inputVariantStyles = {
-    default: "",
+    default: "px-3.5",
     withSuffix: "rounded-r-none border-r-0",
-    withPrefix: "rounded-l-none border-l-0",
+    withPrefix: "rounded-l-none border-l-0 pl-1",
     withPrefixAndSuffix: "border-x-0 !rounded-none",
   };
 
@@ -60,6 +64,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
     withPrefix: "grid-cols-[auto_1fr]",
     withPrefixAndSuffix: "grid-cols-[auto_1fr_auto]",
   };
+
   return (
     <label
       className={classNames(
@@ -70,7 +75,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({
       <input
         placeholder={placeholder}
         className={classNames(
-          "peer row-start-2 w-full rounded-lg border bg-white py-2 pl-3.5 pr-10 text-neutral-900",
+          "peer row-start-2 w-full rounded-lg border bg-white py-2 pr-10 text-neutral-900",
           "placeholder:text-neutral-400",
           "disabled:bg-neutral-50 disabled:placeholder:text-neutral-200",
           "focus:shadow-focused focus:shadow-secondary-50 focus:outline-none focus:ring-0 focus:placeholder:text-white",
@@ -87,7 +92,8 @@ export const BaseInput: React.FC<BaseInputProps> = ({
         aria-describedby={`${ariaDescribedBy} ${ariaDescribedByError}`}
         onChange={onChange}
       />
-      <InputComponents.Icon isError={isError} helpIcon={helpIcon} />
+
+      <InputComponents.Iconed isError={isError} helpIcon={helpIcon} />
       {children}
     </label>
   );
@@ -96,11 +102,10 @@ export const BaseInput: React.FC<BaseInputProps> = ({
 export const Prefix: React.FC<PrefixProps> = ({
   prefixVariant,
   prefixText = "",
-  prefixIcon = "&#xea6b",
+  prefixIcon = <SearchSvg className="block aspect-square h-5/6" />,
   isError = false,
   disabled,
   className,
-  iconClassName,
 }) => {
   const isPrefix = !!prefixVariant;
 
@@ -123,30 +128,33 @@ export const Prefix: React.FC<PrefixProps> = ({
   return (
     <div
       className={classNames(
-        "col-end-2 row-start-2 rounded-l-lg border border-r-0 py-2.5 pl-3.5 !pr-0",
+        "col-end-2 row-start-2 flex items-center justify-center overflow-hidden rounded-l-lg border border-r-0",
         styleVariants[prefixVariant],
         "peer-disabled:bg-neutral-50 peer-disabled:text-neutral-200",
         className
       )}
       style={{ clipPath: "inset(-5px 0px -5px -5px)" }}
     >
-      {prefixVariant === "text" && <span className="pr-3.5">{prefixText}</span>}
+      {prefixVariant === "text" && <span className="px-3">{prefixText}</span>}
       {prefixVariant === "dropdown" && (
         <InputComponents.DropdownButton text={prefixText} disabled={disabled} />
       )}
       {prefixVariant === "icon" && (
-        <span
+        <div
           className={classNames(
-            "font-icons",
-            disabled ? "text-neutral-200" : "text-neutral-400",
-            iconClassName
+            "flex h-full w-10 items-center justify-center py-2 px-2.5",
+            {
+              "text-neutral-200": disabled,
+            }
           )}
-          dangerouslySetInnerHTML={{ __html: `${prefixIcon};` }}
-        />
+        >
+          <Icon customIcon={prefixIcon} />
+        </div>
       )}
     </div>
   );
 };
+
 export const Suffix: React.FC<SuffixProps> = ({
   suffixVariant,
   suffixText,
@@ -171,15 +179,20 @@ export const Suffix: React.FC<SuffixProps> = ({
     </div>
   );
 };
+
 export const DropdownButton: React.FC<DropdownButtonProps> = ({
   text,
   disabled,
 }) => (
-  <button className="flex items-center gap-2" disabled={disabled}>
+  <button
+    className="flex h-full items-center justify-center gap-2"
+    disabled={disabled}
+  >
     <span>{text}</span>
-    <span className="font-icons text-base">&#xeacb;</span>
+    <ChevronDownSvg className="aspect-square w-5 stroke-current" />
   </button>
 );
+
 export const Text: React.FC<TextProps> = ({ text, type }) => {
   const textStyleVariants = {
     label:
@@ -194,7 +207,8 @@ export const Text: React.FC<TextProps> = ({ text, type }) => {
     </p>
   );
 };
-export const Icon: React.FC<IconProps> = ({
+
+export const Iconed: React.FC<IconProps> = ({
   helpIcon,
   isError,
   onIconClick,
@@ -210,12 +224,9 @@ export const Icon: React.FC<IconProps> = ({
       onClick={onIconClick}
     >
       {isError ? (
-        <span className="font-icons text-base text-error-500">&#xeb1b;</span>
+        <AlertCircleSvg className="block h-4 w-4 text-error-500" />
       ) : (
-        <span
-          className="font-icons text-base"
-          dangerouslySetInnerHTML={{ __html: `${helpIcon};` }}
-        />
+        helpIcon
       )}
     </div>
   );

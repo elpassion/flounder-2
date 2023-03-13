@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Icon from "../Icon";
 import * as Items from "./";
 import type { MenuItemProps } from "./Items.interface";
 
@@ -9,13 +10,14 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   middleIcon,
   rightIcon,
 }) => {
-  const isLeftIconVisible = variant === "fullWidth" && !!leftIcon;
-  const isRightIconVisible = variant === "fullWidth" && !!rightIcon;
-  const isMiddleIconVisible = !!middleIcon;
+  const isLeftIconVisible = variant === "fullWidth" && leftIcon;
+  const isRightIconVisible =
+    (variant === "fullWidth" || variant === "fitWidth") && rightIcon;
 
   const styleVariants = {
     onlyIcon: "w-9",
-    fullWidth: "w-56 gap-x-2",
+    fullWidth: "w-full gap-x-2",
+    fitWidth: "min-w-fit",
   };
 
   return (
@@ -26,14 +28,26 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         styleVariants[variant]
       )}
     >
-      {isLeftIconVisible && <Items.Icon icon={leftIcon} />}
+      {isLeftIconVisible && (
+        <div className="aspect-square w-4">
+          <Icon customIcon={leftIcon} />
+        </div>
+      )}
       <div className="col-start-2 flex items-center gap-2">
-        {isMiddleIconVisible && (
-          <Items.Icon icon={middleIcon} className="text-xl" />
+        {middleIcon && (
+          <div className="aspect-square w-5">
+            <Icon customIcon={middleIcon} />
+          </div>
         )}
-        {variant === "fullWidth" && <p className="text-sm">{text}</p>}
+        {(variant === "fullWidth" || variant === "fitWidth") && (
+          <p className="text-sm">{text}</p>
+        )}
       </div>
-      {isRightIconVisible && <Items.Icon icon={rightIcon} />}
+      {isRightIconVisible && (
+        <div className="ml-4 aspect-square w-4">
+          <Icon customIcon={rightIcon} />
+        </div>
+      )}
     </Items.Container>
   );
 };

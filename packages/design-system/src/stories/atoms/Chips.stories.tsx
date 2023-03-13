@@ -1,4 +1,6 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { storybookIconControl } from "../utils";
 import { Chips as ChipsComponent } from "../../components/Chips";
 import type { ChipsProps } from "../../components/Chips/Chips.interface";
 
@@ -7,41 +9,19 @@ export const Chips: ComponentStory<React.FC<ChipsProps>> = ({ ...props }) => (
 );
 
 export default {
-  title: "🟠 Atoms/Chips",
+  title: "🟢 Atoms/Chips",
   component: Chips,
   argTypes: {
     text: {
       description: "Enabled",
     },
-    suffixIcon: {
-      options: ["&#xeaf4", "&#xea65"],
-      control: {
-        type: "select",
-        labels: {
-          "&#xeaf4": "bookmark",
-          "&#xea65": "trash",
-        },
-      },
-      type: { required: true, name: "string" },
-      description: "icon",
-    },
-    prefixIcon: {
-      options: ["&#xeaf4", "&#xea65"],
-      control: {
-        type: "select",
-        labels: {
-          "&#xeaf4": "bookmark",
-          "&#xea65": "trash",
-        },
-      },
-      type: { required: true, name: "string" },
-      description: "icon",
-    },
+    suffixIcon: storybookIconControl,
+    prefixIcon: storybookIconControl,
   },
   args: {
     text: "Enabled",
-    suffixIcon: "&#xeaf4",
-    prefixIcon: "&#xea65",
+    suffixIcon: undefined,
+    prefixIcon: undefined,
   },
   parameters: {
     design: {

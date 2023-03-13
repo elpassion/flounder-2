@@ -1,6 +1,8 @@
 import classNames from "classnames";
+import ChevronDownSvg from "../../svgs/ChevronDownSvg";
+import MinusSvg from "../../svgs/MinusSvg";
 import * as Accordion from "./";
-import type { 
+import type {
   AccordionBodyProps,
   AccordionButtonProps,
   AccordionIconProps,
@@ -73,11 +75,7 @@ export const Icon: React.FC<AccordionIconProps> = ({ icon, iconPosition }) => {
         iconVariants[iconPosition]
       )}
     >
-      <span
-        className="font-icons text-2xl"
-        // @TODO: Replace with inline SVG to allow usage without font import
-        dangerouslySetInnerHTML={{ __html: `${icon};` }}
-      />
+      {icon}
     </div>
   );
 };
@@ -87,11 +85,13 @@ const AccordionComponent: React.FC<AccordionProps> = ({
   iconPosition,
   expandedId,
   items,
+  icon = "chevron",
 }) => {
   return (
     <div className="w-full">
       {items.map(({ title, id, description }) => {
         const isExpanded = id === expandedId;
+
         return (
           <div key={id} className="mb-3">
             <Accordion.Button
@@ -100,11 +100,34 @@ const AccordionComponent: React.FC<AccordionProps> = ({
               iconPosition={iconPosition}
               variant={variant}
             >
-              <Accordion.Icon
-                iconPosition={iconPosition}
-                // @TODO: Replace with inline SVG to allow usage without font import
-                icon={isExpanded ? "&#xea26" : "&#xeac0"}
-              />
+              {icon === "chevron" ? (
+                <Accordion.Icon
+                  iconPosition={iconPosition}
+                  icon={
+                    <ChevronDownSvg
+                      className={classNames("h-5 w-5 transform transition", {
+                        "rotate-0": isExpanded,
+                        "-rotate-90": !isExpanded,
+                      })}
+                    />
+                  }
+                />
+              ) : (
+                <Accordion.Icon
+                  iconPosition={iconPosition}
+                  icon={
+                    <div className="relative flex h-4 w-4 items-center justify-center">
+                      <MinusSvg />
+                      <MinusSvg
+                        className={classNames("absolute transform transition", {
+                          "rotate-0": isExpanded,
+                          "-rotate-90": !isExpanded,
+                        })}
+                      />
+                    </div>
+                  }
+                />
+              )}
             </Accordion.Button>
             {isExpanded && (
               <Accordion.Body

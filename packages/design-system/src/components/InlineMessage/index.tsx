@@ -12,8 +12,7 @@ export interface InlineMessageProps {
 
 export const InlineMessage: React.FC<InlineMessageProps> = ({
   text,
-  // @TODO: Replace with inline SVG to allow mount without font by default
-  icon = "&#xeaf8",
+  icon,
   variant = "default",
   className,
 }) => {
@@ -41,13 +40,17 @@ export const InlineMessage: React.FC<InlineMessageProps> = ({
         className
       )}
     >
-      <span
-        className={classNames(
-          "self-start font-icons text-lg",
-          iconColorVariants[variant]
-        )}
-        dangerouslySetInnerHTML={{ __html: `${icon};` }}
-      />
+      {icon && (
+        <div
+          className={classNames(
+            "flex h-4 w-4 items-center justify-center self-start",
+            iconColorVariants[variant]
+          )}
+        >
+          {icon}
+        </div>
+      )}
+
       <p className="text-xs font-medium">{text}</p>
     </div>
   );

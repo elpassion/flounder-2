@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Badge as BadgeComponent } from "../../components/Badge";
 import type { BadgeProps } from "../../components/Badge/Badge.interface";

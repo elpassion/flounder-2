@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Anchor as AnchorComponent } from "../../components/Anchor";
 import type { AnchorProps } from "../../components/Anchor/Anchor.interface";

@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   Title,
@@ -6,6 +7,7 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import { storybookAvatarImageControl } from "../utils";
 import { Avatar as AvatarComponent } from "../../components/Avatar";
 import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
 
@@ -35,27 +37,7 @@ export default {
       description: "xxs | xs | sm | md | lg | xl | xxl",
       options: ["xxs", "xs", "sm", "md", "lg", "xl", "xxl"],
     },
-    src: {
-      description: "image src",
-      control: {
-        type: "select",
-        labels: {
-          "images/red.png": "red",
-          "images/peach.png": "peach",
-          "images/yellow.png": "yellow",
-          "images/blue.png": "blue",
-          "images/pink.png": "pink",
-        },
-      },
-      options: [
-        undefined,
-        "images/red.png",
-        "images/peach.png",
-        "images/yellow.png",
-        "images/blue.png",
-        "images/pink.png",
-      ],
-    },
+    src: storybookAvatarImageControl,
     contentType: {
       control: "select",
       description: "icon | text",

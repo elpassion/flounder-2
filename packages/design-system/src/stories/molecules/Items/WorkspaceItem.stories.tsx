@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   Title,
@@ -5,6 +6,7 @@ import {
   ArgsTable,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import { storybookAvatarImageControl } from "../../utils";
 import { WorkspaceItem as WorkspaceItemComponent } from "../../../components/Items/WorkspaceItem";
 import type { WorkspaceItemProps } from "../../../components/Items/Items.interface";
 
@@ -23,35 +25,15 @@ export default {
     },
     variant: {
       control: "select",
-      options: ["onlyIcon", "fullWidth"],
-      description: "onlyIcon | fullWidth",
+      options: ["onlyIcon", "fullWidth", "fitWidth"],
+      description: "onlyIcon | fullWidth | fitWidth",
     },
     shape: {
       control: "select",
       description: "circle | square",
       options: ["circle", "square"],
     },
-    src: {
-      description: "image src",
-      control: {
-        type: "select",
-        labels: {
-          "images/red.png": "red",
-          "images/peach.png": "peach",
-          "images/yellow.png": "yellow",
-          "images/blue.png": "blue",
-          "images/pink.png": "pink",
-        },
-      },
-      options: [
-        undefined,
-        "images/red.png",
-        "images/peach.png",
-        "images/yellow.png",
-        "images/blue.png",
-        "images/pink.png",
-      ],
-    },
+    src: storybookAvatarImageControl,
     contentType: {
       control: "select",
       description: "icon | text",

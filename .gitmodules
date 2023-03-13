@@ -1,0 +1,3 @@
+[submodule "examples/flounder"]
+	path = examples/flounder
+	url = git@github.com:elpassion/flounder.git

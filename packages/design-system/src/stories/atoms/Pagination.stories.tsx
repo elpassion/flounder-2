@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentStory } from "@storybook/react";
 import { Pagination as PaginationComponent } from "../../components/Pagination";
 import type { PaginationProps } from "../../components/Pagination/Pagination.interface";

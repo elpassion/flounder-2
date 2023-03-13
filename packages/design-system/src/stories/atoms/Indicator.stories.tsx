@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { Indicator as IndicatorComponent } from "../../components/Indicator";
 import type { IndicatorProps } from "../../components/Indicator/Indicator.interface";

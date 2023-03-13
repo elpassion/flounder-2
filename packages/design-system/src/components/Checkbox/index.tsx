@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import CheckSvg from "../../svgs/CheckSvg";
 import type { CheckboxProps } from "./Checkbox.interface";
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -29,16 +30,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     md: "text-base",
   };
 
-  const iconSizeVariants = {
-    sm: "text-xs",
-    md: "text-sm",
-  };
-
   return (
     <>
       <div
         className={classNames(
-          "group flex w-fit items-baseline gap-2",
+          "group relative flex w-fit items-baseline gap-2",
           {
             "flex-row-reverse": labelPosition === "left",
             // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
@@ -55,8 +51,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           id={name}
           name={name}
           className={classNames(
-            "peer absolute h-4 w-4 cursor-pointer opacity-0",
-            "disabled:cursor-default"
+            "peer absolute mt-1.5 cursor-pointer border-0 p-0 opacity-0",
+            "disabled:cursor-default",
+            sizeVariants[size]
           )}
           disabled={disabled}
           aria-disabled={disabled}
@@ -81,9 +78,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             error && "peer-focus:border-error-500 peer-focus:ring-0"
           )}
         >
-          <span
-          className={classNames("font-icons", iconSizeVariants[size])}
-        >&#xeace;</span>
+          <CheckSvg className="block aspect-square w-3/5" />
         </div>
         <div
           className={classNames("peer-disabled:text-neutral-200", fontColor)}
@@ -125,4 +120,4 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   );
 };
 
-export default Checkbox
+export default Checkbox;

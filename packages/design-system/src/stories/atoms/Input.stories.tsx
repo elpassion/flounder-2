@@ -1,3 +1,4 @@
+import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import {
   ArgsTable,
@@ -8,6 +9,7 @@ import {
 } from "@storybook/addon-docs";
 import { Input as InputComponent } from "../../components/Input";
 import type { InputProps } from "../../components/Input/Input.interface";
+import { storybookIconControl } from "../utils";
 
 const docs: string = `# Usage <br/> 
 | DO | <div style="width:20vw">DON’T</div> |
@@ -58,22 +60,8 @@ export default {
       options: ["text", "number", "email", "password"],
       description: "only examples: text | number | email | password",
     },
-    tooltipIcon: {
-      options: [undefined, "&#xea6b", "&#xea8a"],
-      control: {
-        type: "select",
-        labels: { "&#xea6b": "help", "&#xea8a": "slash" },
-      },
-      description: "icon",
-    },
-    prefixIcon: {
-      options: [undefined, "&#xea6b", "&#xea8a"],
-      control: {
-        type: "select",
-        labels: { "&#xea6b": "help", "&#xea8a": "slash" },
-      },
-      description: "icon",
-    },
+    tooltipIcon: storybookIconControl,
+    prefixIcon: storybookIconControl,
     ariaLive: {
       control: "select",
       options: ["polite", "assertive", "off"],
@@ -90,8 +78,8 @@ export default {
     suffixVariant: undefined,
     prefixVariant: undefined,
     prefixOrSuffixText: "https://",
-    tooltipIcon: "&#xea6b",
-    prefixIcon: "&#xea6b",
+    tooltipIcon: undefined,
+    prefixIcon: undefined,
     inputType: "text",
     type: "text",
     ariaLive: "polite",

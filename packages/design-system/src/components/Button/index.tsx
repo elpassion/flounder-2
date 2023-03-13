@@ -1,25 +1,6 @@
 import classNames from "classnames";
-
-import { IconTypes } from "../../utils/iconType";
-
-// TODO: replace with interface
-type VariantType =
-  | "primary"
-  | "outlined"
-  | "ghost"
-  | "destructive"
-  | "destructiveGhost"
-  | "destructiveOutlined";
-
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  text: string;
-  variant: VariantType;
-  leftIcon?: IconTypes;
-  rightIcon?: IconTypes;
-  disabled?: boolean;
-  size?: "sm" | "md" | "lg";
-  ariaLabel?: string;
-}
+import type { ButtonProps } from "./Button.interface";
+import Icon from "../Icon";
 
 export const Button: React.FC<ButtonProps> = ({
   text,
@@ -30,7 +11,9 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   onClick,
   ariaLabel,
-  className
+  className,
+  isFluid,
+  type = "button",
 }) => {
   const styleVariants = {
     primary:
@@ -53,39 +36,33 @@ export const Button: React.FC<ButtonProps> = ({
     lg: "h-12 gap-4 py-2.5 px-4 text-lg",
   };
 
-  const iconSizeVariants = {
-    sm: "text-base",
-    md: "text-base",
-    lg: "text-2xl",
-  };
-
   return (
     <button
       disabled={disabled}
       aria-disabled={disabled}
       aria-label={ariaLabel}
       className={classNames(
-        "flex items-center justify-center rounded-lg border whitespace-nowrap",
+        "flex items-center justify-center whitespace-nowrap rounded-lg border ",
         "disabled:!border-button-disabled disabled:!bg-button-disabled disabled:!text-button-disabled disabled:hover:!shadow-none",
         "hover:shadow-button",
         styleVariants[variant],
         sizeVariants[size],
+        { "w-full": isFluid },
         className
       )}
+      type={type}
       onClick={onClick}
     >
-      {!!leftIcon && (
-        <span
-          className={classNames("font-icons", iconSizeVariants[size])}
-          dangerouslySetInnerHTML={{ __html: `${leftIcon};` }}
-        />
+      {leftIcon && (
+        <div className="aspect-square h-5/6">
+          <Icon customIcon={leftIcon} />
+        </div>
       )}
       {text}
-      {!!rightIcon && (
-        <span
-          className={classNames("font-icons", iconSizeVariants[size])}
-          dangerouslySetInnerHTML={{ __html: `${rightIcon};` }}
-        />
+      {rightIcon && (
+        <div className="aspect-square h-5/6">
+          <Icon customIcon={rightIcon} />
+        </div>
       )}
     </button>
   );

@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import Icon from "../Icon";
 import type { IconButtonProps } from "./IconButton.interface";
 
 export const IconButton: React.FC<IconButtonProps> = ({
@@ -31,16 +32,14 @@ export const IconButton: React.FC<IconButtonProps> = ({
     lg: "p-3 w-12 h-12",
   };
 
-  const iconSizeVariants = {
-    sm: "text-base",
-    md: "text-xl",
-    lg: "text-2xl",
-  };
+  if (!icon) {
+    return null;
+  }
 
   return (
     <button
       className={classNames(
-        "w- flex items-center justify-center rounded-lg border",
+        "flex items-center justify-center rounded-lg border",
         "hover:shadow-button",
         "disabled:border-neutral-100 disabled:bg-neutral-100 disabled:text-neutral-200 disabled:hover:shadow-none",
         styleVariants[variant],
@@ -52,10 +51,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
       aria-label={ariaLabel}
       onClick={onClick}
     >
-      <span
-        className={classNames("font-icons", iconSizeVariants[size])}
-        dangerouslySetInnerHTML={{ __html: `${icon};` }}
-      />
+      <Icon customIcon={icon} className="w-full" />
     </button>
   );
 };

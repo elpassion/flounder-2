@@ -3,6 +3,8 @@ import Avatar from "../Avatar";
 import Button from "../Button";
 import IconButton from "../IconButton";
 import Indicator from "../Indicator";
+import CheckSvg from "../../svgs/CheckSvg";
+import CogSvg from "../../svgs/CogSvg";
 import * as NotificationComponents from "./";
 import * as Skeleton from "../Skeleton";
 import type {
@@ -10,6 +12,8 @@ import type {
   EventProps,
   NotificationProps,
 } from "./Notification.interface";
+import Icon from "../Icon";
+import BellSvg from "../../svgs/BellSvg";
 
 export const Container: React.FC<ContainerProps> = ({
   children,
@@ -49,17 +53,17 @@ export const SingleNotification: React.FC<EventProps> = ({
 );
 
 export const EventSkeleton: React.FC = () => (
-  <div className="flex animate-pulse items-start gap-4 py-3 px-4 text-sm">
-    <Skeleton.Circle height="h-10" width="w-10" />
+  <div className="flex items-start gap-4 py-3 px-4 text-sm">
+    <Skeleton.Circle />
     <div className="flex-1">
       <div className="mb-1 flex gap-2">
-        <Skeleton.Text />
-        <Skeleton.Text width="w-44" />
+        <Skeleton.Text width={48} />
+        <Skeleton.Text width={168} />
       </div>
-      <Skeleton.Text height="h-3" width="w-16" />
+      <Skeleton.Text height={12} width={64} />
       <div className="mt-1 flex gap-2">
-        <Skeleton.Text width="w-3" />
-        <Skeleton.Text width="w-44" />
+        <Skeleton.Text width={20} />
+        <Skeleton.Text width={160} />
       </div>
     </div>
   </div>
@@ -68,7 +72,9 @@ export const EventSkeleton: React.FC = () => (
 export const EmptyState: React.FC = () => (
   <div className="flex flex-col items-center justify-center gap-4 px-4 py-6">
     <div className="flex h-36 w-36 items-center justify-center rounded-full bg-blue-50">
-      <span className="font-icons text-[102px] text-blue-400">&#xeaf8;</span>
+      <Icon
+        customIcon={<BellSvg className="aspect-square w-20 text-blue-400" />}
+      />
     </div>
     <p className="w-44 text-center text-sm">
       We’ll let you know when we get news for you.
@@ -86,7 +92,7 @@ export const Notification: React.FC<NotificationProps> = ({
       <Button
         variant="ghost"
         text="Mark all as read"
-        leftIcon="&#xeace"
+        leftIcon={<CheckSvg />}
         size="sm"
         className={classNames(
           "px-3 py-2 text-blue-500",
@@ -96,7 +102,7 @@ export const Notification: React.FC<NotificationProps> = ({
       />
       <IconButton
         variant="ghost"
-        icon="&#xea29"
+        icon={<CogSvg />}
         size="sm"
         className={classNames(
           "text-neutral-900",
