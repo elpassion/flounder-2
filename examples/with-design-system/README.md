@@ -1,4 +1,4 @@
-# flounder with [DesignSystemNameHere](http://npmjs.com/design-system-url)
+# flounder with [Taco UI]([http://npmjs.com/design-system-url](https://www.npmjs.com/package/elp-taco-ui))
 
 Example usage of flounder project with Internal Design System.
 <br />
