@@ -24,7 +24,7 @@ export const Textarea: React.FC<TextareaProps> = ({
         <textarea
           {...props}
           className={classNames(
-            "block w-full rounded-lg border border-neutral-200 py-1 px-2 transition-shadow placeholder:text-neutral-400 focus:border-neutral-200 focus:ring-4 focus:ring-secondary-50",
+            "block w-full rounded-lg border border-neutral-200 py-2.5 px-3.5 transition-shadow placeholder:text-neutral-400 focus:border-neutral-200 focus:ring-4 focus:ring-secondary-50",
             error && "border-red-500 focus:border-red-500 focus:ring-error-100",
             disabled &&
               "border-neutral-200 bg-neutral-50 placeholder-neutral-200"
