@@ -1,4 +1,5 @@
 import type { TIcon } from "../../helpers/types";
+import { InputProps } from "../Input/Input.interface";
 
 export interface DropdownProps {
   dropdownTitle?: string;
@@ -17,4 +18,5 @@ export interface DropdownItemProps
   extends Omit<DropdownListItemProps, "inputValue"> {}
 
 export interface InputAutocompleteProps
-  extends Omit<DropdownProps, "inputValue"> {}
+  extends Omit<DropdownProps, "inputValue">,
+    Pick<InputProps, "placeholder"> {}

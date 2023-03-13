@@ -24,6 +24,9 @@ export default {
     dropdownTitle: {
       description: "string",
     },
+    placeholder: {
+      description: "string",
+    },
     isCreatable: {
       control: "select",
       options: [true, false],
@@ -33,6 +36,7 @@ export default {
   args: {
     isCreatable: false,
     dropdownTitle: "Recent",
+    placeholder: "Search for anything",
     dropdownItems: [
       {
         label: "Desert Slim Jeans",
