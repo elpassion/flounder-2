@@ -15,6 +15,14 @@ export interface Icon {
   };
 }
 
+export interface IconObject {
+  [name: string]: {
+    unicode: string;
+    entity: string;
+  };
+}
+
 export interface GenericKeys {
   [key: string]: string | GenericKeys;
+
 }

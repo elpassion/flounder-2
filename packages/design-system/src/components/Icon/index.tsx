@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Icons } from "../../helpers/getIcons";
 import { IconProps } from "./Icon.interface";
 
 // @TODO: Refactor not using dangerously inner html
@@ -8,9 +9,10 @@ export const Icon: React.FC<IconProps> = ({
   icon,
   className,
   customIcon,
-  iconName, // Refactor to mainly use this
+  iconName,
   ...rest
 }) => {
+  const iconEntity = iconName && Icons?.[iconName]?.entity || icon;
   const iconSizeVariants = {
     none: "",
     sm: "text-base",
@@ -31,7 +33,7 @@ export const Icon: React.FC<IconProps> = ({
         "font-icons leading-tight",
         className
       )}
-      dangerouslySetInnerHTML={{ __html: `${icon}` }}
+      dangerouslySetInnerHTML={{ __html: `${iconEntity};` }}
       {...rest}
     />
   );

@@ -1,15 +1,11 @@
 import React from "react";
+import { Icon as IconComponent } from "../../components/Icon";
 
 export const Icon = () => {
+
   return (
     <>
-      ADD Icon Component Documentation
-      <br />
-      How to use with our font entity icons
-      <br />
-      How to use with customIcon ReactNode
-      <br />
-      Aailable Props
+      <IconComponent iconName="wifi" size="lg" />
     </>
   );
 };
