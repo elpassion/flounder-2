@@ -5,9 +5,9 @@ interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   objectFitCover?: boolean;
 }
-export const EasyImage: React.FC<ImageProps> = ({
+export const ImageTag: React.FC<ImageProps> = ({
   src,
-  alt = "User avatar",
+  alt,
   className,
   objectFitCover,
   ...rest

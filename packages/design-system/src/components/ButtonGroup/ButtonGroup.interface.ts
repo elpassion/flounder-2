@@ -1,9 +1,9 @@
-import type { ReactNode } from "react";
+import type { TIcon } from "../../helpers/types";
 import type { ButtonProps } from "../Button/Button.interface";
 
 export interface ButtonGroupProps extends Pick<ButtonProps, "size"> {
   buttons: Omit<ButtonProps, "size" | "variant">[];
   variant: "primary" | "outlined" | "ghost";
   style: "default" | "withIcon" | "withText";
-  withIcon?: ReactNode;
+  icon?: TIcon;
 }

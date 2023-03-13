@@ -9,9 +9,9 @@ const RightArrowSvg = ({ className }: { className?: string }) => {
       <path
         d="M5 12H19M19 12L12 5M19 12L12 19"
         stroke="currentColor"
-        stroke-width="1.4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

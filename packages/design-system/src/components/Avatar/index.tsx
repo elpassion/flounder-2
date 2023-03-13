@@ -1,11 +1,12 @@
 import classNames from "classnames";
 import * as AvatarComponents from "./";
 import UserSvg from "../../svgs/UserSvg";
-import { EasyImage } from "../../utils/EasyImage";
+import { ImageTag } from "../../utils/ImageTag";
 import type {
   AvatarChildrenProps,
   AvatarProps,
   ContainerProps,
+  ImageProps,
 } from "./Avatar.interface";
 
 export const Container: React.FC<ContainerProps> = ({
@@ -46,6 +47,10 @@ export const Text: React.FC<AvatarChildrenProps> = ({
   className,
 }) => <span className={className}>{children}</span>;
 
+export const Image: React.FC<ImageProps> = ({ src, alt = "User Avatar" }) => (
+  <ImageTag src={src} alt={alt} className="w-full" objectFitCover />
+);
+
 export const Avatar: React.FC<AvatarProps> = ({
   name,
   label,
@@ -82,7 +87,7 @@ export const Avatar: React.FC<AvatarProps> = ({
     <div className="flex items-center">
       <AvatarComponents.Container size={size} {...props}>
         {src ? (
-          <EasyImage src={src} className="w-full" objectFitCover />
+          <AvatarComponents.Image src={src} />
         ) : (
           <>
             {contentType === "text" && (

@@ -9,7 +9,7 @@ export const ButtonGroupWithSideDecorator: React.FC<ButtonGroupProps> = ({
   size,
   variant,
   style,
-  withIcon = <UserSvg className="block" />,
+  icon = <UserSvg className="block" />,
 }) => {
   return (
     <div className="inline-flex gap-x-4">
@@ -26,8 +26,8 @@ export const ButtonGroupWithSideDecorator: React.FC<ButtonGroupProps> = ({
             {...button}
           />
 
-          {style === "withIcon" || withIcon ? ( // @TODO: Fix
-            withIcon || (
+          {style === "withIcon" || icon ? ( // @TODO: Fix
+            icon || (
               <div className="-ml-px aspect-square h-5/6 rounded-l-none hover:z-10">
                 <UserSvg className="aspect-square h-full stroke-current" />
                 .....
