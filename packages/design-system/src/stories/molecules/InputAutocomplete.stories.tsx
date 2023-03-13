@@ -54,19 +54,16 @@ export default {
       {
         label: "Desert Slim Jeans",
         icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xeb20;",
-            }}
-          />
+          <span className="font-icons text-base leading-none text-neutral-300">
+            &#xeaf6;
+          </span>
         ),
       },
       { label: "Logo T-Shirt", icon: <SvgIcon /> },
       { label: "Desert Slim Black Jeans", icon: <SvgIcon /> },
       {
         label: "Desert Slim Red Jeans",
-        icon: <Avatar src="images/peach.png" size="xxs" />,
+        icon: <Avatar src="/peach.png" size="xxs" />,
       },
       { label: "Bunny Print Hoodie", icon: <SvgIcon /> },
     ],
