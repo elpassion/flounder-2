@@ -1,0 +1,27 @@
+{
+  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["libs/ui/tsconfig.*?.json", "libs/ui/.storybook/tsconfig.json", "libs/ui/tsconfig.lib.json", "libs/ui/tsconfig.spec.json"],
+        "ecmaFeatures": {
+          "jsx": true,
+          "typescript": true,
+          "tsx": true
+        }
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    }
+  ]
+}
