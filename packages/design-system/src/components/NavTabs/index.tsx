@@ -16,7 +16,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
 
   const activeVariant = {
     filled: "bg-primary-100",
-    outlined: "border-primary-800",
+    outlined: "!border-primary-800",
     line: "border-primary-800",
   };
 
