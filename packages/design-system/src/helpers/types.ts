@@ -20,6 +20,7 @@ export interface IconObject {
     unicode: string;
     entity: string;
   };
+}
 
 export interface GenericKeys {
   [key: string]: string | GenericKeys;

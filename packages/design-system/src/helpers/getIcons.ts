@@ -27,3 +27,10 @@ export const getIconsObject = ({ icons }: IconConfigFile): IconObject => {
 };
 
 export const Icons = getIconsObject(iconConfigFile);
+
+export const getIconUnicodeForPseudo = (input: string) => {
+  const iconsObject = getIcons(iconConfigFile);
+  const foundEntity = iconsObject.find((item) => item.name === input);
+
+  return foundEntity?.symbol.unicode;
+};

@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { Button } from "../Button";
-import { IconButton } from "../IconButton";
+import UserSvg from "../../svgs/UserSvg";
 import { buttonBorderVariants } from "./helpers";
 import type { ButtonGroupProps } from "./ButtonGroup.interface";
 
@@ -9,6 +9,7 @@ export const ButtonGroupWithSideDecorator: React.FC<ButtonGroupProps> = ({
   size,
   variant,
   style,
+  icon = <UserSvg className="block" />,
 }) => {
   return (
     <div className="inline-flex gap-x-4">
@@ -24,16 +25,14 @@ export const ButtonGroupWithSideDecorator: React.FC<ButtonGroupProps> = ({
             )}
             {...button}
           />
-          {style === "withIcon" ? (
-            <IconButton
-              size={size}
-              variant={variant}
-              icon="&#xea8a"
-              className={classNames(
-                "-ml-px rounded-l-none hover:z-10",
-                buttonBorderVariants[variant]
-              )}
-            />
+
+          {style === "withIcon" || icon ? ( // @TODO: Fix
+            icon || (
+              <div className="-ml-px aspect-square h-5/6 rounded-l-none hover:z-10">
+                <UserSvg className="aspect-square h-full stroke-current" />
+                .....
+              </div>
+            )
           ) : (
             <Button
               size={size}

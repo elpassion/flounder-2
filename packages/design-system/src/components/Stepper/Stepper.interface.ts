@@ -1,3 +1,4 @@
+import { TIcon } from "../../helpers/types";
 import type { IconTypes } from "../../utils/iconType";
 
 type Sizes = "sm" | "md" | "lg";
@@ -36,7 +37,7 @@ export interface StepProps
   index: number;
   status: StepStatuses;
   onClick?: () => void;
-  icon?: IconTypes;
+  icon?: TIcon;
   completeVariant?: "default" | "check";
   className?: string;
 }
