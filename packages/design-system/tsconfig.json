@@ -1,12 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
     "target": "es5",
     "baseUrl": "./src",
-    "paths": {
-      "#components/*": ["./components/*"],
-      "#svgs/*": ["./svgs/*"]
-    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -26,7 +21,6 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "declaration": true,
-    "declarationDir": "dist"
   },
   "include": ["src/**/*.ts*"],
   "exclude": [

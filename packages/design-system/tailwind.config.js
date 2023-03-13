@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+// Get common here and in generators to avoid duplication and allow exporting
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
@@ -80,7 +82,6 @@ module.exports = {
       fontSize: {
         xxs: "10px",
       },
-      // TODO: RM AFTER MOVED TO FIGMA TOKENS
       width: {
         smCircularProgress: "68px",
         lgCircularProgress: "176px",
