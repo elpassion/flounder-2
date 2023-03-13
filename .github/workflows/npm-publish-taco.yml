@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
+      - run: npm install
       - run: npm build:npm
       - run: cd dist/ && npm publish
         env:
