@@ -53,9 +53,17 @@ export const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
     >
-      {!!leftIcon && <Icon icon={leftIcon} size={size} />}
+      {leftIcon && (
+        <div className="aspect-square h-5/6">
+          <Icon customIcon={leftIcon} />
+        </div>
+      )}
       {text}
-      {!!rightIcon && <Icon icon={rightIcon} size={size} />}
+      {rightIcon && (
+        <div className="aspect-square h-5/6">
+          <Icon customIcon={rightIcon} />
+        </div>
+      )}
     </button>
   );
 };

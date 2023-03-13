@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import * as AvatarComponents from "./";
 import UserSvg from "../../svgs/UserSvg";
+import { ImageTag } from "../../utils/ImageTag";
 import type {
   AvatarChildrenProps,
   AvatarProps,
@@ -41,14 +42,14 @@ export const Container: React.FC<ContainerProps> = ({
   );
 };
 
-export const Image: React.FC<ImageProps> = ({ src, alt = "avatar" }) => (
-  <img src={src} alt={alt} className="w-full" />
-);
-
 export const Text: React.FC<AvatarChildrenProps> = ({
   children,
   className,
 }) => <span className={className}>{children}</span>;
+
+export const Image: React.FC<ImageProps> = ({ src, alt = "User Avatar" }) => (
+  <ImageTag src={src} alt={alt} className="w-full" objectFitCover />
+);
 
 export const Avatar: React.FC<AvatarProps> = ({
   name,

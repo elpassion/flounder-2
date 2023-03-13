@@ -1,5 +1,6 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import UserSvg from "../../../svgs/UserSvg";
 import { ButtonGroupWithSideDecorator as ButtonGroupWithSideDecoratorComponent } from "../../../components/ButtonGroup/ButtonGroupWithSideDecorator";
 import type { ButtonGroupProps } from "../../../components/ButtonGroup/ButtonGroup.interface";
 
@@ -43,11 +44,11 @@ export default {
     buttons: [
       {
         text: "Button 1",
-        leftIcon: "&#xea8a",
+        leftIcon: <UserSvg className="aspect-square w-full" />,
       },
       {
         text: "Button 1",
-        leftIcon: "&#xea8a",
+        leftIcon: <UserSvg className="aspect-square w-full" />,
       },
     ],
   },

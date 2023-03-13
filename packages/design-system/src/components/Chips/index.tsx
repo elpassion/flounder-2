@@ -16,11 +16,11 @@ export const Chips: React.FC<ChipsProps> = ({
       )}
     >
       {prefixIcon && (
-        <div className="flex aspect-square w-4 items-center">{prefixIcon}</div>
+        <div className="flex aspect-square w-3 items-center">{prefixIcon}</div>
       )}
       <span className="text-xs font-medium">{text}</span>
       {suffixIcon && (
-        <div className="flex aspect-square w-4 items-center">{suffixIcon}</div>
+        <div className="flex aspect-square w-3 items-center">{suffixIcon}</div>
       )}
     </div>
   );

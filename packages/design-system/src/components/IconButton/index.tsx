@@ -32,10 +32,14 @@ export const IconButton: React.FC<IconButtonProps> = ({
     lg: "p-3 w-12 h-12",
   };
 
+  if (!icon) {
+    return null;
+  }
+
   return (
     <button
       className={classNames(
-        "w- flex items-center justify-center rounded-lg border",
+        "flex items-center justify-center rounded-lg border",
         "hover:shadow-button",
         "disabled:border-neutral-100 disabled:bg-neutral-100 disabled:text-neutral-200 disabled:hover:shadow-none",
         styleVariants[variant],
@@ -47,7 +51,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
       aria-label={ariaLabel}
       onClick={onClick}
     >
-      <Icon size={size} icon={icon} />
+      <Icon customIcon={icon} className="w-full" />
     </button>
   );
 };

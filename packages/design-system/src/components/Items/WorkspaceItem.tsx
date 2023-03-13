@@ -1,12 +1,12 @@
 import classNames from "classnames";
+import CameraSvg from "../../svgs/CameraSvg";
 import { Avatar } from "../Avatar";
-import Icon from "../Icon";
 import * as Items from "./";
 import type { WorkspaceItemProps } from "./Items.interface";
 
 export const WorkspaceItem: React.FC<WorkspaceItemProps> = ({
   size = "md",
-  variant = "fullWidth",
+  variant = "fitWidth",
   shape = "square",
   contentType = "text",
   src,
@@ -20,7 +20,8 @@ export const WorkspaceItem: React.FC<WorkspaceItemProps> = ({
 
   const styleVariants = {
     onlyIcon: "w-fit border-2",
-    fullWidth: "w-56 border",
+    fullWidth: "w-full border",
+    fitWidth: "min-w-fit",
   };
 
   return (
@@ -36,12 +37,12 @@ export const WorkspaceItem: React.FC<WorkspaceItemProps> = ({
         alt={alt}
         className="!bg-neutral-300 !text-neutral-700"
       />
-      {variant === "fullWidth" && (
+      {(variant === "fullWidth" || variant === "fitWidth") && (
         <>
           <p className={classNames("font-medium", sizeTextVariants[size])}>
             Flounder
           </p>
-          <Icon icon="&#xeacb" />
+          <CameraSvg className="ml-2 h-4 w-4" />
         </>
       )}
     </Items.Container>

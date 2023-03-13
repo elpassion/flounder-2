@@ -1,7 +1,8 @@
+import { TIcon } from "../../helpers/types";
 import type { IconTypes } from "../../utils/iconType";
 import type { AvatarProps } from "../Avatar/Avatar.interface";
 
-type ItemVariants = "onlyIcon" | "fullWidth";
+type ItemVariants = "onlyIcon" | "fullWidth" | "fitWidth";
 
 export interface ContainerProps extends React.PropsWithChildren {
   className?: string;
@@ -15,9 +16,9 @@ export interface IconProps {
 export interface MenuItemProps {
   text: string;
   variant?: ItemVariants;
-  leftIcon?: IconTypes;
-  middleIcon?: IconTypes;
-  rightIcon?: IconTypes;
+  leftIcon?: TIcon;
+  middleIcon?: TIcon;
+  rightIcon?: TIcon;
 }
 
 export interface WorkspaceItemProps

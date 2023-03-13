@@ -1,5 +1,6 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { storybookIconControl } from "../utils";
 import { Button as ButtonComponent } from "../../components/Button";
 import type { ButtonProps } from "../../components/Button/Button.interface";
 
@@ -43,16 +44,8 @@ export default {
     isFluid: {
       description: "boolean",
     },
-    leftIcon: {
-      options: [undefined, "&#xea8a"],
-      control: { type: "select", labels: { "&#xea8a": "slash" } },
-      description: "icon",
-    },
-    rightIcon: {
-      options: [undefined, "&#xea8a"],
-      control: { type: "select", labels: { "&#xea8a": "slash" } },
-      description: "icon",
-    },
+    leftIcon: storybookIconControl,
+    rightIcon: storybookIconControl,
     onClick: {
       description: "function",
     },

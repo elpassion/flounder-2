@@ -1,5 +1,6 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
+import UserSvg from "../../svgs/UserSvg";
 import { IconButtonGroup as IconButtonGroupComponent } from "../../components/IconButtonGroup";
 import type { IconButtonGroupProps } from "../../components/IconButtonGroup/IconButtonGroup.interface";
 
@@ -35,16 +36,16 @@ export default {
     variant: "primary",
     buttons: [
       {
-        icon: "&#xea8a",
+        icon: <UserSvg />,
       },
       {
-        icon: "&#xea8a",
+        icon: <UserSvg />,
       },
       {
-        icon: "&#xea8a",
+        icon: <UserSvg />,
       },
       {
-        icon: "&#xea8a",
+        icon: <UserSvg />,
       },
     ],
   },
