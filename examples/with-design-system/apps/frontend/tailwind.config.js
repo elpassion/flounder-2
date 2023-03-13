@@ -7,7 +7,7 @@ module.exports = merge(baseConfig, {
   content: [
     join(__dirname, './modules/**/*.{js,ts,jsx,tsx}'),
     join(__dirname, './pages/**/*.{js,ts,jsx,tsx}'),
-    join(__dirname, '../../node_modules/elp-taco-ui/components/**/*.{js,jsx}'),
+    join(__dirname, '../../node_modules/elp-taco-ui/**/*.{js,jsx}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
 });
