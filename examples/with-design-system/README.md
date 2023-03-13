@@ -44,3 +44,22 @@ module.exports = {
   plugins: [require('@tailwindcss/forms')],
 };
 ```
+
+The last step is adding to your `apps/frontend/tailwind.config.js` prune directory for node_module/taco-ui
+<br />
+
+```js
+const { join } = require('path');
+const { merge } = require('lodash');
+const { createGlobPatternsForDependencies } = require('@nrwl/next/tailwind');
+const baseConfig = require('../../.config/tailwind.config');
+
+module.exports = merge(baseConfig, {
+  content: [
+    join(__dirname, './modules/**/*.{js,ts,jsx,tsx}'),
+    join(__dirname, './pages/**/*.{js,ts,jsx,tsx}'),
+    join(__dirname, '../../node_modules/elp-taco-ui/**/*.{js,jsx}'),
+    ...createGlobPatternsForDependencies(__dirname),
+  ],
+});
+```
