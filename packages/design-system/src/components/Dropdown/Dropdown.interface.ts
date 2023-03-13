@@ -10,7 +10,6 @@ export interface IDropdownOption {
 export interface DropdownProps {
   options: IDropdownOption[];
   variant?: TDropdownVariant;
-  supportingText?: string;
   isMulti?: boolean;
   skipMenuGap?: boolean;
 }
