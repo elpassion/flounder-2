@@ -26,7 +26,8 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "declaration": true,
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true
   },
   "include": ["src/**/*.ts*"],
   "exclude": [
