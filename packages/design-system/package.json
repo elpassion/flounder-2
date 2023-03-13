@@ -14,7 +14,7 @@
     "clean": "rm -rf ./dist",
     "build:rollup": "npx rollup -c --bundleConfigAsCjs",
     "build:npm": "npm run clean && npm run build:rollup && npm run build:copy-files",
-    "build:copy-files": "node copyFiles.js",
+    "build:copy-files": "node postBuildNpm.js",
     "test": "react-scripts test",
     "lint": "eslint \"{**/*,*}.{ts,tsx}\"",
     "eject": "react-scripts eject",

@@ -3,7 +3,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import typescript from "rollup-plugin-typescript2";
-import pkg from "./npm-package.json";
+import pkg from "./rollup-package.json";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -12,22 +12,19 @@ export default {
     {
       file: pkg.main,
       format: "cjs",
-      sourcemap: true
     },
     {
       file: pkg.module,
       format: "es",
-      sourcemap: true
     }
   ],
   plugins: [
     peerDepsExternal({
       includeDependencies: true
     }),
-    // svgr(),
     resolve(),
     typescript({
-      exclude: ["**/__tests__/**"],
+      exclude: ["**/stories/**", "./setupTests.ts"],
       clean: true,
     }),
     commonjs(),
