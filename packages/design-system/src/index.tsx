@@ -20,7 +20,7 @@ import CircularProgressBar from "./components/ProgressBar/CircularProgressBar";
 import LinearProgressBar from "./components/ProgressBar/LinearProgressBar";
 import Radio from "./components/Radio";
 import Search from "./components/Search";
-// Skeleton
+import * as Skeleton from "./components/Skeleton";
 import HorizontalStepper from "./components/Stepper/HorizontalStepper";
 import VerticalStepper from "./components/Stepper/VerticalStepper";
 import Textarea from "./components/Textarea";
@@ -28,12 +28,39 @@ import Toast from "./components/Toast/Toast";
 import SmallToast from "./components/Toast/SmallToast";
 import Toggle from "./components/Toggle";
 import Tooltip from "./components/Tooltip";
+import { initDefaultTheme } from "./helpers/generators";
 
-export { 
-  Accordion, Anchor, Avatar, AvatarGroup, Badge, Button,
-  ButtonGroup, Checkbox, Chips,  Divider, Icon, IconButton,
-  IconButtonGroup, MenuItem, WorkspaceItem, NavTabs, Notification,
-  Pagination, CircularProgressBar, LinearProgressBar, Radio,
-  Search, HorizontalStepper, VerticalStepper, Textarea, Toast,
-  SmallToast, Toggle, Tooltip
+export {
+  initDefaultTheme,
+  Accordion,
+  Anchor,
+  Avatar,
+  // Refactor Skeleton to use as other components or don't export at all
+  Skeleton,
+  AvatarGroup,
+  Badge,
+  Button,
+  ButtonGroup,
+  Checkbox,
+  Chips,
+  Divider,
+  Icon,
+  IconButton,
+  IconButtonGroup,
+  MenuItem,
+  WorkspaceItem,
+  NavTabs,
+  Notification,
+  Pagination,
+  CircularProgressBar,
+  LinearProgressBar,
+  Radio,
+  Search,
+  HorizontalStepper,
+  VerticalStepper,
+  Textarea,
+  Toast,
+  SmallToast,
+  Toggle,
+  Tooltip,
 };

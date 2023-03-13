@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import RightArrowSvg from "../../svgs/RightArrowSvg";
 import Icon from "../Icon";
 import type {
   ArrowButtonProps,
@@ -113,9 +114,13 @@ const PaginationComponents = {
       onClick={onClick}
     >
       <Icon
-        //@TODO: Replace with SVG icons and rotate
-        className={classNames({"order-last": direction === "right"})}
-        icon={direction === "left" ? '&#xeaf5' : '&#xeb24'}
+        customIcon={
+          direction === "left" ? (
+            <RightArrowSvg className="aspect-square w-5 -rotate-180 transform" />
+          ) : (
+            <RightArrowSvg className="order-last aspect-square w-5" />
+          )
+        }
       />
       {title}
     </button>

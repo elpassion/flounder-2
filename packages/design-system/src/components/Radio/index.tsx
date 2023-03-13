@@ -27,7 +27,7 @@ export const Radio: React.FC<RadioProps> = ({
     <>
       <div
         className={classNames(
-          "group flex w-fit items-baseline gap-2",
+          "group relative flex w-fit items-baseline gap-2",
           fontColor,
           {
             "flex-row-reverse": labelPosition === "left",
@@ -41,7 +41,13 @@ export const Radio: React.FC<RadioProps> = ({
           type="radio"
           id={id}
           name={name}
-          className="peer absolute h-4 w-4 cursor-pointer opacity-0 disabled:cursor-default"
+          className={classNames(
+            "peer absolute mt-1.5 cursor-pointer opacity-0 disabled:cursor-default",
+            {
+              "h-5 w-5": isMediumSize,
+              "h-4 w-4": !isMediumSize,
+            }
+          )}
           disabled={disabled}
           aria-disabled={disabled}
           checked={checked}

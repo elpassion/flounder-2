@@ -34,7 +34,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <>
       <div
         className={classNames(
-          "group flex w-fit items-center gap-2",
+          "group relative flex w-fit items-baseline gap-2",
           {
             "flex-row-reverse": labelPosition === "left",
             // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
@@ -51,8 +51,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           id={name}
           name={name}
           className={classNames(
-            "peer absolute h-4 w-4 cursor-pointer opacity-0",
-            "disabled:cursor-default"
+            "peer absolute mt-1.5 cursor-pointer border-0 p-0 opacity-0",
+            "disabled:cursor-default",
+            sizeVariants[size]
           )}
           disabled={disabled}
           aria-disabled={disabled}
