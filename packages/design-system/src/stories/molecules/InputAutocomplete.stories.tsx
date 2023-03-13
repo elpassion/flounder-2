@@ -6,6 +6,8 @@ import {
   PRIMARY_STORY,
   Title,
 } from "@storybook/addon-docs";
+import { getImageUrl } from "../utils";
+import UserSvg from "../../svgs/UserSvg";
 import Avatar from "../../components/Avatar";
 import Icon from "../../components/Icon";
 import { InputAutocomplete as InputAutocompleteComponent } from "../../components/InputAutocomplete";
