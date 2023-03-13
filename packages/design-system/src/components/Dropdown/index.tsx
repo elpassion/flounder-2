@@ -5,6 +5,7 @@ import {
 } from "./Dropdown.interface";
 import ReactSelect, {
   components,
+  DropdownIndicatorProps,
   MenuProps,
   MultiValueGenericProps,
   MultiValueProps,
@@ -16,21 +17,29 @@ import classNames from "classnames";
 import Toggle from "../Toggle";
 import Checkbox from "../Checkbox";
 import CloseSvg from "../../svgs/CloseSvg";
+import ChevronDownSvg from "../../svgs/ChevronDownSvg";
 
-const { Option, Menu, MultiValue, MultiValueLabel, MultiValueRemove } =
-  components;
+const {
+  Option,
+  Menu,
+  MultiValue,
+  MultiValueLabel,
+  MultiValueRemove,
+  DropdownIndicator,
+} = components;
 
 export const Dropdown = forwardRef((props: DropdownProps, ref) => {
   return <DropdownComponents.BaseDropdown {...props} {...ref} />;
 });
 
-const DropdownComponents = {
+export const DropdownComponents = {
   BaseDropdown: ({
     isMulti,
     variant = "default",
     options,
     skipMenuGap,
     hideSelectedOptions,
+    placeholderText,
   }: DropdownProps) => {
     const MENU_WIDTH = `calc(100% - 2px)` as const;
 
@@ -72,6 +81,8 @@ const DropdownComponents = {
         options={options}
         isMulti={isMulti}
         hideSelectedOptions={hideSelectedOptions}
+        isClearable={false}
+        placeholder={placeholderText}
         components={{
           Option: (props) => (
             <DropdownComponents.DropdownOption
@@ -88,6 +99,7 @@ const DropdownComponents = {
             />
           ),
           MultiValueRemove: DropdownComponents.MultiValueRemoveButton,
+          DropdownIndicator: DropdownComponents.Indicator,
         }}
         styles={customDropdownStyles}
       />
@@ -99,6 +111,7 @@ const DropdownComponents = {
   }) => {
     const { data, isSelected, isFocused } = props.option;
     const { label, leftIcon, rightIcon, supportingText } = data;
+
     const isDefaultVariant = props.variant === "default";
     const isToggleVariant = props.variant === "toggle";
     const isCheckboxLeftVariant = props.variant === "checkbox-left";
@@ -178,7 +191,7 @@ const DropdownComponents = {
       <MultiValueLabel {...props.option}>
         <div className="flex items-center p-2 pr-3">
           {isPersonVariant && (
-            <div className="mr-2 flex aspect-square w-4 items-center">
+            <div className="mr-2 flex h-4 w-4 items-center">
               {data.leftIcon}
             </div>
           )}
@@ -192,6 +205,13 @@ const DropdownComponents = {
       <MultiValueRemove {...props}>
         <CloseSvg className="aspect-square w-3" />
       </MultiValueRemove>
+    );
+  },
+  Indicator: (props: DropdownIndicatorProps<IDropdownOption>) => {
+    return (
+      <DropdownIndicator {...props}>
+        <ChevronDownSvg className="aspect-square w-4 text-black" />
+      </DropdownIndicator>
     );
   },
 };

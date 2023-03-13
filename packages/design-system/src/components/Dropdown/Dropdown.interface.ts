@@ -13,6 +13,7 @@ export interface DropdownProps {
   isMulti?: boolean;
   skipMenuGap?: boolean;
   hideSelectedOptions?: boolean;
+  placeholderText?: string;
 }
 
 export type TDropdownVariant =

@@ -25,20 +25,20 @@ const dropdownOptions: IDropdownOption[] = [
   {
     value: "settings",
     label: "Settings",
-    leftIcon: <Icon icon="&#xeb14" size="sm" />,
+    leftIcon: <Icon icon="&#xeb14" size="md" />,
   },
   {
     value: "notifications",
     label: "Notifications",
-    leftIcon: <Icon icon="&#xeaeb" size="sm" />,
-    rightIcon: <Icon icon="&#xeab0" size="sm" />,
+    leftIcon: <Icon icon="&#xeaeb" size="md" />,
+    rightIcon: <Icon icon="&#xeab0" size="md" />,
     supportingText: "Some supporting text",
   },
   {
     value: "label",
     label: "Label",
-    leftIcon: <Icon icon="&#xea6e" size="sm" />,
-    rightIcon: <Icon icon="&#xeab0" size="sm" />,
+    leftIcon: <Icon icon="&#xea6e" size="md" />,
+    rightIcon: <Icon icon="&#xeab0" size="md" />,
   },
 ];
 
@@ -79,6 +79,7 @@ export default {
     isMulti: false,
     hideSelectedOptions: false,
     variant: "default",
+    placeholderText: "Select something...",
   },
   parameters: {
     design: {
