@@ -4,8 +4,8 @@
     "target": "es5",
     "baseUrl": "./src",
     "paths": {
-      "components/*": ["./components/*"],
-      "svgs/*": ["./svgs/*"]
+      "#components/*": ["./components/*"],
+      "#svgs/*": ["./svgs/*"]
     },
     "lib": [
       "dom",

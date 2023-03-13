@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import ChevronDownSvg from "svgs/ChevronDownSvg";
-import MinusSvg from "svgs/MinusSvg";
+import ChevronDownSvg from "#svgs/ChevronDownSvg";
+import MinusSvg from "#svgs/MinusSvg";
 import * as Accordion from "./";
 import type {
   AccordionBodyProps,
