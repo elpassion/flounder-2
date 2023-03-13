@@ -20,7 +20,7 @@ import CircularProgressBar from "./components/ProgressBar/CircularProgressBar";
 import LinearProgressBar from "./components/ProgressBar/LinearProgressBar";
 import Radio from "./components/Radio";
 import Search from "./components/Search";
-// Skeleton
+import * as Skeleton from "./components/Skeleton";
 import HorizontalStepper from "./components/Stepper/HorizontalStepper";
 import VerticalStepper from "./components/Stepper/VerticalStepper";
 import Textarea from "./components/Textarea";
@@ -35,6 +35,8 @@ export {
   Accordion,
   Anchor,
   Avatar,
+  // Refactor Skeleton to use as other components or don't export at all
+  Skeleton,
   AvatarGroup,
   Badge,
   Button,

@@ -1,3 +1,4 @@
+import iconConfigFile from "../fonts/fonticon.json";
 import type { Icon, IconConfigFile } from "./types";
 
 export const getIcons = ({ icons }: IconConfigFile): Icon[] => {
@@ -10,4 +11,11 @@ export const getIcons = ({ icons }: IconConfigFile): Icon[] => {
       },
     }))
     .sort((a, b) => (a.name > b.name ? 1 : -1));
+};
+
+export const getIconUnicodeForPseudo = (input: string) => {
+  const iconsObject = getIcons(iconConfigFile);
+  const foundEntity = iconsObject.find((item) => item.name === input);
+
+  return foundEntity?.symbol.unicode;
 };

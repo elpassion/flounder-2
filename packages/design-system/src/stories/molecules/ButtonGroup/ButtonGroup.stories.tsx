@@ -1,6 +1,8 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { ButtonGroup as ButtonGroupComponent } from "../../../components/ButtonGroup";
+import UserSvg from "../../../svgs/UserSvg";
+import Icon from "../../../components/Icon";
 import type { ButtonGroupProps } from "../../../components/ButtonGroup/ButtonGroup.interface";
 
 export const ButtonGroup: ComponentStory<React.FC<ButtonGroupProps>> = ({
@@ -36,15 +38,21 @@ export default {
     buttons: [
       {
         text: "Button 1",
-        leftIcon: "&#xea8a",
+        leftIcon: (
+          <Icon customIcon={<UserSvg className="aspect-square w-full" />} />
+        ),
       },
       {
         text: "Button 2",
-        leftIcon: "&#xea8a",
+        leftIcon: (
+          <Icon customIcon={<UserSvg className="aspect-square w-full" />} />
+        ),
       },
       {
         text: "Button 3",
-        leftIcon: "&#xea8a",
+        leftIcon: (
+          <Icon customIcon={<UserSvg className="aspect-square w-full" />} />
+        ),
       },
     ],
   },

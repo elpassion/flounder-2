@@ -7,6 +7,7 @@ import {
   Description,
   PRIMARY_STORY,
 } from "@storybook/addon-docs";
+import { storybookAvatarImageControl } from "../utils";
 import { Avatar as AvatarComponent } from "../../components/Avatar";
 import type { AvatarProps } from "../../components/Avatar/Avatar.interface";
 
@@ -36,27 +37,7 @@ export default {
       description: "xxs | xs | sm | md | lg | xl | xxl",
       options: ["xxs", "xs", "sm", "md", "lg", "xl", "xxl"],
     },
-    src: {
-      description: "image src",
-      control: {
-        type: "select",
-        labels: {
-          "/red.png": "red",
-          "/peach.png": "peach",
-          "/yellow.png": "yellow",
-          "/blue.png": "blue",
-          "/pink.png": "pink",
-        },
-      },
-      options: [
-        undefined,
-        "/red.png",
-        "/peach.png",
-        "/yellow.png",
-        "/blue.png",
-        "/pink.png",
-      ],
-    },
+    src: storybookAvatarImageControl,
     contentType: {
       control: "select",
       description: "icon | text",

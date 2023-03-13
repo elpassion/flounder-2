@@ -1,9 +1,8 @@
 import type { HTMLAttributes } from "react";
-import type { IconTypes } from "../../utils/iconType";
+import type { TIcon } from "../../helpers/types";
 
-export interface IconButtonProps
-  extends HTMLAttributes<HTMLButtonElement> {
-  icon: IconTypes;
+export interface IconButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  icon: TIcon;
   variant:
     | "primary"
     | "outlined"

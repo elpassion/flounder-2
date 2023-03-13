@@ -1,11 +1,13 @@
 import { useState } from "react";
 import classNames from "classnames";
+import HelpCircleSvg from "../../svgs/HelpCircleSvg";
+import SearchSvg from "../../svgs/SearchSvg";
 import Button from "../Button";
 import IconButton from "../IconButton";
 import * as Input from "../Input";
 import type { SearchProps } from "./Search.interface";
 
-const Search: React.FC<SearchProps> = ({
+export const Search: React.FC<SearchProps> = ({
   variant = "default",
   suffixText = "",
   ...props
@@ -21,7 +23,6 @@ const Search: React.FC<SearchProps> = ({
   );
 
   const suffixVariant = variant !== "inline" ? "dropdown" : undefined;
-  const inlineVariantIconStyles = variant === "inline" && "text-base";
   const inlineSuffixAndPrefixVariantStyles =
     variant === "inline" && "!h-8 pl-2";
   const inlineInputVariantStyles =
@@ -35,33 +36,27 @@ const Search: React.FC<SearchProps> = ({
     <div
       className={classNames(
         "flex items-end gap-2",
-        // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
-        variant === "inline" && "!w-[100px]"
+        variant === "inline" && "min-w-min max-w-fit"
       )}
     >
       <Input.BaseInput
         suffixVariant={suffixVariant}
         prefixVariant="icon"
         onChange={(e) => onChange(e)}
-        helpIcon={isTyping ? "&#xea2b" : undefined}
+        helpIcon={isTyping && <HelpCircleSvg className="h-4 w-4" />}
         className={classNames(
-          // @TODO: Check if important is really neccessary
-          "h-11 !text-neutral-400 focus:!border-blue-500 focus:shadow-none peer-focus:!border-blue-500 peer-focus:shadow-none",
+          "h-11 pl-0 !text-neutral-400 focus:!border-blue-500 focus:shadow-none peer-focus:!border-blue-500 peer-focus:shadow-none",
           inlineInputVariantStyles
         )}
         {...props}
       >
         <Input.Prefix
           prefixVariant="icon"
-          // @TODO: Refactor and pass icon as node with classes already form parent component
-          prefixIcon="&#xea37"
+          prefixIcon={<SearchSvg className="block aspect-square h-5/6" />}
           className={classNames(
             "h-11 peer-focus:!border-blue-500 peer-focus:shadow-none",
-            inlineSuffixAndPrefixVariantStyles
-          )}
-          iconClassName={classNames(
-            inlineVariantIconStyles,
-            isTyping && "text-blue-500"
+            inlineSuffixAndPrefixVariantStyles,
+            { "text-blue-500": isTyping }
           )}
         />
         <Input.Suffix
@@ -77,7 +72,11 @@ const Search: React.FC<SearchProps> = ({
         <Button variant="primary" text="Search" className={buttonStyles} />
       )}
       {variant === "withIconButton" && (
-        <IconButton variant="primary" icon="&#xea37" className={buttonStyles} />
+        <IconButton
+          variant="primary"
+          icon={<SearchSvg />}
+          className={buttonStyles}
+        />
       )}
     </div>
   );

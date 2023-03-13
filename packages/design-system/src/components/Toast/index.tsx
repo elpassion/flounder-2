@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import * as ToastComponents from "./";
-import Icon from '../Icon';
+import CircularCloseSvg from "../../svgs/CircularCloseSvg";
+import Icon from "../Icon";
 import type {
   ActionSectionProps,
   ActionToastProps,
@@ -28,8 +29,7 @@ export const ActionsSection: React.FC<ActionSectionProps> = ({
   firstActionOnClick,
   secondActionOnClick,
 }) => {
-  const actionStyle =
-    "w-full flex-1 border-l border-neutral-100 px-6 [&:nth-child(2)]:border-t";
+  const actionStyle = "w-full flex-1 border-l border-neutral-100 px-6";
   return (
     <>
       <div className="flex h-full flex-col">
@@ -47,7 +47,10 @@ export const ActionsSection: React.FC<ActionSectionProps> = ({
         {secondActionText && (
           <ToastComponents.Action
             onClick={secondActionOnClick}
-            className={classNames("hover:text-neutral-600", actionStyle)}
+            className={classNames(
+              "border-t hover:text-neutral-600",
+              actionStyle
+            )}
           >
             {secondActionText}
           </ToastComponents.Action>
@@ -56,9 +59,10 @@ export const ActionsSection: React.FC<ActionSectionProps> = ({
     </>
   );
 };
+
 export const CloseButton: React.FC<CloseButtonProps> = ({ onClose }) => (
   <button onClick={onClose} aria-label="close">
-    <Icon size="lg" icon="&#xea1d"/>
+    <Icon customIcon={<CircularCloseSvg className="block aspect-auto w-5" />} />
   </button>
 );
 
@@ -71,12 +75,13 @@ export const CloseButtonSection: React.FC<CloseSectionProps> = ({
     </div>
   );
 };
+
 export const Container: React.FC<ContainerProps> = ({
   children,
   className,
 }) => {
   return (
-    <div className={classNames("rounded-lg shadow-xl", className)}>
+    <div className={classNames("rounded-lg shadow-xl empty:hidden", className)}>
       {children}
     </div>
   );
