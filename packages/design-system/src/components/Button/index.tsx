@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import Icon from "#components/Icon";
+import Icon from "../Icon";
 import type { ButtonProps } from "./Button.interface";
 
 export const Button: React.FC<ButtonProps> = ({
