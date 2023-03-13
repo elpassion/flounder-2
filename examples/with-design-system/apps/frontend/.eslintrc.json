@@ -1,0 +1,82 @@
+{
+  "extends": ["plugin:import/typescript", "../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*", "jest.config.ts", ".prettierrc.js"],
+  "plugins": ["formatjs", "import"],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "project": "apps/frontend/tsconfig.json"
+      }
+    }
+  },
+  "rules": {
+    "formatjs/enforce-default-message": ["error", "literal"],
+    "import/no-unresolved": "warn",
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "next",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "next/**",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@flounder/**",
+            "group": "external",
+            "position": "after"
+          },
+          {
+            "pattern": "messages",
+            "group": "unknown",
+            "position": "after",
+            "patternOptions": { "matchBase": true }
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": ["apps/frontend/tsconfig.json", "apps/frontend/tsconfig.server.json", "apps/frontend/tsconfig.spec.json"]
+      },
+      "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.config.js"],
+      "rules": {
+        "import/order": "off"
+      }
+    }
+  ]
+}

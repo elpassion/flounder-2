@@ -1,0 +1,25 @@
+[
+  {
+      "scope": "https://mainstorage.s3.eu-west-1.amazonaws.com:443",
+      "method": "DELETE",
+      "path": "/test/b1aff28f-9e2c-4587-9a13-8e1bc095d7f0.pdf?x-id=DeleteObject",
+      "body": "",
+      "status": 204,
+      "response": "",
+      "rawHeaders": [
+        "x-amz-id-2",
+        "sTXgBVCgmPMaEzi8mt50pZEb/RsXsM7Rad2kzdQiAEeT+11sWedQTQwKHLh+ygBYENw+j816JB4=",
+        "x-amz-request-id",
+        "QT0Y9C7NE22M46ET",
+        "Date",
+        "Tue, 22 Mar 2022 08:32:57 GMT",
+        "x-amz-version-id",
+        "null",
+        "x-amz-delete-marker",
+        "true",
+        "Server",
+        "AmazonS3"
+      ],
+      "responseIsBinary": false
+    }
+]

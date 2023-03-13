@@ -1,0 +1,34 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "paths": {
+      "@flounder/cognito-auth": ["libs/cognito-auth/src/index.ts"],
+      "@flounder/contracts": ["libs/contracts/src/index.ts"],
+      "@flounder/http-client": ["libs/http-client/src/index.ts"],
+      "@flounder/mailer": ["libs/mailer/src/index.ts"],
+      "@flounder/next-utils": ["libs/next-utils/src/index.ts"],
+      "@flounder/pagination": ["libs/pagination/src/index.ts"],
+      "@flounder/shared-apis": ["libs/shared-apis/src/index.ts"],
+      "@flounder/storage": ["libs/storage/src/index.ts"],
+      "@flounder/ts-utils": ["libs/ts-utils/src/index.ts"],
+      "@flounder/ui": ["libs/ui/src/index.ts"],
+      "@flounder/utils": ["libs/utils/index.ts"],
+      "@flounder/websocket": ["libs/websocket/src/index.ts"]
+    },
+    "types": ["@types/jest"]
+  },
+  "exclude": ["node_modules", "tmp"]
+}

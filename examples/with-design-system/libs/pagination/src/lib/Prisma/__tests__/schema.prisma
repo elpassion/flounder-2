@@ -1,0 +1,42 @@
+generator pagination {
+  provider        = "prisma-client-js"
+  previewFeatures = ["orderByNulls"]
+  output          = ".prisma/pagination-client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Cat {
+  id        Int       @id @default(autoincrement())
+  name      String
+  color     String
+  age       Int?
+  height    Int
+  width     Int
+  length    Int
+  toys      Toy[]
+  Home      Home?
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+}
+
+model Toy {
+  id        Int      @id @default(autoincrement())
+  name      String
+  height    Int
+  width     Int
+  length    Int
+  cat       Cat      @relation(fields: [catId], references: [id])
+  createdAt DateTime @default(now())
+  catId     Int
+}
+
+model Home {
+  id    Int    @id @default(autoincrement())
+  name  String
+  cat   Cat    @relation(fields: [catId], references: [id])
+  catId Int    @unique
+}
