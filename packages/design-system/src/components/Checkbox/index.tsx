@@ -34,7 +34,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <>
       <div
         className={classNames(
-          "group flex w-fit items-baseline gap-2",
+          "group flex w-fit items-center gap-2",
           {
             "flex-row-reverse": labelPosition === "left",
             // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config

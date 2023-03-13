@@ -9,7 +9,7 @@ export interface IDropdownOption {
 export interface DropdownProps {
   options: IDropdownOption[];
   variant?: TDropdownVariant;
-  caption?: string;
+  supportingText?: string;
   isMulti?: boolean;
   skipMenuGap?: boolean;
 }
@@ -19,4 +19,5 @@ export type TDropdownVariant =
   | "person"
   | "toggle"
   | "checkbox-left"
-  | "checkbox-right";
+  | "checkbox-right"
+  | "supporting-text";
