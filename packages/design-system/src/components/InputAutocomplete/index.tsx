@@ -76,6 +76,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 };
 
 export const InputAutocomplete: React.FC<InputAutocompleteProps> = ({
+  placeholder,
   ...props
 }) => {
   const [inputValue, setInputValue] = useState("");
@@ -86,6 +87,7 @@ export const InputAutocomplete: React.FC<InputAutocompleteProps> = ({
     <>
       <Input.BaseInput
         onChange={(e) => onChange(e)}
+        placeholder={placeholder}
         prefixVariant="icon"
         helpIcon={isTyping && <HelpCircleSvg className="h-4 w-4" />}
         className={classNames(
