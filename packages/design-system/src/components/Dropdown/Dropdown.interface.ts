@@ -20,5 +20,4 @@ export type TDropdownVariant =
   | "person"
   | "toggle"
   | "checkbox-left"
-  | "checkbox-right"
-  | "supporting-text";
+  | "checkbox-right";

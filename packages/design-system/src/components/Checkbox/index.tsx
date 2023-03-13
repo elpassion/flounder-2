@@ -17,6 +17,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   ariaLabel,
   ariaDescribedBy,
+  labelClassName,
 }) => {
   const fontColor = error ? "text-error-500" : "text-neutral-500";
 
@@ -34,7 +35,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <>
       <div
         className={classNames(
-          "group relative flex w-fit items-baseline gap-2",
+          "group relative flex w-fit items-center gap-2",
           {
             "flex-row-reverse": labelPosition === "left",
             // @TODO: Add special sizes to config and ditch JIT to keep design system consistent embeded into config
@@ -89,7 +90,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
               className={classNames(
                 "flex items-center gap-1 font-medium",
                 disabled ? "cursor-default" : "cursor-pointer",
-                fontSizeVariants[size]
+                fontSizeVariants[size],
+                labelClassName
               )}
             >
               {labelText}

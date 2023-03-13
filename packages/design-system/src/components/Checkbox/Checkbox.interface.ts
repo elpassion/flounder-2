@@ -13,4 +13,5 @@ export interface CheckboxProps {
   className?: string;
   ariaLabel?: string;
   ariaDescribedBy?: string;
+  labelClassName?: string;
 }

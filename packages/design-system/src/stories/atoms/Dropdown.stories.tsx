@@ -52,7 +52,13 @@ export default {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "toggle", "checkbox-right", "checkbox-left"],
+      options: [
+        "default",
+        "person",
+        "toggle",
+        "checkbox-right",
+        "checkbox-left",
+      ],
     },
     skipMenuGap: {
       control: "boolean",

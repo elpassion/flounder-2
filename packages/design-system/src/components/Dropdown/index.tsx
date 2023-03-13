@@ -3,13 +3,22 @@ import {
   IDropdownOption,
   TDropdownVariant,
 } from "./Dropdown.interface";
-import ReactSelect, { components, MenuProps, OptionProps } from "react-select";
+import ReactSelect, {
+  components,
+  MenuProps,
+  MultiValueGenericProps,
+  MultiValueProps,
+  MultiValueRemoveProps,
+  OptionProps,
+} from "react-select";
 import { forwardRef } from "react";
+import classNames from "classnames";
 import Toggle from "../Toggle";
 import Checkbox from "../Checkbox";
-import classNames from "classnames";
+import CloseSvg from "../../svgs/CloseSvg";
 
-const { Option, Menu } = components;
+const { Option, Menu, MultiValue, MultiValueLabel, MultiValueRemove } =
+  components;
 
 export const Dropdown = forwardRef((props: DropdownProps, ref) => {
   return <DropdownComponents.BaseDropdown {...props} {...ref} />;
@@ -24,6 +33,11 @@ const DropdownComponents = {
     hideSelectedOptions,
   }: DropdownProps) => {
     const MENU_WIDTH = `calc(100% - 2px)` as const;
+
+    const applyNoBorderStyles = (baseStyles: any) => ({
+      ...baseStyles,
+      border: "none",
+    });
 
     const customDropdownStyles = {
       menu: (base: any) => ({
@@ -44,14 +58,17 @@ const DropdownComponents = {
         padding: 0,
         backgroundColor: state.isSelected ? "#F4F6F8" : "transparent",
       }),
-      menuList: (base: any) => ({
-        ...base,
+      multiValueLabel: (base: any) => applyNoBorderStyles(base),
+      multiValueRemove: (base: any) => ({
+        paddingRight: "8px",
+        ...applyNoBorderStyles(base),
       }),
     };
 
     return (
       <ReactSelect
         menuIsOpen={true}
+        unstyled={true}
         options={options}
         isMulti={isMulti}
         hideSelectedOptions={hideSelectedOptions}
@@ -63,6 +80,14 @@ const DropdownComponents = {
             />
           ),
           Menu: DropdownComponents.DropdownMenu,
+          MultiValue: DropdownComponents.MultiValueSelectedItem,
+          MultiValueLabel: (props) => (
+            <DropdownComponents.MultiValueSelectedItemLabel
+              option={props}
+              variant={variant}
+            />
+          ),
+          MultiValueRemove: DropdownComponents.MultiValueRemoveButton,
         }}
         styles={customDropdownStyles}
       />
@@ -85,10 +110,15 @@ const DropdownComponents = {
         className="hover:bg-neutral-100 active:bg-neutral-50"
       >
         <div className="py-3.5 px-4 hover:bg-neutral-100 active:bg-neutral-50">
-          <div className="flex items-center justify-between text-sm text-neutral-900">
+          <div className="flex items-center justify-between text-sm font-normal text-neutral-900">
             <div className="flex items-center gap-x-3">
               {isCheckboxLeftVariant && (
-                <Checkbox name={label} labelText={label} size="sm" />
+                <Checkbox
+                  name={label}
+                  labelText={label}
+                  size="sm"
+                  labelClassName="font-normal"
+                />
               )}
 
               {!isCheckboxLeftVariant && (
@@ -127,5 +157,41 @@ const DropdownComponents = {
   },
   DropdownMenu: (props: MenuProps<IDropdownOption>) => {
     return <Menu {...props} />;
+  },
+  MultiValueSelectedItem: (props: MultiValueProps<IDropdownOption>) => {
+    return (
+      <MultiValue
+        {...props}
+        className="mr-2 rounded-md border border-neutral-200 bg-neutral-50"
+      ></MultiValue>
+    );
+  },
+  MultiValueSelectedItemLabel: (props: {
+    option: MultiValueGenericProps<IDropdownOption>;
+    variant: TDropdownVariant;
+  }) => {
+    const { option, variant } = props;
+
+    const { data } = option;
+    const isPersonVariant = variant === "person";
+    return (
+      <MultiValueLabel {...props.option}>
+        <div className="flex items-center p-2 pr-3">
+          {isPersonVariant && (
+            <div className="mr-2 flex aspect-square w-4 items-center">
+              {data.leftIcon}
+            </div>
+          )}
+          <div className="text-sm">{data.label}</div>
+        </div>
+      </MultiValueLabel>
+    );
+  },
+  MultiValueRemoveButton: (props: MultiValueRemoveProps<IDropdownOption>) => {
+    return (
+      <MultiValueRemove {...props}>
+        <CloseSvg className="aspect-square w-3" />
+      </MultiValueRemove>
+    );
   },
 };
