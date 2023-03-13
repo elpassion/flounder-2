@@ -3,7 +3,7 @@ import { TIcon } from "../../helpers/types";
 export interface FeaturedTextProps {
   variant: TFeaturedTextVariant;
   align?: "center" | "left"; // default left
-  size: TFeaturedTextSize;
+  size?: TFeaturedTextSize;
   icon?: TIcon;
   title: string;
   content: string;

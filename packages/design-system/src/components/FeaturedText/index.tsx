@@ -10,7 +10,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
   title,
   content,
   variant,
-  size,
+  size = "md",
   align,
   linkedText,
   linkedUrl,
@@ -64,12 +64,11 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
     switch (size) {
       case "sm":
         return "text-sm pb-3";
-      case "md":
-        return "text-base pb-4";
       case "lg":
         return variant === "text" ? "text-lg pb-4" : "text-base pb-6";
+      case "md":
       default:
-        throw new Error("Please provide proper featured text size variant");
+        return "text-base pb-4";
     }
   };
 

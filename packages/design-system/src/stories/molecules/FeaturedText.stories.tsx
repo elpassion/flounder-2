@@ -45,7 +45,7 @@ export default {
     size: {
       control: {
         type: "select",
-        options: ["sm", "md", "lg"],
+        options: [undefined, "sm", "md", "lg"],
       },
     },
     variant: {
@@ -78,7 +78,6 @@ export default {
     content:
       "Your community is there for your and they want to help you grow but even though they want to.",
     linkedText: "Learn more",
-    size: "sm",
     align: "left",
     variant: "iconTop",
     linkedUrl: "https://google.com",
