@@ -1,33 +1,19 @@
 import { ComponentStory } from "@storybook/react";
 import React from "react";
+import { cameraIcon, cogIcon } from "../utils";
 import { FeaturedText as FeaturedTextComponent } from "../../components/FeaturedText";
 import { FeaturedTextProps } from "../../components/FeaturedText/Featuredtext.interface";
+import { FeaturedTextImage } from "../../utils/FeaturedTextImage";
 
 export const FeaturedText: ComponentStory<React.FC<FeaturedTextProps>> = ({
   ...props
 }) => <FeaturedTextComponent {...props} />;
 
-const StoryIcon: React.FC<{ src: string }> = ({ src }) => (
-  <img
-    src={src}
-    alt="story icon"
-    className="flex aspect-square w-full items-center rounded-md bg-center object-cover"
-  />
-);
+const rectangle = <FeaturedTextImage src="/rectangle.png" alt="rectangle" />;
+const peach = <FeaturedTextImage src="/peach.png" alt="peach" />;
+const pink = <FeaturedTextImage src="/pink.png" alt="pink" />;
 
-const rectangle = <StoryIcon src="/rectangle.png" />;
-const peach = <StoryIcon src="/peach.png" />;
-const pink = <StoryIcon src="/pink.png" />;
-const phoneIcon = (
-  <div className="flex aspect-square w-full flex-shrink-0 items-center justify-center rounded-md bg-neutral-50">
-    <span
-      className="font-icons"
-      dangerouslySetInnerHTML={{ __html: `&#xeb1d` }}
-    />
-  </div>
-);
-
-const icons = { rectangle, phoneIcon, peach, pink };
+const icons = { rectangle, peach, pink, cameraIcon, cogIcon };
 
 export default {
   title: "🟢 Molecules/FeaturedText",
@@ -62,7 +48,8 @@ export default {
         type: "select",
         labels: {
           undefined: "none",
-          phoneIcon: "phone icon",
+          cameraIcon: "camera icon",
+          cogIcon: "cog icon",
           rectangle: "aspect ratio rectangle",
           peach: "avatar 1",
           pink: "avatar 2",
@@ -81,6 +68,6 @@ export default {
     align: "left",
     variant: "iconTop",
     linkedUrl: "https://google.com",
-    icon: <StoryIcon src="/rectangle.png" />,
+    icon: pink,
   },
 };

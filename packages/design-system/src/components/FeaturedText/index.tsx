@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import ArrowRight from "../../svgs/ArrowRight";
+import RightArrowSvg from "../../svgs/RightArrowSvg";
+
 import {
   FeaturedTextProps,
   TFeaturedTextSize,
@@ -104,7 +105,7 @@ export const FeaturedText: React.FC<FeaturedTextProps> = ({
           )}
         >
           <a href={linkedUrl}>{linkedText}</a>
-          <ArrowRight className={learnMoreIconSizes[size]} />
+          <RightArrowSvg className={learnMoreIconSizes[size]} />
         </div>
       </div>
     </div>
