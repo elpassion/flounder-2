@@ -11,28 +11,34 @@ const avatarExample = (
   <img
     src="/peach.png"
     alt="test avatar"
-    className="aspect-square w-4 rounded-full"
+    className="aspect-square w-8 rounded-full"
   />
 );
 
 const dropdownOptions: IDropdownOption[] = [
-  { value: "account", label: "Account", leftIcon: avatarExample },
+  {
+    value: "account",
+    label: "Account",
+    leftIcon: avatarExample,
+    supportingText: "caption",
+  },
   {
     value: "settings",
     label: "Settings",
-    leftIcon: <Icon icon="&#xeb14" />,
+    leftIcon: <Icon icon="&#xeb14" size="sm" />,
   },
   {
     value: "notifications",
     label: "Notifications",
-    leftIcon: <Icon icon="&#xeaeb" />,
-    rightIcon: <Icon icon="&#xeab0" />,
+    leftIcon: <Icon icon="&#xeaeb" size="sm" />,
+    rightIcon: <Icon icon="&#xeab0" size="sm" />,
+    supportingText: "Some supporting text",
   },
   {
     value: "label",
     label: "Label",
-    leftIcon: <Icon icon="&#xea6e" />,
-    rightIcon: <Icon icon="&#xeab0" />,
+    leftIcon: <Icon icon="&#xea6e" size="sm" />,
+    rightIcon: <Icon icon="&#xeab0" size="sm" />,
   },
 ];
 

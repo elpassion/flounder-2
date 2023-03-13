@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 export interface IDropdownOption {
   value: string;
   label: string;
+  supportingText?: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
 }

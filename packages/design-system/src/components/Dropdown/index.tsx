@@ -61,7 +61,7 @@ const DropdownComponents = {
     variant: TDropdownVariant;
   }) => {
     const { data } = props.option;
-    const { label, leftIcon, rightIcon } = data;
+    const { label, leftIcon, rightIcon, supportingText } = data;
     const isDefaultVariant = props.variant === "default";
     const isToggleVariant = props.variant === "toggle";
     const isCheckboxLeftVariant = props.variant === "checkbox-left";
@@ -69,22 +69,25 @@ const DropdownComponents = {
 
     return (
       <Option {...props.option}>
-        <div className="flex items-center justify-between text-sm">
+        <div className="flex items-center justify-between text-sm text-neutral-700">
           <div className="flex items-center gap-x-3">
             {isCheckboxLeftVariant && (
               <Checkbox name={label} labelText={label} size="sm" />
             )}
-            {isDefaultVariant && (
-              <>
-                {leftIcon}
+            {isDefaultVariant && <>{leftIcon}</>}
+            {!isCheckboxLeftVariant && (
+              <div className="flex flex-col">
                 <div>{label}</div>
-              </>
+                <small className="text-xs text-neutral-500">
+                  {supportingText}
+                </small>
+              </div>
             )}
           </div>
           <div>
             {isDefaultVariant && rightIcon}
             {isToggleVariant && <Toggle size="sm" />}
-            {isCheckboxRightVariant && <Checkbox name="" />}
+            {isCheckboxRightVariant && <Checkbox name={label} size="sm" />}
           </div>
         </div>
       </Option>
