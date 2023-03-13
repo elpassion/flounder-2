@@ -14,13 +14,15 @@ export const getImageUrl = (file: string) => {
   return "/flounder-2" + file;
 };
 
-const userIcon = <UserSvg className="aspect-square w-full" />;
-const cogIcon = <CogSvg className="aspect-square w-full" />;
-const helpIcon = <HelpCircleSvg className="aspect-square w-full" />;
-const cameraIcon = <CameraSvg className="aspect-square w-full" />;
-const homeIcon = <HomeSvg className="aspect-square w-full" />;
-const chevronDownIcon = <ChevronDownSvg className="aspect-square w-full" />;
-const chevronRightIcon = (
+export const userIcon = <UserSvg className="aspect-square w-full" />;
+export const cogIcon = <CogSvg className="aspect-square w-full" />;
+export const helpIcon = <HelpCircleSvg className="aspect-square w-full" />;
+export const cameraIcon = <CameraSvg className="aspect-square w-full" />;
+export const homeIcon = <HomeSvg className="aspect-square w-full" />;
+export const chevronDownIcon = (
+  <ChevronDownSvg className="aspect-square w-full" />
+);
+export const chevronRightIcon = (
   <ChevronDownSvg className="aspect-square w-full -rotate-90 transform" />
 );
 
