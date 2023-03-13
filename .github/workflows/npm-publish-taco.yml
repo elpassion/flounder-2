@@ -21,6 +21,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: npm install
       - run: npm run build:npm
+      - run: cp npm-package.json ./dist/package.json && cp README.md ./dist
       - run: cd dist/ && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
