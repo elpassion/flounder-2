@@ -21,6 +21,7 @@ const DropdownComponents = {
     variant = "default",
     options,
     skipMenuGap,
+    hideSelectedOptions,
   }: DropdownProps) => {
     const MENU_WIDTH = `calc(100% - 2px)` as const;
 
@@ -53,6 +54,7 @@ const DropdownComponents = {
         menuIsOpen={true}
         options={options}
         isMulti={isMulti}
+        hideSelectedOptions={hideSelectedOptions}
         components={{
           Option: (props) => (
             <DropdownComponents.DropdownOption
@@ -88,18 +90,19 @@ const DropdownComponents = {
               {isCheckboxLeftVariant && (
                 <Checkbox name={label} labelText={label} size="sm" />
               )}
-              {isDefaultVariant && (
-                <div className="flex items-center text-neutral-700">
-                  {leftIcon}
-                </div>
-              )}
+
               {!isCheckboxLeftVariant && (
-                <div className="flex flex-col">
-                  {label}
-                  <small className="text-xs text-neutral-700">
-                    {supportingText}
-                  </small>
-                </div>
+                <>
+                  <div className="flex items-center text-neutral-700">
+                    {leftIcon}
+                  </div>
+                  <div className="flex flex-col">
+                    {label}
+                    <small className="text-xs text-neutral-700">
+                      {supportingText}
+                    </small>
+                  </div>
+                </>
               )}
             </div>
             <div>

@@ -50,23 +50,28 @@ export default {
   title: "🟠 Atoms/Dropdown",
   component: Dropdown,
   argTypes: {
-    skipMenuGap: {
-      control: "select",
-      options: [true, undefined],
-    },
-    isMulti: {
-      control: "select",
-      options: [true, false],
-    },
     variant: {
       control: "select",
       options: ["default", "toggle", "checkbox-right", "checkbox-left"],
+    },
+    skipMenuGap: {
+      control: "boolean",
+      options: [true, false],
+    },
+    isMulti: {
+      control: "boolean",
+      options: [true, false],
+    },
+    hideSelectedOptions: {
+      control: "boolean",
+      options: [false, true],
     },
   },
   args: {
     options: dropdownOptions,
     skipMenuGap: true,
     isMulti: false,
+    hideSelectedOptions: false,
     variant: "default",
   },
   parameters: {
