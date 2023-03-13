@@ -16,7 +16,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
 
   const activeVariant = {
     filled: "bg-primary-100",
-    outlined: "border-primary-800",
+    outlined: "!border-primary-800",
     line: "border-primary-800",
   };
 
@@ -34,7 +34,7 @@ export const NavTabs: React.FC<NavTabsProps> = ({
           onClick={() => onClick(id)}
         >
           {icon && (
-            <div className="w-4 aspect-square">
+            <div className="w-4 h-4">
               {icon}
             </div>
           )}

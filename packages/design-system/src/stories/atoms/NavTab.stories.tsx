@@ -66,48 +66,28 @@ export default {
         id: "1",
         label: "Nav Tab 1",
         icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xea87",
-            }}
-          />
+          <span className="font-icons text-base leading-none">&#xeaa7;</span>
         ),
       },
       {
         id: "2",
         label: "Nav Tab 2",
         icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xea87",
-            }}
-          />
+          <span className="font-icons text-base leading-none">&#xeaa7;</span>
         ),
       },
       {
         id: "3",
         label: "Nav Tab 3",
         icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xea87",
-            }}
-          />
+          <span className="font-icons text-base leading-none">&#xeaa7;</span>
         ),
       },
       {
         id: "4",
         label: "Nav Tab 4",
         icon: (
-          <span
-            className="font-icons text-base leading-none"
-            dangerouslySetInnerHTML={{
-              __html: "&#xea87",
-            }}
-          />
+          <span className="font-icons text-base leading-none">&#xeaa7;</span>
         ),
       },
       {
