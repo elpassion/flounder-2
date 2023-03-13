@@ -15,7 +15,7 @@ export const Icons = () => {
             return (
               <tr className="divide-x divide-gray-200" key={icon.name}>
                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-center">
-                  <Icon size="lg" icon={icon.symbol.entity as IconTypes} />
+                  <Icon iconName={`${icon.name}`} size="lg" />
                 </td>
                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-center">
                   <span className="text-sm font-bold text-gray-700">
@@ -23,7 +23,7 @@ export const Icons = () => {
                   </span>
                 </td>
                 <td className="whitespace-nowrap p-4 text-sm text-gray-700">
-                  {`<Icon size="sm|md|lg" icon="${icon.symbol.entity}" />`}
+                  {`<Icon size="lg" iconName="${icon.name}" />`}
                 </td>
               </tr>
             );

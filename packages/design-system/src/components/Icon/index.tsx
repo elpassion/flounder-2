@@ -9,10 +9,10 @@ export const Icon: React.FC<IconProps> = ({
   icon,
   className,
   customIcon,
-  iconName, // Refactor to mainly use this
+  iconName,
   ...rest
 }) => {
-  const iconEntity = Icons?.[icon]?.entity;
+  const iconEntity = iconName && Icons?.[iconName]?.entity;
   const iconSizeVariants = {
     none: "",
     sm: "text-base",
