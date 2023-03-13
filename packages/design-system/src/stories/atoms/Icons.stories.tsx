@@ -2,7 +2,6 @@ import React from "react";
 import iconConfigFile from "../../fonts/fonticon.json";
 import { getIcons } from "../../helpers/getIcons";
 import { Icon } from "../../components/Icon";
-import { IconTypes } from "../../utils/iconType";
 
 export const Icons = () => {
   const icons = getIcons(iconConfigFile);

@@ -12,7 +12,7 @@ export const Icon: React.FC<IconProps> = ({
   iconName,
   ...rest
 }) => {
-  const iconEntity = iconName && Icons?.[iconName]?.entity;
+  const iconEntity = iconName && Icons?.[iconName]?.entity || icon;
   const iconSizeVariants = {
     none: "",
     sm: "text-base",
