@@ -1,4 +1,5 @@
 import commonjs from '@rollup/plugin-commonjs';
+import copy from 'rollup-plugin-copy'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from "@rollup/plugin-node-resolve";
 import json from "@rollup/plugin-json";
@@ -30,6 +31,12 @@ export default {
       clean: true,
     }),
     commonjs(),
-    terser()
+    terser(),
+    copy({
+      targets: [
+        { src: './npm-package.json', dest: 'dist', rename: 'package.json' },
+        { src: './README.md', dest: 'dist' }
+      ]
+    })
   ]
 };
